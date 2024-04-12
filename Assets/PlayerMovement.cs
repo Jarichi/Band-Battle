@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
         
 
-        moveDirection = new Vector2(moveX, moveY); //create movement vector
+        moveDirection = new Vector2(moveX, moveY).normalized; //create movement vector
 
 
     }
