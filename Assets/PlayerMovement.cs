@@ -8,15 +8,18 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float moveSpeed; //movement speed
-    public Rigidbody2D rb; //rigid body with reference rb
-    private Vector2 moveDirection; //vector with movement direction
     public bool isMoving = false;
+    public Rigidbody2D rb; //rigid body with reference rb
+
+    public Animator animator;
+    private Vector2 moveDirection; //vector with movement direction
+
 
     //Animator animator;
     //runs once
     void Start()
     {
-        //animator = GetComponent<animator>();
+        animator = GetComponent<Animator>();
 
     }
 
@@ -41,16 +44,14 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        /*if (moveX != 0f || moveY != 0f)
+        if (moveX == 0f && moveY == 0f)
         {
-            animator.SetBool("isMoving", true);
+            isMoving = false;
+        } else {
             isMoving = true;
-        } else
-        {
-            animator.SetBool("isMoving", false); //might replace with isMoving !isMoving
-            isMoving= false;
         }
-        */
+
+        
 
         moveDirection = new Vector2(moveX, moveY); //create movement vector
 
@@ -61,8 +62,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //map vector to rigidbody (hitbox) and calculate movement distance based on movememnt speed.
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-        //animator.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
-        //animator.SetFloat("yVelocity", Math.Abs(rb.velocity.y));
+        animator.SetFloat("xVelocity", rb.velocity.x/moveSpeed);
+        animator.SetFloat("yVelocity", rb.velocity.y/moveSpeed);
+        animator.SetBool("isMoving", isMoving);
 
 
     }
