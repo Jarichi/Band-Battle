@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
         {
             //animator.SetBool("attack", true);
             animator.SetTrigger("attack");
+            Debug.Log("attacking");
         }
     }
 }
@@ -72,8 +73,9 @@ public abstract class Instrument : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.I))
                 {
                     Debug.Log("in Combat");
-                    GameObject.Instantiate(weapon, playerTransform);
-                    GameObject.Destroy(this);
+                    GameObject weaponInst = GameObject.Instantiate(weapon, playerTransform);
+                    weaponInst.transform.parent = playerTransform;
+                    GameObject.Destroy(gameObject);
                 }
             }
         }
