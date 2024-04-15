@@ -50,6 +50,7 @@ public class Microphone : MonoBehaviour
             {
                 isPlaying = false;
                 inCombat = true;
+                animator.SetBool("IsWeapon", inCombat);
                 Debug.Log(inCombat);
             }
             }
