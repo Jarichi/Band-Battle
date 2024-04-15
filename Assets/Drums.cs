@@ -4,28 +4,58 @@ using UnityEngine;
 
 public class Drums : MonoBehaviour
 {
-   private Animator mAnimator;
    
+    public bool inRange = false;
+    public bool isPlaying = false;
+    public bool inCombat = false;
+    public BoxCollider2D tr;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        mAnimator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        tr = GetComponent<BoxCollider2D>();
     }
 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        inRange = true;
+        Debug.Log(inRange);
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        inRange = false;
+        Debug.Log("Is in range: " + inRange);
+    }
     // Update is called once per frame
     void Update()
     {
-        if(mAnimator != null)
+        if(animator != null)
         {
-            if(Input.GetKeyDown(KeyCode.O))
+           if (inRange) 
             {
-                mAnimator.SetTrigger("PlayPosition");
-            }
+                if(Input.GetKeyDown(KeyCode.U))
+                {
+                    isPlaying = true;
+                    Debug.Log(isPlaying);
+                }
 
-            if(Input.GetKeyDown(KeyCode.C))
-            {
-                mAnimator.SetTrigger("Transform");
+                if (isPlaying) 
+                {
+                    if(Input.GetKeyDown(KeyCode.I))
+                    {
+                        isPlaying = false;
+                        inCombat = true;
+                        animator.SetBool("isWeapon", inCombat);
+                        Debug.Log(inCombat);
+                    }
+                }
+
+            
             }
+           
         }
     }
+
+    
 }
