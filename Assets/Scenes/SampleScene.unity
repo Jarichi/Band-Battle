@@ -126,7 +126,7 @@ NavMeshSettings:
 --- !u!1 &434874328
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 9087978138468684493, guid: cdfe8a504dcf5ba4196065ac5835b4c3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -418,12 +418,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4689b219fa333041b9ab452e994df82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inRange: 0
-  isPlaying: 0
-  inCombat: 0
+  weapon: {fileID: 8701997420161790057, guid: 2201728da8770764dbd071d4165e861c, type: 3}
   tr: {fileID: 496690511}
-  animator: {fileID: 496690513}
-  emptyInstrument: {fileID: 9087978138468684493, guid: cdfe8a504dcf5ba4196065ac5835b4c3, type: 3}
+  micEmpty: {fileID: 9087978138468684493, guid: cdfe8a504dcf5ba4196065ac5835b4c3, type: 3}
 --- !u!95 &496690513
 Animator:
   serializedVersion: 5
