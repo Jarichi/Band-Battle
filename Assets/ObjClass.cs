@@ -55,14 +55,21 @@ public abstract class Instrument : MonoBehaviour
         {
             if (playerTransform != null)
             {
+                //sets the location of this object to the location of the player.
+                //TODO: Change so the location only gets linked whenever the interaction key is pressed
+                //instead of permanently attaching this to the player. Presumably simply by moving this part within the KeyCode block.
                 this.GetComponent<Transform>().position = playerTransform.position;
             }
 
+            //check if you want to play this instrument.
             if (Input.GetKeyDown(KeyCode.U))
             {
                 isPlaying = true;
-                OnPlaying();
+                OnPlaying(); 
                 Debug.Log(isPlaying);
+                //TODO: add a way to tell the instrument which object currently is interacting with it. Also add a check to verify what
+                //instrument is within range to avoid picking up 2 instruments at once.
+                //note: OnPlaying() might need to be changed to a function that deletes the active hitbox to prevent weird collision bug.
 
             }
 
