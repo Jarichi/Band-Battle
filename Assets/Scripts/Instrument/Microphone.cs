@@ -18,7 +18,8 @@ public class Microphone : Instrument
         while (!spawned)
         {
             //create empty mic stand upon pickup.
-            GameObject.Instantiate(micEmpty);
+            GameObject.Instantiate(micEmpty, transform);
+
             spawned = true;
         }
     }

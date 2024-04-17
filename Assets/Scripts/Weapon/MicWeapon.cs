@@ -13,23 +13,23 @@ public class MicWeapon : Weapon
         switch (direction)
         {
             case AttackDirection.North:
-                position.y += 1;
-                rotation.z = 0;
+                
+                position = new Vector2(0, .5f);
+                rotation.z = 90;
                 break;
 
             case AttackDirection.East:
-                position.x += 1;
-                rotation.z = -90;
+                position = new Vector2(1, 0);
                 break;
 
             case AttackDirection.South:
-                position.y -= 1;
-                rotation.z = -180;
+                position = new Vector2(0, -1.2f);
+                rotation.z = -90;
                 break;
 
             case AttackDirection.West:
-                position.x -= 1;
-                rotation.z = 90;
+                position = new Vector2(-1, 0);
+                rotation.z = -180;
                 break;
         }
         transform.localPosition = position;

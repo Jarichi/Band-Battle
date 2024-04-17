@@ -11,9 +11,13 @@ public enum AttackDirection
     West
 }
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : MonoBehaviour, IDamageable
 {
+    [Range(0f, 3f)]
+    public float invincibilityTime;
+
     private bool onCooldown;
+    private bool invincible;
 
     void Update()
     {
@@ -56,4 +60,22 @@ public class PlayerCombat : MonoBehaviour
         onCooldown = false;
     }
 
+    public void OnDamage()
+    {
+        if (invincible)
+        {
+            return;
+        }
+
+        invincible = true;
+        Debug.Log("Im HIT!");
+        StartCoroutine(EndInvincibility());
+    }
+
+
+    private IEnumerator EndInvincibility()
+    {
+        yield return new WaitForSeconds(invincibilityTime);
+        onCooldown = false;
+    }
 }

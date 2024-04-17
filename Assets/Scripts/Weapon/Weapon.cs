@@ -8,11 +8,11 @@ using UnityEngine.UIElements;
 public abstract class Weapon : MonoBehaviour
 {
     protected Animator animator;
-    protected Collider2D collider;
-    [Range(0f, 10f)]
+    protected new Collider2D collider;
+    [Range(.5f, 10f)]
     public float cooldown;
 
-    [Range(0f, 10f)]
+    [Range(.1f, 10f)]
     public float activeHitboxTime;
     void Start()
     {
@@ -41,8 +41,6 @@ public abstract class Weapon : MonoBehaviour
         yield return new WaitForSeconds(activeHitboxTime);
         collider.enabled = false;
     }
-
-
 
     protected abstract void PositionWeapon(AttackDirection direction);
 
