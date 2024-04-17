@@ -547,6 +547,7 @@ GameObject:
   - component: {fileID: 707570350}
   - component: {fileID: 707570346}
   - component: {fileID: 707570345}
+  - component: {fileID: 707570352}
   - component: {fileID: 707570349}
   - component: {fileID: 707570351}
   m_Layer: 0
@@ -734,6 +735,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99142a76c7b29d948841028a53202cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &707570352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707570344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898b91f6e16765a43ada4b0b29304311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1510911615
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,11 +869,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f3ea1e7fa04a044a7cee364fc6d2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inRange: 0
-  isPlaying: 0
-  inCombat: 0
+  weapon: {fileID: 0}
   tr: {fileID: 1510911622}
-  animator: {fileID: 1510911618}
 --- !u!50 &1510911620
 Rigidbody2D:
   serializedVersion: 4

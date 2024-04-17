@@ -21,14 +21,11 @@ public abstract class Instrument : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         inRange = true;
-        Debug.Log(inRange);
         playerTransform = col.GetComponentInParent<Transform>();
     }
     void OnTriggerExit2D(Collider2D col)
     {
         inRange = false;
-        Debug.Log("Is in range: " + inRange);
-
     }
 
     void Update()
@@ -61,7 +58,6 @@ public abstract class Instrument : MonoBehaviour
                 //check if you want to enter combat mode
                 if (Input.GetKeyDown(KeyCode.I))
                 {
-                    Debug.Log("in Combat");
                     GameObject weaponInst = GameObject.Instantiate(weapon, playerTransform);
                     weaponInst.transform.parent = playerTransform;
                     GameObject.Destroy(gameObject);

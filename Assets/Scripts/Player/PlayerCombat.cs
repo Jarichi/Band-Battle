@@ -43,7 +43,6 @@ public class PlayerCombat : MonoBehaviour
 
         if (gameObject.transform.childCount > 0)
         {
-            Debug.Log("attack in direction: " + direction);
             Weapon weapon = gameObject.transform.GetComponentInChildren<Weapon>();
             weapon.ExecuteAttack(direction);
             onCooldown = true;
