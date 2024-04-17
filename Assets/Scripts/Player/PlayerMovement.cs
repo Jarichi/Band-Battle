@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 //using Math;
 
 
@@ -14,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     private Vector2 moveDirection; //vector with movement direction
 
-
     //Animator animator;
     //runs once
     void Start()
@@ -27,15 +27,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         ProcessInput();
-
-
     }
 
 
     //Call every fixed framerate (independent of device)
     void FixedUpdate()
     {
-        move();
+        Move();
     }
 
     void ProcessInput()
@@ -55,17 +53,18 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = new Vector2(moveX, moveY).normalized; //create movement vector
 
+        
 
     }
 
-    void move()
+    void Move()
     {
         //map vector to rigidbody (hitbox) and calculate movement distance based on movememnt speed.
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
         animator.SetFloat("xVelocity", rb.velocity.x/moveSpeed);
         animator.SetFloat("yVelocity", rb.velocity.y/moveSpeed);
         animator.SetBool("isMoving", isMoving);
-
-
     }
+
+ 
 }

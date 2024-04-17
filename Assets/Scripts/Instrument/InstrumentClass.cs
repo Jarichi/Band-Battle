@@ -2,24 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
-public class Weapon : MonoBehaviour
-{
-    public Animator animator;
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            //animator.SetBool("attack", true);
-            animator.SetTrigger("attack");
-            Debug.Log("attacking");
-        }
-    }
-}
 public abstract class Instrument : MonoBehaviour
 {
     protected abstract void OnPlaying();
