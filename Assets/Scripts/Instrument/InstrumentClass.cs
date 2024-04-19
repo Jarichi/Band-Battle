@@ -4,14 +4,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 public abstract class Instrument : MonoBehaviour
 {
-    protected abstract void OnPlaying();
     public GameObject weapon;
+    public Minigame correspondingMinigame;
+    public BoxCollider2D tr;
+    private Transform playerTransform;
+    
     protected bool inRange = false;
     protected bool isPlaying = false;
-    private Transform playerTransform;
-
-
-    public BoxCollider2D tr;
+    protected abstract void OnPlaying();
 
     void Start()
     {
