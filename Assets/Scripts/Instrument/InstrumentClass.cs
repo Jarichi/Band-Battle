@@ -34,11 +34,7 @@ public abstract class Instrument : MonoBehaviour
             //check if you want to play this instrument.
             if (Input.GetKeyDown(KeyCode.U))
             {
-                if (playerTransform != null)
-                {
-                    //sets the location of this object to the location of the player.
-                    this.GetComponent<Transform>().position = playerTransform.position;
-                }
+                
 
                 Interact(playerTransform.gameObject);
                 OnPlaying(); 

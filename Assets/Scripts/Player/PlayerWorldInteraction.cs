@@ -10,19 +10,4 @@ public class PlayerWorldInteraction : MonoBehaviour
     {
         combat = GetComponent<PlayerCombat>();
     }
-
-    //private void OnButtonClicked()
-    //{
-    //    StartMinigame();
-    //}
-
-    //private void StartMinigame()
-    //{
-    //    minigame.Show(this);
-    //}
-
-    //private void StartCombat()
-    //{
-    //    minigame.Hide();
-    //}
 }

@@ -8,19 +8,17 @@ using UnityEngine.Animations;
 
 public class Microphone : Instrument
 {
-    private bool spawned = false;
-
-
     public GameObject micEmpty;
 
     protected override void OnPlaying()
     {
-        while (!spawned)
-        {
-            //create empty mic stand upon pickup.
-            GameObject.Instantiate(micEmpty, transform);
+        SpawnEmptyStand();
+    }
 
-            spawned = true;
-        }
+    private void SpawnEmptyStand()
+    {
+        micEmpty.transform.position = transform.position;
+        GameObject.Instantiate(micEmpty);
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }
