@@ -13,7 +13,6 @@ public class MicWeapon : Weapon
         switch (direction)
         {
             case AttackDirection.North:
-                
                 position = new Vector2(0, .5f);
                 rotation.z = 90;
                 break;

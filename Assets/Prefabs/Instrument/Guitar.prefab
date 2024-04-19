@@ -101,8 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9241e00905be44e985489d37e4bb9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  tr: {fileID: 3124683911860863271}
+  weapon: {fileID: 754089080720056000, guid: e70b2ed97a9746f4cbb08a5741be57b6, type: 3}
   emptyStand: {fileID: -1152181345, guid: cc909d425d317834fa720ed5e68daf37, type: 3}
 --- !u!114 &7105645984217230066
 MonoBehaviour:

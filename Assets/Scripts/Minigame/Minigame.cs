@@ -17,7 +17,7 @@ public abstract class Minigame : MonoBehaviour
     {
         if (active) {
             //check if you want to enter combat mode
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 EngageCombat();
             }

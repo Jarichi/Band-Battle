@@ -6,7 +6,6 @@ public abstract class Instrument : MonoBehaviour
 {
     public GameObject weapon;
     private Minigame minigame;
-    public BoxCollider2D tr;
     private Transform playerTransform;
     
     protected bool inRange = false;
@@ -15,7 +14,6 @@ public abstract class Instrument : MonoBehaviour
     void Start()
     {
         Debug.Log("Start");
-        tr = GetComponent<BoxCollider2D>();
     }
 
     private void Awake()
@@ -39,7 +37,7 @@ public abstract class Instrument : MonoBehaviour
         if (inRange)
         {
             //check if you want to play this instrument.
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 Interact(playerTransform.gameObject);
                 OnPlaying(); 
