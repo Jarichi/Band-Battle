@@ -20,12 +20,17 @@ public abstract class Weapon : MonoBehaviour
         collider = GetComponent<Collider2D>();
     }
 
+    private void Update()
+    {
+        
+    }
+
     public void ExecuteAttack(AttackDirection direction)
     {
         collider.enabled = true;
         var initialPosition = transform.localPosition;
         var initialRotation = transform.localRotation;
-        PositionWeapon(direction);
+        PositionWeaponOnAttack(direction);
         StartCoroutine(ResetPosition(initialPosition, initialRotation));
         StartCoroutine(DisableHitbox());
     }
@@ -42,7 +47,7 @@ public abstract class Weapon : MonoBehaviour
         collider.enabled = false;
     }
 
-    protected abstract void PositionWeapon(AttackDirection direction);
+    protected abstract void PositionWeaponOnAttack(AttackDirection direction);
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

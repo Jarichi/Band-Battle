@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MicWeapon : Weapon
 {
-    protected override void PositionWeapon(AttackDirection direction)
+    protected override void PositionWeaponOnAttack(AttackDirection direction)
     {
         animator.SetTrigger("attack");
         var position = transform.localPosition;
