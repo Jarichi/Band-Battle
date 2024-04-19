@@ -10,9 +10,6 @@ public abstract class Minigame : MonoBehaviour
     private GameObject weapon;
     private Canvas canvas;
 
-    [InspectorButton("EngageCombat")]
-    public bool startMinigame;
-
     private void Update()
     {
         if (active) {
@@ -40,8 +37,9 @@ public abstract class Minigame : MonoBehaviour
     {
         canvas.enabled= false;
         active= false;
-        movement.Enable();
         movement.animator.SetTrigger("ObtainGuitar");
+        movement.Enable();
+        //yield return new WaitForSeconds(1);
 
         GetComponent<Instrument>().enabled = false;
         combat.Engage(weapon);
