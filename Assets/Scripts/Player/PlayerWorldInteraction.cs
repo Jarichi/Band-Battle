@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerWorldInteraction : MonoBehaviour
 {
-    [InspectorButton("OnButtonClicked")]
-    public bool startMinigame;
     public PlayerCombat combat;
 
     public void Start()

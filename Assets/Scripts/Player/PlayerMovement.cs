@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Rendering;
 //using Math;
 
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    [SerializeField]
+    private bool canMove;
     public float moveSpeed; //movement speed
     public bool isMoving = false;
     public Rigidbody2D rb; //rigid body with reference rb
@@ -38,6 +37,9 @@ public class PlayerMovement : MonoBehaviour
 
     void ProcessInput()
     {
+
+        if (!canMove) return;
+
         //process movement inputs and store values in floats
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
@@ -66,5 +68,13 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isMoving", isMoving);
     }
 
- 
+    public void Disable()
+    {
+        canMove = false;
+    }
+
+    internal void Enable()
+    {
+        canMove = true;
+    }
 }

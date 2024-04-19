@@ -38,6 +38,18 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         }
 
     }
+
+    public void Engage(GameObject weapon)
+    {
+        GameObject weaponInst = GameObject.Instantiate(weapon, transform);
+        weaponInst.transform.parent = transform;
+    }
+
+    public void Stop()
+    {
+
+    }
+
     void Attack(AttackDirection direction)
     {
         if (onCooldown)
@@ -71,7 +83,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         Debug.Log("Im HIT!");
         StartCoroutine(EndInvincibility());
     }
-
 
     private IEnumerator EndInvincibility()
     {
