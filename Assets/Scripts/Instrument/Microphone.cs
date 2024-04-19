@@ -6,19 +6,8 @@ using UnityEngine;
 using UnityEngine.Animations;
 
 
-public class Microphone : Instrument
+public class Microphone : StandInstrument
 {
-    public GameObject micEmpty;
+    
 
-    protected override void OnPlaying()
-    {
-        SpawnEmptyStand();
-    }
-
-    private void SpawnEmptyStand()
-    {
-        micEmpty.transform.position = transform.position;
-        GameObject.Instantiate(micEmpty);
-        GetComponent<SpriteRenderer>().enabled = false;
-    }
 }

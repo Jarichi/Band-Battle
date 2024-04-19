@@ -34,12 +34,8 @@ public abstract class Instrument : MonoBehaviour
             //check if you want to play this instrument.
             if (Input.GetKeyDown(KeyCode.U))
             {
-                
-
                 Interact(playerTransform.gameObject);
                 OnPlaying(); 
-
-
             }
         }
 

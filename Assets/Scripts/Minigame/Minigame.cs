@@ -41,9 +41,10 @@ public abstract class Minigame : MonoBehaviour
         canvas.enabled= false;
         active= false;
         movement.Enable();
+        movement.animator.SetTrigger("ObtainGuitar");
 
-        
-        GameObject.Destroy(gameObject);
+        GetComponent<Instrument>().enabled = false;
         combat.Engage(weapon);
     }
+
 }
