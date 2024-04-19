@@ -21,10 +21,10 @@ public class CanvasAnimation : MonoBehaviour //might alse need to inherit the pl
     {
         //play animation ONLY after the can vast gets enabled.
         // GUIAnimation.enabled = true;
-        GUIAnimation.SetTrigger("GuitarGUI");
+// GUIAnimation.SetTrigger("GuitarGUI");
 
 
-        
+
     }
 
 
