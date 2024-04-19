@@ -9,6 +9,9 @@ public abstract class Minigame : MonoBehaviour
     private PlayerCombat combat;
     private GameObject weapon;
     private Canvas canvas;
+    [SerializeField]
+    [Range(0f, 3f)]
+    private float startupAnimationLength;
 
     private void Update()
     {
@@ -36,13 +39,10 @@ public abstract class Minigame : MonoBehaviour
     private void EngageCombat()
     {
         canvas.enabled= false;
-        active= false;
-        movement.animator.SetTrigger("ObtainGuitar");
-        movement.Enable();
-        //yield return new WaitForSeconds(1);
-
+        active = false;
+        combat.Engage(weapon, movement, GetCombatAnimationName(), startupAnimationLength);
         GetComponent<Instrument>().enabled = false;
-        combat.Engage(weapon);
     }
 
+    protected abstract string GetCombatAnimationName();
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Instrument : MonoBehaviour
 {
     public GameObject weapon;
-    public Minigame minigame;
+    private Minigame minigame;
     public BoxCollider2D tr;
     private Transform playerTransform;
     
@@ -14,13 +14,20 @@ public abstract class Instrument : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Start");
         tr = GetComponent<BoxCollider2D>();
     }
+
+    private void Awake()
+    {
+        minigame = GetComponent<Minigame>();
+    }
+
     //proximity detection
     void OnTriggerEnter2D(Collider2D col)
     {
         inRange = true;
-        playerTransform = col.GetComponentInParent<Transform>();
+        playerTransform = col.GetComponent<Transform>();
     }
     void OnTriggerExit2D(Collider2D col)
     {

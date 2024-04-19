@@ -39,10 +39,24 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     }
 
-    public void Engage(GameObject weapon)
+    public void Engage()
     {
+    }
+
+
+    public void Engage(GameObject weapon, PlayerMovement movement, string animationTriggerName, float animationLength)
+    {
+        StartCoroutine(TransitionToCombat(movement, animationTriggerName, animationLength));
+
         GameObject weaponInst = GameObject.Instantiate(weapon, transform);
         weaponInst.transform.parent = transform;
+    }
+
+    private IEnumerator TransitionToCombat(PlayerMovement movement, string triggerName, float length)
+    {
+        movement.animator.SetTrigger(triggerName);
+        yield return new WaitForSeconds(length);
+        movement.Enable();
     }
 
     public void Stop()
