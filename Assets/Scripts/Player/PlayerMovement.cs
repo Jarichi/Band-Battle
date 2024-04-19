@@ -61,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+        if (!canMove) return;
+
         //map vector to rigidbody (hitbox) and calculate movement distance based on movememnt speed.
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
         animator.SetFloat("xVelocity", rb.velocity.x/moveSpeed);

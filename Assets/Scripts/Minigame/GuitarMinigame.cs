@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MicrophoneMinigame : Minigame
+public class GuitarMinigame : Minigame
 {
     protected override string GetCombatAnimationName()
     {
-        return "ObtainMicrophone";
+        return "ObtainGuitar";
     }
 }

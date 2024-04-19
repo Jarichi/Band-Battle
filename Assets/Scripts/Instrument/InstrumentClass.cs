@@ -5,8 +5,7 @@ using UnityEngine;
 public abstract class Instrument : MonoBehaviour
 {
     public GameObject weapon;
-    public Minigame minigame;
-    public BoxCollider2D tr;
+    private Minigame minigame;
     private Transform playerTransform;
     
     protected bool inRange = false;
@@ -14,13 +13,19 @@ public abstract class Instrument : MonoBehaviour
 
     void Start()
     {
-        tr = GetComponent<BoxCollider2D>();
+        Debug.Log("Start");
     }
+
+    private void Awake()
+    {
+        minigame = GetComponent<Minigame>();
+    }
+
     //proximity detection
     void OnTriggerEnter2D(Collider2D col)
     {
         inRange = true;
-        playerTransform = col.GetComponentInParent<Transform>();
+        playerTransform = col.GetComponent<Transform>();
     }
     void OnTriggerExit2D(Collider2D col)
     {
@@ -32,7 +37,7 @@ public abstract class Instrument : MonoBehaviour
         if (inRange)
         {
             //check if you want to play this instrument.
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 Interact(playerTransform.gameObject);
                 OnPlaying(); 
