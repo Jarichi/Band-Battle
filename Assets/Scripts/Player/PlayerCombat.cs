@@ -21,6 +21,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private bool onCooldown;
     private bool invincible;
     private Weapon currentWeapon;
+    public int Hitpoints;
 
     void Update()
     {
@@ -101,5 +102,13 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     {
         yield return new WaitForSeconds(invincibilityTime);
         onCooldown = false;
+    }
+
+    public void Die()
+    {
+        if (Hitpoints == 0)
+        {
+            Debug.Log("Oh NOOoooo o o *dies*");
+        }
     }
 }

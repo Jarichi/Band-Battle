@@ -9,7 +9,7 @@ public class DummyCombat : MonoBehaviour, IDamageable
     public int Hitpoints;
     [SerializeField] private ParticleSystem DamageParticles;
 
-    private ParticleSystem DamageParticleInstance;
+    private ParticleSystem DamageParticleInstance; //redundant
 
     // Start is called before the first frame update
     void Start()
@@ -33,10 +33,19 @@ public class DummyCombat : MonoBehaviour, IDamageable
         
     }
 
+    public void Die()
+    {
+        if (Hitpoints == 0)
+        {
+            Debug.Log("*dies*");
+        }
+    }
+
     private void SpawnParticles()
     {
         //create particles at the current position.
-        DamageParticles = Instantiate(DamageParticles, transform.position, Quaternion.identity);
+        Debug.Log("spawn particle object");
+        Instantiate(DamageParticles, transform.position, Quaternion.identity);
         
     }
 }
