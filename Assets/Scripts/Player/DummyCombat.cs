@@ -41,8 +41,12 @@ public class DummyCombat : MonoBehaviour, IDamageable
 
     private void SpawnParticles()
     {
-        //create particles at the current position.
-        DamageParticles = Instantiate(DamageParticles, transform.position, Quaternion.identity);
+        Instantiate(DamageParticles, transform.position, Quaternion.identity);
         
+    }
+
+    public void Die()
+    {
+        throw new System.NotImplementedException();
     }
 }
