@@ -12,7 +12,7 @@ public abstract class Weapon : MonoBehaviour
     public AudioClip[] sfx;
     public AudioSource sfxSource;
 
-    [Range(0, .5f)]
+    [Range(0, .2f)]
     public float PitchmodPercentage;
 
     [Range(.5f, 10f)]
@@ -83,7 +83,7 @@ public abstract class Weapon : MonoBehaviour
     public void PlaySound()
     {
         sfxSource.clip = sfx[UnityEngine.Random.Range(0, sfx.Length)];
-        sfxSource.pitch = UnityEngine.Random.Range(1 - PitchmodPercentage, 1 + PitchmodPercentage);
+        sfxSource.pitch = UnityEngine.Random.Range(1f - PitchmodPercentage, 1f + PitchmodPercentage);
         sfxSource.Play();
     }
 

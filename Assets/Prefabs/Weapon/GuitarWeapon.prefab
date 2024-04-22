@@ -125,7 +125,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e2c8f3917e858394e8a6714f2bde46fe, type: 3}
   - {fileID: 8300000, guid: d4d9454db833015478c310d4d440b133, type: 3}
   sfxSource: {fileID: 116142065230756580}
-  PitchmodPercentage: 0.01
+  PitchmodPercentage: 0.136
   cooldown: 0.5
   startupTime: 0.23
   activeHitboxTime: 0.1
