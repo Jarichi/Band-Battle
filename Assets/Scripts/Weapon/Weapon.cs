@@ -80,6 +80,11 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    protected abstract void PlaySound();
+    public void PlaySound()
+    {
+        sfxSource.clip = sfx[UnityEngine.Random.Range(0, sfx.Length)];
+        sfxSource.pitch = UnityEngine.Random.Range(1 - PitchmodPercentage, 1 + PitchmodPercentage);
+        sfxSource.Play();
+    }
 
 }
