@@ -694,8 +694,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1041370057
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1402306885, guid: 613641fa50abf064eaff86f3cdca1d89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1290,6 +1290,14 @@ PrefabInstance:
     - target: {fileID: 1954813734741920630, guid: ffdf5b21d14c88845876998d84450e36, type: 3}
       propertyPath: m_Name
       value: Microphone
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839958412760119226, guid: ffdf5b21d14c88845876998d84450e36, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8643631147287284286, guid: ffdf5b21d14c88845876998d84450e36, type: 3}
+      propertyPath: startupAnimationLength
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
