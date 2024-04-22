@@ -30,4 +30,17 @@ public class GuitarWeapon : Weapon
         transform.localPosition = position;
         transform.localRotation = Quaternion.Euler(rotation);
     }
+
+    //Plays sound effect when swinging. TODO: Chat with May to see if this can be done in a better way
+    //since I don't have enough knowledge to know if this needs to be an interface or can just be a static method.
+    protected override void PlaySound()
+    {
+        
+        
+        sfxSource.clip = sfx[Random.Range(0, sfx.Length)];
+        sfxSource.pitch = Random.Range(1-PitchmodPercentage, 1+PitchmodPercentage);
+        sfxSource.Play();
+    }
+
+
 }

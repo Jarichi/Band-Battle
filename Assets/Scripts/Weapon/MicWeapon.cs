@@ -34,4 +34,12 @@ public class MicWeapon : Weapon
         transform.localPosition = position;
         transform.localRotation = Quaternion.Euler(rotation);
     }
+
+    protected override void PlaySound()
+    {
+        sfxSource.clip = sfx[Random.Range(0, sfx.Length)];
+        sfxSource.pitch = Random.Range(1 - PitchmodPercentage, 1 + PitchmodPercentage);
+        sfxSource.Play();
+    }
 }
+

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundRandom : MonoBehaviour
+public abstract class SoundRandom : MonoBehaviour
 {
     public AudioClip[] sfx;
     public AudioSource sfxSource;
