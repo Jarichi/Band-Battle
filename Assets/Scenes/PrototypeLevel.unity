@@ -1905,6 +1905,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2839958412760119226, guid: ffdf5b21d14c88845876998d84450e36, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8643631147287284286, guid: ffdf5b21d14c88845876998d84450e36, type: 3}
+      propertyPath: startupAnimationLength
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1325054134799024004, guid: ab9d030c3cf8aba43ac5bfa1dd0ae424, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.17
@@ -1949,14 +1957,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Microphone
       objectReference: {fileID: 0}
-    - target: {fileID: 2839958412760119226, guid: ffdf5b21d14c88845876998d84450e36, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8643631147287284286, guid: ffdf5b21d14c88845876998d84450e36, type: 3}
-      propertyPath: startupAnimationLength
-      value: 1.2
-      objectReference: {fileID: 0}
+    - target: {fileID: 8192027646678916385, guid: ab9d030c3cf8aba43ac5bfa1dd0ae424, type: 3}
+      propertyPath: emptyStand
+      value: 
+      objectReference: {fileID: 21300000, guid: b17ce7b6cf5af8241820cd784f98ce9d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
