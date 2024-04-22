@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0.5
+  startupTime: 0.23
   activeHitboxTime: 0.1
 --- !u!61 &6670685691831647916
 BoxCollider2D:

@@ -49,6 +49,11 @@ public abstract class Instrument : MonoBehaviour
 
     public void Interact(GameObject player)
     {
+        if (playerTransform.GetComponent<PlayerCombat>().inCombat)
+        {
+            return;
+        }
+
         minigame.StartMinigame(player, weapon);
     }
 

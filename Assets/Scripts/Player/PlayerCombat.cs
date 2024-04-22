@@ -16,8 +16,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     [Range(0f, 3f)]
     public float invincibilityTime;
 
+    public bool inCombat { get; private set; }
+
     private bool onCooldown;
     private bool invincible;
+    private Weapon currentWeapon;
 
     void Update()
     {
@@ -42,7 +45,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     public void Engage(GameObject weapon, PlayerMovement movement, string animationTriggerName, float animationLength)
     {
         StartCoroutine(TransitionToCombat(weapon, movement, animationTriggerName, animationLength));
-
+        inCombat = true;
     }
 
     private IEnumerator TransitionToCombat(GameObject weapon, PlayerMovement movement, string triggerName, float length)
@@ -53,11 +56,12 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
         GameObject weaponInst = GameObject.Instantiate(weapon, transform);
         weaponInst.transform.parent = transform;
+        currentWeapon = weaponInst.GetComponent<Weapon>();
     }
 
     public void Stop()
     {
-
+        inCombat = false;
     }
 
     void Attack(AttackDirection direction)
@@ -69,10 +73,9 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
         if (gameObject.transform.childCount > 0)
         {
-            Weapon weapon = gameObject.transform.GetComponentInChildren<Weapon>();
-            weapon.ExecuteAttack(direction);
+            currentWeapon.ExecuteAttack(direction);
             onCooldown = true;
-            StartCoroutine(EndCooldown(weapon.cooldown));
+            StartCoroutine(EndCooldown(currentWeapon.cooldown));
         }
     }
 

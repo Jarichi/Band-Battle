@@ -12,8 +12,14 @@ public abstract class Weapon : MonoBehaviour
     [Range(.5f, 10f)]
     public float cooldown;
 
+    [Range(.1f, 5f)]
+    public float startupTime;
+
     [Range(.1f, 10f)]
     public float activeHitboxTime;
+
+    [SerializeField]
+    private bool allowVerticalAttack;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -27,12 +33,13 @@ public abstract class Weapon : MonoBehaviour
 
     public void ExecuteAttack(AttackDirection direction)
     {
-        collider.enabled = true;
+        if (!allowVerticalAttack && (direction == AttackDirection.North || direction == AttackDirection.South)) return;
+
         var initialPosition = transform.localPosition;
         var initialRotation = transform.localRotation;
         PositionWeaponOnAttack(direction);
         StartCoroutine(ResetPosition(initialPosition, initialRotation));
-        StartCoroutine(DisableHitbox());
+        StartCoroutine(EnableHitbox());
     }
 
     private IEnumerator ResetPosition(Vector3 initialPosition, Quaternion initialRotation)
@@ -40,6 +47,13 @@ public abstract class Weapon : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         transform.localPosition = initialPosition;
         transform.localRotation = initialRotation;
+    }
+
+    private IEnumerator EnableHitbox()
+    {
+        yield return new WaitForSeconds(startupTime);
+        collider.enabled = true;
+        StartCoroutine(DisableHitbox());
     }
     private IEnumerator DisableHitbox()
     {
