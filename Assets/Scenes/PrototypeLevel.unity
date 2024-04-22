@@ -1092,7 +1092,7 @@ GameObject:
   - component: {fileID: 1333783088}
   - component: {fileID: 1333783087}
   m_Layer: 5
-  m_Name: Background
+  m_Name: Minigame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1195,7 +1195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -61635593
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -1402306885, guid: 613641fa50abf064eaff86f3cdca1d89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -15,5 +15,6 @@ public class StandInstrument : Instrument
     protected override void OnPlaying()
     {
         spriteRenderer.sprite = emptyStand;
+        Debug.Log("replace sprite");
     }
 }
