@@ -8,7 +8,7 @@ public abstract class Minigame : MonoBehaviour
     private PlayerMovement movement;
     private PlayerCombat combat;
     private GameObject weapon;
-    private Canvas canvas;
+    private SpriteRenderer ui;
     [SerializeField]
     [Range(0f, 3f)]
     private float startupAnimationLength;
@@ -17,7 +17,7 @@ public abstract class Minigame : MonoBehaviour
     {
         if (active) {
             //check if you want to enter combat mode
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 EngageCombat();
             }
@@ -26,19 +26,19 @@ public abstract class Minigame : MonoBehaviour
 
     public void StartMinigame(GameObject player, GameObject weapon)
     {
-        canvas = player.GetComponentInChildren<Canvas>();
         movement = player.GetComponent<PlayerMovement>();
         combat = player.GetComponent<PlayerCombat>();
+        ui = player.transform.GetChild(0).GetComponent<SpriteRenderer>();
         this.weapon = weapon;
 
         active = true;
-        canvas.enabled= true;
+        ui.enabled = true;
         movement.Disable();
     }
 
     private void EngageCombat()
     {
-        canvas.enabled= false;
+        ui.enabled= false;
         active = false;
         combat.Engage(weapon, movement, GetCombatAnimationName(), startupAnimationLength);
         GetComponent<Instrument>().enabled = false;
