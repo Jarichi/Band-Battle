@@ -30,4 +30,7 @@ public class GuitarWeapon : Weapon
         transform.localPosition = position;
         transform.localRotation = Quaternion.Euler(rotation);
     }
+
+   
+
 }

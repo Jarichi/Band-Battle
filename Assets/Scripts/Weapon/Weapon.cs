@@ -9,6 +9,12 @@ public abstract class Weapon : MonoBehaviour
 {
     protected Animator animator;
     protected new Collider2D collider;
+    public AudioClip[] sfx;
+    public AudioSource sfxSource;
+
+    [Range(0, .2f)]
+    public float PitchmodPercentage;
+
     [Range(.5f, 10f)]
     public float cooldown;
 
@@ -24,6 +30,7 @@ public abstract class Weapon : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
+        sfxSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -40,6 +47,7 @@ public abstract class Weapon : MonoBehaviour
         PositionWeaponOnAttack(direction);
         StartCoroutine(ResetPosition(initialPosition, initialRotation));
         StartCoroutine(EnableHitbox());
+        PlaySound();
     }
 
     private IEnumerator ResetPosition(Vector3 initialPosition, Quaternion initialRotation)
@@ -70,6 +78,13 @@ public abstract class Weapon : MonoBehaviour
         {
             target.OnDamage();
         }
+    }
+
+    public void PlaySound()
+    {
+        sfxSource.clip = sfx[UnityEngine.Random.Range(0, sfx.Length)];
+        sfxSource.pitch = UnityEngine.Random.Range(1f - PitchmodPercentage, 1f + PitchmodPercentage);
+        sfxSource.Play();
     }
 
 }
