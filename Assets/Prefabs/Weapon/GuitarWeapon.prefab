@@ -124,7 +124,6 @@ MonoBehaviour:
   sfx:
   - {fileID: 8300000, guid: e2c8f3917e858394e8a6714f2bde46fe, type: 3}
   - {fileID: 8300000, guid: d4d9454db833015478c310d4d440b133, type: 3}
-  sfxSource: {fileID: 116142065230756580}
   PitchmodPercentage: 0.136
   cooldown: 0.5
   startupTime: 0.23
@@ -187,7 +186,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.42
   m_Pitch: 1
   Loop: 0
   Mute: 0
