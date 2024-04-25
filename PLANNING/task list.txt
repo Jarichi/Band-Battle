@@ -1,0 +1,58 @@
+-playing mechanic (M)
+	functioning minigame
+	multiple minigames for individual instruments
+	
+
+-local multiplayer (M)
+	controller support
+	multiple players
+	finalising combat
+
+-point system (M)
+	thinking/brainstorming multiple concepts
+	playtest
+
+-game design (M)
+	game phases
+		start
+		pick instrument and band leader
+		choose song
+		play
+		combat (optional)
+		repeat until choose winner
+	mechanics for band leader
+
+-combat extension (C)
+	add drums
+	add flute
+	add other instruments
+	area design
+		objects
+		hazards
+	attack moves
+
+-fmod integration and audio design (S)
+	fmod studio/plugin
+		music dependant on who is playing instruments/fighting -> adaptive music
+	soundtrack
+	sound design
+	
+-art design (C)
+	multiple player characters
+	transition animation
+	VFX
+	consistent art style
+	instrument sprites
+	multiple maps
+	tileset?
+	objects (speakers, cabs etc)
+	GUI	
+		customised GUI for each instrument
+		HP bar
+		point count (if we want to see the points)
+
+
+	
+
+-code review/cleanup (C)
+	
