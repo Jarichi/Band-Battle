@@ -28,7 +28,11 @@ public class DummyCombat : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        
+        if (Hitpoints == 0)
+        {
+            Die();
+            Debug.Log("die");
+        }
     }
 
     public void OnDamage()
@@ -47,6 +51,6 @@ public class DummyCombat : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        throw new System.NotImplementedException();
+        GameObject.Destroy(this);
     }
 }
