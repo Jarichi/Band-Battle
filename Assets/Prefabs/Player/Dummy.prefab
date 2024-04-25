@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4330240463539573612}
-  Hitpoints: 99
+  Hitpoints: 3
   DamageParticles: {fileID: 6032736739999628523, guid: 406cbc9f1beb4294495e6f023253ebf0, type: 3}
 --- !u!61 &7434848055831284368
 BoxCollider2D:
