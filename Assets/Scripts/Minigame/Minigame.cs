@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Minigame : MonoBehaviour
+public abstract class Minigame : SongHandler
 {
     private bool active;
     private PlayerMovement movement;
@@ -13,6 +13,11 @@ public abstract class Minigame : MonoBehaviour
     [Range(0f, 3f)]
     private float startupAnimationLength;
 
+    //gets called when the game starts even when this is inherited form a class
+    private void Awake()
+    {
+        InitRhythmGame();
+    }
     private void Update()
     {
         if (active) {
@@ -22,6 +27,11 @@ public abstract class Minigame : MonoBehaviour
                 EngageCombat();
             }
         }
+
+        StartRhytmgame();
+
+         
+
     }
 
     public void StartMinigame(GameObject player, GameObject weapon)
