@@ -3,21 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TriggerLine : SongChecker
+public class TriggerLine : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     private BoxCollider2D Hitbox;
     public float marginOfError;
     private Vector2 initialPosition;
-    
-
-    public enum NoteDirection
-
-    {
-        Up, Down, Left, Right
-    }
-    public NoteDirection tempNotes;
-
 
     private void Start()
     {
@@ -25,64 +16,55 @@ public class TriggerLine : SongChecker
         Hitbox.enabled = false;
         initialPosition = Hitbox.offset;
     }
+
     private void Update()
     {
         PlayerInput();
-        MoveHitbox(tempNotes);
-
-
     }
 
-    private void MoveHitbox(NoteDirection note)
+    private void PlayerInput()
     {
-        switch (note)
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            case NoteDirection.Up:
-                Debug.Log("Up");
-                initialPosition.x = -1.5f;
-                Hitbox.offset = initialPosition;
-                //change offset according to note value -1.5
-                break;
-                
-            case NoteDirection.Down:
-                Debug.Log("Down");
-                initialPosition.x = -0.5f;
-                Hitbox.offset = initialPosition;
-                break;
-
-            case NoteDirection.Left:
-                Debug.Log("Left");
-                initialPosition.x = 0.5f;
-                Hitbox.offset = initialPosition;
-                break;
-
-            case NoteDirection.Right:
-                Debug.Log("Right");
-                initialPosition.x = 1.5f;
-                Hitbox.offset = initialPosition;
-                break; 
-            
-
+            Debug.Log("Up");
+            initialPosition.x = -1.5f;
+            Hitbox.offset = initialPosition;
+            ToggleHitbox();
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Debug.Log("Down");
+            initialPosition.x = -0.5f;
+            Hitbox.offset = initialPosition;
+            ToggleHitbox();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Debug.Log("Left");
+            initialPosition.x = 0.5f;
+            Hitbox.offset = initialPosition;
+            ToggleHitbox();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Debug.Log("Right");
+            initialPosition.x = 1.5f;
+            Hitbox.offset = initialPosition;
+            ToggleHitbox();
+        }
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("HIT");
-        //destroy note prefab
         //kill note
+        //GameObject.Destroy();
         //increment score
 
     }
-
-    private void PlayerInput ()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            ToggleHitbox();
-        }
-    }
-
 
     private void ToggleHitbox()
     {

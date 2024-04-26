@@ -9,7 +9,13 @@ using UnityEngine;
 public class SongHandler : MonoBehaviour
 {
 
-    /*private*/ private float secondsPerBeat;
+    public enum NoteDirection
+    {
+        Up, Down, Left, Right
+    }
+
+    /*private*/
+    private float secondsPerBeat;
     private float songPosSeconds;
     private float songPosBeats;
     private float songStartTime;
@@ -19,7 +25,7 @@ public class SongHandler : MonoBehaviour
     public float bpm;
 
     private float[] rhythm;
-    private char[] inputDirection;
+    private NoteDirection[] inputDirection;
     private int previewBeats;
     private int index;
 
@@ -67,13 +73,13 @@ public class SongHandler : MonoBehaviour
 
             //initialize the fields of the music note
             Debug.Log("spawn note with direction");
-            Debug.Log(inputDirection[index]);
+            Debug.Log(inputDirection);
             index++;
         }
 
     }
 
-    public void SetNoteSequence(float[] p_rhythm, char[] p_inputDirection)
+    protected void SetNoteSequence(float[] p_rhythm, NoteDirection[] p_inputDirection)
     {
         
         rhythm = p_rhythm;
