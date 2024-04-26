@@ -142,8 +142,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 0.2
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898b91f6e16765a43ada4b0b29304311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibilityTime: 1
+  invincibilityTime: 0.4
   Hitpoints: 10
   DamageParticles: {fileID: 6032736739999628523, guid: 406cbc9f1beb4294495e6f023253ebf0, type: 3}
 --- !u!114 &9061394397144986808

@@ -10,11 +10,6 @@ public abstract class Instrument : MonoBehaviour
     protected bool inRange = false;
     protected abstract void OnPlaying();
 
-    void Start()
-    {
-        Debug.Log("Start");
-    }
-
     private void Awake()
     {
         minigame = GetComponent<Minigame>();

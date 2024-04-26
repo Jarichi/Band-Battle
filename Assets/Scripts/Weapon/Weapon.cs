@@ -11,6 +11,7 @@ public abstract class Weapon : MonoBehaviour
     protected new Collider2D collider;
     public AudioClip[] sfx;
     private AudioSource sfxSource;
+    private PlayerCombat wielder;
 
     [Range(0, .2f)]
     public float PitchmodPercentage;
@@ -32,11 +33,11 @@ public abstract class Weapon : MonoBehaviour
         collider = GetComponent<Collider2D>();
         sfxSource = GetComponent<AudioSource>();
     }
-
-    private void Update()
+    public void SetWielder(PlayerCombat wielder)
     {
-        
+        this.wielder = wielder;
     }
+
 
     public void ExecuteAttack(AttackDirection direction)
     {
@@ -76,7 +77,7 @@ public abstract class Weapon : MonoBehaviour
         IDamageable? target = collision.gameObject.GetComponent<IDamageable>();
         if (target != null)
         {
-            target.OnDamage();
+            target.OnDamage(wielder);
         }
     }
 

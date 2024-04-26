@@ -23,6 +23,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private Weapon currentWeapon;
     private PlayerInputController input;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rigidbody;
     public int Hitpoints;
 
     [SerializeField] private ParticleSystem DamageParticles;
@@ -32,6 +33,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     {
         spriteRenderer= GetComponent<SpriteRenderer>();
         input = GetComponent<PlayerInputController>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
     private void Awake()
     {
@@ -74,6 +76,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         GameObject weaponInst = GameObject.Instantiate(weapon, transform);
         weaponInst.transform.parent = transform;
         currentWeapon = weaponInst.GetComponent<Weapon>();
+        currentWeapon.SetWielder(movement.GetComponent<PlayerCombat>());
     }
 
     public void Stop()
@@ -102,7 +105,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         onCooldown = false;
     }
 
-    public void OnDamage()
+    public void OnDamage(PlayerCombat attacker)
     {
         if (invincible)
         {
@@ -111,6 +114,9 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
         invincible = true;
 
+        var forcePower = 30f;
+        var forceDirection = transform.position - attacker.transform.position;
+        rigidbody.AddForce(forceDirection * forcePower, ForceMode2D.Force);
         Hitpoints--;
         screenShake.Shake();
         SpawnParticles();
