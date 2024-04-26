@@ -1,7 +1,9 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
-//using Math;
-
+using UnityEngine.Animations;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Composites;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,13 +15,13 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
     private Vector2 moveDirection; //vector with movement direction
-
+    private PlayerInputController input;
     //Animator animator;
     //runs once
     void Start()
     {
         animator = GetComponent<Animator>();
-
+        input = GetComponent<PlayerInputController>();
     }
 
     // Update is called once per frame (dependent on device)
@@ -45,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
         if (!canMove) return;
 
         //process movement inputs and store values in floats
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        float moveX = input.HorizontalMovement;
+        float moveY = input.VerticalMovement;
 
         if (moveX == 0f && moveY == 0f)
         {

@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Minigame : MonoBehaviour
 {
     private bool active;
+    private PlayerInputController input;
     private PlayerMovement movement;
     private PlayerCombat combat;
     private GameObject weapon;
@@ -17,7 +18,7 @@ public abstract class Minigame : MonoBehaviour
     {
         if (active) {
             //check if you want to enter combat mode
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (input.EngageCombatPressed)
             {
                 EngageCombat();
             }
@@ -26,6 +27,7 @@ public abstract class Minigame : MonoBehaviour
 
     public void StartMinigame(GameObject player, GameObject weapon)
     {
+        input = player.GetComponent<PlayerInputController>();
         movement = player.GetComponent<PlayerMovement>();
         combat = player.GetComponent<PlayerCombat>();
         ui = player.transform.GetChild(0).GetComponent<SpriteRenderer>();

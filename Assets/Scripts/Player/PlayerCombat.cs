@@ -21,22 +21,29 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private bool onCooldown;
     private bool invincible;
     private Weapon currentWeapon;
+    private PlayerInputController input;
     public int Hitpoints;
+
+    private void Start()
+    {
+        input = GetComponent<PlayerInputController>();
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+
+        if (input.HorizontalAttack < 0)
         {
             Attack(AttackDirection.West);
-        } else if (Input.GetKeyDown(KeyCode.RightArrow))
+        } else if (input.HorizontalAttack > 0)
         {
             Attack(AttackDirection.East);
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (input.VerticalAttack > 0)
         {
             Attack(AttackDirection.North);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (input.VerticalAttack < 0)
         {
             Attack(AttackDirection.South);
         }

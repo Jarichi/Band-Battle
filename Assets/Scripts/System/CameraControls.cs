@@ -15,9 +15,9 @@ public class CameraControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var pos = transform.position;
-        pos.x = Mathf.Clamp(player.position.x, minPosition.x, maxPosition.x);
-        pos.y = Mathf.Clamp(player.position.y, minPosition.y, maxPosition.y);
-        transform.position= pos;
+        //var pos = transform.position;
+        //pos.x = Mathf.Clamp(player.position.x, minPosition.x, maxPosition.x);
+        //pos.y = Mathf.Clamp(player.position.y, minPosition.y, maxPosition.y);
+        //transform.position= pos;
     }
 }
