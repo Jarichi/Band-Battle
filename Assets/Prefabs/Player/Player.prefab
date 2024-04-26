@@ -186,8 +186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898b91f6e16765a43ada4b0b29304311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibilityTime: 0.37
-  Hitpoints: 0
+  invincibilityTime: 1
+  Hitpoints: 10
+  DamageParticles: {fileID: 6032736739999628523, guid: 406cbc9f1beb4294495e6f023253ebf0, type: 3}
 --- !u!114 &9061394397144986808
 MonoBehaviour:
   m_ObjectHideFlags: 0

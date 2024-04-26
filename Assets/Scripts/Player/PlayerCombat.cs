@@ -22,11 +22,20 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private bool invincible;
     private Weapon currentWeapon;
     private PlayerInputController input;
+    private SpriteRenderer spriteRenderer;
     public int Hitpoints;
+
+    [SerializeField] private ParticleSystem DamageParticles;
+    private ScreenShake screenShake;
 
     private void Start()
     {
+        spriteRenderer= GetComponent<SpriteRenderer>();
         input = GetComponent<PlayerInputController>();
+    }
+    private void Awake()
+    {
+        screenShake = GameObject.FindFirstObjectByType<ScreenShake>();
     }
 
     void Update()
@@ -101,21 +110,33 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         }
 
         invincible = true;
-        Debug.Log("Im HIT!");
+
+        Hitpoints--;
+        screenShake.Shake();
+        SpawnParticles();
+        if (Hitpoints <= 0)
+        {
+            Die();
+        }
+        spriteRenderer.color = Color.red;
         StartCoroutine(EndInvincibility());
+    }
+
+    private void SpawnParticles()
+    {
+        Instantiate(DamageParticles, transform.position, Quaternion.identity);
     }
 
     private IEnumerator EndInvincibility()
     {
         yield return new WaitForSeconds(invincibilityTime);
-        onCooldown = false;
+        invincible = false;
+        spriteRenderer.color = Color.white;
     }
 
     public void Die()
     {
-        if (Hitpoints == 0)
-        {
-            Debug.Log("Oh NOOoooo o o *dies*");
-        }
+        Debug.Log("Oh NOOoooo o o *dies*");
+        
     }
 }
