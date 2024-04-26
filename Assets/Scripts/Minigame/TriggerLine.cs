@@ -8,44 +8,58 @@ public class TriggerLine : SongChecker
     // Start is called before the first frame update
     private BoxCollider2D Hitbox;
     public float marginOfError;
+    private Vector2 initialPosition;
+    
 
-    enum Notevalue
+    public enum NoteDirection
+
     {
         Up, Down, Left, Right
     }
+    public NoteDirection tempNotes;
+
 
     private void Start()
     {
-       Hitbox =  GetComponent<BoxCollider2D>();
+        Hitbox =  GetComponent<BoxCollider2D>();
         Hitbox.enabled = false;
+        initialPosition = Hitbox.offset;
     }
     private void Update()
     {
         PlayerInput();
+        MoveHitbox(tempNotes);
 
 
     }
 
-    private void MoveHitbox(Notevalue note)
+    private void MoveHitbox(NoteDirection note)
     {
         switch (note)
         {
-            case Notevalue.Up:
+            case NoteDirection.Up:
                 Debug.Log("Up");
-
+                initialPosition.x = -1.5f;
+                Hitbox.offset = initialPosition;
                 //change offset according to note value -1.5
                 break;
                 
-            case Notevalue.Down:
+            case NoteDirection.Down:
                 Debug.Log("Down");
+                initialPosition.x = -0.5f;
+                Hitbox.offset = initialPosition;
                 break;
 
-            case Notevalue.Left:
+            case NoteDirection.Left:
                 Debug.Log("Left");
+                initialPosition.x = 0.5f;
+                Hitbox.offset = initialPosition;
                 break;
 
-            case Notevalue.Right:
+            case NoteDirection.Right:
                 Debug.Log("Right");
+                initialPosition.x = 1.5f;
+                Hitbox.offset = initialPosition;
                 break; 
             
 
@@ -56,6 +70,9 @@ public class TriggerLine : SongChecker
     {
         Debug.Log("HIT");
         //destroy note prefab
+        //kill note
+        //increment score
+
     }
 
     private void PlayerInput ()
@@ -78,7 +95,8 @@ public class TriggerLine : SongChecker
     {
         yield return new WaitForSeconds(marginOfError);
         Hitbox.enabled = false;
-    }
+    }
+
 
 }
 
