@@ -34,7 +34,13 @@ public class GuitarMinigame : Minigame
     private void Start()
     {
         SetNoteSequence(song1rhythm, song1direction);
-        
+        //start mingame
+        InitRhythmGame();
     }
 
+
+    private void Update()
+    {
+        RunRhythmGame();
+    }
 }

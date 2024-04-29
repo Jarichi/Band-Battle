@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Minigame : SongHandler
 {
     private bool active;
+
+    //temp, might not be nessecary
+    //private bool started = false;
+    
     private PlayerMovement movement;
     private PlayerCombat combat;
     private GameObject weapon;
@@ -25,13 +30,9 @@ public abstract class Minigame : SongHandler
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 EngageCombat();
-            }
+            }           
+
         }
-
-        StartRhytmgame();
-
-         
-
     }
 
     public void StartMinigame(GameObject player, GameObject weapon)

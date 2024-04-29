@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEditor.TerrainTools;
 using UnityEngine;
 
+
+
+
 //using https://www.gamedeveloper.com/audio/coding-to-the-beat---under-the-hood-of-a-rhythm-game-in-unity as main instruction
 
-//Handles the current playing condition of any audio file.
+//Responsible for handling music playback and tempo syncing
 public class SongHandler : MonoBehaviour
 {
 
@@ -14,23 +17,27 @@ public class SongHandler : MonoBehaviour
         Up, Down, Left, Right
     }
 
-    /*private*/
+
+
+    //used for handling tempo and song position
     private float secondsPerBeat;
-    private float songPosSeconds;
-    private float songPosBeats;
+    protected float songPosSeconds;
+    protected float songPosBeats;
     private float songStartTime;
     private AudioSource musicSource;
 
     
     public float bpm;
 
+    //used for note spawning
     private float[] rhythm;
     private NoteDirection[] inputDirection;
     private int previewBeats;
     private int index;
+    public GameObject note;
 
-
-    public void InitRhythmGame()
+    //initialises rhythm game on call
+    protected void InitRhythmGame()
     {
         //get amount of seconds in beat at a designated bpm
         Debug.Log(bpm); 
@@ -46,6 +53,7 @@ public class SongHandler : MonoBehaviour
         musicSource.Play();
     }
 
+    //updates current position and beat timer of the song
     private void SetSongPosition()
     {
         //subtract current time from starting time
@@ -54,31 +62,53 @@ public class SongHandler : MonoBehaviour
         songPosBeats = songPosSeconds/secondsPerBeat;
     }
 
-    //start the game
-    public void StartRhytmgame()
+    //when called, refreshes the game status at this moment
+    protected void RunRhythmGame()
     {
         SetSongPosition();
         SpawnNotes();
 
-
     }
 
-    //pass song position for creation of custom songs and rhythms
+    //spawns notes based on a passed array of rhythm and note direction
     private void SpawnNotes()
     {
        
         if (index < rhythm.Length && rhythm[index] < songPosBeats + previewBeats)
         {
-            //Instantiate( /* Music Note Prefab */ );
+            note = GameObject.Instantiate(note, transform);
+            note.transform.parent = transform;
+
 
             //initialize the fields of the music note
             Debug.Log("spawn note with direction");
             Debug.Log(inputDirection);
             index++;
+
+            switch (inputDirection[index])
+            {
+                case NoteDirection.Left:
+                    //red note
+                    break;
+                case NoteDirection.Right:
+                    //blue note
+                    break;
+                case NoteDirection.Up:
+                    //yellow note
+                    break;
+                case NoteDirection.Down:
+                    //green note
+                    break;
+
+            }
         }
+        note.transform.position -= new Vector3(0f, secondsPerBeat * songPosSeconds, 0f);
+
+
 
     }
 
+    //passes the array of rhythm and note direction
     protected void SetNoteSequence(float[] p_rhythm, NoteDirection[] p_inputDirection)
     {
         
