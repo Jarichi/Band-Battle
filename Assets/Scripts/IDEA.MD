@@ -1,0 +1,1 @@
+create seperate script for the notes that can handle its sprite change and movement, and set a lifetime determined by SongHandler.lifetime() or some sort of function. this cleans up SongHandler.cs
