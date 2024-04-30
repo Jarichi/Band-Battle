@@ -16,9 +16,6 @@ public class SongHandler : MonoBehaviour
     {
         Up, Down, Left, Right
     }
-
-
-
     //used for handling tempo and song position
     private float secondsPerBeat;
     protected float songPosSeconds;
@@ -36,11 +33,19 @@ public class SongHandler : MonoBehaviour
     private int index;
     public GameObject note;
 
+   
+
+    public Sprite[] noteColours;
+    
+
+
+
     //initialises rhythm game on call
     protected void InitRhythmGame()
     {
         //get amount of seconds in beat at a designated bpm
         Debug.Log(bpm); 
+
 
         secondsPerBeat = 60f / bpm;
         Debug.Log("calculate seconds per beat");
@@ -76,42 +81,45 @@ public class SongHandler : MonoBehaviour
        
         if (index < rhythm.Length && rhythm[index] < songPosBeats + previewBeats)
         {
-            note = GameObject.Instantiate(note, transform);
-            note.transform.parent = transform;
+            Instantiate(note, this.transform, worldPositionStays:false);
 
+            
 
             //initialize the fields of the music note
             Debug.Log("spawn note with direction");
             Debug.Log(inputDirection);
-            index++;
+            
 
             switch (inputDirection[index])
             {
                 case NoteDirection.Left:
+                    note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[0];
                     //red note
                     break;
                 case NoteDirection.Right:
                     //blue note
+                    note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[1];
                     break;
                 case NoteDirection.Up:
                     //yellow note
+                    note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[2];
                     break;
                 case NoteDirection.Down:
                     //green note
+                    note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[3];
                     break;
 
             }
+
+            index++;
         }
-        note.transform.position -= new Vector3(0f, secondsPerBeat * songPosSeconds, 0f);
-
-
+        
 
     }
 
     //passes the array of rhythm and note direction
     protected void SetNoteSequence(float[] p_rhythm, NoteDirection[] p_inputDirection)
-    {
-        
+    {       
         rhythm = p_rhythm;
         inputDirection = p_inputDirection;
     }

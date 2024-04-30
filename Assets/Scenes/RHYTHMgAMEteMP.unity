@@ -223,6 +223,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1646163488737361769, guid: ddb9b0b40436a2747ba1ea4f0f6e564b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646163488737361769, guid: ddb9b0b40436a2747ba1ea4f0f6e564b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646163488737361769, guid: ddb9b0b40436a2747ba1ea4f0f6e564b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1983902530684412079, guid: ddb9b0b40436a2747ba1ea4f0f6e564b, type: 3}
       propertyPath: m_Name
       value: Guitar Minigame
@@ -233,15 +245,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7093994209579621606, guid: ddb9b0b40436a2747ba1ea4f0f6e564b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.6194375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7093994209579621606, guid: ddb9b0b40436a2747ba1ea4f0f6e564b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.049366
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7093994209579621606, guid: ddb9b0b40436a2747ba1ea4f0f6e564b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.2358439
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7093994209579621606, guid: ddb9b0b40436a2747ba1ea4f0f6e564b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -413,6 +425,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bpm: 140
   note: {fileID: 455684049498466932, guid: f435540435460ad489003be5235d7781, type: 3}
+  noteColours:
+  - {fileID: -1081780949, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
+  - {fileID: 1470639890, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
+  - {fileID: 571632699, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
+  - {fileID: 1011942548, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
   startupAnimationLength: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
