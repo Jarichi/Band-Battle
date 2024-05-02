@@ -1,1 +1,7 @@
-create seperate script for the notes that can handle its sprite change and movement, and set a lifetime determined by SongHandler.lifetime() or some sort of function. this cleans up SongHandler.cs
+make sure the score is collected by the trigger line thingy, and when the song ends, give this to parent.player as some integer for the total score.
+
+score starts at 0 and goes up when notes are hit.
+
+OnTriggerEnter() {IncrementScore(); Destroy(note);}
+
+TODO: note spawn locations
