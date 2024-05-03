@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.TerrainTools;
 using UnityEngine;
+using UnityEngine.Android;
 
 
 
@@ -33,7 +34,8 @@ public class SongHandler : MonoBehaviour
     private int index;
     public GameObject note;
 
-   
+    private TriggerLine triggerLine;
+
 
     public Sprite[] noteColours;
     
@@ -123,6 +125,10 @@ public class SongHandler : MonoBehaviour
             Instantiate(note, spawnPos, Quaternion.identity);
 
             index++;
+            //(hopefully) when no more content in the rhythm game, get the score and terminate.
+        } else if (index >= rhythm.Length) {
+            Debug.Log("Score: "); Debug.Log(GetScore()); 
+            return;
         }
         
 
@@ -135,5 +141,8 @@ public class SongHandler : MonoBehaviour
         inputDirection = p_inputDirection;
     }
 
-
+    protected int GetScore()
+    {
+        return triggerLine.Score;
+    }
 }

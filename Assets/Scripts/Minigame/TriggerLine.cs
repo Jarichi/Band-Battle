@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,8 @@ public class TriggerLine : MonoBehaviour
     private BoxCollider2D Hitbox;
     public float marginOfError;
     private Vector2 initialPosition;
+
+    public int Score {  get; private set; }
 
     private void Start()
     {
@@ -63,6 +66,7 @@ public class TriggerLine : MonoBehaviour
         //kill note
         //GameObject.Destroy();
         //increment score
+        Score++;
 
     }
 

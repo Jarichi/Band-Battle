@@ -43,5 +43,7 @@ public class GuitarMinigame : Minigame
     private void Update()
     {
         RunRhythmGame();
+
+        
     }
 }
