@@ -78,12 +78,12 @@ public class SongHandler : MonoBehaviour
     //spawns notes based on a passed array of rhythm and note direction
     private void SpawnNotes()
     {
+        //create vector and offset value
+        int xOffset = 0;
+        Vector3 spawnPos = Vector3.zero;
        
         if (index < rhythm.Length && rhythm[index] < songPosBeats + previewBeats)
         {
-            Instantiate(note, this.transform, worldPositionStays:false);
-
-            
 
             //initialize the fields of the music note
             Debug.Log("spawn note with direction");
@@ -95,21 +95,32 @@ public class SongHandler : MonoBehaviour
                 case NoteDirection.Left:
                     note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[0];
                     //red note
+                    xOffset = -2;
+                    
                     break;
                 case NoteDirection.Right:
                     //blue note
                     note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[1];
+                    xOffset = -1;
                     break;
                 case NoteDirection.Up:
                     //yellow note
                     note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[2];
+                    xOffset = 0;
                     break;
                 case NoteDirection.Down:
                     //green note
                     note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[3];
+                    xOffset = 1;
+                    break;
+
+                default:
+                    Debug.Log("Load a beatmap first before spawning notes.");
                     break;
 
             }
+            spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
+            Instantiate(note, spawnPos, Quaternion.identity);
 
             index++;
         }
