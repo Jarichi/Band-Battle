@@ -11,11 +11,21 @@ public class TriggerLine : MonoBehaviour
     public float marginOfError;
     private Vector2 initialPosition;
 
+    private SpriteRenderer SpriteRenderer;
+    private Color baseColour = Color.white;
+    public float fadeTime;
+    private float timer = 0f;
+    
+
+    private Coroutine coroutine;
+    
+
     public int Score {  get; private set; }
 
     private void Start()
     {
         Hitbox =  GetComponent<BoxCollider2D>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
         Hitbox.enabled = false;
         initialPosition = Hitbox.offset;
     }
@@ -30,32 +40,43 @@ public class TriggerLine : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("Up");
+            //Debug.Log("Up");          
+            FadeColour(Color.red);
+            
             initialPosition.x = -1.5f;
             Hitbox.offset = initialPosition;
             ToggleHitbox();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Debug.Log("Down");
+            //Debug.Log("Down");
+            FadeColour(Color.blue);
+
             initialPosition.x = -0.5f;
             Hitbox.offset = initialPosition;
             ToggleHitbox();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Debug.Log("Left");
+            //Debug.Log("Left");
+            FadeColour(Color.yellow);
+
             initialPosition.x = 0.5f;
             Hitbox.offset = initialPosition;
             ToggleHitbox();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            Debug.Log("Right");
+            //Debug.Log("Right");
+            FadeColour(Color.green);
+
+
             initialPosition.x = 1.5f;
             Hitbox.offset = initialPosition;
             ToggleHitbox();
         }
+
+        
 
 
     }
@@ -63,11 +84,22 @@ public class TriggerLine : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("HIT");
+        GameObject.Destroy(collision.gameObject);
         //kill note
-        //GameObject.Destroy();
+        
         //increment score
         Score++;
 
+    }
+
+    private void FadeColour(Color TargetColour)
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+
+        coroutine = StartCoroutine(c_FadeColour(TargetColour, fadeTime));
     }
 
     private void ToggleHitbox()
@@ -81,6 +113,26 @@ public class TriggerLine : MonoBehaviour
     {
         yield return new WaitForSeconds(marginOfError);
         Hitbox.enabled = false;
+    }
+
+    private IEnumerator c_FadeColour(Color TargetColour, float fadeTime)
+    {
+        
+        timer = 0f;
+
+        while (timer < fadeTime)
+        {
+            timer += Time.deltaTime;
+            float time = timer/fadeTime;
+            SpriteRenderer.color = Color.Lerp(TargetColour, baseColour, time);
+
+            yield return null;
+
+        }
+
+        SpriteRenderer.color = baseColour;
+
+        
     }
 
 

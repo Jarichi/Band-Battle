@@ -38,8 +38,8 @@ public class SongHandler : MonoBehaviour
 
 
     public Sprite[] noteColours;
-    
 
+    private bool scoreCalculated = false;
 
 
     //initialises rhythm game on call
@@ -123,10 +123,13 @@ public class SongHandler : MonoBehaviour
             }
             spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
             Instantiate(note, spawnPos, Quaternion.identity);
-
+            
+            //note.transform.position = spawnPos;
             index++;
+            
             //(hopefully) when no more content in the rhythm game, get the score and terminate.
-        } else if (index >= rhythm.Length) {
+        } else if (index >= rhythm.Length && !scoreCalculated) {
+            scoreCalculated = true;
             Debug.Log("Score: "); Debug.Log(GetScore()); 
             return;
         }

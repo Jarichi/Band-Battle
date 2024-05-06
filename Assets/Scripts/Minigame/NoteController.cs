@@ -12,7 +12,8 @@ public class NoteController : MonoBehaviour
     private float timeStart;
     private float currentTime;
 
-    public float yMove;
+    [SerializeField]
+    private float yMove;
 
     
 
