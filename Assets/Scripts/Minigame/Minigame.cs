@@ -39,6 +39,9 @@ public abstract class Minigame : SongHandler
     {
         movement = player.GetComponent<PlayerMovement>();
         combat = player.GetComponent<PlayerCombat>();
+
+
+        //replace with Instaniate(GuitarMinigame); Or a specific function that does this.
         ui = player.transform.GetChild(0).GetComponent<SpriteRenderer>();
         this.weapon = weapon;
 

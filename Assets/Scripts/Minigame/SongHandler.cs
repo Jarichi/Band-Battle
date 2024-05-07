@@ -30,9 +30,13 @@ public class SongHandler : MonoBehaviour
     //used for note spawning
     private float[] rhythm;
     private NoteDirection[] inputDirection;
-    private int previewBeats;
+    private int previewBeats = 0;
     private int index;
+
     public GameObject note;
+
+    //prepare set velocity
+    private NoteController noteController;
 
     private TriggerLine triggerLine;
 
@@ -77,21 +81,24 @@ public class SongHandler : MonoBehaviour
 
     }
 
-    //spawns notes based on a passed array of rhythm and note direction
+    //spawns notes based on a passed array of rhythm and note direction.
     private void SpawnNotes()
     {
         //create vector and offset value
         int xOffset = 0;
         Vector3 spawnPos = Vector3.zero;
        
+        //if statement compares the current array index and the length of the entire array, AND it compares the number in the rhythm array to the current song position in beats
+        //preview beats offsets the spawning moment by a certain beat number, so that the notes are visible n beats before they are supposed to be spawned.
         if (index < rhythm.Length && rhythm[index] < songPosBeats + previewBeats)
         {
-
-            //initialize the fields of the music note
+            /*
+            //debug statements (no longer nessecary
             Debug.Log("spawn note with direction");
             Debug.Log(inputDirection);
-            
+            */
 
+            //read input direction array and determine offset and colour of note.
             switch (inputDirection[index])
             {
                 case NoteDirection.Left:
@@ -117,17 +124,23 @@ public class SongHandler : MonoBehaviour
                     break;
 
                 default:
+                    //error handler
                     Debug.Log("Load a beatmap first before spawning notes.");
                     break;
-
             }
+
+            //set velocity of NoteController script based on the preview beats number, since notes are spawned 5 units above trigger line.
+            //noteController.velocity = someNumber;
+
+            //set spawn position offset relative to the songHandler object, and instantiate note object.
             spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
             Instantiate(note, spawnPos, Quaternion.identity);
             
-            //note.transform.position = spawnPos;
+
+            //increment index
             index++;
             
-            //(hopefully) when no more content in the rhythm game, get the score and terminate.
+            
         } else if (index >= rhythm.Length && !scoreCalculated) {
             scoreCalculated = true;
             Debug.Log("Score: "); Debug.Log(GetScore()); 
@@ -137,14 +150,14 @@ public class SongHandler : MonoBehaviour
 
     }
 
-    //passes the array of rhythm and note direction
+    
     protected void SetNoteSequence(float[] p_rhythm, NoteDirection[] p_inputDirection)
     {       
         rhythm = p_rhythm;
         inputDirection = p_inputDirection;
     }
 
-    protected int GetScore()
+    private int GetScore()
     {
         return triggerLine.Score;
     }

@@ -11,18 +11,23 @@ public class NoteController : MonoBehaviour
 
     private float timeStart;
     private float currentTime;
+    private float timeDelta;
+
+    public int velocity {  private get; set; }
 
     [SerializeField]
     private float yMove;
 
-    
+
 
     private void Start()
     {
         timeStart = Time.time;
+
+        
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
 
         if (gameObject != null)
@@ -31,7 +36,7 @@ public class NoteController : MonoBehaviour
             Lifetime();
         }
         else return;
-        
+
     }
 
 
@@ -40,21 +45,24 @@ public class NoteController : MonoBehaviour
         //if difference between timeStart and currentTime > lifetime, destroy.
 
         currentTime = Time.time;
-        float timeDelta = currentTime - timeStart;
-     
+        timeDelta = currentTime - timeStart;
+
+        //timeDelta = (timeDelta + Time.deltaTime*yMove);
+
         if (timeDelta > lifetime)
         {
             Destroy(gameObject);
             return;
         }
-        
+
 
     }
 
     private void MoveNote()
     {
-        transform.localPosition -= new Vector3(0f, yMove, 0f);
+        transform.localPosition -= new Vector3(0f, yMove * Time.deltaTime, 0f);
     }
 
 }
+
      

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 1.2
-  yMove: 0.03
+  yMove: 1
 --- !u!61 &-4261519022005244243
 BoxCollider2D:
   m_ObjectHideFlags: 0
