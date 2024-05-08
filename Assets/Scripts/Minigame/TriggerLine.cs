@@ -84,7 +84,7 @@ public class TriggerLine : MonoBehaviour
         //kill note
         
         //increment score
-        Score++;
+        Score+=2;
 
     }
 
@@ -106,7 +106,8 @@ public class TriggerLine : MonoBehaviour
     private void ToggleHitbox()
     {
         Hitbox.enabled = true;
-        //StartCoroutine(c_DisableHitbox());
+        Score--;
+        StartCoroutine(c_DisableHitbox());
     }
 
 
