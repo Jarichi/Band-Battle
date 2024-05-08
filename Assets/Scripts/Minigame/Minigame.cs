@@ -21,7 +21,7 @@ public abstract class Minigame : SongHandler
     //gets called when the game starts even when this is inherited form a class
     private void Awake()
     {
-        InitRhythmGame();
+        //InitRhythmGame();
     }
     private void Update()
     {

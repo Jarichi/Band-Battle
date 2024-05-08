@@ -14,13 +14,11 @@ public class TriggerLine : MonoBehaviour
     private SpriteRenderer SpriteRenderer;
     private Color baseColour = Color.white;
     public float fadeTime;
-    private float timer = 0f;
-    
 
     private Coroutine coroutine;
-    
 
-    public int Score {  get; private set; }
+
+    public int Score = 0;
 
     private void Start()
     {
@@ -37,7 +35,6 @@ public class TriggerLine : MonoBehaviour
 
     private void PlayerInput()
     {
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             //Debug.Log("Up");          
@@ -70,14 +67,10 @@ public class TriggerLine : MonoBehaviour
             //Debug.Log("Right");
             FadeColour(Color.green);
 
-
             initialPosition.x = 1.5f;
             Hitbox.offset = initialPosition;
             ToggleHitbox();
         }
-
-        
-
 
     }
 
@@ -90,6 +83,11 @@ public class TriggerLine : MonoBehaviour
         //increment score
         Score++;
 
+    }
+
+    public void ClearScore()
+    {
+        Score = 0;
     }
 
     private void FadeColour(Color TargetColour)
@@ -105,20 +103,19 @@ public class TriggerLine : MonoBehaviour
     private void ToggleHitbox()
     {
         Hitbox.enabled = true;
-        StartCoroutine(DisableHitbox());
+        StartCoroutine(c_DisableHitbox());
     }
 
 
-    private IEnumerator DisableHitbox()
+    private IEnumerator c_DisableHitbox()
     {
         yield return new WaitForSeconds(marginOfError);
         Hitbox.enabled = false;
     }
 
     private IEnumerator c_FadeColour(Color TargetColour, float fadeTime)
-    {
-        
-        timer = 0f;
+    {       
+        float timer = 0f;
 
         while (timer < fadeTime)
         {
@@ -127,12 +124,8 @@ public class TriggerLine : MonoBehaviour
             SpriteRenderer.color = Color.Lerp(TargetColour, baseColour, time);
 
             yield return null;
-
         }
-
-        SpriteRenderer.color = baseColour;
-
-        
+        SpriteRenderer.color = baseColour;       
     }
 
 

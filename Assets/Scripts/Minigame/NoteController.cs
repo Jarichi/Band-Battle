@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.TerrainTools;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NoteController : MonoBehaviour
 {
@@ -13,56 +14,50 @@ public class NoteController : MonoBehaviour
     private float currentTime;
     private float timeDelta;
 
-    public int velocity {  private get; set; }
-
-    [SerializeField]
-    private float yMove;
+    public float velocity;
 
 
+    private SongHandler songHandler;
 
+
+    //temp
+    Vector3 targetPosition;
+    
     private void Start()
     {
         timeStart = Time.time;
-
-        
+        targetPosition = transform.localPosition + new Vector3(0f, -6f, 0f);      
     }
 
+    //@50fps
     private void FixedUpdate()
     {
-
         if (gameObject != null)
         {
             MoveNote();
             Lifetime();
         }
-        else return;
-
     }
-
 
     private void Lifetime()
     {
-        //if difference between timeStart and currentTime > lifetime, destroy.
-
         currentTime = Time.time;
         timeDelta = currentTime - timeStart;
-
-        //timeDelta = (timeDelta + Time.deltaTime*yMove);
 
         if (timeDelta > lifetime)
         {
             Destroy(gameObject);
-            return;
         }
-
-
     }
 
     private void MoveNote()
     {
-        transform.localPosition -= new Vector3(0f, yMove * Time.deltaTime, 0f);
-    }
 
+        //velocity = songHandler.bpm;
+
+        var step = velocity * Time.fixedDeltaTime;
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, step);
+    }
 }
 
      

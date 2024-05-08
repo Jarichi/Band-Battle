@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.Android;
-
 
 
 
@@ -17,20 +17,27 @@ public class SongHandler : MonoBehaviour
     {
         Up, Down, Left, Right
     }
+
     //used for handling tempo and song position
     private float secondsPerBeat;
-    protected float songPosSeconds;
-    protected float songPosBeats;
+    [SerializeField]
+    protected float songPosInSeconds;
+    [SerializeField]
+    protected float songPosInBeats;
+
     private float songStartTime;
     private AudioSource musicSource;
 
+    public AudioClip spawnNoteSFX;
+
     
     public float bpm;
+    private const float FRAMERATE = 60f;
 
     //used for note spawning
     private float[] rhythm;
     private NoteDirection[] inputDirection;
-    private int previewBeats = 0;
+    public int previewBeats;
     private int index;
 
     public GameObject note;
@@ -38,7 +45,7 @@ public class SongHandler : MonoBehaviour
     //prepare set velocity
     private NoteController noteController;
 
-    private TriggerLine triggerLine;
+    private readonly TriggerLine triggerLine;
 
 
     public Sprite[] noteColours;
@@ -46,31 +53,30 @@ public class SongHandler : MonoBehaviour
     private bool scoreCalculated = false;
 
 
+
     //initialises rhythm game on call
     protected void InitRhythmGame()
     {
-        //get amount of seconds in beat at a designated bpm
-        Debug.Log(bpm); 
+        secondsPerBeat = FRAMERATE / bpm;
 
-
-        secondsPerBeat = 60f / bpm;
-        Debug.Log("calculate seconds per beat");
-        //get time when the somg starts
-        songStartTime = (float)AudioSettings.dspTime;
         
-
         //play song only when the script is loaded
         musicSource = GetComponent<AudioSource>();
+
+        print(Time.deltaTime);
+
         musicSource.Play();
+        //songStartTime = (float)AudioSettings.dspTime; //OUT OF SYNC
+        songStartTime = Time.time;
     }
 
     //updates current position and beat timer of the song
     private void SetSongPosition()
     {
-        //subtract current time from starting time
-        songPosSeconds = (float)(AudioSettings.dspTime - songStartTime);
-        //convert time to beats
-        songPosBeats = songPosSeconds/secondsPerBeat;
+        //songPosInSeconds = (float)(AudioSettings.dspTime - songStartTime); //OUT OF SYNC
+        songPosInSeconds = (Time.time - songStartTime);
+
+        songPosInBeats = songPosInSeconds/secondsPerBeat;
     }
 
     //when called, refreshes the game status at this moment
@@ -90,14 +96,10 @@ public class SongHandler : MonoBehaviour
        
         //if statement compares the current array index and the length of the entire array, AND it compares the number in the rhythm array to the current song position in beats
         //preview beats offsets the spawning moment by a certain beat number, so that the notes are visible n beats before they are supposed to be spawned.
-        if (index < rhythm.Length && rhythm[index] < songPosBeats + previewBeats)
+        if (index < rhythm.Length && rhythm[index] < songPosInBeats/* + previewBeats*/)
         {
-            /*
-            //debug statements (no longer nessecary
-            Debug.Log("spawn note with direction");
-            Debug.Log(inputDirection);
-            */
-
+            musicSource.clip = spawnNoteSFX;
+            musicSource.Play();
             //read input direction array and determine offset and colour of note.
             switch (inputDirection[index])
             {
@@ -129,21 +131,18 @@ public class SongHandler : MonoBehaviour
                     break;
             }
 
-            //set velocity of NoteController script based on the preview beats number, since notes are spawned 5 units above trigger line.
-            //noteController.velocity = someNumber;
-
             //set spawn position offset relative to the songHandler object, and instantiate note object.
             spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
             Instantiate(note, spawnPos, Quaternion.identity);
-            
 
-            //increment index
             index++;
-            
-            
-        } else if (index >= rhythm.Length && !scoreCalculated) {
+
+        } 
+        else if (index >= rhythm.Length && !scoreCalculated) 
+        {
             scoreCalculated = true;
-            Debug.Log("Score: "); Debug.Log(GetScore()); 
+            Debug.Log("Score: ");
+            Debug.Log(GetScore());
             return;
         }
         
@@ -161,4 +160,9 @@ public class SongHandler : MonoBehaviour
     {
         return triggerLine.Score;
     }
+
+
+
+
+
 }

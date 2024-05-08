@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bpm: 140
+  previewBeats: 1
   note: {fileID: 455684049498466932, guid: f435540435460ad489003be5235d7781, type: 3}
   noteColours:
   - {fileID: -1081780949, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
