@@ -18,6 +18,8 @@ public class NoteController : MonoBehaviour
 
 
     private SongHandler songHandler;
+    private AudioSource audioSource;
+
 
 
     //temp
@@ -26,7 +28,12 @@ public class NoteController : MonoBehaviour
     private void Start()
     {
         timeStart = Time.time;
-        targetPosition = transform.localPosition + new Vector3(0f, -6f, 0f);      
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
+
+        targetPosition = transform.localPosition + new Vector3(0f, -6f, 0f);  
+
+
     }
 
     //@50fps

@@ -24,7 +24,7 @@ public class TriggerLine : MonoBehaviour
     {
         Hitbox =  GetComponent<BoxCollider2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
-        Hitbox.enabled = false;
+        //Hitbox.enabled = false;
         initialPosition = Hitbox.offset;
     }
 
@@ -72,12 +72,15 @@ public class TriggerLine : MonoBehaviour
             ToggleHitbox();
         }
 
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("HIT");
-        GameObject.Destroy(collision.gameObject);
+        Destroy(collision.gameObject);
         //kill note
         
         //increment score
@@ -103,7 +106,7 @@ public class TriggerLine : MonoBehaviour
     private void ToggleHitbox()
     {
         Hitbox.enabled = true;
-        StartCoroutine(c_DisableHitbox());
+        //StartCoroutine(c_DisableHitbox());
     }
 
 

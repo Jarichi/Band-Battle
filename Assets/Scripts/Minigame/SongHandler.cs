@@ -91,38 +91,38 @@ public class SongHandler : MonoBehaviour
     private void SpawnNotes()
     {
         //create vector and offset value
-        int xOffset = 0;
+        float xOffset = 0;
         Vector3 spawnPos = Vector3.zero;
        
         //if statement compares the current array index and the length of the entire array, AND it compares the number in the rhythm array to the current song position in beats
         //preview beats offsets the spawning moment by a certain beat number, so that the notes are visible n beats before they are supposed to be spawned.
         if (index < rhythm.Length && rhythm[index] < songPosInBeats/* + previewBeats*/)
         {
-            musicSource.clip = spawnNoteSFX;
-            musicSource.Play();
+            //musicSource.clip = spawnNoteSFX;
+            //musicSource.Play();
             //read input direction array and determine offset and colour of note.
             switch (inputDirection[index])
             {
                 case NoteDirection.Left:
                     note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[0];
                     //red note
-                    xOffset = -2;
+                    xOffset = -1.5f;
                     
                     break;
                 case NoteDirection.Right:
                     //blue note
                     note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[1];
-                    xOffset = -1;
+                    xOffset = -0.5f;
                     break;
                 case NoteDirection.Up:
                     //yellow note
                     note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[2];
-                    xOffset = 0;
+                    xOffset = 0.5f;
                     break;
                 case NoteDirection.Down:
                     //green note
                     note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[3];
-                    xOffset = 1;
+                    xOffset = 1.5f;
                     break;
 
                 default:
@@ -133,13 +133,14 @@ public class SongHandler : MonoBehaviour
 
             //set spawn position offset relative to the songHandler object, and instantiate note object.
             spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
-            Instantiate(note, spawnPos, Quaternion.identity);
+            Instantiate(note, spawnPos, Quaternion.identity, this.transform);
 
             index++;
 
         } 
         else if (index >= rhythm.Length && !scoreCalculated) 
         {
+
             scoreCalculated = true;
             Debug.Log("Score: ");
             Debug.Log(GetScore());
@@ -160,9 +161,5 @@ public class SongHandler : MonoBehaviour
     {
         return triggerLine.Score;
     }
-
-
-
-
 
 }
