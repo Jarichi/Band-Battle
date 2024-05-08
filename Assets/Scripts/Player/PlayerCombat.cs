@@ -23,7 +23,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private Weapon currentWeapon;
     private PlayerInputController input;
     private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
     public int Hitpoints;
 
     [SerializeField] private ParticleSystem DamageParticles;

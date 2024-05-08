@@ -74,8 +74,8 @@ public abstract class Weapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable? target = collision.gameObject.GetComponent<IDamageable>();
-        if (target != null)
+        bool isDamagable = collision.gameObject.TryGetComponent(out IDamageable target);
+        if (isDamagable)
         {
             target.OnDamage(wielder);
         }

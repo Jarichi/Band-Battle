@@ -1,3 +1,5 @@
+using FMODUnity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,6 +15,19 @@ public class PlayerInputController : MonoBehaviour
     public bool InteractPressed { get; private set; }
     public bool EngageCombatPressed { get; private set; }
     public bool RestartPressed { get; private set; }
+    public static System.EventHandler PlayerJoinEvent;
+    public static System.EventHandler PlayerLeaveEvent;
+
+    public void OnPlayerJoin(PlayerInput input)
+    {
+        Debug.Log("A player has joined! " + input.gameObject.name);
+        PlayerJoinEvent.Invoke(input.gameObject, new EventArgs());
+    }
+    public void OnPlayerLeave(PlayerInput input)
+    {
+        Debug.Log("A player has left! " + input.gameObject.name);
+        PlayerLeaveEvent.Invoke(input.gameObject, new EventArgs());
+    }
 
     public void OnHorizontalMove(InputAction.CallbackContext context)
     {
