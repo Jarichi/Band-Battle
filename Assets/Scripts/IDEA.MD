@@ -1,7 +1,5 @@
-make sure the score is collected by the trigger line thingy, and when the song ends, give this to parent.player as some integer for the total score.
+idea. for the countdown timer, play a sample before the note spawning begins to indicate the countdown, but also make sure the if statement in the sonh handler keeps increasing and checking when to spawn notes, as to not break the precview beat spawning.
 
-score starts at 0 and goes up when notes are hit.
+Might be done using some array offsetting for spawning the notes by adding a constant value to every number in thearray, corresponding to the countdown time.
 
-OnTriggerEnter() {IncrementScore(); Destroy(note);}
-
-TODO: note spawn locations
+I wonder if bitwise operations are allowed and work on an ntire array, or if there are non-reource intensive ways of doing this.
