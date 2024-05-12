@@ -13,12 +13,15 @@ public class TriggerLine : MonoBehaviour
 
     private SpriteRenderer SpriteRenderer;
     private Color baseColour = Color.white;
-    public float fadeTime;
+    private float fadeTime = 0.15f;
 
     private Coroutine coroutine;
 
-
+    
     public int Score = 0;
+
+    [SerializeField]
+    private int ScoreIncrease = 5;
 
     private void Start()
     {
@@ -84,7 +87,7 @@ public class TriggerLine : MonoBehaviour
         //kill note
         
         //increment score
-        Score+=2;
+        Score+=ScoreIncrease;
 
     }
 
@@ -106,6 +109,7 @@ public class TriggerLine : MonoBehaviour
     private void ToggleHitbox()
     {
         Hitbox.enabled = true;
+        //subtract score for toggling hitbox.
         Score--;
         StartCoroutine(c_DisableHitbox());
     }
