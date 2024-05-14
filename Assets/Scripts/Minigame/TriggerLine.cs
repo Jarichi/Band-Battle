@@ -83,6 +83,9 @@ public class TriggerLine : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("HIT");
+
+        AudioSource noteAudio = collision.GetComponent<AudioSource>();
+        noteAudio.Play();
         Destroy(collision.gameObject);
         //kill note
         

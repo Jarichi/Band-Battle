@@ -113,10 +113,6 @@ public class SongHandler : MonoBehaviour
 
         }
 
-        if (index < BAR && rhythm[index] < songPosInBeats)
-        {
-            print("Countdown");
-        }
 
 
         //if statement compares the current array index and the length of the entire array, AND it compares the number in the rhythm array to the current song position in beats
