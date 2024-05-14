@@ -27,7 +27,7 @@ public class TriggerLine : MonoBehaviour
     {
         Hitbox =  GetComponent<BoxCollider2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
-        //Hitbox.enabled = false;
+        Hitbox.enabled = false;
         initialPosition = Hitbox.offset;
     }
 

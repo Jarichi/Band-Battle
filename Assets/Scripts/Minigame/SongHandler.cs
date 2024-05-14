@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEditor.TerrainTools;
 using UnityEngine;
@@ -30,9 +31,10 @@ public class SongHandler : MonoBehaviour
 
     public AudioClip spawnNoteSFX;
 
-    
+
     public float bpm;
     private const float FRAMERATE = 60f;
+    private const int BAR = 4;
 
     //used for note spawning
     private float[] rhythm;
@@ -52,6 +54,8 @@ public class SongHandler : MonoBehaviour
 
     private bool scoreCalculated = false;
 
+    private bool initCountdown = false;
+
 
 
     //initialises rhythm game on call
@@ -59,7 +63,7 @@ public class SongHandler : MonoBehaviour
     {
         secondsPerBeat = FRAMERATE / bpm;
 
-        
+
         //play song only when the script is loaded
         musicSource = GetComponent<AudioSource>();
 
@@ -76,7 +80,7 @@ public class SongHandler : MonoBehaviour
         //songPosInSeconds = (float)(AudioSettings.dspTime - songStartTime); //OUT OF SYNC
         songPosInSeconds = (Time.time - songStartTime);
 
-        songPosInBeats = songPosInSeconds/secondsPerBeat;
+        songPosInBeats = songPosInSeconds / secondsPerBeat;
     }
 
     //when called, refreshes the game status at this moment
@@ -93,13 +97,33 @@ public class SongHandler : MonoBehaviour
         //create vector and offset value
         float xOffset = 0;
         Vector3 spawnPos = Vector3.zero;
-       
+
+        if (!initCountdown)
+        {
+            //offset all entries in the rhythm array by one bar.
+            for (int i = 0; i <= rhythm.Length - 1; i++)
+            {
+                rhythm[i] += BAR;
+                //print(rhythm[i]);
+
+            }
+            //print("finish");
+
+            initCountdown = true;
+
+        }
+
+        if (index < BAR && rhythm[index] < songPosInBeats)
+        {
+            print("Countdown");
+        }
+
+
         //if statement compares the current array index and the length of the entire array, AND it compares the number in the rhythm array to the current song position in beats
         //preview beats offsets the spawning moment by a certain beat number, so that the notes are visible n beats before they are supposed to be spawned.
-        if (index < rhythm.Length && rhythm[index] < songPosInBeats + previewBeats)
+        if (index < rhythm.Length && rhythm[index] < songPosInBeats - previewBeats)
         {
-            //musicSource.clip = spawnNoteSFX;
-            //musicSource.Play();
+
             //read input direction array and determine offset and colour of note.
             switch (inputDirection[index])
             {
@@ -107,7 +131,7 @@ public class SongHandler : MonoBehaviour
                     note.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[0];
                     //red note
                     xOffset = -1.5f;
-                    
+
                     break;
                 case NoteDirection.Right:
                     //blue note
@@ -137,8 +161,8 @@ public class SongHandler : MonoBehaviour
 
             index++;
 
-        } 
-        else if (index >= rhythm.Length && !scoreCalculated) 
+        }
+        else if (index >= rhythm.Length && !scoreCalculated)
         {
 
             scoreCalculated = true;
@@ -146,13 +170,13 @@ public class SongHandler : MonoBehaviour
             Debug.Log(GetScore());
             return;
         }
-        
+
 
     }
 
-    
+
     protected void SetNoteSequence(float[] p_rhythm, NoteDirection[] p_inputDirection)
-    {       
+    {
         rhythm = p_rhythm;
         inputDirection = p_inputDirection;
     }
