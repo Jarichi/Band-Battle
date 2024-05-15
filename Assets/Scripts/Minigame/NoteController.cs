@@ -17,19 +17,14 @@ public class NoteController : MonoBehaviour
     public float velocity;
 
 
-    private SongHandler songHandler;
-    private AudioSource audioSource;
-
-
-
     //temp
     Vector3 targetPosition;
     
     private void Start()
     {
         timeStart = Time.time;
-        audioSource = GetComponent<AudioSource>();
-        //audioSource.Play();
+
+        
 
         targetPosition = transform.localPosition + new Vector3(0f, -6f, 0f);  
 
@@ -65,6 +60,8 @@ public class NoteController : MonoBehaviour
         var step = velocity * Time.fixedDeltaTime;
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, step);
     }
+
+
 }
 
      

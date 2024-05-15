@@ -17,6 +17,8 @@ public class TriggerLine : MonoBehaviour
 
     private Coroutine coroutine;
 
+    AudioSource audioSource;
+
     
     public int Score = 0;
 
@@ -27,6 +29,8 @@ public class TriggerLine : MonoBehaviour
     {
         Hitbox =  GetComponent<BoxCollider2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
+
         Hitbox.enabled = false;
         initialPosition = Hitbox.offset;
     }
@@ -41,38 +45,42 @@ public class TriggerLine : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             //Debug.Log("Up");          
-            FadeColour(Color.red);
+
             
             initialPosition.x = -1.5f;
             Hitbox.offset = initialPosition;
             ToggleHitbox();
+            FadeColour(Color.red);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             //Debug.Log("Down");
-            FadeColour(Color.blue);
+
 
             initialPosition.x = -0.5f;
             Hitbox.offset = initialPosition;
             ToggleHitbox();
+            FadeColour(Color.blue);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             //Debug.Log("Left");
-            FadeColour(Color.yellow);
+
 
             initialPosition.x = 0.5f;
             Hitbox.offset = initialPosition;
             ToggleHitbox();
+            FadeColour(Color.yellow);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             //Debug.Log("Right");
-            FadeColour(Color.green);
+
 
             initialPosition.x = 1.5f;
             Hitbox.offset = initialPosition;
             ToggleHitbox();
+            FadeColour(Color.green);
         }
 
 
@@ -84,8 +92,8 @@ public class TriggerLine : MonoBehaviour
     {
         Debug.Log("HIT");
 
-        AudioSource noteAudio = collision.GetComponent<AudioSource>();
-        noteAudio.Play();
+        
+        audioSource.Play();
         Destroy(collision.gameObject);
         //kill note
         
