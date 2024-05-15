@@ -21,22 +21,40 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private bool onCooldown;
     private bool invincible;
     private Weapon currentWeapon;
+    private PlayerInputController input;
+    private SpriteRenderer spriteRenderer;
+    private new Rigidbody2D rigidbody;
     public int Hitpoints;
+
+    [SerializeField] private ParticleSystem DamageParticles;
+    private ScreenShake screenShake;
+
+    private void Start()
+    {
+        spriteRenderer= GetComponent<SpriteRenderer>();
+        input = GetComponent<PlayerInputController>();
+        rigidbody = GetComponent<Rigidbody2D>();
+    }
+    private void Awake()
+    {
+        screenShake = GameObject.FindFirstObjectByType<ScreenShake>();
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+
+        if (input.HorizontalAttack < 0)
         {
             Attack(AttackDirection.West);
-        } else if (Input.GetKeyDown(KeyCode.RightArrow))
+        } else if (input.HorizontalAttack > 0)
         {
             Attack(AttackDirection.East);
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (input.VerticalAttack > 0)
         {
             Attack(AttackDirection.North);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (input.VerticalAttack < 0)
         {
             Attack(AttackDirection.South);
         }
@@ -58,6 +76,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         GameObject weaponInst = GameObject.Instantiate(weapon, transform);
         weaponInst.transform.parent = transform;
         currentWeapon = weaponInst.GetComponent<Weapon>();
+        currentWeapon.SetWielder(movement.GetComponent<PlayerCombat>());
     }
 
     public void Stop()
@@ -86,7 +105,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         onCooldown = false;
     }
 
-    public void OnDamage()
+    public void OnDamage(PlayerCombat attacker)
     {
         if (invincible)
         {
@@ -94,21 +113,36 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         }
 
         invincible = true;
-        Debug.Log("Im HIT!");
+
+        var forcePower = 30f;
+        var forceDirection = transform.position - attacker.transform.position;
+        rigidbody.AddForce(forceDirection * forcePower, ForceMode2D.Force);
+        Hitpoints--;
+        screenShake.Shake();
+        SpawnParticles();
+        if (Hitpoints <= 0)
+        {
+            Die();
+        }
+        spriteRenderer.color = Color.red;
         StartCoroutine(EndInvincibility());
+    }
+
+    private void SpawnParticles()
+    {
+        Instantiate(DamageParticles, transform.position, Quaternion.identity);
     }
 
     private IEnumerator EndInvincibility()
     {
         yield return new WaitForSeconds(invincibilityTime);
-        onCooldown = false;
+        invincible = false;
+        spriteRenderer.color = Color.white;
     }
 
     public void Die()
     {
-        if (Hitpoints == 0)
-        {
-            Debug.Log("Oh NOOoooo o o *dies*");
-        }
+        Debug.Log("Oh NOOoooo o o *dies*");
+        
     }
 }

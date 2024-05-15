@@ -8,8 +8,6 @@ public class DummyCombat : MonoBehaviour, IDamageable
     public Animator animator;
     public int Hitpoints;
     [SerializeField] private ParticleSystem DamageParticles;
-
-    private ParticleSystem DamageParticleInstance;
     private ScreenShake screenShake;
 
     // Start is called before the first frame update
@@ -34,11 +32,10 @@ public class DummyCombat : MonoBehaviour, IDamageable
         }
     }
 
-    public void OnDamage()
+    public void OnDamage(PlayerCombat attacker)
     {
         animator.SetTrigger("Hit");
         Hitpoints--;
-        Debug.Log(Hitpoints);
         screenShake.Shake();
         SpawnParticles();
     }

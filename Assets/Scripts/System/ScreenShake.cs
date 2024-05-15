@@ -23,10 +23,12 @@ public class ScreenShake : MonoBehaviour
         {
             elapsedTime+= Time.deltaTime;
             float strength = animationCurve.Evaluate(elapsedTime / duration);
-            transform.position = startPosition + Random.insideUnitSphere * strength;
+            var newPos = transform.position + Random.insideUnitSphere * strength;
+            newPos.z = startPosition.z;
+            transform.position = newPos;
             yield return null;
         }
 
-        transform.position = startPosition;
+        //transform.position = startPosition;
     }
 }

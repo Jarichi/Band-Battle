@@ -1,7 +1,9 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
-//using Math;
-
+using UnityEngine.Animations;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Composites;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,13 +15,13 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
     private Vector2 moveDirection; //vector with movement direction
-
+    private PlayerInputController input;
     //Animator animator;
     //runs once
     void Start()
     {
         animator = GetComponent<Animator>();
-
+        input = GetComponent<PlayerInputController>();
     }
 
     // Update is called once per frame (dependent on device)
@@ -45,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
         if (!canMove) return;
 
         //process movement inputs and store values in floats
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        float moveX = input.HorizontalMovement;
+        float moveY = input.VerticalMovement;
 
         if (moveX == 0f && moveY == 0f)
         {
@@ -67,10 +69,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!canMove) return;
 
-        //map vector to rigidbody (hitbox) and calculate movement distance based on movememnt speed.
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-        animator.SetFloat("xVelocity", rb.velocity.x/moveSpeed);
-        animator.SetFloat("yVelocity", rb.velocity.y/moveSpeed);
+        transform.Translate(moveDirection * Time.deltaTime * moveSpeed);
+
+        //rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        animator.SetFloat("xVelocity", input.HorizontalMovement);
+        animator.SetFloat("yVelocity", input.VerticalMovement);
         animator.SetBool("isMoving", isMoving);
     }
 
