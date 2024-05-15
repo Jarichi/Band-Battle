@@ -11,7 +11,7 @@ using UnityEngine.Android;
 //using https://www.gamedeveloper.com/audio/coding-to-the-beat---under-the-hood-of-a-rhythm-game-in-unity as main instruction
 
 //Responsible for handling music playback and tempo syncing
-public class SongHandler : MonoBehaviour
+public abstract class SongHandler : MonoBehaviour
 {
 
     public enum NoteDirection
@@ -22,14 +22,14 @@ public class SongHandler : MonoBehaviour
     //used for handling tempo and song position
     private float secondsPerBeat;
     [SerializeField]
-    protected float songPosInSeconds;
+    private float songPosInSeconds;
     [SerializeField]
-    protected float songPosInBeats;
+    private float songPosInBeats;
 
     private float songStartTime;
     private AudioSource musicSource;
 
-    public AudioClip spawnNoteSFX;
+    //public AudioClip spawnNoteSFX;
 
 
     public float bpm;
@@ -42,10 +42,12 @@ public class SongHandler : MonoBehaviour
     public int previewBeats;
     private int index;
 
-    public GameObject note;
+    [SerializeField]
+    private GameObject note;
+    //public GameObject minigame;
 
     //prepare set velocity
-    private NoteController noteController;
+    //private NoteController noteController;
 
     private readonly TriggerLine triggerLine;
 
@@ -53,6 +55,7 @@ public class SongHandler : MonoBehaviour
     public Sprite[] noteColours;
 
     private bool scoreCalculated = false;
+    private bool musicStarted = false;
 
     private bool initCountdown = false;
 
@@ -63,13 +66,11 @@ public class SongHandler : MonoBehaviour
     {
         secondsPerBeat = FRAMERATE / bpm;
 
-
         //play song only when the script is loaded
         musicSource = GetComponent<AudioSource>();
 
-        print(Time.deltaTime);
+        //print(Time.deltaTime);
 
-        musicSource.Play();
         //songStartTime = (float)AudioSettings.dspTime; //OUT OF SYNC
         songStartTime = Time.time;
     }
@@ -86,6 +87,20 @@ public class SongHandler : MonoBehaviour
     //when called, refreshes the game status at this moment
     protected void RunRhythmGame()
     {
+        print("start instantiate");
+        if (!musicStarted)
+        {
+            //spawn minigame object for the given minigame
+            //Instantiate(minigame);
+            print("minigame instatiated");
+
+            //after this, play music
+            musicSource.Play();
+            musicStarted = true;
+
+        }
+
+
         SetSongPosition();
         SpawnNotes();
 
@@ -165,6 +180,8 @@ public class SongHandler : MonoBehaviour
             Debug.Log("Score: ");
             Debug.Log(GetScore());
             return;
+
+            //Destroy(this);
         }
 
 

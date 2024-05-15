@@ -766,17 +766,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   shakeScreen: 0
---- !u!114 &675373839 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
-  m_PrefabInstance: {fileID: 1707686214}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db91ff8bdef49804282187011451eb74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &687267131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,6 +1933,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Microphone
       objectReference: {fileID: 0}
+    - target: {fileID: 4012336692375844494, guid: ab9d030c3cf8aba43ac5bfa1dd0ae424, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8192027646678916385, guid: ab9d030c3cf8aba43ac5bfa1dd0ae424, type: 3}
       propertyPath: emptyStand
       value: 
@@ -1974,7 +1967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1510911616
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2076,6 +2069,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
+  minigame: {fileID: 0}
+  minigameScript: {fileID: 0}
 --- !u!50 &1510911620
 Rigidbody2D:
   serializedVersion: 4
@@ -2328,12 +2323,57 @@ PrefabInstance:
     - target: {fileID: 4268432111713032242, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
       propertyPath: minigame
       value: 
-      objectReference: {fileID: 675373839}
+      objectReference: {fileID: 371765481466115574, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
+    - target: {fileID: 4268432111713032242, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
+      propertyPath: minigameScript
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6315721644236765741, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
       propertyPath: m_Name
       value: Guitar
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
+      propertyPath: bpm
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
+      propertyPath: note
+      value: 
+      objectReference: {fileID: 455684049498466932, guid: f435540435460ad489003be5235d7781, type: 3}
+    - target: {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
+      propertyPath: minigame
+      value: 
+      objectReference: {fileID: 371765481466115574, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
+    - target: {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
+      propertyPath: previewBeats
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
+      propertyPath: noteColours.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
+      propertyPath: noteColours.Array.data[0]
+      value: 
+      objectReference: {fileID: -1081780949, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
+    - target: {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
+      propertyPath: noteColours.Array.data[1]
+      value: 
+      objectReference: {fileID: 1470639890, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
+    - target: {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
+      propertyPath: noteColours.Array.data[2]
+      value: 
+      objectReference: {fileID: 571632699, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
+    - target: {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
+      propertyPath: noteColours.Array.data[3]
+      value: 
+      objectReference: {fileID: 1011942548, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
+    m_RemovedComponents:
+    - {fileID: 7105645984217230066, guid: 2ca26150013ad594988ba7c68a5c8039, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

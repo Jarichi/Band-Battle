@@ -24,10 +24,7 @@ public class NoteController : MonoBehaviour
     {
         timeStart = Time.time;
 
-        
-
         targetPosition = transform.localPosition + new Vector3(0f, -6f, 0f);  
-
 
     }
 

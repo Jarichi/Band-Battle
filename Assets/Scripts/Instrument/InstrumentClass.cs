@@ -5,7 +5,12 @@ using UnityEngine;
 public abstract class Instrument : MonoBehaviour
 {
     public GameObject weapon;
-    private Minigame minigame;
+    
+    public GameObject minigame;
+    public Minigame minigameScript;
+
+    //[SerializeField]
+    
     private Transform playerTransform;
     
     protected bool inRange = false;
@@ -14,11 +19,21 @@ public abstract class Instrument : MonoBehaviour
     void Start()
     {
         Debug.Log("Start");
+
     }
 
+    private void LateUpdate()
+    {
+        minigameScript = minigame.GetComponent<Minigame>();
+
+
+    }
     private void Awake()
     {
-        minigame = GetComponent<Minigame>();
+        print("awake");
+
+
+
     }
 
     //proximity detection
@@ -38,6 +53,8 @@ public abstract class Instrument : MonoBehaviour
 
     void Update()
     {
+        //print(weapon);
+        //print(minigame);
         if (inRange)
         {
             //check if you want to play this instrument.
@@ -45,20 +62,22 @@ public abstract class Instrument : MonoBehaviour
             {
                 Interact(playerTransform.gameObject);
                 OnPlaying(); 
+                //Instantiate(minigame);
             }
         }
 
 
     }
 
-    public void Interact(GameObject player)
+    private void Interact(GameObject player)
     {
         if (playerTransform.GetComponent<PlayerCombat>().inCombat)
         {
             return;
         }
-
-        minigame.StartMinigame(player, weapon);
+        
+        
+        minigameScript.StartMinigame(player, weapon, minigame);
     }
 
 

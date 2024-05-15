@@ -25,33 +25,49 @@ public abstract class Minigame : SongHandler
     }
     private void Update()
     {
+        //print(active);
         if (active) {
             //check if you want to enter combat mode
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.C))
             {
                 EngageCombat();
-            }           
+            }
+
+            //run the minigame only when in playing mode
+            print("currently active!");
+            RunRhythmGame();
 
         }
+
+        print("inactive");
     }
 
-    public void StartMinigame(GameObject player, GameObject weapon)
+    public void StartMinigame(GameObject player, GameObject weapon, GameObject minigame)
     {
+        print("StartMinigame called");
         movement = player.GetComponent<PlayerMovement>();
         combat = player.GetComponent<PlayerCombat>();
 
+        print("movement and combat set");
 
         //replace with Instaniate(GuitarMinigame); Or a specific function that does this.
+        //instantiate passed minigame object as a child of the caller
+        Instantiate(minigame, player.transform);
+
         ui = player.transform.GetChild(0).GetComponent<SpriteRenderer>();
         this.weapon = weapon;
 
+        print("weapon set");
         active = true;
-        ui.enabled = true;
+        print("active set to " + active);
+        //ui.enabled = true;
         movement.Disable();
+        print("movement disablked");
     }
 
     private void EngageCombat()
     {
+        print("EngageCombat called");
         ui.enabled= false;
         active = false;
         combat.Engage(weapon, movement, GetCombatAnimationName(), startupAnimationLength);
