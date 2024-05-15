@@ -18,19 +18,21 @@ public abstract class Minigame : SongHandler
     [Range(0f, 3f)]
     private float startupAnimationLength;
 
-    //gets called when the game starts even when this is inherited form a class
-    private void Awake()
+    private void Start()
     {
-        //InitRhythmGame();
+        print("start : Minigame");
     }
     private void Update()
     {
+        print(active);
         //print(active);
         if (active) {
             //check if you want to enter combat mode
             if (Input.GetKeyDown(KeyCode.C))
             {
                 EngageCombat();
+                Destroy(gameObject);
+
             }
 
             //run the minigame only when in playing mode
@@ -39,10 +41,10 @@ public abstract class Minigame : SongHandler
 
         }
 
-        print("inactive");
+        //print("inactive");
     }
 
-    public void StartMinigame(GameObject player, GameObject weapon, GameObject minigame)
+    public void StartMinigame(GameObject player, GameObject weapon)
     {
         print("StartMinigame called");
         movement = player.GetComponent<PlayerMovement>();
@@ -50,9 +52,8 @@ public abstract class Minigame : SongHandler
 
         print("movement and combat set");
 
-        //replace with Instaniate(GuitarMinigame); Or a specific function that does this.
-        //instantiate passed minigame object as a child of the caller
-        Instantiate(minigame, player.transform);
+        
+        
 
         ui = player.transform.GetChild(0).GetComponent<SpriteRenderer>();
         this.weapon = weapon;

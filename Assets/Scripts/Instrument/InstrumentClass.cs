@@ -7,7 +7,7 @@ public abstract class Instrument : MonoBehaviour
     public GameObject weapon;
     
     public GameObject minigame;
-    public Minigame minigameScript;
+    //public Minigame minigameScript;
 
     //[SerializeField]
     
@@ -24,7 +24,7 @@ public abstract class Instrument : MonoBehaviour
 
     private void LateUpdate()
     {
-        minigameScript = minigame.GetComponent<Minigame>();
+       // minigameScript = minigame.GetComponent<Minigame>();
 
 
     }
@@ -75,9 +75,11 @@ public abstract class Instrument : MonoBehaviour
         {
             return;
         }
+
+        GameObject minigameObj = Instantiate(minigame, player.transform);
+        var minigameScript = minigameObj.GetComponent<Minigame>();
         
-        
-        minigameScript.StartMinigame(player, weapon, minigame);
+        minigameScript.StartMinigame(player, weapon);
     }
 
 

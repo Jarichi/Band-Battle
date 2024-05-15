@@ -59,6 +59,10 @@ public abstract class SongHandler : MonoBehaviour
 
     private bool initCountdown = false;
 
+    void Start()
+    {
+        print("start : SongHandler");
+    }
 
 
     //initialises rhythm game on call
