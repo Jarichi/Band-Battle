@@ -24,19 +24,20 @@ public abstract class Minigame : SongHandler
     }
     private void Update()
     {
-        print(active);
+        //print(active);
         //print(active);
         if (active) {
             //check if you want to enter combat mode
             if (Input.GetKeyDown(KeyCode.C))
             {
                 EngageCombat();
-                Destroy(gameObject);
+                print(gameObject);
+                Destroy(gameObject); gameObject.SetActive(false);
 
             }
 
             //run the minigame only when in playing mode
-            print("currently active!");
+            //print("currently active!");
             RunRhythmGame();
 
         }
@@ -73,6 +74,7 @@ public abstract class Minigame : SongHandler
         active = false;
         combat.Engage(weapon, movement, GetCombatAnimationName(), startupAnimationLength);
         GetComponent<Instrument>().enabled = false;
+
     }
 
     protected abstract string GetCombatAnimationName();

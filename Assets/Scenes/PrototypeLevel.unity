@@ -2070,7 +2070,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   minigame: {fileID: 0}
-  minigameScript: {fileID: 0}
 --- !u!50 &1510911620
 Rigidbody2D:
   serializedVersion: 4

@@ -90,15 +90,21 @@ public class TriggerLine : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("HIT");
+        Debug.Log("Something got HIT");
 
         
         audioSource.Play();
-        Destroy(collision.gameObject);
+        if (collision.tag == "minigame_Note")
+        {
+            Destroy(collision.gameObject);
+            Score += ScoreIncrease;
+            print("NOTE");
+        }
+        
         //kill note
         
         //increment score
-        Score+=ScoreIncrease;
+        
 
     }
 

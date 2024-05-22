@@ -91,7 +91,7 @@ public abstract class SongHandler : MonoBehaviour
     //when called, refreshes the game status at this moment
     protected void RunRhythmGame()
     {
-        print("start instantiate");
+        //print("start instantiate");
         if (!musicStarted)
         {
             //spawn minigame object for the given minigame
