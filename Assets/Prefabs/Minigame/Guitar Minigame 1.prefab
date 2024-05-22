@@ -56,7 +56,7 @@ MonoBehaviour:
   - {fileID: 1470639890, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
   - {fileID: 571632699, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
   - {fileID: 1011942548, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
-  startupAnimationLength: 0
+  transistionAnimationTime: 1.2
 --- !u!82 &8753633846955638385
 AudioSource:
   m_ObjectHideFlags: 0

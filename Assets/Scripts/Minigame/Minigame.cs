@@ -16,7 +16,7 @@ public abstract class Minigame : SongHandler
     private SpriteRenderer ui;
     [SerializeField]
     [Range(0f, 3f)]
-    private float startupAnimationLength;
+    private float transistionAnimationTime;
 
     private void Start()
     {
@@ -70,7 +70,7 @@ public abstract class Minigame : SongHandler
         print("EngageCombat called");
         ui.enabled= false;
         active = false;
-        combat.Engage(weapon, movement, GetCombatAnimationName(), startupAnimationLength);
+        combat.Engage(weapon, movement, GetCombatAnimationName(), transistionAnimationTime);
         //GetComponent<Instrument>().enabled = false;
         Destroy(gameObject); gameObject.SetActive(false);
 
