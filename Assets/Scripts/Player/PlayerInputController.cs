@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerInputController : MonoBehaviour
 {
@@ -12,11 +13,14 @@ public class PlayerInputController : MonoBehaviour
     public float VerticalMovement { get; private set; }
     public float HorizontalAttack { get; private set; }
     public float VerticalAttack { get; private set; }
+
     public bool InteractPressed { get; private set; }
     public bool EngageCombatPressed { get; private set; }
     public bool RestartPressed { get; private set; }
     public static System.EventHandler PlayerJoinEvent;
     public static System.EventHandler PlayerLeaveEvent;
+
+
 
     public void OnPlayerJoin(PlayerInput input)
     {
@@ -51,16 +55,16 @@ public class PlayerInputController : MonoBehaviour
 
     public void OnInteractionPressed(InputAction.CallbackContext context)
     {
-        InteractPressed = context.action.triggered;
+        InteractPressed = context.started;
     }
 
     public void OnEngageCombatPressed(InputAction.CallbackContext context)
     {
-        EngageCombatPressed = context.action.triggered;
+        EngageCombatPressed = context.started;
     }
 
     public void OnRestartPressed(InputAction.CallbackContext context)
     {
-        RestartPressed = context.action.triggered;
+        RestartPressed = context.started;
     }
 }

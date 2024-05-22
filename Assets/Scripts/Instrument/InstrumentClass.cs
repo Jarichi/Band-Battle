@@ -71,7 +71,7 @@ public abstract class Instrument : MonoBehaviour
 
     }
 
-    private void Interact(GameObject player)
+    public void Interact(GameObject player)
     {
         OnPlaying();
         if (player.GetComponent<PlayerCombat>().inCombat)

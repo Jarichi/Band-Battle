@@ -39,7 +39,7 @@ public class CameraControls : MonoBehaviour
     {
         Move();
         Zoom();
-        players.ForEach(p => Debug.Log(p.transform.position));
+        //players.ForEach(p => Debug.Log(p.transform.position));
     }
 
     private void HandleJoinEvent(object sender, EventArgs e)
