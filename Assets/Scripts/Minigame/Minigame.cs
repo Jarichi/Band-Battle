@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class Minigame : MonoBehaviour
+public abstract class Minigame : SongHandler
 {
     private bool active;
     private PlayerInputController input;
@@ -12,17 +13,31 @@ public abstract class Minigame : MonoBehaviour
     private SpriteRenderer ui;
     [SerializeField]
     [Range(0f, 3f)]
-    private float startupAnimationLength;
+    private float transistionAnimationTime;
 
+    private void Start()
+    {
+        print("start : Minigame");
+    }
     private void Update()
     {
+        //print(active);
+        //print(active);
         if (active) {
             //check if you want to enter combat mode
             if (input.EngageCombatPressed)
             {
                 EngageCombat();
+
             }
+
+            //run the minigame only when in playing mode
+            //print("currently active!");
+            RunRhythmGame();
+
         }
+
+        //print("inactive");
     }
 
     public void StartMinigame(GameObject player, GameObject weapon)
@@ -30,20 +45,32 @@ public abstract class Minigame : MonoBehaviour
         input = player.GetComponent<PlayerInputController>();
         movement = player.GetComponent<PlayerMovement>();
         combat = player.GetComponent<PlayerCombat>();
+
+        print("movement and combat set");
+
+        
+        
+
         ui = player.transform.GetChild(0).GetComponent<SpriteRenderer>();
         this.weapon = weapon;
 
+        print("weapon set");
         active = true;
-        ui.enabled = true;
+        print("active set to " + active);
+        //ui.enabled = true;
         movement.Disable();
+        print("movement disablked");
     }
 
     private void EngageCombat()
     {
+        print("EngageCombat called");
         ui.enabled= false;
         active = false;
-        combat.Engage(weapon, movement, GetCombatAnimationName(), startupAnimationLength);
-        GetComponent<Instrument>().enabled = false;
+        combat.Engage(weapon, movement, GetCombatAnimationName(), transistionAnimationTime);
+        //GetComponent<Instrument>().enabled = false;
+        Destroy(gameObject); gameObject.SetActive(false);
+
     }
 
     protected abstract string GetCombatAnimationName();

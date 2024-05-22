@@ -5,17 +5,73 @@ using UnityEngine;
 public abstract class Instrument : MonoBehaviour
 {
     public GameObject weapon;
-    private Minigame minigame;
+    
+    public GameObject minigame;
+    //public Minigame minigameScript;
+
+    //[SerializeField]
+    
+    private Transform playerTransform;
     
     protected bool inRange = false;
     protected abstract void OnPlaying();
 
-    private void Awake()
+    void Start()
     {
-        minigame = GetComponent<Minigame>();
+        Debug.Log("Start");
+
     }
 
-    public void Interact(GameObject player)
+    private void LateUpdate()
+    {
+       // minigameScript = minigame.GetComponent<Minigame>();
+
+
+    }
+    private void Awake()
+    {
+        print("awake");
+
+
+
+    }
+
+    //proximity detection
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        inRange = true;
+        playerTransform = col.GetComponent<Transform>();
+        if (!col.GetComponent<PlayerCombat>().inCombat)
+        {
+            GameObject.FindGameObjectWithTag("temp").GetComponent<Canvas>().enabled = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        inRange = false;
+        GameObject.FindGameObjectWithTag("temp").GetComponent<Canvas>().enabled = false;
+
+    }
+
+    void Update()
+    {
+        //print(weapon);
+        //print(minigame);
+        if (inRange)
+        {
+            //check if you want to play this instrument.
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Interact(playerTransform.gameObject);
+                OnPlaying(); 
+                //Instantiate(minigame);
+            }
+        }
+
+
+    }
+
+    private void Interact(GameObject player)
     {
         OnPlaying();
         if (player.GetComponent<PlayerCombat>().inCombat)
@@ -23,7 +79,10 @@ public abstract class Instrument : MonoBehaviour
             return;
         }
 
-        minigame.StartMinigame(player, weapon);
+        GameObject minigameObj = Instantiate(minigame, player.transform);
+        var minigameScript = minigameObj.GetComponent<Minigame>();
+        
+        minigameScript.StartMinigame(player, weapon);
     }
 
 
