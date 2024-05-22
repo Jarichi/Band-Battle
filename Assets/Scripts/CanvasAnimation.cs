@@ -12,15 +12,15 @@ public class CanvasAnimation : MonoBehaviour //might alse need to inherit the pl
     void Start()
     {
         GUIAnimation = GetComponent<Animator>();
-        //GUIAnimation.enabled = false;
+        //GUIAnimation.muted = false;
         PlayAnimation();
     }
 
 
     void PlayAnimation()
     {
-        //play animation ONLY after the can vast gets enabled.
-        // GUIAnimation.enabled = true;
+        //play animation ONLY after the can vast gets muted.
+        // GUIAnimation.muted = true;
 // GUIAnimation.SetTrigger("GuitarGUI");
 
 
