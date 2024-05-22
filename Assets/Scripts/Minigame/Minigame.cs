@@ -31,8 +31,6 @@ public abstract class Minigame : SongHandler
             if (Input.GetKeyDown(KeyCode.C))
             {
                 EngageCombat();
-                print(gameObject);
-                Destroy(gameObject); gameObject.SetActive(false);
 
             }
 
@@ -73,7 +71,8 @@ public abstract class Minigame : SongHandler
         ui.enabled= false;
         active = false;
         combat.Engage(weapon, movement, GetCombatAnimationName(), startupAnimationLength);
-        GetComponent<Instrument>().enabled = false;
+        //GetComponent<Instrument>().enabled = false;
+        Destroy(gameObject); gameObject.SetActive(false);
 
     }
 

@@ -41,8 +41,10 @@ public abstract class Instrument : MonoBehaviour
     {
         inRange = true;
         playerTransform = col.GetComponent<Transform>();
-        if(!col.GetComponent<PlayerCombat>().inCombat) GameObject.FindGameObjectWithTag("temp").GetComponent<Canvas>().enabled = true;
-
+        if (!col.GetComponent<PlayerCombat>().inCombat)
+        {
+            GameObject.FindGameObjectWithTag("temp").GetComponent<Canvas>().enabled = true;
+        }
     }
     void OnTriggerExit2D(Collider2D col)
     {
