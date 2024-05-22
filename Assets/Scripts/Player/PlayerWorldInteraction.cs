@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerWorldInteraction : MonoBehaviour
@@ -13,21 +15,19 @@ public class PlayerWorldInteraction : MonoBehaviour
     {
         combat = GetComponent<PlayerCombat>();
         input = GetComponent<PlayerInputController>();
+        input.InteractPressed += TryInteract;
     }
 
     private void Update()
     {
-        if (input.RestartPressed)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+    }
 
-        if (input.InteractPressed)
+    private void TryInteract(InputAction.CallbackContext ctx)
+    {
+        if (inRange != null)
         {
-            if (inRange!= null)
-            {
-                inRange.Interact(gameObject);
-            }
+            inRange.Interact(gameObject);
+            inRange.OnPlaying();
         }
     }
 

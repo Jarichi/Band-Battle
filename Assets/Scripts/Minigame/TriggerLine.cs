@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TriggerLine : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TriggerLine : MonoBehaviour
     private BoxCollider2D Hitbox;
     public float marginOfError;
     private Vector2 initialPosition;
+    private PlayerInputController input;
 
     private SpriteRenderer SpriteRenderer;
     private Color baseColour = Color.white;
@@ -30,82 +32,57 @@ public class TriggerLine : MonoBehaviour
         Hitbox =  GetComponent<BoxCollider2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        input = transform.root.GetComponent<PlayerInputController>();
+        input.PlayInput1 += OnInput1;
+        input.PlayInput2 += OnInput2;
+        input.PlayInput3 += OnInput3;
+        input.PlayInput4 += OnInput4;
 
         Hitbox.enabled = false;
         initialPosition = Hitbox.offset;
     }
 
-    private void Update()
+    private void OnInput1(InputAction.CallbackContext ctx)
     {
-        PlayerInput();
+        initialPosition.x = -1.5f;
+        Hitbox.offset = initialPosition;
+        ToggleHitbox();
+        FadeColour(Color.red);
     }
 
-    private void PlayerInput()
+    private void OnInput2(InputAction.CallbackContext ctx)
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            //Debug.Log("Up");          
-
-            
-            initialPosition.x = -1.5f;
-            Hitbox.offset = initialPosition;
-            ToggleHitbox();
-            FadeColour(Color.red);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            //Debug.Log("Down");
-
-
-            initialPosition.x = -0.5f;
-            Hitbox.offset = initialPosition;
-            ToggleHitbox();
-            FadeColour(Color.blue);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            //Debug.Log("Left");
-
-
-            initialPosition.x = 0.5f;
-            Hitbox.offset = initialPosition;
-            ToggleHitbox();
-            FadeColour(Color.yellow);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            //Debug.Log("Right");
-
-
-            initialPosition.x = 1.5f;
-            Hitbox.offset = initialPosition;
-            ToggleHitbox();
-            FadeColour(Color.green);
-        }
-
-
+        initialPosition.x = -0.5f;
+        Hitbox.offset = initialPosition;
+        ToggleHitbox();
+        FadeColour(Color.blue);
     }
 
-    
+    private void OnInput3(InputAction.CallbackContext ctx)
+    {
+        initialPosition.x = 0.5f;
+        Hitbox.offset = initialPosition;
+        ToggleHitbox();
+        FadeColour(Color.yellow);
+    }
+
+    private void OnInput4(InputAction.CallbackContext ctx)
+    {
+        initialPosition.x = 1.5f;
+        Hitbox.offset = initialPosition;
+        ToggleHitbox();
+        FadeColour(Color.green);
+    }
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Something got HIT");
-
-        
         audioSource.Play();
         if (collision.tag == "minigame_Note")
         {
             Destroy(collision.gameObject);
             Score += ScoreIncrease;
-            print("NOTE");
         }
-        
-        //kill note
-        
-        //increment score
-        
-
     }
 
     public void ClearScore()
@@ -126,7 +103,6 @@ public class TriggerLine : MonoBehaviour
     private void ToggleHitbox()
     {
         Hitbox.enabled = true;
-        //subtract score for toggling hitbox.
         Score--;
         StartCoroutine(c_DisableHitbox());
     }

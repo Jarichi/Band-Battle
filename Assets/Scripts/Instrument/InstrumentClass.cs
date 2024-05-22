@@ -7,14 +7,11 @@ public abstract class Instrument : MonoBehaviour
     public GameObject weapon;
     
     public GameObject minigame;
-    //public Minigame minigameScript;
-
-    //[SerializeField]
     
     private Transform playerTransform;
     
     protected bool inRange = false;
-    protected abstract void OnPlaying();
+    public abstract void OnPlaying();
 
     void Start()
     {
@@ -22,12 +19,6 @@ public abstract class Instrument : MonoBehaviour
 
     }
 
-    private void LateUpdate()
-    {
-       // minigameScript = minigame.GetComponent<Minigame>();
-
-
-    }
     private void Awake()
     {
         print("awake");
@@ -36,7 +27,6 @@ public abstract class Instrument : MonoBehaviour
 
     }
 
-    //proximity detection
     void OnTriggerEnter2D(Collider2D col)
     {
         inRange = true;
@@ -53,23 +43,19 @@ public abstract class Instrument : MonoBehaviour
 
     }
 
-    void Update()
+    /*void Update()
     {
-        //print(weapon);
-        //print(minigame);
         if (inRange)
         {
-            //check if you want to play this instrument.
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Interact(playerTransform.gameObject);
                 OnPlaying(); 
-                //Instantiate(minigame);
             }
         }
 
 
-    }
+    }*/
 
     public void Interact(GameObject player)
     {

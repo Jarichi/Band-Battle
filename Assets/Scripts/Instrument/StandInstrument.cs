@@ -12,7 +12,7 @@ public class StandInstrument : Instrument
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    protected override void OnPlaying()
+    public override void OnPlaying()
     {
         spriteRenderer.sprite = emptyStand;
     }
