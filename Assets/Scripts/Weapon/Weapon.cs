@@ -33,11 +33,11 @@ public abstract class Weapon : MonoBehaviour
         collider = GetComponent<Collider2D>();
         sfxSource = GetComponent<AudioSource>();
     }
+
     public void SetWielder(PlayerCombat wielder)
     {
         this.wielder = wielder;
     }
-
 
     public void ExecuteAttack(AttackDirection direction)
     {

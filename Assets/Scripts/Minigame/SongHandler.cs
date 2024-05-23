@@ -29,34 +29,19 @@ public abstract class SongHandler : MonoBehaviour
     private float songStartTime;
     private AudioSource musicSource;
 
-    //public AudioClip spawnNoteSFX;
-
-
     public float bpm;
     private const float FRAMERATE = 60f;
     private const int BAR = 4;
-
-    //used for note spawning
     private float[] rhythm;
     private NoteDirection[] inputDirection;
     public int previewBeats;
     private int index;
-
     [SerializeField]
     private GameObject note;
-    //public GameObject minigame;
-
-    //prepare set velocity
-    //private NoteController noteController;
-
     private readonly TriggerLine triggerLine;
-
-
     public Sprite[] noteColours;
-
     private bool scoreCalculated = false;
     private bool musicStarted = false;
-
     private bool initCountdown = false;
 
     void Start()
@@ -82,7 +67,6 @@ public abstract class SongHandler : MonoBehaviour
     //updates current position and beat timer of the song
     private void SetSongPosition()
     {
-        //songPosInSeconds = (float)(AudioSettings.dspTime - songStartTime); //OUT OF SYNC
         songPosInSeconds = (Time.time - songStartTime);
 
         songPosInBeats = songPosInSeconds / secondsPerBeat;
@@ -94,11 +78,7 @@ public abstract class SongHandler : MonoBehaviour
         //print("start instantiate");
         if (!musicStarted)
         {
-            //spawn minigame object for the given minigame
-            //Instantiate(minigame);
             print("minigame instatiated");
-
-            //after this, play music
             musicSource.Play();
             musicStarted = true;
 
@@ -184,8 +164,6 @@ public abstract class SongHandler : MonoBehaviour
             Debug.Log("Score: ");
             Debug.Log(GetScore());
             return;
-
-            //Destroy(this);
         }
 
 

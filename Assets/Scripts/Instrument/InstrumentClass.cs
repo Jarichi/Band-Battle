@@ -11,21 +11,7 @@ public abstract class Instrument : MonoBehaviour
     private Transform playerTransform;
     
     protected bool inRange = false;
-    public abstract void OnPlaying();
-
-    void Start()
-    {
-        Debug.Log("Start");
-
-    }
-
-    private void Awake()
-    {
-        print("awake");
-
-
-
-    }
+    protected abstract void OnPlaying();
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -40,22 +26,7 @@ public abstract class Instrument : MonoBehaviour
     {
         inRange = false;
         GameObject.FindGameObjectWithTag("temp").GetComponent<Canvas>().enabled = false;
-
     }
-
-    /*void Update()
-    {
-        if (inRange)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Interact(playerTransform.gameObject);
-                OnPlaying(); 
-            }
-        }
-
-
-    }*/
 
     public void Interact(GameObject player)
     {
@@ -70,6 +41,4 @@ public abstract class Instrument : MonoBehaviour
         
         minigameScript.StartMinigame(player, weapon);
     }
-
-
 }

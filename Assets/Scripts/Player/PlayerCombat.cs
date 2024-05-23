@@ -37,7 +37,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     }
     private void Awake()
     {
-        screenShake = GameObject.FindFirstObjectByType<ScreenShake>();
+        screenShake = FindFirstObjectByType<ScreenShake>();
     }
 
     void Update()

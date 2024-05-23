@@ -17,17 +17,12 @@ public class PlayerWorldInteraction : MonoBehaviour
         input = GetComponent<PlayerInputController>();
         input.InteractPressed += TryInteract;
     }
-
-    private void Update()
-    {
-    }
-
+    
     private void TryInteract(InputAction.CallbackContext ctx)
     {
         if (inRange != null)
         {
             inRange.Interact(gameObject);
-            inRange.OnPlaying();
         }
     }
 

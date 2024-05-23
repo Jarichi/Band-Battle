@@ -10,20 +10,16 @@ public class DummyCombat : MonoBehaviour, IDamageable
     [SerializeField] private ParticleSystem DamageParticles;
     private ScreenShake screenShake;
 
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        //DamageParticles = GetComponent<ParticleSystem>(); 
-
     }
 
     private void Awake()
     {
-        screenShake = GameObject.FindFirstObjectByType<ScreenShake>();
+        screenShake = FindFirstObjectByType<ScreenShake>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Hitpoints <= 0)
@@ -43,12 +39,10 @@ public class DummyCombat : MonoBehaviour, IDamageable
     private void SpawnParticles()
     {
         Instantiate(DamageParticles, transform.position, Quaternion.identity);
-        
     }
 
     public void Die()
     {
-        GameObject.Destroy(gameObject);
-        Debug.Log("die");
+        Destroy(gameObject);
     }
 }

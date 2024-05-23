@@ -28,7 +28,5 @@ public class ScreenShake : MonoBehaviour
             transform.position = newPos;
             yield return null;
         }
-
-        //transform.position = startPosition;
     }
 }

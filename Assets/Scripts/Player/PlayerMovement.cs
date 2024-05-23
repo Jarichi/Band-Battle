@@ -1,37 +1,28 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Composites;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private bool canMove;
-    public float moveSpeed; //movement speed
+    public float moveSpeed;
     public bool isMoving = false;
-    public Rigidbody2D rb; //rigid body with reference rb
+    public Rigidbody2D rb; 
 
     public Animator animator;
-    private Vector2 moveDirection; //vector with movement direction
+    private Vector2 moveDirection; 
     private PlayerInputController input;
-    //Animator animator;
-    //runs once
+    
     void Start()
     {
         animator = GetComponent<Animator>();
         input = GetComponent<PlayerInputController>();
     }
 
-    // Update is called once per frame (dependent on device)
     void Update()
     {
         ProcessInput();
     }
 
-
-    //Call every fixed framerate (independent of device)
     void FixedUpdate()
     {
         Move();
@@ -43,10 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     void ProcessInput()
     {
-
         if (!canMove) return;
 
-        //process movement inputs and store values in floats
         float moveX = input.HorizontalMovement;
         float moveY = input.VerticalMovement;
 
@@ -57,12 +46,7 @@ public class PlayerMovement : MonoBehaviour
             isMoving = true;
         }
 
-        
-
-        moveDirection = new Vector2(moveX, moveY).normalized; //create movement vector
-
-        
-
+        moveDirection = new Vector2(moveX, moveY).normalized;
     }
 
     void Move()
@@ -70,8 +54,7 @@ public class PlayerMovement : MonoBehaviour
         if (!canMove) return;
 
         transform.Translate(moveDirection * Time.deltaTime * moveSpeed);
-
-        //rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        
         animator.SetFloat("xVelocity", input.HorizontalMovement);
         animator.SetFloat("yVelocity", input.VerticalMovement);
         animator.SetBool("isMoving", isMoving);

@@ -35,9 +35,6 @@ public class GuitarMinigame : Minigame
     private void Start()
     {
         SetNoteSequence(song1rhythm, song1direction);
-        //initialise mingame
-        print("start : GuitarMinigame");
-
         InitRhythmGame();
     }
 

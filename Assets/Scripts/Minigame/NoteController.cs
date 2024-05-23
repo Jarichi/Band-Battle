@@ -51,9 +51,6 @@ public class NoteController : MonoBehaviour
 
     private void MoveNote()
     {
-
-        //velocity = songHandler.bpm;
-
         var step = velocity * Time.fixedDeltaTime;
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, step);
     }

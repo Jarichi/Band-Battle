@@ -34,14 +34,13 @@ public class CameraControls : MonoBehaviour
         PlayerInputController.PlayerLeaveEvent += HandleLeaveEvent;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
         Zoom();
-        //players.ForEach(p => Debug.Log(p.transform.position));
     }
 
+    // TODO: move the player list to PlayerInputController
     private void HandleJoinEvent(object sender, EventArgs e)
     {
         players.Add((GameObject)sender);
@@ -50,12 +49,6 @@ public class CameraControls : MonoBehaviour
     private void HandleLeaveEvent(object sender, EventArgs e)
     {
         players.Remove((GameObject)sender);
-    }
-
-    void PrintPlayers()
-    {
-        Debug.Log(players.Count);
-        players.ForEach(p => Debug.Log(p.gameObject.name));
     }
 
     void Zoom()
