@@ -13,26 +13,27 @@ using UnityEngine.Android;
 //Responsible for handling music playback and tempo syncing
 public abstract class SongHandler : MonoBehaviour
 {
-
+    
     public enum NoteDirection
     {
         Up, Down, Left, Right
     }
 
     //used for handling tempo and song position
-    private float secondsPerBeat;
+    //TODO: doublecjecg everythnBDJFg
+    private double secondsPerBeat;
     [SerializeField]
-    private float songPosInSeconds;
+    private double songPosInSeconds;
     [SerializeField]
-    private float songPosInBeats;
+    private double songPosInBeats;
 
-    private float songStartTime;
+    private double songStartTime;
     private AudioSource musicSource;
 
-    public float bpm;
-    private const float FRAMERATE = 60f;
+    public double bpm;
+    private const double FRAMERATE = 60f;
     private const int BAR = 4;
-    private float[] rhythm;
+    private double[] rhythm;
     private NoteDirection[] inputDirection;
     public int previewBeats;
     private int index;
@@ -44,10 +45,7 @@ public abstract class SongHandler : MonoBehaviour
     private bool musicStarted = false;
     private bool initCountdown = false;
 
-    void Start()
-    {
-        print("start : SongHandler");
-    }
+
 
 
     //initialises rhythm game on call
@@ -60,7 +58,7 @@ public abstract class SongHandler : MonoBehaviour
 
         //print(Time.deltaTime);
 
-        //songStartTime = (float)AudioSettings.dspTime; //OUT OF SYNC
+        //songStartTime = (double)AudioSettings.dspTime; //OUT OF SYNC
         songStartTime = Time.time;
     }
 
@@ -170,7 +168,7 @@ public abstract class SongHandler : MonoBehaviour
     }
 
 
-    protected void SetNoteSequence(float[] p_rhythm, NoteDirection[] p_inputDirection)
+    protected void SetNoteSequence(double[] p_rhythm, NoteDirection[] p_inputDirection)
     {
         rhythm = p_rhythm;
         inputDirection = p_inputDirection;
