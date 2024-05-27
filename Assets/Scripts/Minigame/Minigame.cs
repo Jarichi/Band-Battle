@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -58,8 +59,8 @@ public abstract class Minigame : SongHandler
         SetNoteSequence(song1rhythm, song1direction);
         InitRhythmGame();
 
-        beatmap = JsonUtility.FromJson<Beatmap>(path);
-        print(beatmap);
+        beatmap = JsonUtility.FromJson<Beatmap>(File.ReadAllText(path));
+        print(beatmap.Channels[0].Positions[1].Beat);
     }
 
     private void TryEngageCombat(InputAction.CallbackContext obj)
