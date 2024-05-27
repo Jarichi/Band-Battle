@@ -63,10 +63,8 @@ public class MIDI2Beatmap : EditorWindow
         Debug.Log(beatmap.Channels.Count);
         string jsonString = JsonUtility.ToJson(beatmap, true);
         var path = outputPath + "out.bbm";
-        if (File.Exists(path))
-            File.CreateText(path);
-        else 
-            File.WriteAllText(path, jsonString);
+
+        File.WriteAllText(path, jsonString);
         Debug.Log(jsonString);
     }
 }
