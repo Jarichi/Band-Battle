@@ -40,7 +40,7 @@ public abstract class SongHandler : MonoBehaviour
     [SerializeField]
     private GameObject note;
     [SerializeField]
-    private GameObject triggerLine;
+    //private GameObject triggerLine;
     public Sprite[] noteColours;
     private bool scoreCalculated = false;
     private bool musicStarted = false;
@@ -164,7 +164,7 @@ public abstract class SongHandler : MonoBehaviour
                 Debug.Log("Score: " + GetScore());
                 return;
             }
-            else print("waiting for all notes to die...");
+            else print("waiting for all notes to die..."); //debugging, may not be nessecary;
 
         }
 
@@ -180,7 +180,7 @@ public abstract class SongHandler : MonoBehaviour
 
     private int GetScore()
     {
-        var triggerLineScore = triggerLine.gameObject.GetComponent<TriggerLine>();
+        var triggerLineScore = GetComponentInChildren<TriggerLine>();
         return triggerLineScore.GetScore();
     }
 
