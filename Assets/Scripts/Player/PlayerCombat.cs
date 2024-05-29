@@ -86,7 +86,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     void Attack(AttackDirection direction)
     {
-        if (onCooldown)
+        if (onCooldown || !inCombat)
         {
             return;
         }

@@ -58,9 +58,6 @@ public abstract class Minigame : SongHandler
 
         SetNoteSequence(song1rhythm, song1direction);
         InitRhythmGame();
-
-        beatmap = JsonUtility.FromJson<Beatmap>(File.ReadAllText(path));
-        print(beatmap.Channels[0].Positions[1].Beat);
     }
 
     private void TryEngageCombat(InputAction.CallbackContext obj)

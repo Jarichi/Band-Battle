@@ -23,15 +23,18 @@ public class PlayerInputController : MonoBehaviour
     public Action<InputAction.CallbackContext> PlayInput4;
     public static System.EventHandler PlayerJoinEvent;
     public static System.EventHandler PlayerLeaveEvent;
+    public static List<PlayerInputController> Players = new();
 
     public void OnPlayerJoin(PlayerInput input)
     {
         Debug.Log("A player has joined! " + input.gameObject.name);
+        Players.Add(this);
         PlayerJoinEvent.Invoke(input.gameObject, new EventArgs());
     }
     public void OnPlayerLeave(PlayerInput input)
     {
         Debug.Log("A player has left! " + input.gameObject.name);
+        Players.Remove(this);
         PlayerLeaveEvent.Invoke(input.gameObject, new EventArgs());
     }
 
@@ -89,4 +92,5 @@ public class PlayerInputController : MonoBehaviour
     {
         context.action.performed += PlayInput4;
     }
+
 }
