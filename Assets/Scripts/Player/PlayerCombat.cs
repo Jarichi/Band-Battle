@@ -61,22 +61,27 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     }
 
-    public void Engage(GameObject weapon, PlayerMovement movement, string animationTriggerName, float animationLength)
+    public void Engage(GameObject weapon, PlayerMovement movement)
     {
-        StartCoroutine(TransitionToCombat(weapon, movement, animationTriggerName, animationLength));
+        Debug.Log("transition to combat.");
+        invincible = true;
+        Destroy(GetComponentInChildren<GuitarMinigame>().gameObject);
+        StartCoroutine(TransitionToCombat(weapon, movement));
         inCombat = true;
     }
 
-    private IEnumerator TransitionToCombat(GameObject weapon, PlayerMovement movement, string triggerName, float length)
+    private IEnumerator TransitionToCombat(GameObject weapon, PlayerMovement movement)
     {
-        movement.animator.SetTrigger(triggerName);
-        yield return new WaitForSeconds(length);
+        Weapon weaponInfo = weapon.GetComponent<Weapon>();
+        movement.animator.SetTrigger(weaponInfo.combatAnimationName);
+        yield return new WaitForSeconds(weaponInfo.combatAnimationTime);
         movement.Enable();
 
         GameObject weaponInst = GameObject.Instantiate(weapon, transform);
         weaponInst.transform.parent = transform;
         currentWeapon = weaponInst.GetComponent<Weapon>();
         currentWeapon.SetWielder(movement.GetComponent<PlayerCombat>());
+        invincible = false;
     }
 
     public void Stop()
@@ -112,6 +117,12 @@ public class PlayerCombat : MonoBehaviour, IDamageable
             return;
         }
 
+        if (!inCombat)
+        {
+            Engage(GetComponent<PlayerWorldInteraction>().ChosenInstrument.weapon, GetComponent<PlayerMovement>());
+            return;
+        }
+
         invincible = true;
 
         var forcePower = 30f;
@@ -142,7 +153,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Debug.Log("Oh NOOoooo o o *dies*");
-        
+        GameObject.Destroy(gameObject);
     }
 }

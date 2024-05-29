@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Game : MonoBehaviour
 {
@@ -23,30 +24,34 @@ public class Game : MonoBehaviour
     [SerializeField]
     private Phase currentPhase;
     private AudioSource audioSource;
+    public static Game Instance;
+    private PlayerInputManager inputManager;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         currentPhase = Phase.AwaitInput;
         songs.ToList().ForEach(s => s.DeserializeFile());
+        Instance = GameObject.FindAnyObjectByType<Game>();
+        inputManager = GetComponent<PlayerInputManager>();
+        inputManager.EnableJoining();
     }
 
     void Update()
     {
-        var players = PlayerInputController.Players;
+        var playerCount = PlayerInputController.PlayerCount();
         switch (currentPhase)
         {
             case Phase.AwaitInput:
-                if (players.Count() > 0) ShowSongs();
+                if (playerCount > 1)
+                {
+                    ShowSongs();
+                    inputManager.DisableJoining();
+                }
                 break;
-            case Phase.ChooseInstrument:
-                if (players.All(p =>
-                {
-                    var interaction = p.GetComponent<PlayerWorldInteraction>();
-                    Debug.Log(interaction.ChosenInstrument);
-                    return interaction.ChosenInstrument != null;
-                }))
-                {
-                    StartPlay();
+            case Phase.Play:
+                if (playerCount == 1) {
+                    End();
                 }
                 break;
         }
@@ -59,25 +64,31 @@ public class Game : MonoBehaviour
         currentPhase = Phase.ChooseInstrument;
     }
 
-    void StartPlay()
+    public void StartPlayPhase()
     {
         currentPhase = Phase.Play;
         audioSource.clip = song.audio;
-        foreach (var player in PlayerInputController.Players)
+        foreach (var player in PlayerInputController.GetPlayers())
         {
             var interaction = player.GetComponent<PlayerWorldInteraction>();
-            interaction.ChosenInstrument.Interact(interaction.gameObject);
+            interaction.ChosenInstrument.StartMinigame(interaction.gameObject);
         }
+        audioSource.Play();
+    }
+
+    public void End()
+    {
+        currentPhase = Phase.End;
+        audioSource.Stop();
+        PlayerInputController.GetPlayers().ForEach(obj =>
+        {
+            obj.GetComponent<PlayerMovement>().Disable();
+        });
     }
 
     public Phase GetCurrentPhase()
     {
         return currentPhase;
-    }
-
-    public static Game GetInstance()
-    {
-        return GameObject.FindAnyObjectByType<Game>();
     }
 }
 

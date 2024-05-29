@@ -73,16 +73,6 @@ public abstract class SongHandler : MonoBehaviour
     //when called, refreshes the game status at this moment
     protected void RunRhythmGame()
     {
-        //print("start instantiate");
-        if (!musicStarted)
-        {
-            print("minigame instatiated");
-            musicSource.Play();
-            musicStarted = true;
-
-        }
-
-
         SetSongPosition();
         SpawnNotes();
 

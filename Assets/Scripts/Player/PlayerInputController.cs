@@ -2,6 +2,7 @@ using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,18 +24,25 @@ public class PlayerInputController : MonoBehaviour
     public Action<InputAction.CallbackContext> PlayInput4;
     public static System.EventHandler PlayerJoinEvent;
     public static System.EventHandler PlayerLeaveEvent;
-    public static List<PlayerInputController> Players = new();
+    private static readonly List<string> Players = new();
 
+    public static int PlayerCount() { return Players.Count; }
+    public static List<GameObject> GetPlayers()
+    {
+        return Players.Select(id => GameObject.Find(id)).ToList();
+    }
     public void OnPlayerJoin(PlayerInput input)
     {
+        var id = input.GetInstanceID().ToString();
+        input.gameObject.name = id;
         Debug.Log("A player has joined! " + input.gameObject.name);
-        Players.Add(this);
+        Players.Add(id);
         PlayerJoinEvent.Invoke(input.gameObject, new EventArgs());
     }
     public void OnPlayerLeave(PlayerInput input)
     {
         Debug.Log("A player has left! " + input.gameObject.name);
-        Players.Remove(this);
+        Players.Remove(input.gameObject.name);
         PlayerLeaveEvent.Invoke(input.gameObject, new EventArgs());
     }
 
@@ -65,6 +73,7 @@ public class PlayerInputController : MonoBehaviour
 
     public void OnEngageCombatPressed(InputAction.CallbackContext context)
     {
+        if (EngageCombatPressed!= null) 
         context.action.performed += EngageCombatPressed;
     }
 
