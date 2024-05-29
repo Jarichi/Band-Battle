@@ -39,7 +39,8 @@ public abstract class SongHandler : MonoBehaviour
     private int index;
     [SerializeField]
     private GameObject note;
-    private readonly TriggerLine triggerLine;
+    [SerializeField]
+    private GameObject triggerLine;
     public Sprite[] noteColours;
     private bool scoreCalculated = false;
     private bool musicStarted = false;
@@ -157,11 +158,14 @@ public abstract class SongHandler : MonoBehaviour
         }
         else if (index >= rhythm.Length && !scoreCalculated)
         {
+            if (GameObject.FindGameObjectWithTag("minigame_Note") == null)
+            {
+                scoreCalculated = true;
+                Debug.Log("Score: " + GetScore());
+                return;
+            }
+            else print("waiting for all notes to die...");
 
-            scoreCalculated = true;
-            Debug.Log("Score: ");
-            Debug.Log(GetScore());
-            return;
         }
 
 
@@ -176,7 +180,8 @@ public abstract class SongHandler : MonoBehaviour
 
     private int GetScore()
     {
-        return triggerLine.Score;
+        var triggerLineScore = triggerLine.gameObject.GetComponent<TriggerLine>();
+        return triggerLineScore.GetScore();
     }
 
 }

@@ -90,6 +90,10 @@ public class TriggerLine : MonoBehaviour
         Score = 0;
     }
 
+    public int GetScore()
+    {
+        return Score;
+    }
     private void FadeColour(Color TargetColour)
     {
         if (coroutine != null)

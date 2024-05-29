@@ -227,6 +227,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mic Minigame
       objectReference: {fileID: 0}
+    - target: {fileID: 1730359280640557517, guid: d05769f1996c7034c80208c0d4de50dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1948905169046820681, guid: d05769f1996c7034c80208c0d4de50dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8
@@ -267,11 +271,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7940195645787383356, guid: d05769f1996c7034c80208c0d4de50dc, type: 3}
+      propertyPath: triggerLine
+      value: 
+      objectReference: {fileID: 3279971457209162479}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d05769f1996c7034c80208c0d4de50dc, type: 3}
+--- !u!1 &3279971457209162479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4420345604483978837, guid: d05769f1996c7034c80208c0d4de50dc, type: 3}
+  m_PrefabInstance: {fileID: 3279971457209162478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5692863209569398814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,11 +337,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3626414674023623383, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
+      propertyPath: triggerLine
+      value: 
+      objectReference: {fileID: 5692863209569398815}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
+--- !u!1 &5692863209569398815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8731814291662432475, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
+  m_PrefabInstance: {fileID: 5692863209569398814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7445728845693481144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,6 +362,10 @@ PrefabInstance:
     - target: {fileID: 57090775546756341, guid: 8d8fdfd9fcac46747aa11c6bb351cf2b, type: 3}
       propertyPath: m_Name
       value: Drum Minigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 57090775546756341, guid: 8d8fdfd9fcac46747aa11c6bb351cf2b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5164095391309877400, guid: 8d8fdfd9fcac46747aa11c6bb351cf2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -381,11 +407,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5461577357931951962, guid: 8d8fdfd9fcac46747aa11c6bb351cf2b, type: 3}
+      propertyPath: triggerLine
+      value: 
+      objectReference: {fileID: 7445728845693481145}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d8fdfd9fcac46747aa11c6bb351cf2b, type: 3}
+--- !u!1 &7445728845693481145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3514124805366597782, guid: 8d8fdfd9fcac46747aa11c6bb351cf2b, type: 3}
+  m_PrefabInstance: {fileID: 7445728845693481144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
