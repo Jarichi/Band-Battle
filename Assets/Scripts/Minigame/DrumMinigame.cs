@@ -4,13 +4,4 @@ using UnityEngine;
 
 public class DrumMinigame : Minigame
 {
-    //hardcoded song. We might need to write a script that can convert a midi file to some sort of quantised beat-accurate representation of a song
-    protected override string GetCombatAnimationName()
-    {
-        return "ObtainDrums";
-    }
-
-
-
-
 }

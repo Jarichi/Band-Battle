@@ -173,8 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 8701997420161790057, guid: 2201728da8770764dbd071d4165e861c, type: 3}
-  minigame: {fileID: 0}
-  emptyStand: {fileID: 1466891956, guid: 4afa8a4bb7359f54e9a60565eca1c05a, type: 3}
+  minigame: {fileID: 371765481466115574, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
+  emptyStand: {fileID: 21300000, guid: b17ce7b6cf5af8241820cd784f98ce9d, type: 3}
 --- !u!61 &936258316893296017
 BoxCollider2D:
   m_ObjectHideFlags: 0
