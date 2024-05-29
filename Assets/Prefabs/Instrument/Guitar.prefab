@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 430277703914073290}
   - component: {fileID: 4059573454972567225}
   - component: {fileID: 4268432111713032242}
-  - component: {fileID: 7105645984217230066}
   - component: {fileID: 8815854059163321866}
   - component: {fileID: 3124683911860863271}
   - component: {fileID: 8555799913352085594}
@@ -102,20 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 754089080720056000, guid: e70b2ed97a9746f4cbb08a5741be57b6, type: 3}
+  minigame: {fileID: 0}
   emptyStand: {fileID: -1152181345, guid: cc909d425d317834fa720ed5e68daf37, type: 3}
---- !u!114 &7105645984217230066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6315721644236765741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db91ff8bdef49804282187011451eb74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startupAnimationLength: 1.2
 --- !u!50 &8815854059163321866
 Rigidbody2D:
   serializedVersion: 4

@@ -7,6 +7,9 @@ using UnityEngine.UIElements;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public string combatAnimationName;
+    [Range(0f, 3f)]
+    public float combatAnimationTime;
     protected Animator animator;
     protected new Collider2D collider;
     public AudioClip[] sfx;

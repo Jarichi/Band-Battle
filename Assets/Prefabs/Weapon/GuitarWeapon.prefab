@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c789b9a29a12104eab324df74868f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatAnimationName: ObtainGuitar
+  combatAnimationTime: 1.2
   sfx:
   - {fileID: 8300000, guid: e2c8f3917e858394e8a6714f2bde46fe, type: 3}
   - {fileID: 8300000, guid: d4d9454db833015478c310d4d440b133, type: 3}

@@ -17,18 +17,13 @@ public abstract class Instrument : MonoBehaviour
     {
         inRange = true;
         playerTransform = col.GetComponent<Transform>();
-        if (!col.GetComponent<PlayerCombat>().inCombat)
-        {
-            GameObject.FindGameObjectWithTag("temp").GetComponent<Canvas>().enabled = true;
-        }
     }
     void OnTriggerExit2D(Collider2D col)
     {
         inRange = false;
-        GameObject.FindGameObjectWithTag("temp").GetComponent<Canvas>().enabled = false;
     }
 
-    public void Interact(GameObject player)
+    public void StartMinigame(GameObject player)
     {
         OnPlaying();
         if (player.GetComponent<PlayerCombat>().inCombat)
