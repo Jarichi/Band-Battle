@@ -9,9 +9,6 @@ using static UnityEditor.PlayerSettings;
 
 public class CameraControls : MonoBehaviour
 {
-    [InspectorButton("PrintPlayers")]
-    public bool printPlayers;
-
     [SerializeField]
     private Vector3 offset;
     [SerializeField]

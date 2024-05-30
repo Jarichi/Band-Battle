@@ -60,15 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "(Debug) Restart",
-                    "type": "Button",
-                    "id": "b329e9b4-0644-45e0-bb16-8cffd52bd49b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Play Note 1",
                     "type": "Button",
                     "id": "00c59a13-b506-4d42-aedb-7fec2e901c9b",
@@ -411,28 +402,6 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Engage Combat",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e8512a19-b926-4d7e-9e73-52ed877ce9bf",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "(Debug) Restart",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "acb30b6d-f005-4686-9f5d-a842d55c5600",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "(Debug) Restart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

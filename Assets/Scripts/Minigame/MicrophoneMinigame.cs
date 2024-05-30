@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class MicrophoneMinigame : Minigame
 {
-    protected override string GetCombatAnimationName()
-    {
-        return "ObtainMicrophone";
-    }
 }
