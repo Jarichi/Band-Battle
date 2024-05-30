@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class DrumWeapon : Weapon
 {
-
+    public float attackTime;
+    private void Start()
+    { 
+        base.Start();
+        var parent = transform.parent;
+        parent.GetComponent<SpriteRenderer>().enabled = false;
+    }
 
     protected override void PositionWeaponOnAttack(AttackDirection direction)
     {
+        StartCoroutine(ToggleMovement());
         AnimationSettings(direction);
         AttackSettings(direction);
 
@@ -64,6 +72,16 @@ public class DrumWeapon : Weapon
         }
         collider.offset = hitboxPosition;
     }
+
+    private IEnumerator ToggleMovement()
+    {
+        var movement = GetComponentInParent<PlayerMovement>();
+        movement.Disable();
+        yield return new WaitForSeconds(attackTime);
+        movement.Enable();
+
+    }
+
 
 }
 

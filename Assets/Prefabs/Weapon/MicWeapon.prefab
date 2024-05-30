@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatAnimationName: ObtainMicrophone
-  combatAnimationTime: 0
+  combatAnimationTime: 0.8
   sfx:
   - {fileID: 8300000, guid: de965c9b95736b54b92c2c1d489fc452, type: 3}
   - {fileID: 8300000, guid: 76a2d8c7af4ab50498aebb7a59169d39, type: 3}

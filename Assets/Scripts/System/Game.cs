@@ -26,6 +26,7 @@ public class Game : MonoBehaviour
     private AudioSource audioSource;
     public static Game Instance;
     private PlayerInputManager inputManager;
+    public int minPlayerCount;
 
     void Start()
     {
@@ -43,14 +44,14 @@ public class Game : MonoBehaviour
         switch (currentPhase)
         {
             case Phase.AwaitInput:
-                if (playerCount > 1)
+                if (playerCount > minPlayerCount)
                 {
                     ShowSongs();
                     inputManager.DisableJoining();
                 }
                 break;
             case Phase.Play:
-                if (playerCount == 1) {
+                if (playerCount == minPlayerCount) {
                     End();
                 }
                 break;

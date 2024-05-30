@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72234ebce8f64148abaf02eece7576d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatAnimationName: ObtainDrums
+  combatAnimationTime: 1
   sfx:
   - {fileID: 8300000, guid: 9049f703859cdc64ca5d01d7bfbe5a4f, type: 3}
   - {fileID: 8300000, guid: 9c2f09e94f06dc6429de9683d467a776, type: 3}
@@ -137,6 +139,7 @@ MonoBehaviour:
   startupTime: 0.28
   activeHitboxTime: 0.46
   allowVerticalAttack: 1
+  attackTime: 1
 --- !u!61 &5628412674376755286
 BoxCollider2D:
   m_ObjectHideFlags: 0

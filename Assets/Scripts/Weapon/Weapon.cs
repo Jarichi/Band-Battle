@@ -30,7 +30,7 @@ public abstract class Weapon : MonoBehaviour
 
     [SerializeField]
     private bool allowVerticalAttack;
-    void Start()
+    protected void Start()
     {
         animator = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
