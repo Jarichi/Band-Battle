@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public bool isMoving = false;
     public Rigidbody2D rb; 
+    public float moveX, moveY;
 
     public Animator animator;
     private Vector2 moveDirection; 
@@ -36,8 +37,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!canMove) return;
 
-        float moveX = input.HorizontalMovement;
-        float moveY = input.VerticalMovement;
+        moveX = input.HorizontalMovement;
+        moveY = input.VerticalMovement;
 
         if (moveX == 0f && moveY == 0f)
         {

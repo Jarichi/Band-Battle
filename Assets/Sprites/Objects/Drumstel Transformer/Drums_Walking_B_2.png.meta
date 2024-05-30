@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 62ca486fec7ca4b4cb083734d5f163e4
+guid: a9c5bc3aec0ea6f4d88ac0a39967f75c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,16 +93,29 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DrumTransform (1)_0
+      name: Drums_Walking_B_2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 70
+        width: 100
         height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -111,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 556107ddb91c954479e190e7a6a3e35d
-      internalID: -1761516101
+      spriteID: c18a698fb0e49a647bf0b1d26bcae1dd
+      internalID: -2021281494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DrumTransform (1)_1
+      name: Drums_Walking_B_2_1
       rect:
         serializedVersion: 2
-        x: 70
+        x: 100
         y: 0
-        width: 70
+        width: 100
         height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -132,19 +145,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 337e8f3e3192cb443b79ec4bdf07a3e4
-      internalID: 964563878
+      spriteID: 0e57d1759a063b941b15b8afdb59ba84
+      internalID: -697510519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DrumTransform (1)_2
+      name: Drums_Walking_B_2_2
       rect:
         serializedVersion: 2
-        x: 140
+        x: 200
         y: 0
-        width: 70
+        width: 100
         height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -153,19 +166,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9c5661a911acc8428d7229febf08127
-      internalID: -126343902
+      spriteID: d81ea23ea638a61469ef4bbe07d3d97b
+      internalID: -1248977715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DrumTransform (1)_3
+      name: Drums_Walking_B_2_3
       rect:
         serializedVersion: 2
-        x: 210
+        x: 300
         y: 0
-        width: 70
+        width: 100
         height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -174,19 +187,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c96dfdf358b3334da2d5d5391f73e15
-      internalID: 1134576728
+      spriteID: 2be4a0b0c7005654c8329ab5987e5882
+      internalID: 1500735555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DrumTransform (1)_4
+      name: Drums_Walking_B_2_4
       rect:
         serializedVersion: 2
-        x: 280
+        x: 400
         y: 0
-        width: 70
+        width: 100
         height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -195,19 +208,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb42e6196c7a62a44967415e77cb418d
-      internalID: 1406936278
+      spriteID: 092f6d602bb948a42ab38948cc153cec
+      internalID: -1187097548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DrumTransform (1)_5
+      name: Drums_Walking_B_2_5
       rect:
         serializedVersion: 2
-        x: 350
+        x: 500
         y: 0
-        width: 70
+        width: 100
         height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -216,19 +229,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb77432f21e19ba43ab389b67d46b7b1
-      internalID: 1077777377
+      spriteID: a5531d2202214344b97246b623bd862b
+      internalID: -753200401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DrumTransform (1)_6
+      name: Drums_Walking_B_2_6
       rect:
         serializedVersion: 2
-        x: 420
+        x: 600
         y: 0
-        width: 70
+        width: 100
         height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -237,19 +250,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d1612a3ec978884fb7f38e11c161fcb
-      internalID: 1523444521
+      spriteID: e93ea236ed72ac44795b81afe156f115
+      internalID: 939671869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DrumTransform (1)_7
+      name: Drums_Walking_B_2_7
       rect:
         serializedVersion: 2
-        x: 490
+        x: 700
         y: 0
-        width: 70
+        width: 100
         height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -258,50 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3975c358b9e3bbd468d15cb21a369a74
-      internalID: 515286547
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DrumTransform (1)_8
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 0
-        width: 70
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7065961e6606928449a72383d865e7e4
-      internalID: -1096568028
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DrumTransform (1)_9
-      rect:
-        serializedVersion: 2
-        x: 630
-        y: 0
-        width: 70
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c6d903e7bb44734f89cbf5ea750addb
-      internalID: -1514182685
+      spriteID: f08ef3b0556ffac4690e34c6049df2af
+      internalID: -1171168088
       vertices: []
       indices: 
       edges: []
@@ -317,16 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DrumTransform (1)_0: -1761516101
-      DrumTransform (1)_1: 964563878
-      DrumTransform (1)_2: -126343902
-      DrumTransform (1)_3: 1134576728
-      DrumTransform (1)_4: 1406936278
-      DrumTransform (1)_5: 1077777377
-      DrumTransform (1)_6: 1523444521
-      DrumTransform (1)_7: 515286547
-      DrumTransform (1)_8: -1096568028
-      DrumTransform (1)_9: -1514182685
+      Drums_Walking_B_2_0: -2021281494
+      Drums_Walking_B_2_1: -697510519
+      Drums_Walking_B_2_2: -1248977715
+      Drums_Walking_B_2_3: 1500735555
+      Drums_Walking_B_2_4: -1187097548
+      Drums_Walking_B_2_5: -753200401
+      Drums_Walking_B_2_6: 939671869
+      Drums_Walking_B_2_7: -1171168088
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
