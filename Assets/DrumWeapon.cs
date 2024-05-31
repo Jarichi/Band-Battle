@@ -55,7 +55,7 @@ public class DrumWeapon : Weapon
         switch (direction)
         {
             case AttackDirection.North:
-                hitboxPosition = new Vector2(0, .5f);
+                hitboxPosition = new Vector2(0, 1.2f);
                 break;
 
             case AttackDirection.East:

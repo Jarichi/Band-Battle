@@ -36,4 +36,8 @@ public abstract class Instrument : MonoBehaviour
         
         minigameScript.StartMinigame(player, weapon);
     }
+
+
+    public abstract void DeleteInstrument();
+
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a58951096ed521a4bae5f80dea58674d
+guid: 64b903d8e9bd8c34ba49bd488c795ffb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,337 +110,358 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Drum_Smash_R_0
+      name: Drum_Smash_B_3-sheet - alternative_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a020452b8845894fb6b37f20af40ec0
-      internalID: -2017914073
+      spriteID: 5fa3b71b94c67094b9b3beef00dec9b0
+      internalID: -1422989721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_1
+      name: Drum_Smash_B_3-sheet - alternative_1
       rect:
         serializedVersion: 2
         x: 100
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdc34c318a86f994eb2c3024749ce4d1
-      internalID: -903446587
+      spriteID: 7169c21063ae98849938cc856fc2a3dd
+      internalID: -330390378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_2
+      name: Drum_Smash_B_3-sheet - alternative_2
       rect:
         serializedVersion: 2
         x: 200
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb03d3d67a65dbc45871ee83e4788c63
-      internalID: 1440656151
+      spriteID: c1d94cc7d6b1a724fa4c0bc1d41715fa
+      internalID: -964684297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_3
+      name: Drum_Smash_B_3-sheet - alternative_3
       rect:
         serializedVersion: 2
         x: 300
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c77acc3e788b91449e20881339e35fe
-      internalID: -606285337
+      spriteID: 0433a65cf44eb1542b68e7e46d3c981a
+      internalID: 2043615083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_4
+      name: Drum_Smash_B_3-sheet - alternative_4
       rect:
         serializedVersion: 2
         x: 400
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f53d9270eb2ac2742b6de188044a27d0
-      internalID: -914330561
+      spriteID: d5d793e1201b929498df7ab4878c7c60
+      internalID: -460416250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_5
+      name: Drum_Smash_B_3-sheet - alternative_5
       rect:
         serializedVersion: 2
         x: 500
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1aeb00a972475e344902a18f0251f8eb
-      internalID: -530998082
+      spriteID: 5520f886138d76d4891dc9e50ef24827
+      internalID: 1234765432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_6
+      name: Drum_Smash_B_3-sheet - alternative_6
       rect:
         serializedVersion: 2
         x: 600
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63138e6e93b86894d82d2b23c75dc356
-      internalID: 581193890
+      spriteID: 531b8b2696670b748b3acc294a95d30f
+      internalID: -576403868
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_7
+      name: Drum_Smash_B_3-sheet - alternative_7
       rect:
         serializedVersion: 2
         x: 700
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c576bb16d7ed0a41997aef26a455f73
-      internalID: 1853827699
+      spriteID: 350897b6ee179f5418c0ed8d5d12e6fe
+      internalID: 2142222945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_8
+      name: Drum_Smash_B_3-sheet - alternative_8
       rect:
         serializedVersion: 2
         x: 800
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b401bc82c6a309b4fb74385c642b351a
-      internalID: 1251913182
+      spriteID: 6ed8a09fc5da9264ca2cf784013cc76c
+      internalID: 1001977534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_9
+      name: Drum_Smash_B_3-sheet - alternative_9
       rect:
         serializedVersion: 2
         x: 900
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c416b34065abfeb4cb8bd624ed1d4e21
-      internalID: -516393608
+      spriteID: 5ad2997d6032a884a81e7984ea951762
+      internalID: 1563160531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_10
+      name: Drum_Smash_B_3-sheet - alternative_10
       rect:
         serializedVersion: 2
         x: 1000
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dccc449c0ce06af4987152ab8702f18e
-      internalID: -1347607532
+      spriteID: 23f66560119722843ae401d4ff3d97d6
+      internalID: -1474206157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_11
+      name: Drum_Smash_B_3-sheet - alternative_11
       rect:
         serializedVersion: 2
         x: 1100
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe3354053cb170e4487afc7e7cec3c4d
-      internalID: 982413011
+      spriteID: f42077ba600d2164aada9eb409fa1eec
+      internalID: 591831295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_12
+      name: Drum_Smash_B_3-sheet - alternative_12
       rect:
         serializedVersion: 2
         x: 1200
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afdf12c49ab7a4540aab237b33cd9da3
-      internalID: 379000512
+      spriteID: 86928e730e0640d4ea5b75470a05fb09
+      internalID: -821955250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_13
+      name: Drum_Smash_B_3-sheet - alternative_13
       rect:
         serializedVersion: 2
         x: 1300
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b9e5720832809440912c48363a5f579
-      internalID: 1085043691
+      spriteID: f2c7e3b3ed2507d41a49c268759c0ecf
+      internalID: 641279887
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_14
+      name: Drum_Smash_B_3-sheet - alternative_14
       rect:
         serializedVersion: 2
         x: 1400
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 914ad433fa46efc45bac816cbe5d7241
-      internalID: 117405824
+      spriteID: e32807d135501af4e959dc49a723c369
+      internalID: 409450969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drum_Smash_R_15
+      name: Drum_Smash_B_3-sheet - alternative_15
       rect:
         serializedVersion: 2
         x: 1500
         y: 0
         width: 100
-        height: 45
+        height: 46
       alignment: 9
-      pivot: {x: 0.45, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eed02158e284b9b45bf5813544f78a30
-      internalID: 1766163277
+      spriteID: b6d2f508420f0274ebed846038f50dbd
+      internalID: 1581050558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drum_Smash_B_3-sheet - alternative_16
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 100
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7155318c379bc4a42b9cc45dec33306c
+      internalID: -1435047156
       vertices: []
       indices: 
       edges: []
@@ -456,22 +477,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Drum_Smash_R_0: -2017914073
-      Drum_Smash_R_1: -903446587
-      Drum_Smash_R_10: -1347607532
-      Drum_Smash_R_11: 982413011
-      Drum_Smash_R_12: 379000512
-      Drum_Smash_R_13: 1085043691
-      Drum_Smash_R_14: 117405824
-      Drum_Smash_R_15: 1766163277
-      Drum_Smash_R_2: 1440656151
-      Drum_Smash_R_3: -606285337
-      Drum_Smash_R_4: -914330561
-      Drum_Smash_R_5: -530998082
-      Drum_Smash_R_6: 581193890
-      Drum_Smash_R_7: 1853827699
-      Drum_Smash_R_8: 1251913182
-      Drum_Smash_R_9: -516393608
+      Drum_Smash_B_3-sheet - alternative_0: -1422989721
+      Drum_Smash_B_3-sheet - alternative_1: -330390378
+      Drum_Smash_B_3-sheet - alternative_10: -1474206157
+      Drum_Smash_B_3-sheet - alternative_11: 591831295
+      Drum_Smash_B_3-sheet - alternative_12: -821955250
+      Drum_Smash_B_3-sheet - alternative_13: 641279887
+      Drum_Smash_B_3-sheet - alternative_14: 409450969
+      Drum_Smash_B_3-sheet - alternative_15: 1581050558
+      Drum_Smash_B_3-sheet - alternative_16: -1435047156
+      Drum_Smash_B_3-sheet - alternative_2: -964684297
+      Drum_Smash_B_3-sheet - alternative_3: 2043615083
+      Drum_Smash_B_3-sheet - alternative_4: -460416250
+      Drum_Smash_B_3-sheet - alternative_5: 1234765432
+      Drum_Smash_B_3-sheet - alternative_6: -576403868
+      Drum_Smash_B_3-sheet - alternative_7: 2142222945
+      Drum_Smash_B_3-sheet - alternative_8: 1001977534
+      Drum_Smash_B_3-sheet - alternative_9: 1563160531
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

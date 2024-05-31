@@ -125,21 +125,14 @@ MonoBehaviour:
   combatAnimationName: ObtainDrums
   combatAnimationTime: 1
   sfx:
-  - {fileID: 8300000, guid: 9049f703859cdc64ca5d01d7bfbe5a4f, type: 3}
-  - {fileID: 8300000, guid: 9c2f09e94f06dc6429de9683d467a776, type: 3}
-  - {fileID: 8300000, guid: 2d834010531972c4f950910fdc997372, type: 3}
-  - {fileID: 8300000, guid: 013e53829236d1d429ec96fb79b37d9a, type: 3}
-  - {fileID: 8300000, guid: 7f83e14631516984ba338f496c19e539, type: 3}
-  - {fileID: 8300000, guid: 184b86e084e012248a329c46412d9348, type: 3}
   - {fileID: 8300000, guid: 9852ac13bdd4e884b857d9119a1e7c6c, type: 3}
-  - {fileID: 8300000, guid: da6c78853588d3741bf58c4f5c0412ab, type: 3}
   - {fileID: 8300000, guid: 98d0e1206bfb71741b036cd62f2b3691, type: 3}
-  PitchmodPercentage: 0
-  cooldown: 1.2
+  PitchmodPercentage: 0.2
+  cooldown: 0.59
   startupTime: 0.28
   activeHitboxTime: 0.46
   allowVerticalAttack: 1
-  attackTime: 1
+  attackTime: 1.1
 --- !u!61 &5628412674376755286
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,7 +140,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6047465602194093153}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
