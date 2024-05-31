@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 
 public class Minigame : SongHandler
 {
-
     private double[] song1rhythm = { 1, 2, 3, 4, 4.5f, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15 };
 
     //TODO: replace with beatmap file

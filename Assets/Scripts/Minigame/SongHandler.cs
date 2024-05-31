@@ -141,8 +141,8 @@ public abstract class SongHandler : MonoBehaviour
 
             //set spawn position offset relative to the songHandler object, and instantiate note object.
             spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
+            note.gameObject.GetComponent<NoteController>().SetDirection(inputDirection[index]);
             Instantiate(note, spawnPos, Quaternion.identity, this.transform);
-
             index++;
 
         }
@@ -154,7 +154,6 @@ public abstract class SongHandler : MonoBehaviour
                 Debug.Log("Score: " + GetScore());
                 return;
             }
-            else print("waiting for all notes to die..."); //debugging, may not be nessecary;
 
         }
 
@@ -168,7 +167,7 @@ public abstract class SongHandler : MonoBehaviour
         inputDirection = p_inputDirection;
     }
 
-    private int GetScore()
+    private double GetScore()
     {
         var triggerLineScore = GetComponentInChildren<TriggerLine>();
         return triggerLineScore.GetScore();

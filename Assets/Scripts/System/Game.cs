@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,14 +24,15 @@ public class Game : MonoBehaviour
     private Song song;
     [SerializeField]
     private Phase currentPhase;
-    private AudioSource audioSource;
+    private AudioManager audio;
     public static Game Instance;
     private PlayerInputManager inputManager;
     public int minPlayerCount;
 
+
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audio = GetComponent<AudioManager>();
         currentPhase = Phase.AwaitInput;
         songs.ToList().ForEach(s => s.DeserializeFile());
         Instance = GameObject.FindAnyObjectByType<Game>();
@@ -58,29 +60,39 @@ public class Game : MonoBehaviour
         }
     }
 
+    public void DisableAudioChannel(string parameterName)
+    {
+        audio.DisableChannel(parameterName);
+    }
+
+    public void EnableAudioChannel(string parameterName)
+    {
+        audio.EnableChannel(parameterName);
+    }
+
     void ShowSongs()
     {
         currentPhase = Phase.SelectSong;
         song = songs[0];
         currentPhase = Phase.ChooseInstrument;
+        audio.Initialize(song.fmodEvent);
     }
 
     public void StartPlayPhase()
     {
         currentPhase = Phase.Play;
-        audioSource.clip = song.audio;
         foreach (var player in PlayerInputController.GetPlayers())
         {
             var interaction = player.GetComponent<PlayerWorldInteraction>();
             interaction.ChosenInstrument.StartMinigame(interaction.gameObject);
         }
-        audioSource.Play();
+        audio.Play();
     }
 
     public void End()
     {
         currentPhase = Phase.End;
-        audioSource.Stop();
+        audio.Stop();
         PlayerInputController.GetPlayers().ForEach(obj =>
         {
             obj.GetComponent<PlayerMovement>().Disable();
@@ -98,7 +110,7 @@ public class Song
 {
     [SerializeField]
     private string beatmapFilePath;
-    public AudioClip audio;
+    public EventReference fmodEvent;
     public Beatmap beatmap;
     internal void DeserializeFile()
     {

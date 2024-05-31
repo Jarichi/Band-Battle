@@ -13,6 +13,8 @@ public abstract class Instrument : MonoBehaviour
     protected bool inRange = false;
     protected abstract void OnPlaying();
 
+    public string fmodParameterName;
+
     void OnTriggerEnter2D(Collider2D col)
     {
         inRange = true;
