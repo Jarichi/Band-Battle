@@ -1382,8 +1382,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1350311545}
   - component: {fileID: 1350311544}
+  - component: {fileID: 1350311546}
   m_Layer: 0
-  m_Name: TestAudio
+  m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1500,6 +1501,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1350311546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350311542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dea8614a338c2d4f82cab7cafea46e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  song:
+    Guid:
+      Data1: -2104327410
+      Data2: 1326120696
+      Data3: 1914781588
+      Data4: 675069447
+    Path: event:/song1
+  instruments:
+  - enabled: 0
+    parameterName: Mute Bass
+  - enabled: 0
+    parameterName: Mute Keys
 --- !u!1 &1401853756
 GameObject:
   m_ObjectHideFlags: 0
