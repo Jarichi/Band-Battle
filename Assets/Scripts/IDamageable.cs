@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    public void OnDamage(PlayerCombat attacker);
+    public void OnDamage(int damage, PlayerCombat attacker);
     public void Die();
     
 }

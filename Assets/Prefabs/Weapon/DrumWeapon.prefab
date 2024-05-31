@@ -127,6 +127,7 @@ MonoBehaviour:
   sfx:
   - {fileID: 8300000, guid: 9852ac13bdd4e884b857d9119a1e7c6c, type: 3}
   - {fileID: 8300000, guid: 98d0e1206bfb71741b036cd62f2b3691, type: 3}
+  damage: 3
   PitchmodPercentage: 0.2
   cooldown: 0.59
   startupTime: 0.28

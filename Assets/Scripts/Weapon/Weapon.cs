@@ -13,6 +13,8 @@ public abstract class Weapon : MonoBehaviour
     protected Animator animator;
     protected new Collider2D collider;
     public AudioClip[] sfx;
+    [SerializeField]
+    public int damage;
     private AudioSource sfxSource;
     private PlayerCombat wielder;
 
@@ -80,7 +82,7 @@ public abstract class Weapon : MonoBehaviour
         bool isDamagable = collision.gameObject.TryGetComponent(out IDamageable target);
         if (isDamagable)
         {
-            target.OnDamage(wielder);
+            target.OnDamage(damage, wielder);
         }
     }
 

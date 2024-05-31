@@ -42,7 +42,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     void Update()
     {
-
         if (input.HorizontalAttack < 0)
         {
             Attack(AttackDirection.West);
@@ -111,7 +110,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         onCooldown = false;
     }
 
-    public void OnDamage(PlayerCombat attacker)
+    public void OnDamage(int damage, PlayerCombat attacker)
     {
         if (invincible)
         {
@@ -125,13 +124,13 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         }
 
         invincible = true;
-
         var forcePower = 30f;
         var forceDirection = transform.position - attacker.transform.position;
         rigidbody.AddForce(forceDirection * forcePower, ForceMode2D.Force);
-        Hitpoints--;
+        Hitpoints -= damage;
         screenShake.Shake();
         SpawnParticles();
+        print(Hitpoints);
         if (Hitpoints <= 0)
         {
             Die();

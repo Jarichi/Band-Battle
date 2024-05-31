@@ -28,10 +28,10 @@ public class DummyCombat : MonoBehaviour, IDamageable
         }
     }
 
-    public void OnDamage(PlayerCombat attacker)
+    public void OnDamage(int damage, PlayerCombat attacker)
     {
         animator.SetTrigger("Hit");
-        Hitpoints--;
+        Hitpoints =- damage;
         screenShake.Shake();
         SpawnParticles();
     }
