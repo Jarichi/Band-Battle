@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 430277703914073290}
   - component: {fileID: 4059573454972567225}
   - component: {fileID: 4268432111713032242}
-  - component: {fileID: 7105645984217230066}
   - component: {fileID: 8815854059163321866}
   - component: {fileID: 3124683911860863271}
   - component: {fileID: 8555799913352085594}
+  - component: {fileID: 400056310050658921}
   m_Layer: 0
   m_Name: Bass Guitar
   m_TagString: Untagged
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 1041370057
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 784305695, guid: cc909d425d317834fa720ed5e68daf37, type: 3}
+  m_Sprite: {fileID: 1388462205, guid: 7476a9d79386cf14a87e13c607d43d08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,32 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9241e00905be44e985489d37e4bb9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 754089080720056000, guid: e70b2ed97a9746f4cbb08a5741be57b6, type: 3}
+  weapon: {fileID: 754089080720056000, guid: 1a707af019e69324f938fa5f1a982c69, type: 3}
   minigame: {fileID: 371765481466115574, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
-  emptyStand: {fileID: -1152181345, guid: cc909d425d317834fa720ed5e68daf37, type: 3}
---- !u!114 &7105645984217230066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6315721644236765741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db91ff8bdef49804282187011451eb74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  songPosInSeconds: 0
-  songPosInBeats: 0
-  bpm: 0
-  previewBeats: 0
-  note: {fileID: 0}
-  noteColours: []
-  transistionAnimationTime: 0
-  path: 
-  beatmap:
-    BPM: 0
-    Channels: []
+  fmodParameterName: Mute Bass
+  emptyStand: {fileID: 1335315568, guid: 7476a9d79386cf14a87e13c607d43d08, type: 3}
 --- !u!50 &8815854059163321866
 Rigidbody2D:
   serializedVersion: 4
@@ -244,3 +222,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
+--- !u!95 &400056310050658921
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315721644236765741}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7cf8f707cdae92049bbfb64daea670d0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
