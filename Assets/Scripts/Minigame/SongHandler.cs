@@ -30,7 +30,7 @@ public abstract class SongHandler : MonoBehaviour
     private double songStartTime;
     private AudioSource musicSource;
 
-    public double bpm;
+    protected double bpm;
     private const double FRAMERATE = 60f;
     private const int BAR = 4;
     private double[] rhythm;

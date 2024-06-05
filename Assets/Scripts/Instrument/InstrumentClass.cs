@@ -9,7 +9,8 @@ public abstract class Instrument : MonoBehaviour
     public GameObject minigame;
     
     private Transform playerTransform;
-    
+    [SerializeField] private int beatmapChannel;
+
     protected bool inRange = false;
     protected abstract void OnPlaying();
 
@@ -25,7 +26,7 @@ public abstract class Instrument : MonoBehaviour
         inRange = false;
     }
 
-    public void StartMinigame(GameObject player)
+    public void StartMinigame(GameObject player, Beatmap beatmap)
     {
         OnPlaying();
         if (player.GetComponent<PlayerCombat>().inCombat)
@@ -35,8 +36,8 @@ public abstract class Instrument : MonoBehaviour
 
         GameObject minigameObj = Instantiate(minigame, player.transform);
         var minigameScript = minigameObj.GetComponent<Minigame>();
-        
-        minigameScript.StartMinigame(player, weapon);
+
+        minigameScript.StartMinigame(player, weapon, beatmap, beatmapChannel);
     }
 
 

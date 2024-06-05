@@ -8,34 +8,6 @@ using UnityEngine.InputSystem;
 
 public class Minigame : SongHandler
 {
-    private double[] song1rhythm = { 1, 2, 3, 4, 4.5f, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15 };
-
-    //TODO: replace with beatmap file
-
-    private NoteDirection[] song1direction =
-    {
-            NoteDirection.Up,
-            NoteDirection.Down,
-            NoteDirection.Left,
-            NoteDirection.Right,
-            NoteDirection.Up,
-            NoteDirection.Down,
-            NoteDirection.Right,
-            NoteDirection.Left,
-            NoteDirection.Right,
-            NoteDirection.Up,
-            NoteDirection.Down,
-            NoteDirection.Right,
-            NoteDirection.Up,
-            NoteDirection.Right,
-            NoteDirection.Down,
-            NoteDirection.Up
-            //NoteDirection.Left
-
-    };
-
-
-
     private bool active;
     private PlayerInputController input;
     private PlayerMovement movement;
@@ -43,14 +15,11 @@ public class Minigame : SongHandler
     private GameObject weapon;
     [SerializeField] private string path;
 
-    [SerializeField]
-    protected Beatmap beatmap;
-
     private void Start()
     {
         input.EngageCombatPressed += TryEngageCombat;
 
-        SetNoteSequence(song1rhythm, song1direction);
+        
         InitRhythmGame();
     }
 
@@ -71,8 +40,14 @@ public class Minigame : SongHandler
         }
     }
 
-    public void StartMinigame(GameObject player, GameObject weapon)
+    public void StartMinigame(GameObject player, GameObject weapon, Beatmap beatmap, int channelNumber)
     {
+        bpm = beatmap.BPM;
+        Channel channel = beatmap.Channels.Find(ch => ch.Number == channelNumber);
+        var beats = channel.Positions.ConvertAll(position => position.Beat);
+        var directions = channel.Positions.ConvertAll(position => (NoteDirection)position.Direction);
+        SetNoteSequence(beats.ToArray(), directions.ToArray());
+
         input = player.GetComponent<PlayerInputController>();
         movement = player.GetComponent<PlayerMovement>();
         combat = player.GetComponent<PlayerCombat>();
@@ -81,4 +56,5 @@ public class Minigame : SongHandler
         active = true;
         movement.Disable();
     }
+
 }

@@ -418,11 +418,33 @@
                 },
                 {
                     "name": "",
+                    "id": "08a8bcd0-4aea-42b5-a558-a35d2e7993f6",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Play Note 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2e2456f3-dd22-4cc9-9754-5e3974058eec",
                     "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Play Note 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6a13c2b-37b2-4343-9b17-6796ca71930f",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
                     "action": "Play Note 2",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -440,11 +462,33 @@
                 },
                 {
                     "name": "",
+                    "id": "86cd2ec6-a800-4f4a-a635-b16f87555db4",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Play Note 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "25a328c3-fd33-45b7-99f5-e1e5cf67afbd",
                     "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Play Note 4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c315afc8-fda4-46ea-9cbf-7a035994a103",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
                     "action": "Play Note 4",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -1541,10 +1541,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3651595763633522196, guid: ab9d030c3cf8aba43ac5bfa1dd0ae424, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4012336692375844494, guid: ab9d030c3cf8aba43ac5bfa1dd0ae424, type: 3}
       propertyPath: m_Name
       value: Microphone
@@ -1587,14 +1583,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songs:
-  - beatmapFilePath: Assets/Scripts/Minigame/Beatmap/test.bbm
+  - beatmapFilePath: Assets/Scripts/Minigame/Beatmap/hardrock.bbm
     fmodEvent:
       Guid:
-        Data1: -2104327410
-        Data2: 1326120696
-        Data3: 1914781588
-        Data4: 675069447
-      Path: event:/song1
+        Data1: -1101719447
+        Data2: 1219289592
+        Data3: 1621799082
+        Data4: -1273831761
+      Path: event:/song1_hardrock
     beatmap:
       BPM: 0
       Channels: []
@@ -1814,7 +1810,7 @@ MonoBehaviour:
   - muted: 0
     parameterName: Mute Guitar
   - muted: 0
-    parameterName: Mute Vocal
+    parameterName: Mute Voice
   - muted: 0
     parameterName: Mute Drums
 --- !u!1 &1557139943

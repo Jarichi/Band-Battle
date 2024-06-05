@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 9191977756282868989}
   - component: {fileID: 8192027646678916385}
   - component: {fileID: 936258316893296017}
-  - component: {fileID: 3651595763633522196}
   m_Layer: 0
   m_Name: Microphone
   m_TagString: Untagged
@@ -175,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 8701997420161790057, guid: 2201728da8770764dbd071d4165e861c, type: 3}
   minigame: {fileID: 371765481466115574, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
+  beatmapChannel: 2
   fmodParameterName: Mute Voice
   emptyStand: {fileID: 21300000, guid: b17ce7b6cf5af8241820cd784f98ce9d, type: 3}
 --- !u!61 &936258316893296017
@@ -222,25 +222,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2}
   m_EdgeRadius: 0
---- !u!114 &3651595763633522196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4012336692375844494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed68d4ec609a5740a459a7f4478d12e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  songPosInSeconds: 0
-  songPosInBeats: 0
-  bpm: 0
-  previewBeats: 0
-  note: {fileID: 0}
-  noteColours: []
-  path: 
-  beatmap:
-    BPM: 0
-    Channels: []

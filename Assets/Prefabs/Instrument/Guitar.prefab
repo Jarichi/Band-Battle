@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 754089080720056000, guid: e70b2ed97a9746f4cbb08a5741be57b6, type: 3}
   minigame: {fileID: 371765481466115574, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
+  beatmapChannel: 1
   fmodParameterName: Mute Guitar
   emptyStand: {fileID: -1152181345, guid: cc909d425d317834fa720ed5e68daf37, type: 3}
 --- !u!50 &8815854059163321866

@@ -84,7 +84,7 @@ public class Game : MonoBehaviour
         foreach (var player in PlayerInputController.GetPlayers())
         {
             var interaction = player.GetComponent<PlayerWorldInteraction>();
-            interaction.ChosenInstrument.StartMinigame(interaction.gameObject);
+            interaction.ChosenInstrument.StartMinigame(interaction.gameObject, song.beatmap);
         }
         audio.Play();
     }
