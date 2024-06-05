@@ -31,7 +31,7 @@ public abstract class SongHandler : MonoBehaviour
     private AudioSource musicSource;
 
     protected double bpm;
-    private const double FRAMERATE = 60f;
+    private const double MINUTE = 60f;
     private const int BAR = 4;
     private double[] rhythm;
     private NoteDirection[] inputDirection;
@@ -52,7 +52,7 @@ public abstract class SongHandler : MonoBehaviour
     //initialises rhythm game on call
     protected void InitRhythmGame()
     {
-        secondsPerBeat = FRAMERATE / bpm;
+        secondsPerBeat = MINUTE / bpm;
 
         //play song only when the script is loaded
         musicSource = GetComponent<AudioSource>();
@@ -173,4 +173,8 @@ public abstract class SongHandler : MonoBehaviour
         return triggerLineScore.GetScore();
     }
 
+    public double GetBPM()
+    {
+        return bpm;
+    }
 }

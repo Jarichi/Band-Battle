@@ -21,9 +21,17 @@ public class NoteController : MonoBehaviour
 
     //temp
     Vector3 targetPosition;
+    Vector3 startPosition;
     [SerializeField]
     private SongHandler.NoteDirection direction = SongHandler.NoteDirection.Right;
     private bool destroyed;
+
+    private double bpm;
+    private float secondPerBeat;
+    float t;
+    [SerializeField]
+    private int noteSpeedInBeats = 2;
+    
 
     public void SetDirection(SongHandler.NoteDirection _direction)
     {
@@ -33,8 +41,15 @@ public class NoteController : MonoBehaviour
     private void Start()
     {
         timeStart = Time.time;
+        startPosition = transform.localPosition;
         targetPosition = transform.localPosition + new Vector3(0f, -6f, 0f);
         destroyed = false;
+
+        bpm = GetComponentInParent<Minigame>().GetBPM();
+
+        secondPerBeat = 60 / (float)bpm;
+        secondPerBeat *= noteSpeedInBeats;
+
     }
 
     //@50fps
@@ -60,8 +75,13 @@ public class NoteController : MonoBehaviour
 
     private void MoveNote()
     {
-        var step = velocity * Time.fixedDeltaTime;
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, step);
+        t += Time.fixedDeltaTime / secondPerBeat;
+        transform.localPosition = Vector3.Lerp(startPosition, targetPosition, t);
+
+
+
+        //var step = velocity * Time.fixedDeltaTime;
+        //transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, step);
     }
 
     public void Despawn()
