@@ -119,6 +119,10 @@ public class TriggerLine : MonoBehaviour
     private IEnumerator c_DisableHitbox(InputCollider hitbox)
     {
         yield return new WaitForSeconds(marginOfError);
+        if (hitbox.enabled && !hitbox.hasCollision)
+        {
+            OnMiss();
+        }
         hitbox.enabled = false;
     }
 

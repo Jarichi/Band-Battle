@@ -81,7 +81,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.2}
+  m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
 --- !u!61 &4025758299762021094
 BoxCollider2D:
@@ -126,7 +126,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.2}
+  m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
 --- !u!61 &3900187136024494592
 BoxCollider2D:
@@ -171,7 +171,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.2}
+  m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
 --- !u!61 &988195371239249133
 BoxCollider2D:
@@ -216,7 +216,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.2}
+  m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
 --- !u!212 &-2760010194900963566
 SpriteRenderer:
@@ -285,15 +285,20 @@ MonoBehaviour:
   colliders:
   - collider: {fileID: 4578047589030863914}
     enabled: 0
+    hasCollision: 0
   - collider: {fileID: 4025758299762021094}
     enabled: 0
+    hasCollision: 0
   - collider: {fileID: 3900187136024494592}
     enabled: 0
+    hasCollision: 0
   - collider: {fileID: 988195371239249133}
     enabled: 0
-  marginOfError: 0.25
+    hasCollision: 0
+  marginOfError: 0.55
   Score: 0
   ScoreIncrease: 1
+  ScoreDecrease: 0.5
 --- !u!82 &7607537928011707119
 AudioSource:
   m_ObjectHideFlags: 0

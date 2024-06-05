@@ -70,7 +70,7 @@ public class NoteController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (IsTriggerLine(collision, out var triggerLine))
         {
@@ -79,6 +79,7 @@ public class NoteController : MonoBehaviour
             if (inputCollider.enabled && inputCollider.collider == collision)
             {
                 triggerLine.OnHit(this);
+                inputCollider.enabled = false;
             }
         }
 
