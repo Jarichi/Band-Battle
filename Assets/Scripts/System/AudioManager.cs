@@ -104,6 +104,7 @@ public class AudioManager : MonoBehaviour
         referenceSongInstance.getTimelinePosition(out position2);
 
 
+        Debug.Log("pos1 : " + position1 + " | pos2 : " + position2);
         if (Mathf.Abs(position1 - position2) > 20)
         {
             Debug.Log("Synced up!");

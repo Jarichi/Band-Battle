@@ -1,0 +1,2349 @@
+{
+    "BPM": 120.0,
+    "Channels": [
+        {
+            "Number": 0,
+            "Positions": [
+                {
+                    "Direction": 2,
+                    "Beat": 2.75
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 3.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 3.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 4.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 5.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 6.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 7.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 8.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 9.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 10.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 11.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 11.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 12.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 13.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 14.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 15.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 16.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 17.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 18.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 18.75
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 19.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 19.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 20.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 21.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 22.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 23.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 24.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 25.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 25.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 26.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 27.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 28.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 29.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 30.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 31.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 31.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 32.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 32.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 33.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 33.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 34.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 34.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 35.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 35.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 35.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 36.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 36.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 37.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 38.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 39.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 40.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 41.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 42.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 42.75
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 43.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 44.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 45.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 46.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 47.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 48.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 49.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 50.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 50.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 50.75
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 51.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 51.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 52.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 52.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 53.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 53.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 54.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 54.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 55.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 55.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 56.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 56.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 57.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 57.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 58.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 58.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 58.75
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 59.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 59.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 60.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 60.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 61.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 61.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 62.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 62.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 63.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 63.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 64.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 64.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 65.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 65.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 66.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 66.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 67.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 67.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 68.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 68.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 69.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 70.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 71.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 72.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 72.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 73.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 73.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 74.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 75.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 75.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 76.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 77.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 78.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 79.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 80.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 80.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 80.75
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 81.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 81.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 82.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 82.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 83.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 83.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 84.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 85.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 86.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 87.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 88.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 88.75
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 89.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 90.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 91.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 92.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 93.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 94.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 95.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 95.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 96.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 96.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 97.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 97.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 97.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 98.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 98.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 98.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 98.75
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 99.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 99.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 99.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 101.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 102.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 103.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 104.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 104.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 105.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 105.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 106.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 107.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 107.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 108.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 109.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 110.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 111.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 112.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 112.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 112.75
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 113.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 113.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 114.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 114.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 115.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 115.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 116.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 117.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 118.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 119.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 120.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 120.75
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 121.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 122.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 123.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 124.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 124.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 125.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 125.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 126.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 126.0
+                }
+            ]
+        },
+        {
+            "Number": 1,
+            "Positions": [
+                {
+                    "Direction": 3,
+                    "Beat": 36.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 36.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 36.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 36.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 37.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 37.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 38.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 38.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 40.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 40.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 40.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 40.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 41.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 41.25
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 42.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 42.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 43.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 43.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 44.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 44.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 45.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 45.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 46.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 46.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 48.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 48.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 49.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 49.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 50.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 50.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 52.510416666666667
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 52.520833333333339
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 53.260416666666667
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 53.270833333333339
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 54.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 54.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 56.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 56.510416666666667
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 57.239583333333339
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 57.25
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 58.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 58.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 60.489583333333339
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 60.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 61.229166666666667
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 61.239583333333339
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 62.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 62.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 64.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 64.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 65.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 65.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 66.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 66.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 67.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 67.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 67.75
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 68.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 68.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 69.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 69.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 70.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 70.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 72.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 72.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 73.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 73.25
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 74.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 74.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 75.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 75.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 76.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 76.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 77.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 77.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 78.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 78.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 80.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 80.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 81.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 81.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 82.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 82.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 84.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 84.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 85.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 85.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 86.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 86.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 88.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 88.51041666666667
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 89.23958333333333
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 89.25
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 90.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 90.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 92.48958333333333
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 92.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 93.22916666666667
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 93.23958333333333
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 94.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 94.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 96.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 96.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 97.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 97.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 98.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 98.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 99.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 100.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 100.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 101.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 101.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 102.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 102.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 104.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 104.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 105.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 105.25
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 106.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 106.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 107.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 107.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 108.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 108.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 109.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 109.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 110.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 110.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 112.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 112.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 113.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 113.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 114.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 114.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 116.51041666666667
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 116.52083333333333
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 117.26041666666667
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 117.27083333333333
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 118.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 118.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 120.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 120.51041666666667
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 121.23958333333333
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 121.25
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 122.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 122.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 124.48958333333333
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 124.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 125.22916666666667
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 125.23958333333333
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 126.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 126.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 128.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 128.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 129.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 129.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 130.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 130.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 131.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 131.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 131.75
+                }
+            ]
+        },
+        {
+            "Number": 2,
+            "Positions": [
+                {
+                    "Direction": 2,
+                    "Beat": 68.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 69.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 69.98958333333333
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 70.97916666666667
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 71.51041666666667
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 72.48958333333333
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 76.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 77.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 78.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 79.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 79.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 80.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 82.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 82.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 83.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 83.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 84.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 91.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 92.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 96.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 97.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 98.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 99.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 99.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 101.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 102.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 103.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 103.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 104.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 106.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 106.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 107.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 107.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 108.5
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 109.25
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 110.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 110.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 111.5
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 112.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 113.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 113.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 114.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 114.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 115.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 115.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 116.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 119.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 120.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 123.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 124.0
+                }
+            ]
+        },
+        {
+            "Number": 3,
+            "Positions": [
+                {
+                    "Direction": 0,
+                    "Beat": 4.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 5.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 6.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 7.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 8.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 8.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 9.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 10.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 10.75
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 11.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 11.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 11.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 12.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 13.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 14.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 15.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 15.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 16.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 17.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 18.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 18.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 18.75
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 19.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 19.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 19.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 20.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 21.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 22.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 23.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 24.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 24.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 25.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 26.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 26.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 26.75
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 27.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 27.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 28.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 29.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 30.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 32.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 32.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 32.75
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 33.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 33.5
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 34.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 34.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 34.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 34.75
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 35.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 35.25
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 35.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 35.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 36.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 37.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 38.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 39.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 40.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 40.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 41.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 42.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 42.75
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 43.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 43.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 43.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 44.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 45.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 46.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 47.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 47.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 48.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 49.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 50.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 51.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 51.5
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 52.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 53.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 53.989583333333339
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 54.989583333333339
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 56.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 57.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 58.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 59.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 59.5
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 60.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 60.958333333333339
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 62.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 62.958333333333339
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 64.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 64.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 65.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 65.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 66.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 66.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 67.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 67.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 67.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 68.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 69.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 70.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 71.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 72.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 72.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 73.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 74.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 74.75
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 75.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 75.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 75.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 76.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 77.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 78.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 79.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 79.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 80.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 81.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 82.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 83.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 83.5
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 84.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 85.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 86.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 87.75
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 88.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 88.5
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 89.25
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 90.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 91.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 91.5
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 92.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 93.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 94.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 96.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 96.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 97.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 97.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 98.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 98.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 99.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 99.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 101.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 102.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 103.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 104.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 104.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 105.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 106.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 106.75
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 107.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 107.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 107.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 108.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 109.0
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 110.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 111.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 111.75
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 112.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 113.25
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 114.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 115.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 115.5
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 116.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 117.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 118.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 119.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 120.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 121.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 122.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 123.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 123.5
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 124.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 124.95833333333333
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 126.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 128.0
+                },
+                {
+                    "Direction": 1,
+                    "Beat": 128.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 129.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 129.5
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 130.0
+                },
+                {
+                    "Direction": 3,
+                    "Beat": 130.5
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 131.0
+                },
+                {
+                    "Direction": 2,
+                    "Beat": 131.5
+                },
+                {
+                    "Direction": 0,
+                    "Beat": 131.75
+                }
+            ]
+        }
+    ]
+}
