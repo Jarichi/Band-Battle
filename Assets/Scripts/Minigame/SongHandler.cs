@@ -35,7 +35,7 @@ public abstract class SongHandler : MonoBehaviour
     private const int BAR = 4;
     private double[] rhythm;
     private NoteDirection[] inputDirection;
-    public int previewBeats;
+    public double previewBeats;
     private int index;
     [SerializeField]
     private GameObject note;
