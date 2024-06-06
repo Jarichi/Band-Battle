@@ -1583,6 +1583,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songs:
+  - beatmapFilePath: Assets/Scripts/Minigame/Beatmap/funk.bbm
+    fmodEvent:
+      Guid:
+        Data1: 161687414
+        Data2: 1157390417
+        Data3: 1368165285
+        Data4: 813004309
+      Path: event:/song2_funk
+    beatmap:
+      BPM: 0
+      Channels: []
   - beatmapFilePath: Assets/Scripts/Minigame/Beatmap/hardrock.bbm
     fmodEvent:
       Guid:
