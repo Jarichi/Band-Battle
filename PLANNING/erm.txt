@@ -1,5 +1,4 @@
 voor volgende week:
-drumstel moet hurt animatie hebben (M)
 meer ui elementen
 	input buttons onder de noten, die aangeven welke bij de noten horen (M)
 	dividers die de maatverdeling aangeven (M)
