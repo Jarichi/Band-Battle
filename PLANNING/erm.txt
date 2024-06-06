@@ -1,0 +1,45 @@
+voor volgende week:
+meer ui elementen
+	input buttons onder de noten, die aangeven welke bij de noten horen (M)
+	dividers die de maatverdeling aangeven (M)
+	health bar (M)
+	crowd met NPCs die ook bestaan (C)
+		crowdsurf functie perhaps
+	
+	
+	 
+may pusht haar changes (M)
+	camera zooming
+	fmod shenanigans
+	puntensysteem
+
+punten afpakken (M)
+bandleider mechanic (M)
+scorebord feature (S)
+end screen (M)
+	rewarrd als je het hele liedje afspeelt (misschine een ingame currency waarmee je liedjes kan kopen oid) (C)
+		Je unlockt een liedje wanneer je het hele liedje afspeelt, maar e krijgt xp om een liedje te unlocken wanneer combat vaak vorobij is.
+		(zorgt voor replayablilry
+	next game knop die de scene fatsoenlijk reset (M)
+	scores en winnaar (M)
+
+spelen met 4 controllers 
+	mogelijk een hardwarefout tho
+
+TOEKOMST:
+meerdere maps (C)
+tools voor het maken van animaties en inplementztie om het werk sneller te maken
+volledige code rewrite
+
+
+
+presentatie:
+- als we ons verslag als blauwdruk gebruiken hebben we een goede rpesentatie
+- beginnen met de game demo= (show dont tell)
+- in principe een script aan dehand van het verslag
+- vrij positieve feedback over de structuur van de presentatie
+
+begin met demo, daarna ons verhaal (samenvatting, proces) +  zelfreflectie (wat nemen we mee en samenwerking), toekomstplan,  daarna zelf spelen
+
+
+game releasen als alpha game

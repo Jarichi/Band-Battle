@@ -139,6 +139,13 @@ public class PlayerCombat : MonoBehaviour, IDamageable
             Die(attacker.GetComponent<PlayerWorldInteraction>());
         }
         spriteRenderer.color = Color.red;
+
+        if (currentWeapon.TryGetComponent<DrumWeapon>(out var drumweapon))
+        {
+            print("weapon is drums, turn red");
+            drumweapon.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+
         StartCoroutine(EndInvincibility());
     }
 
@@ -152,6 +159,14 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(invincibilityTime);
         invincible = false;
         spriteRenderer.color = Color.white;
+
+        if (currentWeapon.TryGetComponent<DrumWeapon>(out var drumweapon))
+        {
+            print("weapon is drums, turn white");
+
+            drumweapon.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+
     }
 
     public void Die(PlayerWorldInteraction cause)

@@ -9,12 +9,14 @@ public class TitleScreenButton : MonoBehaviour
     private Button button;
     [SerializeField]
     private string targetSceneName;
-    void Start()
+
+
+    private void Update()
     {
-        button= GetComponent<Button>();
-        button.onClick.AddListener(() =>
+        if (Input.GetKeyUp(KeyCode.Return))
         {
             SceneManager.LoadScene(targetSceneName);
-        });
+
+        }
     }
 }

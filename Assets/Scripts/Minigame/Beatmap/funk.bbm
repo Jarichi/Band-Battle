@@ -153,7 +153,7 @@
                     "Beat": 32.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 32.0
                 },
                 {
@@ -161,7 +161,7 @@
                     "Beat": 33.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 33.0
                 },
                 {
@@ -169,7 +169,7 @@
                     "Beat": 34.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 34.0
                 },
                 {
@@ -177,7 +177,7 @@
                     "Beat": 35.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 35.0
                 },
                 {
@@ -185,7 +185,7 @@
                     "Beat": 35.5
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 36.0
                 },
                 {
@@ -215,10 +215,6 @@
                 {
                     "Direction": 0,
                     "Beat": 42.0
-                },
-                {
-                    "Direction": 0,
-                    "Beat": 42.75
                 },
                 {
                     "Direction": 2,
@@ -257,10 +253,6 @@
                     "Beat": 50.5
                 },
                 {
-                    "Direction": 0,
-                    "Beat": 50.75
-                },
-                {
                     "Direction": 2,
                     "Beat": 51.0
                 },
@@ -273,7 +265,7 @@
                     "Beat": 52.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 52.5
                 },
                 {
@@ -281,7 +273,7 @@
                     "Beat": 53.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 53.5
                 },
                 {
@@ -289,7 +281,7 @@
                     "Beat": 54.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 54.5
                 },
                 {
@@ -297,7 +289,7 @@
                     "Beat": 55.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 55.5
                 },
                 {
@@ -305,7 +297,7 @@
                     "Beat": 56.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 56.5
                 },
                 {
@@ -313,7 +305,7 @@
                     "Beat": 57.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 57.5
                 },
                 {
@@ -321,19 +313,15 @@
                     "Beat": 58.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 58.5
-                },
-                {
-                    "Direction": 0,
-                    "Beat": 58.75
                 },
                 {
                     "Direction": 2,
                     "Beat": 59.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 59.5
                 },
                 {
@@ -341,7 +329,7 @@
                     "Beat": 60.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 60.5
                 },
                 {
@@ -349,7 +337,7 @@
                     "Beat": 61.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 61.5
                 },
                 {
@@ -357,7 +345,7 @@
                     "Beat": 62.0
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 62.5
                 },
                 {
@@ -401,7 +389,7 @@
                     "Beat": 67.5
                 },
                 {
-                    "Direction": 3,
+                    "Direction": 1,
                     "Beat": 68.0
                 },
                 {
@@ -471,10 +459,6 @@
                 {
                     "Direction": 0,
                     "Beat": 80.5
-                },
-                {
-                    "Direction": 0,
-                    "Beat": 80.75
                 },
                 {
                     "Direction": 2,
@@ -569,10 +553,6 @@
                     "Beat": 97.0
                 },
                 {
-                    "Direction": 2,
-                    "Beat": 97.25
-                },
-                {
                     "Direction": 0,
                     "Beat": 97.5
                 },
@@ -581,16 +561,8 @@
                     "Beat": 98.0
                 },
                 {
-                    "Direction": 2,
-                    "Beat": 98.25
-                },
-                {
                     "Direction": 0,
                     "Beat": 98.5
-                },
-                {
-                    "Direction": 0,
-                    "Beat": 98.75
                 },
                 {
                     "Direction": 2,
@@ -667,10 +639,6 @@
                 {
                     "Direction": 0,
                     "Beat": 112.5
-                },
-                {
-                    "Direction": 0,
-                    "Beat": 112.75
                 },
                 {
                     "Direction": 2,
@@ -763,14 +731,6 @@
             "Positions": [
                 {
                     "Direction": 3,
-                    "Beat": 36.0
-                },
-                {
-                    "Direction": 3,
-                    "Beat": 36.25
-                },
-                {
-                    "Direction": 3,
                     "Beat": 36.5
                 },
                 {
@@ -796,10 +756,6 @@
                 {
                     "Direction": 3,
                     "Beat": 40.0
-                },
-                {
-                    "Direction": 3,
-                    "Beat": 40.25
                 },
                 {
                     "Direction": 2,

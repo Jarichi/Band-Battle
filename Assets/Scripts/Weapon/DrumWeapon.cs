@@ -7,9 +7,9 @@ using UnityEngine.UIElements;
 
 public class DrumWeapon : Weapon
 {
-    public float attackTime;
+    public float attackTime;   
     private void Start()
-    { 
+    {
         base.Start();
         var parent = transform.parent;
         parent.GetComponent<SpriteRenderer>().enabled = false;
@@ -51,7 +51,7 @@ public class DrumWeapon : Weapon
     }
     private void AttackSettings(AttackDirection direction)
     {
-        var hitboxPosition = collider.offset; 
+        var hitboxPosition = collider.offset;
         switch (direction)
         {
             case AttackDirection.North:
@@ -82,6 +82,6 @@ public class DrumWeapon : Weapon
 
     }
 
-
+    
 }
 
