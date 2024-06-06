@@ -19,6 +19,8 @@ bandleider mechanic (M)
 scorebord feature (S)
 end screen (M)
 	rewarrd als je het hele liedje afspeelt (misschine een ingame currency waarmee je liedjes kan kopen oid) (C)
+		Je unlockt een liedje wanneer je het hele liedje afspeelt, maar e krijgt xp om een liedje te unlocken wanneer combat vaak vorobij is.
+		(zorgt voor replayablilry
 	next game knop die de scene fatsoenlijk reset (M)
 	scores en winnaar (M)
 
