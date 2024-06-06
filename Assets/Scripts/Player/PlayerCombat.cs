@@ -22,6 +22,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private bool invincible;
     private Weapon currentWeapon;
     private PlayerInputController input;
+    private PlayerMovement movement;
     private SpriteRenderer spriteRenderer;
     private new Rigidbody2D rigidbody;
     public int Hitpoints;
@@ -33,6 +34,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     {
         spriteRenderer= GetComponent<SpriteRenderer>();
         input = GetComponent<PlayerInputController>();
+        movement = GetComponent<PlayerMovement>();
         rigidbody = GetComponent<Rigidbody2D>();
     }
     private void Awake()
@@ -62,10 +64,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     public void Engage(GameObject weapon, PlayerMovement movement)
     {
-        Debug.Log("transition to combat.");
         invincible = true;
         Destroy(GetComponentInChildren<GuitarMinigame>().gameObject);
-        movement.GetComponent<PlayerWorldInteraction>().ChosenInstrument.DeleteInstrument();
+        var instrument = movement.GetComponent<PlayerWorldInteraction>().ChosenInstrument;
+        instrument.DeleteInstrument();
+        Game.Instance.DisableAudioChannel(instrument.fmodParameterName);
         StartCoroutine(TransitionToCombat(weapon, movement));
         inCombat = true;
     }
@@ -133,7 +136,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         print(Hitpoints);
         if (Hitpoints <= 0)
         {
-            Die();
+            Die(attacker.GetComponent<PlayerWorldInteraction>());
         }
         spriteRenderer.color = Color.red;
         StartCoroutine(EndInvincibility());
@@ -151,9 +154,15 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         spriteRenderer.color = Color.white;
     }
 
-    public void Die()
+    public void Die(PlayerWorldInteraction cause)
     {
-        GameObject.Destroy(gameObject);
+        spriteRenderer.enabled= false;
+        movement.Disable();
+        for (var i = gameObject.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(gameObject.transform.GetChild(i).gameObject);
+        }
+        Game.Instance.OnPlayerDeath();
     }
 
 

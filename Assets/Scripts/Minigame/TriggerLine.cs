@@ -27,7 +27,7 @@ public class TriggerLine : MonoBehaviour
     private double ScoreIncrease = 1;
     [SerializeField]
     private double ScoreDecrease = .5;
-
+    private PlayerWorldInteraction player;
     private Game game;
     private void Start()
     {
@@ -37,6 +37,7 @@ public class TriggerLine : MonoBehaviour
         input.PlayInput2 += OnInput2;
         input.PlayInput3 += OnInput3;
         input.PlayInput4 += OnInput4;
+        player = transform.root.GetComponent<PlayerWorldInteraction>();
 
         fmodParameterName = gameObject.transform.parent.GetComponentInParent<PlayerWorldInteraction>().ChosenInstrument.fmodParameterName;
         game = Game.Instance;
@@ -70,29 +71,17 @@ public class TriggerLine : MonoBehaviour
         FadeColour(Color.green);
     }
 
-    public void ClearScore()
-    {
-        Score = 0;
-    }
-
-    public double GetScore()
-    {
-        return Score;
-    }
-
     public void OnHit(NoteController note)
     {
-        Debug.Log("hit!");
+        player.AddScore(ScoreIncrease);
         game.EnableAudioChannel(fmodParameterName);
-        Score += ScoreIncrease;
         note.Despawn();
     }
 
     public void OnMiss(NoteController note = null)
     {
-        Debug.Log("miss!");
         game.DisableAudioChannel(fmodParameterName);
-        Score -= ScoreDecrease;
+        player.DecreaseScore(ScoreDecrease);
         Score = Math.Max(Score, 0);
         if (note != null)
             note.Despawn();

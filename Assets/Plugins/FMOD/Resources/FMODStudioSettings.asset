@@ -635,6 +635,7 @@ MonoBehaviour:
   - Master
   Banks:
   - DEMO SONG
+  - FUNK
   - HARDROCK
   BanksToLoad: []
   LiveUpdatePort: 9264

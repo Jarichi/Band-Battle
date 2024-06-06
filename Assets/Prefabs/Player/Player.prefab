@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 6326775813162313128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.49, y: -0.32, z: 0}
+  m_LocalPosition: {x: -0.0328335, y: -9.8477955, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -167,10 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbe5628829fb954e99f3a622afcc18d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMove: 1
+  canMove: 0
   moveSpeed: 6.3
   isMoving: 0
   rb: {fileID: 5362029132449751828}
+  moveX: 0
+  moveY: 0
   animator: {fileID: 5901631742303505313}
 --- !u!114 &7501687172810061992
 MonoBehaviour:
@@ -386,22 +388,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5fed75ca-c129-4436-ac28-ed91919242ec
     m_ActionName: Player/Engage Combat[/Keyboard/enter,/SwitchProControllerHID/start,/XInputControllerWindows/start,/SwitchProControllerHID1/start]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4488562788100570733}
-        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
-        m_MethodName: OnRestartPressed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b329e9b4-0644-45e0-bb16-8cffd52bd49b
-    m_ActionName: Player/(Debug) Restart[/SwitchProControllerHID/select,/XInputControllerWindows/select,/SwitchProControllerHID1/select,/Keyboard/r]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4488562788100570733}

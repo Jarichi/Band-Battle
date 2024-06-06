@@ -151,7 +151,7 @@ public abstract class SongHandler : MonoBehaviour
             if (GameObject.FindGameObjectWithTag("minigame_Note") == null)
             {
                 scoreCalculated = true;
-                Debug.Log("Score: " + GetScore());
+                Game.Instance.End();
                 return;
             }
 
@@ -165,12 +165,6 @@ public abstract class SongHandler : MonoBehaviour
     {
         rhythm = p_rhythm;
         inputDirection = p_inputDirection;
-    }
-
-    private double GetScore()
-    {
-        var triggerLineScore = GetComponentInChildren<TriggerLine>();
-        return triggerLineScore.GetScore();
     }
 
     public double GetBPM()

@@ -28,6 +28,7 @@ public class Game : MonoBehaviour
     public static Game Instance;
     private PlayerInputManager inputManager;
     public int minPlayerCount;
+    private int killedPlayers = 0;
 
 
     void Start()
@@ -52,11 +53,6 @@ public class Game : MonoBehaviour
                     inputManager.DisableJoining();
                 }
                 break;
-            case Phase.Play:
-                if (playerCount == minPlayerCount) {
-                    End();
-                }
-                break;
         }
     }
 
@@ -72,6 +68,9 @@ public class Game : MonoBehaviour
 
     void ShowSongs()
     {
+        var gui = UserInterface.Instance;
+        gui.ToggleStartScreen();
+        PlayerInputController.GetPlayers().ForEach(p => p.GetComponent<PlayerMovement>().Enable());
         currentPhase = Phase.SelectSong;
         song = songs[0];
         currentPhase = Phase.ChooseInstrument;
@@ -96,12 +95,22 @@ public class Game : MonoBehaviour
         PlayerInputController.GetPlayers().ForEach(obj =>
         {
             obj.GetComponent<PlayerMovement>().Disable();
+            Debug.Log(obj.GetComponent<PlayerWorldInteraction>().GetScore());
         });
     }
 
     public Phase GetCurrentPhase()
     {
         return currentPhase;
+    }
+
+    public void OnPlayerDeath()
+    {
+        killedPlayers++;
+        if (currentPhase == Phase.Play && killedPlayers == PlayerInputController.PlayerCount() - 1)
+        {
+            End();
+        }
     }
 }
 

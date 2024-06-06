@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private bool canMove;
+    private bool canMove = false;
     public float moveSpeed;
     public bool isMoving = false;
     public Rigidbody2D rb; 

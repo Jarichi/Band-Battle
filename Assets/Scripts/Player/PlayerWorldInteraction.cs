@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerWorldInteraction : MonoBehaviour
 {
+    private double score;
     private PlayerCombat combat;
     private PlayerInputController input;
     private PlayerMovement movement;
@@ -53,5 +54,19 @@ public class PlayerWorldInteraction : MonoBehaviour
     void OnTriggerExit2D(Collider2D col)
     {
         inRange = null;
+    }
+
+    public void AddScore(double score)
+    {
+        this.score += score;
+    }
+
+    public void DecreaseScore(double score) {
+        this.score -= score;
+    }
+
+    public double GetScore()
+    {
+        return score;
     }
 }

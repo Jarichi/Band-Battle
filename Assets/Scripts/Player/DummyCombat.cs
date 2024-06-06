@@ -24,7 +24,7 @@ public class DummyCombat : MonoBehaviour, IDamageable
     {
         if (Hitpoints <= 0)
         {
-            Die();            
+            Die(null);            
         }
     }
 
@@ -41,7 +41,7 @@ public class DummyCombat : MonoBehaviour, IDamageable
         Instantiate(DamageParticles, transform.position, Quaternion.identity);
     }
 
-    public void Die()
+    public void Die(PlayerWorldInteraction cause)
     {
         Destroy(gameObject);
     }
