@@ -94,7 +94,11 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/HARDROCK.bank
   Name: HARDROCK
   StudioPath: bank:/SONGS/HARDROCK
+<<<<<<< Updated upstream
   lastModified: 638532650454958962
+=======
+  lastModified: 638532647163382538
+>>>>>>> Stashed changes
   FileSizes: []
   Exists: 1
 --- !u!114 &-1448755090923269024
@@ -148,7 +152,11 @@ MonoBehaviour:
   - {fileID: 7237544893210493691}
   StringsBanks:
   - {fileID: 8586003247094559573}
+<<<<<<< Updated upstream
   cacheTime: 638532650455020938
+=======
+  cacheTime: 638532647163400696
+>>>>>>> Stashed changes
   cacheVersion: 131617
 --- !u!114 &707066393646872567
 MonoBehaviour:
@@ -321,7 +329,11 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/FUNK.bank
   Name: FUNK
   StudioPath: bank:/SONGS/FUNK
+<<<<<<< Updated upstream
   lastModified: 638532650454409394
+=======
+  lastModified: 638532647163137373
+>>>>>>> Stashed changes
   FileSizes: []
   Exists: 1
 --- !u!114 &7014402564347107371
@@ -363,7 +375,11 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
+<<<<<<< Updated upstream
   lastModified: 638532650455014155
+=======
+  lastModified: 638532647163400696
+>>>>>>> Stashed changes
   FileSizes: []
   Exists: 1
 --- !u!114 &7752305352811521726
@@ -381,7 +397,11 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/DEMO SONG.bank
   Name: DEMO SONG
   StudioPath: bank:/SONGS/DEMO SONG
+<<<<<<< Updated upstream
   lastModified: 638532650454213778
+=======
+  lastModified: 638532647162987376
+>>>>>>> Stashed changes
   FileSizes: []
   Exists: 1
 --- !u!114 &7781894333456342994
@@ -447,7 +467,11 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
+<<<<<<< Updated upstream
   lastModified: 638532650455020938
+=======
+  lastModified: 638532647163400696
+>>>>>>> Stashed changes
   FileSizes:
   - Name: 
     Value: 1166
