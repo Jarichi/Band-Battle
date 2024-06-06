@@ -1606,7 +1606,7 @@ MonoBehaviour:
       BPM: 0
       Channels: []
   currentPhase: 0
-  minPlayerCount: 0
+  minPlayerCount: 1
 --- !u!4 &1416621405
 Transform:
   m_ObjectHideFlags: 0
