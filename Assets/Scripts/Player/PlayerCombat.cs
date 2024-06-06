@@ -62,7 +62,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     public void Engage(GameObject weapon, PlayerMovement movement)
     {
-        Debug.Log("transition to combat.");
         invincible = true;
         Destroy(GetComponentInChildren<GuitarMinigame>().gameObject);
         movement.GetComponent<PlayerWorldInteraction>().ChosenInstrument.DeleteInstrument();

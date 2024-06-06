@@ -14,7 +14,6 @@ public class StandInstrument : Instrument
 
     protected override void OnPlaying()
     {
-        DeleteInstrument();
     }
 
     public override void DeleteInstrument()
