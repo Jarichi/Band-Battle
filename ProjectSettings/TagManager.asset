@@ -8,6 +8,7 @@ TagManager:
   - minigame_Note
   - minigame
   - minigame_TriggerLine
+  - minigame_GUI
   layers:
   - Default
   - TransparentFX
