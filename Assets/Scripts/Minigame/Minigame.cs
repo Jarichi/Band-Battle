@@ -14,6 +14,8 @@ public class Minigame : SongHandler
     private PlayerCombat combat;
     private GameObject weapon;
     [SerializeField] private string path;
+    [SerializeField] private Sprite GUISprite;
+
 
     private void Start()
     {

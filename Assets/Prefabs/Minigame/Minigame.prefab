@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1237273556103833925}
   - component: {fileID: 3626414674023623383}
   m_Layer: 0
-  m_Name: Guitar Minigame 1
+  m_Name: Minigame
   m_TagString: minigame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
