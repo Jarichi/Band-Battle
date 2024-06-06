@@ -1,85 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8863657252612862342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/song2_funk/Mute Guitar
-  m_EditorClassIdentifier: 
-  Name: Mute Guitar
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3392952760
-    data2: 3667530312
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-5357094286655050812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/song2_funk/Mute Voice
-  m_EditorClassIdentifier: 
-  Name: Mute Voice
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2143270615
-    data2: 3263822580
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &-5216553350505576844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/song1_hardrock
-  m_EditorClassIdentifier: 
-  Path: event:/song1_hardrock
-  Guid:
-    Data1: -1101719447
-    Data2: 1219289592
-    Data3: 1621799082
-    Data4: -1273831761
-  Banks:
-  - {fileID: -2896936929060375606}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: 7781894333456342994}
-  - {fileID: 7828874502661086312}
-  - {fileID: 3553025017732900491}
-  - {fileID: 7014402564347107371}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 187303
---- !u!114 &-2896936929060375606
+--- !u!114 &-6807830546338160913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,76 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/HARDROCK.bank
+  m_Name: bank:/FUNK.bank
   m_EditorClassIdentifier: 
-  Path: Assets/Audio/Banks/Desktop/HARDROCK.bank
-  Name: HARDROCK
-  StudioPath: bank:/SONGS/HARDROCK
-<<<<<<< Updated upstream
-  lastModified: 638532650454958962
-=======
-  lastModified: 638532647163382538
->>>>>>> Stashed changes
+  Path: Assets/Audio/Banks/Desktop/FUNK.bank
+  Name: FUNK
+  StudioPath: bank:/SONGS/FUNK
+  lastModified: 638532647163137373
   FileSizes: []
   Exists: 1
---- !u!114 &-1448755090923269024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/song0_test/Mute Bass
-  m_EditorClassIdentifier: 
-  Name: Mute Bass
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 1453424869
-    data2: 1822726564
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: 8586003247094559573}
-  - {fileID: 7752305352811521726}
-  - {fileID: 7237544893210493691}
-  - {fileID: -2896936929060375606}
-  - {fileID: 6881139132803457078}
-  EditorEvents:
-  - {fileID: 6286340674097797660}
-  - {fileID: -5216553350505576844}
-  - {fileID: 5480225184879465300}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 7237544893210493691}
-  StringsBanks:
-  - {fileID: 8586003247094559573}
-<<<<<<< Updated upstream
-  cacheTime: 638532650455020938
-=======
-  cacheTime: 638532647163400696
->>>>>>> Stashed changes
-  cacheVersion: 131617
---- !u!114 &707066393646872567
+--- !u!114 &-6244603724563269206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,253 +42,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &908834559982754969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/song0_test/Mute Guitar
-  m_EditorClassIdentifier: 
-  Name: Mute Guitar
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3392952760
-    data2: 3667530312
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &917140284550371963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/song2_funk/Mute Drums
-  m_EditorClassIdentifier: 
-  Name: Mute Drums
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3820868128
-    data2: 4261893125
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &3553025017732900491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/song1_hardrock/Mute Bass
-  m_EditorClassIdentifier: 
-  Name: Mute Bass
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 1453424869
-    data2: 1822726564
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &5480225184879465300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/song2_funk
-  m_EditorClassIdentifier: 
-  Path: event:/song2_funk
-  Guid:
-    Data1: 161687414
-    Data2: 1157390417
-    Data3: 1368165285
-    Data4: 813004309
-  Banks:
-  - {fileID: 6881139132803457078}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -8863657252612862342}
-  - {fileID: 917140284550371963}
-  - {fileID: 707066393646872567}
-  - {fileID: -5357094286655050812}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 66567
---- !u!114 &6286340674097797660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/song0_test
-  m_EditorClassIdentifier: 
-  Path: event:/song0_test
-  Guid:
-    Data1: -2104327410
-    Data2: 1326120696
-    Data3: 1914781588
-    Data4: 675069447
-  Banks:
-  - {fileID: 7752305352811521726}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 908834559982754969}
-  - {fileID: -1448755090923269024}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 36000
---- !u!114 &6881139132803457078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/FUNK.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Audio/Banks/Desktop/FUNK.bank
-  Name: FUNK
-  StudioPath: bank:/SONGS/FUNK
-<<<<<<< Updated upstream
-  lastModified: 638532650454409394
-=======
-  lastModified: 638532647163137373
->>>>>>> Stashed changes
-  FileSizes: []
-  Exists: 1
---- !u!114 &7014402564347107371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/song1_hardrock/Mute Voice
-  m_EditorClassIdentifier: 
-  Name: Mute Voice
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2143270615
-    data2: 3263822580
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &7237544893210493691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Audio/Banks/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-<<<<<<< Updated upstream
-  lastModified: 638532650455014155
-=======
-  lastModified: 638532647163400696
->>>>>>> Stashed changes
-  FileSizes: []
-  Exists: 1
---- !u!114 &7752305352811521726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/DEMO SONG.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/Audio/Banks/Desktop/DEMO SONG.bank
-  Name: DEMO SONG
-  StudioPath: bank:/SONGS/DEMO SONG
-<<<<<<< Updated upstream
-  lastModified: 638532650454213778
-=======
-  lastModified: 638532647162987376
->>>>>>> Stashed changes
-  FileSizes: []
-  Exists: 1
---- !u!114 &7781894333456342994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/song1_hardrock/Mute Drums
-  m_EditorClassIdentifier: 
-  Name: Mute Drums
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3820868128
-    data2: 4261893125
-  Type: 1
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &7828874502661086312
+--- !u!114 &-5914927704918111954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -452,7 +66,163 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &8586003247094559573
+--- !u!114 &-5541125622165497344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/song1_hardrock/Mute Bass
+  m_EditorClassIdentifier: 
+  Name: Mute Bass
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1453424869
+    data2: 1822726564
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-3228521610552086782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/song2_funk
+  m_EditorClassIdentifier: 
+  Path: event:/song2_funk
+  Guid:
+    Data1: 161687414
+    Data2: 1157390417
+    Data3: 1368165285
+    Data4: 813004309
+  Banks:
+  - {fileID: -6807830546338160913}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -708049675743005359}
+  - {fileID: -1404105559795811284}
+  - {fileID: -6244603724563269206}
+  - {fileID: 3172405809327780597}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 66567
+--- !u!114 &-1794747820955069276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/song1_hardrock/Mute Drums
+  m_EditorClassIdentifier: 
+  Name: Mute Drums
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3820868128
+    data2: 4261893125
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-1404105559795811284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/song2_funk/Mute Drums
+  m_EditorClassIdentifier: 
+  Name: Mute Drums
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3820868128
+    data2: 4261893125
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-708049675743005359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/song2_funk/Mute Guitar
+  m_EditorClassIdentifier: 
+  Name: Mute Guitar
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3392952760
+    data2: 3667530312
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 437384962596221368}
+  - {fileID: 1339280760973776077}
+  - {fileID: -6807830546338160913}
+  - {fileID: 4993265408087086677}
+  - {fileID: 4491109899809858161}
+  EditorEvents:
+  - {fileID: 1030402403652619378}
+  - {fileID: -3228521610552086782}
+  - {fileID: 7532815845664100393}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 4491109899809858161}
+  StringsBanks:
+  - {fileID: 437384962596221368}
+  cacheTime: 638532647163400696
+  cacheVersion: 131617
+--- !u!114 &437384962596221368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -467,12 +237,218 @@ MonoBehaviour:
   Path: Assets/Audio/Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-<<<<<<< Updated upstream
-  lastModified: 638532650455020938
-=======
   lastModified: 638532647163400696
->>>>>>> Stashed changes
   FileSizes:
   - Name: 
     Value: 1166
   Exists: 1
+--- !u!114 &1030402403652619378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/song0_test
+  m_EditorClassIdentifier: 
+  Path: event:/song0_test
+  Guid:
+    Data1: -2104327410
+    Data2: 1326120696
+    Data3: 1914781588
+    Data4: 675069447
+  Banks:
+  - {fileID: 1339280760973776077}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 5659918861239761375}
+  - {fileID: 3226869631848881517}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 36000
+--- !u!114 &1339280760973776077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/DEMO SONG.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/Banks/Desktop/DEMO SONG.bank
+  Name: DEMO SONG
+  StudioPath: bank:/SONGS/DEMO SONG
+  lastModified: 638532647162987376
+  FileSizes: []
+  Exists: 1
+--- !u!114 &2145867609658879215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/song1_hardrock/Mute Voice
+  m_EditorClassIdentifier: 
+  Name: Mute Voice
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2143270615
+    data2: 3263822580
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &3172405809327780597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/song2_funk/Mute Voice
+  m_EditorClassIdentifier: 
+  Name: Mute Voice
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2143270615
+    data2: 3263822580
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &3226869631848881517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/song0_test/Mute Bass
+  m_EditorClassIdentifier: 
+  Name: Mute Bass
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1453424869
+    data2: 1822726564
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &4491109899809858161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/Banks/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638532647163400696
+  FileSizes: []
+  Exists: 1
+--- !u!114 &4993265408087086677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/HARDROCK.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Audio/Banks/Desktop/HARDROCK.bank
+  Name: HARDROCK
+  StudioPath: bank:/SONGS/HARDROCK
+  lastModified: 638532647163382538
+  FileSizes: []
+  Exists: 1
+--- !u!114 &5659918861239761375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/song0_test/Mute Guitar
+  m_EditorClassIdentifier: 
+  Name: Mute Guitar
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3392952760
+    data2: 3667530312
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &7532815845664100393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/song1_hardrock
+  m_EditorClassIdentifier: 
+  Path: event:/song1_hardrock
+  Guid:
+    Data1: -1101719447
+    Data2: 1219289592
+    Data3: 1621799082
+    Data4: -1273831761
+  Banks:
+  - {fileID: 4993265408087086677}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -1794747820955069276}
+  - {fileID: -5914927704918111954}
+  - {fileID: -5541125622165497344}
+  - {fileID: 2145867609658879215}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 187303
