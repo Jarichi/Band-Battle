@@ -13,7 +13,7 @@ public class TitleScreenButton : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyUp(KeyCode.Return))
         {
             SceneManager.LoadScene(targetSceneName);
 
