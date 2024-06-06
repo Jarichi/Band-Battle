@@ -42,7 +42,7 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-        var playerCount = PlayerInputController.PlayerCount();
+        var playerCount = PlayerList.Count();
         switch (currentPhase)
         {
             case Phase.AwaitInput:
@@ -81,7 +81,7 @@ public class Game : MonoBehaviour
     public void StartPlayPhase()
     {
         currentPhase = Phase.Play;
-        foreach (var player in PlayerInputController.GetPlayers())
+        foreach (var player in PlayerList.Players)
         {
             var interaction = player.GetComponent<PlayerWorldInteraction>();
             interaction.ChosenInstrument.StartMinigame(interaction.gameObject, song.beatmap);
@@ -93,9 +93,9 @@ public class Game : MonoBehaviour
     {
         currentPhase = Phase.End;
         audio.Stop();
-        PlayerInputController.GetPlayers().ForEach(obj =>
+        PlayerList.Players.ForEach(obj =>
         {
-            obj.GetComponent<PlayerMovement>().Disable();
+            obj.InGameEntity.GetComponent<PlayerMovement>().Disable();
         });
     }
 

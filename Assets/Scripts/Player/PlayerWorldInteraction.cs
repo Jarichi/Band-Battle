@@ -31,7 +31,7 @@ public class PlayerWorldInteraction : MonoBehaviour
         {
             ChosenInstrument = inRange;
             movement.Disable();
-            if (PlayerInputController.GetPlayers().All(obj =>
+            if (PlayerList.Players.All(obj =>
             {
                 var interaction = obj.GetComponent<PlayerWorldInteraction>();
                 return interaction.ChosenInstrument != null;

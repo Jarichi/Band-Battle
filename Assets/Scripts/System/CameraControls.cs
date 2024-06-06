@@ -27,8 +27,8 @@ public class CameraControls : MonoBehaviour
     {
         players = new List<GameObject>();
         cam = GetComponent<Camera>();
-        PlayerInputController.PlayerJoinEvent += HandleJoinEvent;
-        PlayerInputController.PlayerLeaveEvent += HandleLeaveEvent;
+        Player.PlayerSpawnEvent += HandleJoinEvent;
+        Player.PlayerDespawnEvent += HandleLeaveEvent;
     }
 
     void Update()
