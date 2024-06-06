@@ -23,9 +23,6 @@ end screen (M)
 	next game knop die de scene fatsoenlijk reset (M)
 	scores en winnaar (M)
 
-
-alle abxy knoppen in play mode zijn voor combat triggeren tijdens spelen (M)
-
 spelen met 4 controllers 
 	mogelijk een hardwarefout tho
 
