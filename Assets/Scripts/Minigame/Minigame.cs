@@ -9,18 +9,24 @@ using UnityEngine.InputSystem;
 public class Minigame : SongHandler
 {
     private bool active;
-    private PlayerInputController input;
     private PlayerMovement movement;
     private PlayerCombat combat;
+    private PlayerInputController input;
     private GameObject weapon;
     [SerializeField] private string path;
 
     private void Start()
     {
+        input = Player.OfEntity(gameObject).PlayerInputController;
         input.EngageCombatPressed += TryEngageCombat;
 
         
         InitRhythmGame();
+    }
+
+    private void OnDisable()
+    {
+        input.EngageCombatPressed -= TryEngageCombat;
     }
 
     private void TryEngageCombat(InputAction.CallbackContext obj)
@@ -40,7 +46,7 @@ public class Minigame : SongHandler
         }
     }
 
-    public void StartMinigame(GameObject player, GameObject weapon, Beatmap beatmap, int channelNumber)
+    public void StartMinigame(Player player, GameObject weapon, Beatmap beatmap, int channelNumber)
     {
         bpm = beatmap.BPM;
         Channel channel = beatmap.Channels.Find(ch => ch.Number == channelNumber);
@@ -49,8 +55,8 @@ public class Minigame : SongHandler
         SetNoteSequence(beats.ToArray(), directions.ToArray());
 
         input = player.GetComponent<PlayerInputController>();
-        movement = player.GetComponent<PlayerMovement>();
-        combat = player.GetComponent<PlayerCombat>();
+        movement = player.InGameEntity.GetComponent<PlayerMovement>();
+        combat = player.InGameEntity.GetComponent<PlayerCombat>();
         this.weapon = weapon;
 
         active = true;

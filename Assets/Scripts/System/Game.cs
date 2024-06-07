@@ -13,7 +13,6 @@ public class Game : MonoBehaviour
     [Serializable]
     public enum Phase
     {
-        AwaitInput,
         SelectSong,
         ChooseInstrument,
         Play,
@@ -24,36 +23,22 @@ public class Game : MonoBehaviour
     private Song song;
     [SerializeField]
     private Phase currentPhase;
-    private AudioManager audio;
+    private new AudioManager audio;
     public static Game Instance;
-    private PlayerInputManager inputManager;
-    public int minPlayerCount;
-    private int killedPlayers = 0;
 
 
     void Start()
     {
         audio = GetComponent<AudioManager>();
-        currentPhase = Phase.AwaitInput;
+        currentPhase = Phase.SelectSong;
         songs.ToList().ForEach(s => s.DeserializeFile());
         Instance = GameObject.FindAnyObjectByType<Game>();
-        inputManager = GetComponent<PlayerInputManager>();
-        inputManager.EnableJoining();
+        ShowSongs();
+
     }
 
     void Update()
     {
-        var playerCount = PlayerInputController.PlayerCount();
-        switch (currentPhase)
-        {
-            case Phase.AwaitInput:
-                if (playerCount > minPlayerCount)
-                {
-                    ShowSongs();
-                    inputManager.DisableJoining();
-                }
-                break;
-        }
     }
 
     public void DisableAudioChannel(string parameterName)
@@ -73,6 +58,7 @@ public class Game : MonoBehaviour
         PlayerInputController.GetPlayers().ForEach(p => p.GetComponent<PlayerMovement>().Enable());
         currentPhase = Phase.SelectSong;
         song = songs[0];
+        PlayerList.Get().ToList().ForEach(p => p.Spawn(Vector2.zero));
         currentPhase = Phase.ChooseInstrument;
         audio.Initialize(song.fmodEvent);
     }
@@ -80,9 +66,9 @@ public class Game : MonoBehaviour
     public void StartPlayPhase()
     {
         currentPhase = Phase.Play;
-        foreach (var player in PlayerInputController.GetPlayers())
+        foreach (var player in PlayerList.Get())
         {
-            var interaction = player.GetComponent<PlayerWorldInteraction>();
+            var interaction = player.InGameEntity.GetComponent<PlayerWorldInteraction>();
             interaction.ChosenInstrument.StartMinigame(interaction.gameObject, song.beatmap);
         }
         audio.Play();
@@ -92,10 +78,9 @@ public class Game : MonoBehaviour
     {
         currentPhase = Phase.End;
         audio.Stop();
-        PlayerInputController.GetPlayers().ForEach(obj =>
+        PlayerList.Get().ForEach(obj =>
         {
-            obj.GetComponent<PlayerMovement>().Disable();
-            Debug.Log(obj.GetComponent<PlayerWorldInteraction>().GetScore());
+            obj.InGameEntity.GetComponent<PlayerMovement>().Disable();
         });
     }
 

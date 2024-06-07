@@ -27,8 +27,8 @@ public class CameraControls : MonoBehaviour
     {
         players = new List<GameObject>();
         cam = GetComponent<Camera>();
-        PlayerInputController.PlayerJoinEvent += HandleJoinEvent;
-        PlayerInputController.PlayerLeaveEvent += HandleLeaveEvent;
+        Player.PlayerSpawnEvent += HandleJoinEvent;
+        Player.PlayerDespawnEvent += HandleLeaveEvent;
     }
 
     void Update()
@@ -40,12 +40,12 @@ public class CameraControls : MonoBehaviour
     // TODO: move the player list to PlayerInputController
     private void HandleJoinEvent(object sender, EventArgs e)
     {
-        players.Add((GameObject)sender);
+        players.Add(((Player)sender).InGameEntity);
     }
 
     private void HandleLeaveEvent(object sender, EventArgs e)
     {
-        players.Remove((GameObject)sender);
+        players.Remove(((Player)sender).InGameEntity);
     }
 
     void Zoom()

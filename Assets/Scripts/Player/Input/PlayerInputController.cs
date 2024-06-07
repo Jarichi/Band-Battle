@@ -22,29 +22,6 @@ public class PlayerInputController : MonoBehaviour
     public Action<InputAction.CallbackContext> PlayInput2;
     public Action<InputAction.CallbackContext> PlayInput3;
     public Action<InputAction.CallbackContext> PlayInput4;
-    public static System.EventHandler PlayerJoinEvent;
-    public static System.EventHandler PlayerLeaveEvent;
-    private static readonly List<string> Players = new();
-
-    public static int PlayerCount() { return Players.Count; }
-    public static List<GameObject> GetPlayers()
-    {
-        return Players.Select(id => GameObject.Find(id)).ToList();
-    }
-    public void OnPlayerJoin(PlayerInput input)
-    {
-        var id = input.GetInstanceID().ToString();
-        input.gameObject.name = id;
-        Debug.Log("A player has joined! " + input.gameObject.name);
-        Players.Add(id);
-        PlayerJoinEvent.Invoke(input.gameObject, new EventArgs());
-    }
-    public void OnPlayerLeave(PlayerInput input)
-    {
-        Debug.Log("A player has left! " + input.gameObject.name);
-        Players.Remove(input.gameObject.name);
-        PlayerLeaveEvent.Invoke(input.gameObject, new EventArgs());
-    }
 
     public void OnHorizontalMove(InputAction.CallbackContext context)
     {

@@ -43,6 +43,14 @@ public class TriggerLine : MonoBehaviour
         game = Game.Instance;
     }
 
+    private void OnDisable()
+    {
+        input.PlayInput1 -= OnInput1;
+        input.PlayInput2 -= OnInput2;
+        input.PlayInput3 -= OnInput3;
+        input.PlayInput4 -= OnInput4;
+    }
+
     private void OnInput1(InputAction.CallbackContext ctx)
     {
         initialPosition.x = -1.5f;

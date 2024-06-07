@@ -26,18 +26,18 @@ public abstract class Instrument : MonoBehaviour
         inRange = false;
     }
 
-    public void StartMinigame(GameObject player, Beatmap beatmap)
+    public void StartMinigame(GameObject playerEntity, Beatmap beatmap)
     {
         OnPlaying();
-        if (player.GetComponent<PlayerCombat>().inCombat)
+        if (playerEntity.GetComponent<PlayerCombat>().inCombat)
         {
             return;
         }
 
-        GameObject minigameObj = Instantiate(minigame, player.transform);
+        GameObject minigameObj = Instantiate(minigame, playerEntity.transform);
         var minigameScript = minigameObj.GetComponent<Minigame>();
 
-        minigameScript.StartMinigame(player, weapon, beatmap, beatmapChannel);
+        minigameScript.StartMinigame(Player.OfEntity(playerEntity), weapon, beatmap, beatmapChannel);
     }
 
 
