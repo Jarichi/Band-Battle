@@ -54,8 +54,7 @@ public class Game : MonoBehaviour
     void ShowSongs()
     {
         var gui = UserInterface.Instance;
-        gui.ToggleStartScreen();
-        PlayerInputController.GetPlayers().ForEach(p => p.GetComponent<PlayerMovement>().Enable());
+        //gui.ToggleStartScreen();
         currentPhase = Phase.SelectSong;
         song = songs[0];
         PlayerList.Get().ToList().ForEach(p => p.Spawn(Vector2.zero));
@@ -87,15 +86,6 @@ public class Game : MonoBehaviour
     public Phase GetCurrentPhase()
     {
         return currentPhase;
-    }
-
-    public void OnPlayerDeath()
-    {
-        killedPlayers++;
-        if (currentPhase == Phase.Play && killedPlayers == PlayerInputController.PlayerCount() - 1)
-        {
-            End();
-        }
     }
 }
 

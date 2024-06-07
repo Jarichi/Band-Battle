@@ -177,7 +177,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         {
             Destroy(gameObject.transform.GetChild(i).gameObject);
         }
-        Game.Instance.OnPlayerDeath();
     }
 
 

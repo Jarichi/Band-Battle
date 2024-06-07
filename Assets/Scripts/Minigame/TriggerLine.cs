@@ -37,8 +37,8 @@ public class TriggerLine : MonoBehaviour
         input.PlayInput2 += OnInput2;
         input.PlayInput3 += OnInput3;
         input.PlayInput4 += OnInput4;
-        player = transform.root.GetComponent<PlayerWorldInteraction>();
-
+        player = transform.root.GetComponent<Player>().InGameEntity.GetComponent<PlayerWorldInteraction>();
+        Debug.Log(player);
         fmodParameterName = gameObject.transform.parent.GetComponentInParent<PlayerWorldInteraction>().ChosenInstrument.fmodParameterName;
         game = Game.Instance;
     }
