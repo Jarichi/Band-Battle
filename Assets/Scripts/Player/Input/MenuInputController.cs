@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,16 +6,32 @@ using UnityEngine.InputSystem;
 
 public class MenuInputController : MonoBehaviour
 {
-    public void OnPlayerJoin(PlayerInput input)
+    public float HorizontalSelect { get; private set; }
+    public float VerticalSelect { get; private set; }
+    public Action<InputAction.CallbackContext> ConfirmPressed;
+    public Action<InputAction.CallbackContext> CancelPressed;
+    public Action<InputAction.CallbackContext> StartGamePressed;
+    public void OnHorizontalSelect(InputAction.CallbackContext context)
     {
-        var player = input.gameObject.GetComponent<Player>();
-        PlayerList.Players.Add(player);
-        Debug.Log("A player has connected: " + player.name);
+        HorizontalSelect = context.ReadValue<float>();
     }
-    public void OnPlayerLeave(PlayerInput input)
+    public void OnVerticalSelect(InputAction.CallbackContext context)
     {
-        var player = input.gameObject.GetComponent<Player>();
-        Debug.Log("A player has disconnected: " + player.name);
-        PlayerList.Players.Remove(player);
+        VerticalSelect = context.ReadValue<float>();
+    }
+    public void OnConfirmPressed(InputAction.CallbackContext context)
+    {
+        if (ConfirmPressed != null)
+            context.action.performed += ConfirmPressed;
+    }
+    public void OnCancelPressed(InputAction.CallbackContext context)
+    {
+        if (CancelPressed != null)
+            context.action.performed += CancelPressed;
+    }
+    public void OnStartGamePressed(InputAction.CallbackContext context)
+    {
+        if (StartGamePressed != null)
+            context.action.performed += StartGamePressed;
     }
 }

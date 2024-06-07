@@ -32,7 +32,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private void Start()
     {
         spriteRenderer= GetComponent<SpriteRenderer>();
-        input = GetComponent<PlayerInputController>();
+        input = GetComponentInParent<PlayerInputController>();
         rigidbody = GetComponent<Rigidbody2D>();
     }
     private void Awake()

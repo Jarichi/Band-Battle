@@ -16,8 +16,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        input = GetComponent<PlayerInputController>();
+        input = GetComponentInParent<PlayerInputController>();
     }
+
 
     void Update()
     {

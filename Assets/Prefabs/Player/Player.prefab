@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3192102716904606849}
   - component: {fileID: 36598413389542583}
   - component: {fileID: -4956636397247864476}
+  - component: {fileID: 1957070749100608177}
+  - component: {fileID: 8124188081336318725}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -46,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerEntityPrefab: {fileID: 6326775813162313128, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+  data:
+    score: 0
+  isReady: 0
 --- !u!114 &-4956636397247864476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +78,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4488562788100570733, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+      - m_Target: {fileID: 8124188081336318725}
         m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
         m_MethodName: OnVerticalMove
         m_Mode: 0
@@ -89,7 +94,7 @@ MonoBehaviour:
     m_ActionName: Player/Movement[/SwitchProControllerHID/dpad/left,/XInputControllerWindows/dpad/left,/SwitchProControllerHID/dpad/right,/XInputControllerWindows/dpad/right]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4488562788100570733, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+      - m_Target: {fileID: 8124188081336318725}
         m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
         m_MethodName: OnHorizontalMove
         m_Mode: 0
@@ -105,7 +110,7 @@ MonoBehaviour:
     m_ActionName: Player/Hortizontal Movement[/SwitchProControllerHID/dpad/left,/XInputControllerWindows/dpad/left,/SwitchProControllerHID/dpad/right,/XInputControllerWindows/dpad/right]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4488562788100570733, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+      - m_Target: {fileID: 8124188081336318725}
         m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
         m_MethodName: OnVerticalAttack
         m_Mode: 0
@@ -121,7 +126,7 @@ MonoBehaviour:
     m_ActionName: Player/Vertical Attack
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4488562788100570733, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+      - m_Target: {fileID: 8124188081336318725}
         m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
         m_MethodName: OnHorizontalAttack
         m_Mode: 0
@@ -137,7 +142,7 @@ MonoBehaviour:
     m_ActionName: Player/Hortizontal Attack
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4488562788100570733, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+      - m_Target: {fileID: 8124188081336318725}
         m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
         m_MethodName: OnInteractionPressed
         m_Mode: 0
@@ -153,7 +158,7 @@ MonoBehaviour:
     m_ActionName: Player/Overworld Interact[/SwitchProControllerHID/buttonEast,/XInputControllerWindows/buttonEast,/SwitchProControllerHID1/buttonEast,/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4488562788100570733, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+      - m_Target: {fileID: 8124188081336318725}
         m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
         m_MethodName: OnEngageCombatPressed
         m_Mode: 0
@@ -169,7 +174,7 @@ MonoBehaviour:
     m_ActionName: Player/Engage Combat[/Keyboard/enter,/SwitchProControllerHID/start,/XInputControllerWindows/start,/SwitchProControllerHID1/start]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4488562788100570733, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+      - m_Target: {fileID: 8124188081336318725}
         m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
         m_MethodName: OnPlay1Pressed
         m_Mode: 0
@@ -185,7 +190,7 @@ MonoBehaviour:
     m_ActionName: Player/Play Note 1[/Keyboard/1]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4488562788100570733, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+      - m_Target: {fileID: 8124188081336318725}
         m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
         m_MethodName: OnPlay2Pressed
         m_Mode: 0
@@ -201,7 +206,7 @@ MonoBehaviour:
     m_ActionName: Player/Play Note 2[/Keyboard/2]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4488562788100570733, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+      - m_Target: {fileID: 8124188081336318725}
         m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
         m_MethodName: OnPlay3Pressed
         m_Mode: 0
@@ -217,7 +222,7 @@ MonoBehaviour:
     m_ActionName: Player/Play Note 3[/Keyboard/3]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4488562788100570733, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+      - m_Target: {fileID: 8124188081336318725}
         m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
         m_MethodName: OnPlay4Pressed
         m_Mode: 0
@@ -232,23 +237,111 @@ MonoBehaviour:
     m_ActionId: a4ab96fe-2019-4d7a-846c-06d11eb3e917
     m_ActionName: Player/Play Note 4[/Keyboard/4]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1957070749100608177}
+        m_TargetAssemblyTypeName: MenuInputController, Assembly-CSharp
+        m_MethodName: OnHorizontalSelect
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4449e504-971f-455c-a61c-b85dd0d85ad8
     m_ActionName: Menu/Horizontal Select[/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1957070749100608177}
+        m_TargetAssemblyTypeName: MenuInputController, Assembly-CSharp
+        m_MethodName: OnVerticalSelect
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f7b3d789-d4ae-45ed-90d0-85b7b24ca817
     m_ActionName: Menu/Vertical Select[/Keyboard/downArrow,/Keyboard/upArrow,/Keyboard/s,/Keyboard/w]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1957070749100608177}
+        m_TargetAssemblyTypeName: MenuInputController, Assembly-CSharp
+        m_MethodName: OnConfirmPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 90f9d39f-4da7-45ca-8a64-96d38a0b0e23
     m_ActionName: Menu/Confirm[/Keyboard/space,/Keyboard/enter]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1957070749100608177}
+        m_TargetAssemblyTypeName: MenuInputController, Assembly-CSharp
+        m_MethodName: OnCancelPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 53edcd49-5850-4f3b-9a5e-3b03dcf68f7b
     m_ActionName: Menu/Cancel[/Keyboard/backspace,/Keyboard/escape]
-  m_NeverAutoSwitchControlSchemes: 1
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1957070749100608177}
+        m_TargetAssemblyTypeName: MenuInputController, Assembly-CSharp
+        m_MethodName: OnStartGamePressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dcbccfad-5102-4344-8151-199aa3d85992
+    m_ActionName: Menu/Start Game[/Keyboard/enter]
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Menu
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1957070749100608177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4094610912982892623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edea4310b882b41ffa3ae4cd73eb071f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8124188081336318725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4094610912982892623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423167242442d5b40abb09b141487bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

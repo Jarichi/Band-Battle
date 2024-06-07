@@ -25,6 +25,7 @@ public class PlayerInputController : MonoBehaviour
 
     public void OnHorizontalMove(InputAction.CallbackContext context)
     {
+        Debug.Log("horizontal move pressed");
         HorizontalMovement = context.ReadValue<float>();
     }
 

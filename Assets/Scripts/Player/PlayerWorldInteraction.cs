@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerWorldInteraction : MonoBehaviour
 {
-    private PlayerCombat combat;
     private PlayerInputController input;
     private PlayerMovement movement;
     private Instrument inRange;
@@ -16,12 +15,16 @@ public class PlayerWorldInteraction : MonoBehaviour
     public void Start()
     {
         movement = GetComponent<PlayerMovement>();
-        combat = GetComponent<PlayerCombat>();
-        input = GetComponent<PlayerInputController>();
+        input = GetComponentInParent<PlayerInputController>();
         ChosenInstrument = null;
         input.InteractPressed += TryInteract;
     }
-    
+
+    private void OnDisable()
+    {
+        input.InteractPressed -= TryInteract;
+    }
+
     private void TryInteract(InputAction.CallbackContext ctx)
     {
         if (Game.Instance.GetCurrentPhase() != Game.Phase.ChooseInstrument)
@@ -31,9 +34,9 @@ public class PlayerWorldInteraction : MonoBehaviour
         {
             ChosenInstrument = inRange;
             movement.Disable();
-            if (PlayerList.Players.All(obj =>
+            if (PlayerList.Get().All(player =>
             {
-                var interaction = obj.GetComponent<PlayerWorldInteraction>();
+                var interaction = player.InGameEntity.GetComponent<PlayerWorldInteraction>();
                 return interaction.ChosenInstrument != null;
             }))
             {
