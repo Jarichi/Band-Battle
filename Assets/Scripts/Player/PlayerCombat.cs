@@ -27,6 +27,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private new Rigidbody2D rigidbody;
     public int Hitpoints;
     private int StartingHP;
+
+    private HealthBar healthBar;
     
 
     [SerializeField] private ParticleSystem DamageParticles;
@@ -75,7 +77,14 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         StartCoroutine(TransitionToCombat(weapon, movement));
         inCombat = true;
 
-        var healthbar = Resources.Load()
+        //instantiate healthbar as child
+        var loadResource = Resources.Load<GameObject>("Prefabs/UI/Health Bar");
+        print(loadResource.ToString());
+
+        //var translation = new Vector3(0f, 2f, 0f);
+        GameObject healthBar = Instantiate(loadResource, this.transform);
+
+        this.healthBar = healthBar.GetComponent<HealthBar>();
     }
 
     private IEnumerator TransitionToCombat(GameObject weapon, PlayerMovement movement)
@@ -132,6 +141,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         }
 
         invincible = true;
+
         var forcePower = 30f;
         var forceDirection = transform.position - attacker.transform.position;
         rigidbody.AddForce(forceDirection * forcePower, ForceMode2D.Force);
@@ -139,6 +149,9 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         screenShake.Shake();
         SpawnParticles();
         print(Hitpoints);
+
+        healthBar.UpdateHealthbar(StartingHP, Hitpoints);
+        
         if (Hitpoints <= 0)
         {
             Die(attacker.GetComponent<PlayerWorldInteraction>());
