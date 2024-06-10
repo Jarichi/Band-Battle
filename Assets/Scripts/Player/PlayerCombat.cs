@@ -81,7 +81,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         var loadResource = Resources.Load<GameObject>("Prefabs/UI/Health Bar");
         print(loadResource.ToString());
 
-        //var translation = new Vector3(0f, 2f, 0f);
         GameObject healthBar = Instantiate(loadResource, this.transform);
 
         this.healthBar = healthBar.GetComponent<HealthBar>();

@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 1263764611
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 571632699, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
+  m_Sprite: {fileID: -1081780949, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 1.2
   velocity: 5
-  direction: 0
+  direction: 2
   noteSpeedInBeats: 2
 --- !u!61 &-4261519022005244243
 BoxCollider2D:

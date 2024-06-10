@@ -23,7 +23,6 @@ public class HealthBar : MonoBehaviour
         sprites[3] = LoadSubsprite(path, "healthBar_32x16_3");
         sprites[4] = LoadSubsprite(path, "healthBar_32x16_4");
 
-        spriteRenderer.color = HPBarColour;
         spriteRenderer.sprite = sprites[0];
 
     }
@@ -31,18 +30,13 @@ public class HealthBar : MonoBehaviour
     private Sprite LoadSubsprite(string path, string subspriteName)
     {
         Sprite[] all = Resources.LoadAll<Sprite>(path);
-
-        print("loading " + subspriteName + " from " + path);
         foreach (var s in all)
         {
             if (s.name == subspriteName)
             {
-                print("found " + s.name);
-                print("returning " + s);
                 return s;
             }
         }
-        print("didn't find it");
         return null;
 
     }
@@ -60,5 +54,10 @@ public class HealthBar : MonoBehaviour
             }
         }
         return;
+    }
+
+    public void SetColour(Color color)
+    {
+        spriteRenderer.color = color;
     }
 }
