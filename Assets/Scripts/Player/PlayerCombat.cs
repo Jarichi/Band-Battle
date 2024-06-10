@@ -84,6 +84,9 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         GameObject healthBar = Instantiate(loadResource, this.transform);
 
         this.healthBar = healthBar.GetComponent<HealthBar>();
+
+        print("setColour about to be called with parameter:");
+        this.healthBar.SetColour(spriteRenderer.color);
     }
 
     private IEnumerator TransitionToCombat(GameObject weapon, PlayerMovement movement)
