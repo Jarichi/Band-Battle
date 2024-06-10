@@ -156,6 +156,9 @@ public abstract class SongHandler : MonoBehaviour
             spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
             note.gameObject.GetComponent<NoteController>().SetDirection(inputDirection[index]);
             Instantiate(note, spawnPos, Quaternion.identity, this.transform);
+
+            SpawnPulseDivider();
+
             index++;
 
         }
@@ -170,7 +173,7 @@ public abstract class SongHandler : MonoBehaviour
 
         }
 
-        SpawnPulseDivider();
+
 
     }
 

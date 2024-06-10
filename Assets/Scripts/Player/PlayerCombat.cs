@@ -26,6 +26,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private SpriteRenderer spriteRenderer;
     private new Rigidbody2D rigidbody;
     public int Hitpoints;
+    private int StartingHP;
+    
 
     [SerializeField] private ParticleSystem DamageParticles;
     private ScreenShake screenShake;
@@ -36,6 +38,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         input = GetComponentInParent<PlayerInputController>();
         movement = GetComponent<PlayerMovement>();
         rigidbody = GetComponent<Rigidbody2D>();
+        StartingHP = Hitpoints;
     }
     private void Awake()
     {
@@ -71,6 +74,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         Game.Instance.DisableAudioChannel(instrument.fmodParameterName);
         StartCoroutine(TransitionToCombat(weapon, movement));
         inCombat = true;
+
+        var healthbar = Resources.Load()
     }
 
     private IEnumerator TransitionToCombat(GameObject weapon, PlayerMovement movement)
