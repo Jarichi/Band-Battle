@@ -8,6 +8,7 @@ public class PulseController : MonoBehaviour
 {
     private double bpm;
     private float secondPerBeat;
+    private int speedPerBeat = 2;
     private float t;
     private Vector3 targetPosition;
     private Vector3 startPosition;
@@ -18,6 +19,7 @@ public class PulseController : MonoBehaviour
     {
         bpm = GetComponentInParent<Minigame>().GetBPM();
         secondPerBeat = 60 / (float)bpm;
+        secondPerBeat *= speedPerBeat;
 
         startPosition = transform.localPosition;
         targetPosition = transform.localPosition + new Vector3(0f, -6f, 0f);

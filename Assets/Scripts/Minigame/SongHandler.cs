@@ -56,6 +56,8 @@ public abstract class SongHandler : MonoBehaviour
     }
     public float moduloIndex;
     [SerializeField] public PulseDivisions pulseDivisions;
+    private double lastRemainder;
+    private double remainder;
 
 
     //initialises rhythm game on call
@@ -168,18 +170,7 @@ public abstract class SongHandler : MonoBehaviour
 
         }
 
-        //debug
-        var positionModuloIndex = (songPosInBeats + previewBeats) % moduloIndex;
-        var epsilon = 0.01;
-
-        //print("PositionModIndez = " + positionModuloIndex);
-
-
-        if (positionModuloIndex <= epsilon || positionModuloIndex >= 1-epsilon)
-        {
-            print("triggered");
-            //var pulseMarker = Instantiate(Resources.Load("Assets/Prefabs/Minigame/Pulse Marker.prefab"), this.transform) as GameObject;
-        }
+        SpawnPulseDivider();
 
     }
 
@@ -219,5 +210,20 @@ public abstract class SongHandler : MonoBehaviour
         print("modulo index = " + moduloIndex);
 
         return;
+    }
+
+    private void SpawnPulseDivider()
+    {
+        
+        lastRemainder = remainder;
+        remainder = (songPosInBeats + previewBeats) % moduloIndex;
+
+        if (lastRemainder > remainder)
+        {
+            //print("triggered");
+            var pulsemarker = Resources.Load<GameObject>("Prefabs/Minigame/Pulse Marker");
+            print(pulsemarker);
+            Instantiate(pulsemarker, this.transform);
+        }
     }
 }
