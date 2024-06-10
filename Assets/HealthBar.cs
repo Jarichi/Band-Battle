@@ -51,6 +51,7 @@ public class HealthBar : MonoBehaviour
     public void UpdateHealthbar(int maxHP, int currentHP)
     {
         float[] thresholds = { 1f, 0.75f, 0.5f, 0.25f, 0f };
+        
 
         FadeHealthbar();
 
