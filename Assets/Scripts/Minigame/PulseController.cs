@@ -1,0 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEditor.TerrainTools;
+using UnityEngine;
+
+public class PulseController : MonoBehaviour
+{
+    private double bpm;
+    private float secondPerBeat;
+    private float t;
+    private Vector3 targetPosition;
+    private Vector3 startPosition;
+    private SongHandler.PulseDivisions PulseDivisions;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        bpm = GetComponentInParent<Minigame>().GetBPM();
+        secondPerBeat = 60 / (float)bpm;
+
+        startPosition = transform.localPosition;
+        targetPosition = transform.localPosition + new Vector3(0f, -6f, 0f);
+
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (gameObject != null)
+        {
+            MoveObj();
+        }
+    }
+
+    private bool IsTriggerLine(Collider2D collision, out TriggerLine triggerLine)
+    {
+        triggerLine = null;
+        if (collision.tag != "minigame_TriggerLine") return false;
+        return collision.TryGetComponent(out triggerLine);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (IsTriggerLine(other, out var triggerLine))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void MoveObj()
+    {
+        t += Time.fixedDeltaTime / secondPerBeat;
+        transform.localPosition = Vector3.Lerp(startPosition, targetPosition, t);
+
+    }
+
+}

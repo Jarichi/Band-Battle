@@ -46,7 +46,16 @@ public abstract class SongHandler : MonoBehaviour
     private bool musicStarted = false;
     private bool initCountdown = false;
 
-
+    public enum PulseDivisions
+    {
+        WholeNote,
+        HalfNote,
+        QuarterNote,
+        EightNote,
+        SixteenthNote
+    }
+    public float moduloIndex;
+    [SerializeField] public PulseDivisions pulseDivisions;
 
 
     //initialises rhythm game on call
@@ -61,6 +70,8 @@ public abstract class SongHandler : MonoBehaviour
 
         //songStartTime = (double)AudioSettings.dspTime; //OUT OF SYNC
         songStartTime = Time.time;
+
+        SetPulseDividerSpawnrate(pulseDivisions);
     }
 
     //updates current position and beat timer of the song
@@ -157,6 +168,18 @@ public abstract class SongHandler : MonoBehaviour
 
         }
 
+        //debug
+        var positionModuloIndex = (songPosInBeats + previewBeats) % moduloIndex;
+        var epsilon = 0.01;
+
+        //print("PositionModIndez = " + positionModuloIndex);
+
+
+        if (positionModuloIndex <= epsilon || positionModuloIndex >= 1-epsilon)
+        {
+            print("triggered");
+            //var pulseMarker = Instantiate(Resources.Load("Assets/Prefabs/Minigame/Pulse Marker.prefab"), this.transform) as GameObject;
+        }
 
     }
 
@@ -170,5 +193,31 @@ public abstract class SongHandler : MonoBehaviour
     public double GetBPM()
     {
         return bpm;
+    }
+
+    private void SetPulseDividerSpawnrate(PulseDivisions division)
+    {
+        switch (division)
+        {
+            case PulseDivisions.WholeNote:
+
+                moduloIndex = 4;
+                break;
+            case PulseDivisions.HalfNote:
+                moduloIndex = 2;
+                break;
+            case PulseDivisions.QuarterNote:
+                moduloIndex = 1;
+                break;
+            case PulseDivisions.EightNote:
+                moduloIndex = 0.5f;
+                break;
+            case PulseDivisions.SixteenthNote:
+                moduloIndex = 0.25f;
+                break;
+        }
+        print("modulo index = " + moduloIndex);
+
+        return;
     }
 }
