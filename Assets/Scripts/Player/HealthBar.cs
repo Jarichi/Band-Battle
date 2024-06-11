@@ -22,7 +22,6 @@ public class HealthBar : MonoBehaviour
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        print("start called. Spriterenderer = " + spriteRenderer);
         sprites = new Sprite[5];
 
         sprites[0] = LoadSubsprite(path, "healthBar_32x16_0");

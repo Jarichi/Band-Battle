@@ -50,6 +50,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     void Update()
     {
+        if(!inCombat) return;
         if (input.HorizontalAttack < 0)
         {
             Attack(AttackDirection.West);
@@ -78,9 +79,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         StartCoroutine(TransitionToCombat(weapon, movement));
         inCombat = true;
 
-        //instantiate healthbar as child
         var loadResource = Resources.Load<GameObject>("Prefabs/UI/Health Bar");
-        print(loadResource.ToString());
 
         GameObject healthBar = Instantiate(loadResource, this.transform);
 
@@ -151,7 +150,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         Hitpoints -= damage;
         screenShake.Shake();
         SpawnParticles();
-        print(Hitpoints);
 
         healthBar.UpdateHealthbar(StartingHP, Hitpoints);
         
