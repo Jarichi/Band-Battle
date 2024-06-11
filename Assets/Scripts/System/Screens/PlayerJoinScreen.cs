@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CharacterSelection : MonoBehaviour
+public class PlayerJoinScreen : MonoBehaviour
 {
     [SerializeField]
     private string levelSceneName;
