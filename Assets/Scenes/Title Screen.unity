@@ -883,7 +883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf029e51087ec504f998eecfe29eca8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: PrototypeLevel
+  targetSceneName: Character Selection
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

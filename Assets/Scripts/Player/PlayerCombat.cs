@@ -50,7 +50,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     void Update()
     {
-        if(!inCombat) return;
         if (input.HorizontalAttack < 0)
         {
             Attack(AttackDirection.West);
