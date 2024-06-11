@@ -115,7 +115,7 @@ public abstract class SongHandler : MonoBehaviour
         }
 
 
-
+        SpawnPulseDivider();
         //if statement compares the current array index and the length of the entire array, AND it compares the index in the rhythm array to the current song position in beats
         //preview beats offsets the spawning moment by a certain beat index, so that the notes are visible n beats before they are supposed to be spawned.
         if (index < rhythm.Length && rhythm[index] < songPosInBeats + previewBeats)
@@ -157,7 +157,7 @@ public abstract class SongHandler : MonoBehaviour
             note.gameObject.GetComponent<NoteController>().SetDirection(inputDirection[index]);
             Instantiate(note, spawnPos, Quaternion.identity, this.transform);
 
-            SpawnPulseDivider();
+            
 
             index++;
 
