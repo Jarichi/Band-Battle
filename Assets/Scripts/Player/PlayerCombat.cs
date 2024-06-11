@@ -189,7 +189,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     public void Die(PlayerWorldInteraction cause)
     {
-        spriteRenderer.enabled= false;
+        movement.animator.SetTrigger("Death");
         movement.Disable();
         for (var i = gameObject.transform.childCount - 1; i >= 0; i--)
         {
