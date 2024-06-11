@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Loading;
 using UnityEngine;
 
@@ -31,7 +32,6 @@ public class HealthBar : MonoBehaviour
         sprites[4] = LoadSubsprite(path, "healthBar_32x16_4");
 
         spriteRenderer.sprite = sprites[0];
-
     }
 
     private Sprite LoadSubsprite(string path, string subspriteName)
@@ -57,10 +57,9 @@ public class HealthBar : MonoBehaviour
 
         for (int i = 0; i < thresholds.Length; i++)
         {
-            if (currentHP == maxHP * thresholds[i])
+            if (currentHP <= maxHP * thresholds[i])
             {
                 spriteRenderer.sprite = sprites[i];
-                break;
             }
         }
         return;

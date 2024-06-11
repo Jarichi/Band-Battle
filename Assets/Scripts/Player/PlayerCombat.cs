@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum AttackDirection
@@ -180,7 +181,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         invincible = false;
         spriteRenderer.color = Color.white;
 
-        if (currentWeapon.TryGetComponent<DrumWeapon>(out var drumweapon))
+        if (!currentWeapon.IsDestroyed() && currentWeapon.TryGetComponent<DrumWeapon>(out var drumweapon))
         {
             print("weapon is drums, turn white");
 
