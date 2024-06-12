@@ -9,6 +9,7 @@ public class PlayerList : MonoBehaviour
     private static readonly List<string> Players = new();
     [SerializeField]
     private Color[] playerColors = new Color[4];
+    [SerializeField] private GameObject[] playerEntities = new GameObject[4];
 
     private void Start()
     {
@@ -23,6 +24,10 @@ public class PlayerList : MonoBehaviour
     public static Color[] ColorList()
     {
         return FindAnyObjectByType<PlayerList>().playerColors;
+    }
+    public static GameObject[] PlayerEntitiesList()
+    {
+        return FindAnyObjectByType<PlayerList>().playerEntities;
     }
 
     public void OnPlayerJoin(PlayerInput input)

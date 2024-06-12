@@ -1122,7 +1122,7 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 4094610912982892623, guid: 0a803cc396d14c44788f159dd25a3580, type: 3}
+  m_PlayerPrefab: {fileID: 4094610912982892623, guid: 23a23a5a8984244ea9330659a285c7ea, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -1164,6 +1164,11 @@ MonoBehaviour:
   - {r: 0, g: 0.08139229, b: 1, a: 0}
   - {r: 0.048508644, g: 1, b: 0, a: 0}
   - {r: 0.95149136, g: 1, b: 0, a: 0}
+  playerEntities:
+  - {fileID: 6326775813162313128, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
+  - {fileID: 6326775813162313128, guid: b3e4757b0b5ef0c43bd67706b138a157, type: 3}
+  - {fileID: 6326775813162313128, guid: 30b01f8be1a334840875b5b88be1f1b1, type: 3}
+  - {fileID: 6326775813162313128, guid: a256a9979ef2c26488fea69d302ce16b, type: 3}
 --- !u!1 &1444843385
 GameObject:
   m_ObjectHideFlags: 0
