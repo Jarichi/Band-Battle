@@ -27,6 +27,9 @@ public class Game : MonoBehaviour
     [SerializeField]
     Vector2 spawnPoint;
     private new AudioManager audio;
+    [SerializeField]
+    [Range(0f, 500f)]
+    private int timeUntilCombat;
     public static Game Instance;
 
     void Start()
@@ -80,6 +83,13 @@ public class Game : MonoBehaviour
             interaction.ChosenInstrument.StartMinigame(interaction.gameObject, song.beatmap);
         }
         audio.Play();
+        StartCoroutine(EnableCombat());
+    }
+
+    private IEnumerator EnableCombat()
+    {
+        yield return new WaitForSeconds(timeUntilCombat);
+        PlayerList.Get().ForEach(p => { p.InGameEntity.GetComponent<PlayerCombat>().allowCombat = true; });
     }
 
     public void End()

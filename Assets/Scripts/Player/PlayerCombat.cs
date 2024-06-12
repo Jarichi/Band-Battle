@@ -32,9 +32,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private int StartingHP;
     [HideInInspector]
     public bool dead = false;
+    public bool allowCombat = false;
 
     private HealthBar healthBar;
-
+    [SerializeField]
+    private GameObject engageCombatUI;
 
     [SerializeField] private ParticleSystem DamageParticles;
     private ScreenShake screenShake;
@@ -54,6 +56,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     void Update()
     {
+        engageCombatUI.SetActive(allowCombat && !inCombat);
         if (input.HorizontalAttack < 0)
         {
             Attack(AttackDirection.West);

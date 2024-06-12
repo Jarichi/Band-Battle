@@ -31,7 +31,7 @@ public class Minigame : SongHandler
 
     private void TryEngageCombat(InputAction.CallbackContext obj)
     {
-        if (active)
+        if (active && combat.allowCombat)
         {
             active = false;
             combat.Engage(weapon, movement);
