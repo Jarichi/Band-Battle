@@ -7,5 +7,21 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MayPlayer
-  m_Controller: {fileID: 22100000}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 2e0b4bba4f6c1604581ed4ae43e1fa47, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 79f3b8818e56fba479a4f7c454fc731d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4466f02eae3ca69489969de791711834, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7fc2f8b84c314442584fbaf193be8b3d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 70104f253ceb97e46a9f612e3c1a2141, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0c22f072cc02bc943a12c9918840815a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: febaa5917e54f8845916f16c5c6663ef, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1393f60ea4293e548813e809802ee3cb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 54578ce8c156ee6449194f33a30af948, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7c651a7995b8090408bdbdab7cbabe3a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1eb691007a402fe4d830c011c76048e9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 040764bd3c667fd409d5d76cc5a123ed, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5867ad74465d88140b5b16f69a2f9ff0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9d989f3a663e5954ea31e79d43009a9b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8c326b1a3ab89a741a85a817f445d246, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8fa203229e0f65a44b764ddb2720f95b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f656742408089ad42891ca9c0db258ee, type: 2}
