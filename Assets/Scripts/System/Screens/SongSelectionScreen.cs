@@ -26,14 +26,20 @@ public class SongSelectionScreen : MonoBehaviour
     private Player bandLeader;
 
     private readonly List<GameObject> buttons = new();
-    void Start()
+    void OnEnable()
     {
         var players = PlayerList.Get();
+        players.ForEach(p => {
+            p.SwitchActionMap("Player");
+            p.DisableAllControls();
+        });
+
         bandLeader = players.FirstOrDefault(p => p.data.isBandLeader);
         if (bandLeader == null)
         {
             var index  = UnityEngine.Random.Range(0, players.Count);
             bandLeader = players[index];
+            bandLeader.data.isBandLeader = true;
         }
         songs.ToList().ForEach(s => s.DeserializeFile());
         var y = 130f;

@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum AttackDirection
 {
@@ -28,16 +30,18 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private new Rigidbody2D rigidbody;
     public int Hitpoints;
     private int StartingHP;
+    [HideInInspector]
+    public bool dead = false;
 
     private HealthBar healthBar;
-    
+
 
     [SerializeField] private ParticleSystem DamageParticles;
     private ScreenShake screenShake;
 
     private void Start()
     {
-        spriteRenderer= GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         input = GetComponentInParent<PlayerInputController>();
         movement = GetComponent<PlayerMovement>();
         rigidbody = GetComponent<Rigidbody2D>();
@@ -53,7 +57,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         if (input.HorizontalAttack < 0)
         {
             Attack(AttackDirection.West);
-        } else if (input.HorizontalAttack > 0)
+        }
+        else if (input.HorizontalAttack > 0)
         {
             Attack(AttackDirection.East);
         }
@@ -151,10 +156,10 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         SpawnParticles();
 
         healthBar.UpdateHealthbar(StartingHP, Hitpoints);
-        
+
         if (Hitpoints <= 0)
         {
-            Die(attacker.GetComponent<PlayerWorldInteraction>());
+            Die(attacker);
         }
         spriteRenderer.color = Color.red;
 
@@ -187,15 +192,26 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     }
 
-    public void Die(PlayerWorldInteraction cause)
+    public void Die(PlayerCombat cause)
     {
+        dead = true;
         movement.animator.SetTrigger("Death");
         movement.Disable();
+        Player.OfEntity(gameObject).data.isBandLeader = false;
         for (var i = gameObject.transform.childCount - 1; i >= 0; i--)
         {
             Destroy(gameObject.transform.GetChild(i).gameObject);
         }
+
+        var survivors = PlayerList.Get().Where(p =>
+            !p.InGameEntity.GetComponent<PlayerCombat>().dead
+        );
+        if (survivors.Count() <= 1 ) {
+            Debug.Log("one player remaining!");
+            var lastManStanding = survivors.ElementAt(0);
+            lastManStanding.data.isBandLeader = true;
+            print(lastManStanding);
+            Game.Instance.End();
+        }
     }
-
-
 }

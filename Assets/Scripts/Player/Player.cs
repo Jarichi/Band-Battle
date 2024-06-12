@@ -59,9 +59,9 @@ public class Player : MonoBehaviour
 
     public void UpdateIndex()
     {
-        data.index          = PlayerList.Get().IndexOf(this) + 1;
-        data.color          = PlayerList.ColorList()[data.index - 1];
-        playerEntityPrefab  = PlayerList.PlayerEntitiesList()[data.index - 1];
+        Index         = PlayerList.Get().IndexOf(this) + 1;
+        data.color          = PlayerList.ColorList()[Index - 1];
+        playerEntityPrefab  = PlayerList.PlayerEntitiesList()[Index - 1];
     }
 
     public void SwitchActionMap(string name)

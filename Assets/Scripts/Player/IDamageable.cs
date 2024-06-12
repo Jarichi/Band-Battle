@@ -5,6 +5,6 @@ using UnityEngine;
 public interface IDamageable
 {
     public void OnDamage(int damage, PlayerCombat attacker);
-    public void Die(PlayerWorldInteraction cause);
+    public void Die(PlayerCombat cause);
     
 }

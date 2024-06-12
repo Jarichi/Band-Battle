@@ -41,7 +41,7 @@ public class DummyCombat : MonoBehaviour, IDamageable
         Instantiate(DamageParticles, transform.position, Quaternion.identity);
     }
 
-    public void Die(PlayerWorldInteraction cause)
+    public void Die(PlayerCombat cause)
     {
         Destroy(gameObject);
     }

@@ -8,6 +8,7 @@ using Unity.Burst;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Game : MonoBehaviour
@@ -88,8 +89,8 @@ public class Game : MonoBehaviour
         PlayerList.Get().ForEach(player =>
         {
             player.Despawn();
-            player.SwitchActionMap(Player.MenuActionMap);
         });
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public Phase GetCurrentPhase()

@@ -36,10 +36,6 @@ public class PlayerJoinScreen : MonoBehaviour
         if (players.Count < minimumPlayerCount) return;
         if (players.All(p => p.isReady))
         {
-            players.ForEach(p => {
-                p.SwitchActionMap("Player");
-                p.DisableAllControls();
-            });
             SceneManager.LoadScene(levelSceneName);
         }
     }
