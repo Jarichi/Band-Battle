@@ -6,14 +6,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerList : MonoBehaviour
 {
+    public static PlayerList Instance;
     private static readonly List<string> Players = new();
     [SerializeField]
     private Color[] playerColors = new Color[4];
     [SerializeField] private GameObject[] playerEntities = new GameObject[4];
+    [HideInInspector]
+    public PlayerInputManager inputManager;
 
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+        Instance = this;
+        inputManager = GetComponent<PlayerInputManager>();
     }
 
     public static List<Player> Get()
@@ -28,11 +33,11 @@ public class PlayerList : MonoBehaviour
 
     public static Color[] ColorList()
     {
-        return FindAnyObjectByType<PlayerList>().playerColors;
+        return Instance.playerColors;
     }
     public static GameObject[] PlayerEntitiesList()
     {
-        return FindAnyObjectByType<PlayerList>().playerEntities;
+        return Instance.playerEntities;
     }
 
     public void OnPlayerJoin(PlayerInput input)

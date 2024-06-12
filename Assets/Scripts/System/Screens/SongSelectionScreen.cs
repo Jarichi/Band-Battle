@@ -26,7 +26,8 @@ public class SongSelectionScreen : MonoBehaviour
     private Player bandLeader;
 
     private readonly List<GameObject> buttons = new();
-    void OnEnable()
+
+    private void OnEnable()
     {
         var players = PlayerList.Get();
         players.ForEach(p => {

@@ -18,6 +18,11 @@ public class PlayerJoinScreen : MonoBehaviour
     [Header("GUI Options")]
     private Color selectedColor = Color.white;
 
+    private void OnEnable()
+    {
+        PlayerList.Instance.inputManager.EnableJoining();
+    }
+
     void Update()
     {
         var players = PlayerList.Get();
@@ -34,8 +39,10 @@ public class PlayerJoinScreen : MonoBehaviour
         }
 
         if (players.Count < minimumPlayerCount) return;
+
         if (players.All(p => p.isReady))
         {
+            PlayerList.Instance.inputManager.DisableJoining();
             SceneManager.LoadScene(levelSceneName);
         }
     }
