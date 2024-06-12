@@ -6,9 +6,9 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private GameObject playerEntityPrefab;
-    public PersistantData data;
-
-    [HideInInspector]
+    public GameData data;
+    public int Index { get; private set; }
+    public Color Color { get; private set; }
     public GameObject InGameEntity {get; private set;}
     public MenuInputController MenuInputController { get; private set; }
     public PlayerInputController PlayerInputController { get; private set; }
@@ -42,10 +42,25 @@ public class Player : MonoBehaviour
         return playerEntity.GetComponentInParent<Player>();
     }
 
+    public static Player ByID(int id)
+    {
+        return GameObject.Find(id.ToString()).GetComponent<Player>();
+    }
+
+    public static Player ByID(string id)
+    {
+        return GameObject.Find(id).GetComponent<Player>();
+    }
+
+    public string ID()
+    {
+        return gameObject.name;
+    }
+
     public void UpdateIndex()
     {
-        data.index = PlayerList.Get().IndexOf(this) + 1;
-        data.color = PlayerList.ColorList()[data.index - 1];
+        Index = PlayerList.Get().IndexOf(this) + 1;
+        Color = PlayerList.ColorList()[Index - 1];
     }
 
     public void SwitchActionMap(string name)
@@ -66,10 +81,12 @@ public class Player : MonoBehaviour
     }
 
     [Serializable]
-    public class PersistantData
+    public class GameData
     {
-        public int index;
-        public Color color;
         public int score;
+        public bool isBandLeader;
     }
+
+    public static string MenuActionMap = "Menu";
+    public static string PlayActionMap = "Player";
 }

@@ -18,7 +18,6 @@ public class CharacterSelection : MonoBehaviour
         if (players.Count < minimumPlayerCount) return;
         if (players.All(p => p.isReady))
         {
-            players.ForEach(p => p.SwitchActionMap("Player"));
             SceneManager.LoadScene(levelSceneName);
         }
     }
