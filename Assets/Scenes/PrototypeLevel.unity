@@ -2491,10 +2491,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SongSelection
       objectReference: {fileID: 0}
-    - target: {fileID: 4897085445939144705, guid: 8040b341c74c04644ac5c99abd5e74a7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

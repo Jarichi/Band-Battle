@@ -125,9 +125,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc393a9f52aac74ca5f7af991f93797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonMarginBottom: 65
   songOptionPrefab: {fileID: 6827249855867055344, guid: 6a187908586f585488a86cdfdc5be0a0, type: 3}
   songs:
+  - beatmapFilePath: Assets/Scripts/Minigame/Beatmap/tutorial.bbm
+    fmodEvent:
+      Guid:
+        Data1: -2104327410
+        Data2: 1326120696
+        Data3: 1914781588
+        Data4: 675069447
+      Path: event:/song0_tutorial
+    beatmap:
+      BPM: 0
+      Channels: []
+    title: Tutorial
   - beatmapFilePath: Assets/Scripts/Minigame/Beatmap/hardrock.bbm
     fmodEvent:
       Guid:
@@ -152,6 +163,7 @@ MonoBehaviour:
       BPM: 0
       Channels: []
     title: Funk
+  buttonMarginBottom: 83
 --- !u!1 &8720135700488226132
 GameObject:
   m_ObjectHideFlags: 0
