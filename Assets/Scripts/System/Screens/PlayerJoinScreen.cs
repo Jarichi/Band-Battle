@@ -18,7 +18,7 @@ public class PlayerJoinScreen : MonoBehaviour
     [Header("GUI Options")]
     private Color selectedColor = Color.white;
 
-    private void OnEnable()
+    private void Start()
     {
         PlayerList.Instance.inputManager.EnableJoining();
     }
@@ -32,10 +32,13 @@ public class PlayerJoinScreen : MonoBehaviour
             var playerText = playerSelectionFields[i].GetComponentInChildren<TextMeshProUGUI>();
             playerText.color = selectedColor;
             var readyText = playerText.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            readyText.text = "press A or enter";
-            if (players[i].isReady) {
-                readyText.text = "ready! (b or backspace to cancel)";
+            readyText.text = "press A";
+            if (players[i].isReady)
+            {
+                readyText.text = "ready!";
+                readyText.color = Color.green;
             }
+            else readyText.color = selectedColor;
         }
 
         if (players.Count < minimumPlayerCount) return;

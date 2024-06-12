@@ -14,7 +14,7 @@ public class PlayerList : MonoBehaviour
     [HideInInspector]
     public PlayerInputManager inputManager;
 
-    private void Start()
+    private void OnEnable()
     {
         DontDestroyOnLoad(gameObject);
         Instance = this;
