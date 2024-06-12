@@ -46,7 +46,18 @@ public abstract class SongHandler : MonoBehaviour
     private bool musicStarted = false;
     private bool initCountdown = false;
 
-
+    public enum PulseDivisions
+    {
+        WholeNote,
+        HalfNote,
+        QuarterNote,
+        EightNote,
+        SixteenthNote
+    }
+    public float moduloIndex;
+    [SerializeField] public PulseDivisions pulseDivisions;
+    private double lastRemainder;
+    private double remainder;
 
 
     //initialises rhythm game on call
@@ -61,6 +72,8 @@ public abstract class SongHandler : MonoBehaviour
 
         //songStartTime = (double)AudioSettings.dspTime; //OUT OF SYNC
         songStartTime = Time.time;
+
+        SetPulseDividerSpawnrate(pulseDivisions);
     }
 
     //updates current position and beat timer of the song
@@ -102,7 +115,7 @@ public abstract class SongHandler : MonoBehaviour
         }
 
 
-
+        SpawnPulseDivider();
         //if statement compares the current array index and the length of the entire array, AND it compares the index in the rhythm array to the current song position in beats
         //preview beats offsets the spawning moment by a certain beat index, so that the notes are visible n beats before they are supposed to be spawned.
         if (index < rhythm.Length && rhythm[index] < songPosInBeats + previewBeats)
@@ -143,6 +156,9 @@ public abstract class SongHandler : MonoBehaviour
             spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
             note.gameObject.GetComponent<NoteController>().SetDirection(inputDirection[index]);
             Instantiate(note, spawnPos, Quaternion.identity, this.transform);
+
+            
+
             index++;
 
         }
@@ -158,6 +174,7 @@ public abstract class SongHandler : MonoBehaviour
         }
 
 
+
     }
 
 
@@ -170,5 +187,46 @@ public abstract class SongHandler : MonoBehaviour
     public double GetBPM()
     {
         return bpm;
+    }
+
+    private void SetPulseDividerSpawnrate(PulseDivisions division)
+    {
+        switch (division)
+        {
+            case PulseDivisions.WholeNote:
+
+                moduloIndex = 4;
+                break;
+            case PulseDivisions.HalfNote:
+                moduloIndex = 2;
+                break;
+            case PulseDivisions.QuarterNote:
+                moduloIndex = 1;
+                break;
+            case PulseDivisions.EightNote:
+                moduloIndex = 0.5f;
+                break;
+            case PulseDivisions.SixteenthNote:
+                moduloIndex = 0.25f;
+                break;
+        }
+        print("modulo index = " + moduloIndex);
+
+        return;
+    }
+
+    private void SpawnPulseDivider()
+    {
+        
+        lastRemainder = remainder;
+        remainder = (songPosInBeats + previewBeats) % moduloIndex;
+
+        if (lastRemainder > remainder)
+        {
+            //print("triggered");
+            var pulsemarker = Resources.Load<GameObject>("Prefabs/Minigame/Pulse Marker");
+            print(pulsemarker);
+            Instantiate(pulsemarker, this.transform);
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum AttackDirection
@@ -26,6 +27,10 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private SpriteRenderer spriteRenderer;
     private new Rigidbody2D rigidbody;
     public int Hitpoints;
+    private int StartingHP;
+
+    private HealthBar healthBar;
+    
 
     [SerializeField] private ParticleSystem DamageParticles;
     private ScreenShake screenShake;
@@ -36,6 +41,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         input = GetComponentInParent<PlayerInputController>();
         movement = GetComponent<PlayerMovement>();
         rigidbody = GetComponent<Rigidbody2D>();
+        StartingHP = Hitpoints;
     }
     private void Awake()
     {
@@ -71,6 +77,15 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         Game.Instance.DisableAudioChannel(instrument.fmodParameterName);
         StartCoroutine(TransitionToCombat(weapon, movement));
         inCombat = true;
+
+        var loadResource = Resources.Load<GameObject>("Prefabs/UI/Health Bar");
+
+        GameObject healthBar = Instantiate(loadResource, this.transform);
+
+        this.healthBar = healthBar.GetComponent<HealthBar>();
+
+        var playerColour = transform.root.GetComponent<Player>().data.color;
+        this.healthBar.SetColour(playerColour);
     }
 
     private IEnumerator TransitionToCombat(GameObject weapon, PlayerMovement movement)
@@ -127,13 +142,16 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         }
 
         invincible = true;
+
         var forcePower = 30f;
         var forceDirection = transform.position - attacker.transform.position;
         rigidbody.AddForce(forceDirection * forcePower, ForceMode2D.Force);
         Hitpoints -= damage;
         screenShake.Shake();
         SpawnParticles();
-        print(Hitpoints);
+
+        healthBar.UpdateHealthbar(StartingHP, Hitpoints);
+        
         if (Hitpoints <= 0)
         {
             Die(attacker.GetComponent<PlayerWorldInteraction>());
@@ -160,7 +178,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         invincible = false;
         spriteRenderer.color = Color.white;
 
-        if (currentWeapon.TryGetComponent<DrumWeapon>(out var drumweapon))
+        if (!currentWeapon.IsDestroyed() && currentWeapon.TryGetComponent<DrumWeapon>(out var drumweapon))
         {
             print("weapon is drums, turn white");
 
@@ -171,7 +189,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     public void Die(PlayerWorldInteraction cause)
     {
-        spriteRenderer.enabled= false;
+        movement.animator.SetTrigger("Death");
         movement.Disable();
         for (var i = gameObject.transform.childCount - 1; i >= 0; i--)
         {

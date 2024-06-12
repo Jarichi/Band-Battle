@@ -13,6 +13,7 @@ may pusht haar changes (M)
 	fmod shenanigans
 	puntensysteem
 
+Tutorial song
 punten afpakken (M)
 bandleider mechanic (M)
 scorebord feature (S)

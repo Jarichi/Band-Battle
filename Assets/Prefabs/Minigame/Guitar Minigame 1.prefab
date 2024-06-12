@@ -55,6 +55,8 @@ MonoBehaviour:
   - {fileID: 1470639890, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
   - {fileID: 571632699, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
   - {fileID: 1011942548, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
+  moduloIndex: 0
+  pulseDivisions: 2
   path: Assets/Scripts/Minigame/Beatmap/out.bbm
 --- !u!1 &3094961179944250373
 GameObject:
@@ -134,7 +136,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.375, y: 2.0625}
+  m_Size: {x: 4, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
