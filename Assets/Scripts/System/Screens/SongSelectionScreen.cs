@@ -8,27 +8,36 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 
-public class SongSelection : MonoBehaviour
+public class SongSelectionScreen : MonoBehaviour
 {
-    [SerializeField]
-    [Range(0f, 500f)]
-    private float buttonMarginBottom;
     [SerializeField]
     private GameObject songOptionPrefab;
     [SerializeField]
     private Song[] songs;
+    [Header("GUI Settings")]
+    [SerializeField]
+    [Range(0f, 500f)]
+    private float buttonMarginBottom;
 
-    private MenuInputController input;
+    private Player bandLeader;
 
     private readonly List<GameObject> buttons = new();
-
     void Start()
     {
+        var players = PlayerList.Get();
+        bandLeader = players.FirstOrDefault(p => p.data.isBandLeader);
+        if (bandLeader == null)
+        {
+            var index  = UnityEngine.Random.Range(0, players.Count);
+            bandLeader = players[index];
+        }
         songs.ToList().ForEach(s => s.DeserializeFile());
         var y = 130f;
+        int i = 0;
         foreach (var song in songs)
         {
             var obj = Instantiate(songOptionPrefab, transform);
@@ -36,28 +45,24 @@ public class SongSelection : MonoBehaviour
             var pos = t.localPosition;
             pos.y = y;
             t.localPosition = pos; 
-            songOptionPrefab.GetComponentInChildren<TextMeshProUGUI>().text = song.title;
+            obj.GetComponentInChildren<TextMeshProUGUI>().text = song.title;
             y -= buttonMarginBottom;
+            obj.GetComponent<Button>().onClick.AddListener(() => SelectSong());
+            obj.GetComponent<IndexableButton>().SetIndex(i);
             buttons.Add(obj);
+            i++;
         }
-
+        GetComponentInChildren<TextMeshProUGUI>().text = GetComponentInChildren<TextMeshProUGUI>().text.Replace("<n>", bandLeader.Index.ToString());
+        EventSystem.current.GetComponent<InputSystemUIInputModule>().actionsAsset = bandLeader.Input.actions;
         EventSystem.current.SetSelectedGameObject(buttons[0]);
     }
 
-    private void OnEnable()
+    public void SelectSong()
     {
-        input = PlayerList.Get().First(p => p.data.isBandLeader).GetComponent<MenuInputController>();
-        input.ConfirmPressed += (_ => { OnConfirmChoice(); });;
-    }
-
-    private void OnDisable()
-    {
-        input.ConfirmPressed = null;
-    }
-
-    public void OnConfirmChoice()
-    {
-        EventSystem.current.currentSelectedGameObject.GetComponent<Button>().onClick.Invoke();
+        var index = EventSystem.current.currentSelectedGameObject.GetComponent<IndexableButton>().Index;
+        var song = songs[index];
+        PlayerList.Get().ForEach(p => p.EnableControls());
+        Game.Instance.OnSongSelect(song);
     }
 }
 

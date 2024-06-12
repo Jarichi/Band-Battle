@@ -1400,7 +1400,7 @@ MonoBehaviour:
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: d5d6c885b1838b1409de3136542df071, type: 3}
   m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: 0}
+  m_MoveAction: {fileID: 1818022634091955964, guid: d5d6c885b1838b1409de3136542df071, type: 3}
   m_SubmitAction: {fileID: 4212235417573604109, guid: d5d6c885b1838b1409de3136542df071, type: 3}
   m_CancelAction: {fileID: -7658400133059994740, guid: d5d6c885b1838b1409de3136542df071, type: 3}
   m_LeftClickAction: {fileID: 4212235417573604109, guid: d5d6c885b1838b1409de3136542df071, type: 3}
@@ -1409,7 +1409,7 @@ MonoBehaviour:
   m_ScrollWheelAction: {fileID: 0}
   m_TrackedDevicePositionAction: {fileID: 0}
   m_TrackedDeviceOrientationAction: {fileID: 0}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
 --- !u!1001 &1411483677
@@ -1501,6 +1501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPhase: 0
+  spawnPoint: {x: 0, y: 0}
 --- !u!4 &1416621405
 Transform:
   m_ObjectHideFlags: 0
@@ -2385,6 +2386,10 @@ PrefabInstance:
     - target: {fileID: 4897085445939144705, guid: 8040b341c74c04644ac5c99abd5e74a7, type: 3}
       propertyPath: m_Name
       value: SongSelection
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897085445939144705, guid: 8040b341c74c04644ac5c99abd5e74a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

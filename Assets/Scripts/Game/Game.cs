@@ -23,8 +23,9 @@ public class Game : MonoBehaviour
     private Song song;
     [SerializeField]
     private Phase currentPhase;
+    [SerializeField]
+    Vector2 spawnPoint;
     private new AudioManager audio;
-    private SongSelection songSelection;
     public static Game Instance;
 
     void Start()
@@ -53,16 +54,20 @@ public class Game : MonoBehaviour
 
     void ShowSongs()
     {
-        var gui = UserInterface.Instance;
         currentPhase = Phase.SelectSong;
-        /*song = songSelection
-        PlayerList.Get().ToList().ForEach(p => {
-            p.Spawn(Vector2.zero);
-            p.SwitchActionMap(Player.PlayActionMap);
-        }
-        );
+    }
+
+    public void OnSongSelect(Song song)
+    {
+        this.song = song;
+        var gui = UserInterface.Instance;
+        gui.GetComponentInChildren<SongSelectionScreen>().gameObject.SetActive(false);
         currentPhase = Phase.ChooseInstrument;
-        audio.Initialize(song.fmodEvent);*/
+        audio.Initialize(song.fmodEvent);
+        PlayerList.Get().ForEach(p =>
+        {
+            p.Spawn(spawnPoint);
+        });
     }
 
     public void StartPlayPhase()

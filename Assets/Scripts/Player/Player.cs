@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public GameObject InGameEntity {get; private set;}
     public MenuInputController MenuInputController { get; private set; }
     public PlayerInputController PlayerInputController { get; private set; }
-    private PlayerInput input;
+    public PlayerInput Input { get; private set; }
     public bool isReady = false;
 
 
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         MenuInputController.CancelPressed += (obj => { isReady = false; });
 
         PlayerInputController = GetComponent<PlayerInputController>();
-        input = GetComponent<PlayerInput>();
+        Input = GetComponent<PlayerInput>();
         UpdateIndex();
 
         DontDestroyOnLoad(gameObject);
@@ -65,7 +65,17 @@ public class Player : MonoBehaviour
 
     public void SwitchActionMap(string name)
     {
-        input.SwitchCurrentActionMap(name);
+        Input.SwitchCurrentActionMap(name);
+    }
+
+    public void DisableAllControls()
+    {
+        Input.DeactivateInput();
+    }
+
+    public void EnableControls()
+    {
+        Input.ActivateInput();
     }
 
     public void Spawn(Vector2 position) {
@@ -85,6 +95,7 @@ public class Player : MonoBehaviour
     {
         public int score;
         public bool isBandLeader;
+        public Color color;
     }
 
     public static string MenuActionMap = "Menu";

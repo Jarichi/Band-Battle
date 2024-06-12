@@ -50,7 +50,8 @@ MonoBehaviour:
   playerEntityPrefab: {fileID: 6326775813162313128, guid: 3b85bc091c3addb46b025fa3831893ac, type: 3}
   data:
     score: 0
-    isBandLeader: 1
+    isBandLeader: 0
+    color: {r: 0, g: 0, b: 0, a: 0}
   isReady: 0
 --- !u!114 &-4956636397247864476
 MonoBehaviour:
@@ -237,22 +238,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a4ab96fe-2019-4d7a-846c-06d11eb3e917
     m_ActionName: Player/Play Note 4[/Keyboard/4]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1957070749100608177}
-        m_TargetAssemblyTypeName: MenuInputController, Assembly-CSharp
-        m_MethodName: OnHorizontalSelect
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 4449e504-971f-455c-a61c-b85dd0d85ad8
-    m_ActionName: Menu/Horizontal Select[/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1957070749100608177}
