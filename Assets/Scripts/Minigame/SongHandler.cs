@@ -121,7 +121,7 @@ public abstract class SongHandler : MonoBehaviour
         if (index < rhythm.Length && rhythm[index] < songPosInBeats + previewBeats)
         {
 
-            //read input direction array and determine offset and colour of note.
+            //read Input direction array and determine offset and colour of note.
             switch (inputDirection[index])
             {
                 case NoteDirection.Left:

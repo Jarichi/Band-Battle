@@ -6,13 +6,13 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private GameObject playerEntityPrefab;
-    public PersistantData data;
-
-    [HideInInspector]
+    public GameData data;
+    public int Index { get; private set; }
+    public Color Color { get; private set; }
     public GameObject InGameEntity {get; private set;}
     public MenuInputController MenuInputController { get; private set; }
     public PlayerInputController PlayerInputController { get; private set; }
-    private PlayerInput input;
+    public PlayerInput Input { get; private set; }
     public bool isReady = false;
 
 
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         MenuInputController.CancelPressed += (obj => { isReady = false; });
 
         PlayerInputController = GetComponent<PlayerInputController>();
-        input = GetComponent<PlayerInput>();
+        Input = GetComponent<PlayerInput>();
         UpdateIndex();
 
         DontDestroyOnLoad(gameObject);
@@ -42,6 +42,21 @@ public class Player : MonoBehaviour
         return playerEntity.GetComponentInParent<Player>();
     }
 
+    public static Player ByID(int id)
+    {
+        return GameObject.Find(id.ToString()).GetComponent<Player>();
+    }
+
+    public static Player ByID(string id)
+    {
+        return GameObject.Find(id).GetComponent<Player>();
+    }
+
+    public string ID()
+    {
+        return gameObject.name;
+    }
+
     public void UpdateIndex()
     {
         data.index          = PlayerList.Get().IndexOf(this) + 1;
@@ -51,7 +66,17 @@ public class Player : MonoBehaviour
 
     public void SwitchActionMap(string name)
     {
-        input.SwitchCurrentActionMap(name);
+        Input.SwitchCurrentActionMap(name);
+    }
+
+    public void DisableAllControls()
+    {
+        Input.DeactivateInput();
+    }
+
+    public void EnableControls()
+    {
+        Input.ActivateInput();
     }
 
     public void Spawn(Vector2 position) {
@@ -67,10 +92,13 @@ public class Player : MonoBehaviour
     }
 
     [Serializable]
-    public class PersistantData
+    public class GameData
     {
-        public int index;
-        public Color color;
         public int score;
+        public bool isBandLeader;
+        public Color color;
     }
+
+    public static string MenuActionMap = "Menu";
+    public static string PlayActionMap = "Player";
 }

@@ -4,9 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.Burst;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Game : MonoBehaviour
 {
@@ -18,27 +20,26 @@ public class Game : MonoBehaviour
         Play,
         End
     }
-    [SerializeField]
-    private Song[] songs;
     private Song song;
     [SerializeField]
     private Phase currentPhase;
+    [SerializeField]
+    Vector2 spawnPoint;
     private new AudioManager audio;
     public static Game Instance;
-
 
     void Start()
     {
         audio = GetComponent<AudioManager>();
         currentPhase = Phase.SelectSong;
-        songs.ToList().ForEach(s => s.DeserializeFile());
-        Instance = GameObject.FindAnyObjectByType<Game>();
+        
         ShowSongs();
-
     }
 
-    void Update()
+    private void Awake()
     {
+        if (Instance == null)
+            Instance = this;
     }
 
     public void DisableAudioChannel(string parameterName)
@@ -53,13 +54,20 @@ public class Game : MonoBehaviour
 
     void ShowSongs()
     {
-        var gui = UserInterface.Instance;
-        //gui.ToggleStartScreen();
         currentPhase = Phase.SelectSong;
-        song = songs[0];
-        PlayerList.Get().ToList().ForEach(p => p.Spawn(Vector2.zero));
+    }
+
+    public void OnSongSelect(Song song)
+    {
+        this.song = song;
+        var gui = UserInterface.Instance;
+        gui.GetComponentInChildren<SongSelectionScreen>().gameObject.SetActive(false);
         currentPhase = Phase.ChooseInstrument;
         audio.Initialize(song.fmodEvent);
+        PlayerList.Get().ForEach(p =>
+        {
+            p.Spawn(spawnPoint);
+        });
     }
 
     public void StartPlayPhase()
@@ -77,27 +85,15 @@ public class Game : MonoBehaviour
     {
         currentPhase = Phase.End;
         audio.Stop();
-        PlayerList.Get().ForEach(obj =>
+        PlayerList.Get().ForEach(player =>
         {
-            obj.InGameEntity.GetComponent<PlayerMovement>().Disable();
+            player.Despawn();
+            player.SwitchActionMap(Player.MenuActionMap);
         });
     }
 
     public Phase GetCurrentPhase()
     {
         return currentPhase;
-    }
-}
-
-[Serializable]
-public class Song
-{
-    [SerializeField]
-    private string beatmapFilePath;
-    public EventReference fmodEvent;
-    public Beatmap beatmap;
-    internal void DeserializeFile()
-    {
-        beatmap = JsonUtility.FromJson<Beatmap>(File.ReadAllText(beatmapFilePath));
     }
 }

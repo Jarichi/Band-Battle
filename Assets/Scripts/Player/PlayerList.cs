@@ -18,7 +18,12 @@ public class PlayerList : MonoBehaviour
 
     public static List<Player> Get()
     {
-        return Players.Select(id => GameObject.Find(id).GetComponent<Player>()).ToList();
+        return Players.Select(id => Player.ByID(id)).ToList();
+    }
+
+    public static List<string> GetAllIDs()
+    {
+        return Players;
     }
 
     public static Color[] ColorList()
