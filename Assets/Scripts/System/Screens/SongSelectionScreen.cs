@@ -26,7 +26,6 @@ public class SongSelectionScreen : MonoBehaviour
     private Player bandLeader;
 
     private readonly List<GameObject> buttons = new();
-
     private void OnEnable()
     {
         var players = PlayerList.Get();
@@ -56,7 +55,6 @@ public class SongSelectionScreen : MonoBehaviour
             obj.GetComponent<Button>().onClick.AddListener(() => SelectSong());
             obj.GetComponent<IndexableButton>().SetIndex(i);
             buttons.Add(obj);
-            print(song.title);
             i++;
         }
         GetComponentInChildren<TextMeshProUGUI>().text = GetComponentInChildren<TextMeshProUGUI>().text.Replace("<n>", bandLeader.Index.ToString());
@@ -66,13 +64,12 @@ public class SongSelectionScreen : MonoBehaviour
 
     public void SelectSong()
     {
-        foreach (var s in songs) { print(s.title); }
         var index = EventSystem.current.currentSelectedGameObject.GetComponent<IndexableButton>().Index;
-        print(songs.Length);
         var song = songs[index];
         song.DeserializeFile();
         PlayerList.Get().ForEach(p => p.EnableControls());
         buttons.ForEach(btn => btn.GetComponent<Button>().onClick.RemoveAllListeners());
+        EventSystem.current.SetSelectedGameObject(null);
         Game.Instance.OnSongSelect(song);
     }
 }
