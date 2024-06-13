@@ -1,15 +1,7 @@
-using FMODUnity;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Unity.Burst;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Game : MonoBehaviour
 {

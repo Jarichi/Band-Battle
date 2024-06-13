@@ -1,11 +1,6 @@
-using JetBrains.Annotations;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEditor.PlayerSettings;
 
 public class CameraControls : MonoBehaviour
 {

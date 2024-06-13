@@ -1,12 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.TerrainTools;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class NoteController : MonoBehaviour
 {
