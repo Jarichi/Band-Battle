@@ -11,14 +11,14 @@ public class Minigame : SongHandler
     private bool active;
     private PlayerMovement movement;
     private PlayerCombat combat;
-    private PlayerInputController input;
+    private PlayerInput input;
     private GameObject weapon;
     [SerializeField] private string path;
 
     private void Start()
     {
-        input = Player.OfEntity(gameObject).PlayerInputController;
-        input.EngageCombatPressed += TryEngageCombat;
+        input = Player.OfEntity(gameObject).Input;
+        input.actions["Engage Combat"].performed += TryEngageCombat;
 
         
         InitRhythmGame();
@@ -26,7 +26,7 @@ public class Minigame : SongHandler
 
     private void OnDisable()
     {
-        input.EngageCombatPressed -= TryEngageCombat;
+        input.actions["Engage Combat"].performed -= TryEngageCombat;
     }
 
     private void TryEngageCombat(InputAction.CallbackContext obj)
@@ -54,7 +54,6 @@ public class Minigame : SongHandler
         var directions = channel.Positions.ConvertAll(position => (NoteDirection)position.Direction);
         SetNoteSequence(beats.ToArray(), directions.ToArray());
 
-        input = player.GetComponent<PlayerInputController>();
         movement = player.InGameEntity.GetComponent<PlayerMovement>();
         combat = player.InGameEntity.GetComponent<PlayerCombat>();
         this.weapon = weapon;

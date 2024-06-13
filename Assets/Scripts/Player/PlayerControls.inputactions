@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hortizontal Movement",
+                    "name": "Horizontal Movement",
                     "type": "Button",
                     "id": "6c465e2b-e962-46f1-95d8-bbd6f9c3f6c5",
                     "expectedControlType": "Button",
@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hortizontal Attack",
+                    "name": "Horizontal Attack",
                     "type": "Button",
                     "id": "ba032fce-c260-4115-80f2-8f17557bf0f2",
                     "expectedControlType": "Button",
@@ -137,7 +137,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hortizontal Movement",
+                    "action": "Horizontal Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -148,7 +148,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Hortizontal Movement",
+                    "action": "Horizontal Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -159,7 +159,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Hortizontal Movement",
+                    "action": "Horizontal Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -170,7 +170,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hortizontal Attack",
+                    "action": "Horizontal Attack",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -181,7 +181,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Hortizontal Attack",
+                    "action": "Horizontal Attack",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -192,7 +192,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Hortizontal Attack",
+                    "action": "Horizontal Attack",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -269,7 +269,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hortizontal Movement",
+                    "action": "Horizontal Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -280,7 +280,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Hortizontal Movement",
+                    "action": "Horizontal Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -291,7 +291,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Hortizontal Movement",
+                    "action": "Horizontal Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -335,7 +335,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hortizontal Attack",
+                    "action": "Horizontal Attack",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -346,7 +346,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Hortizontal Attack",
+                    "action": "Horizontal Attack",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -357,7 +357,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Hortizontal Attack",
+                    "action": "Horizontal Attack",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },

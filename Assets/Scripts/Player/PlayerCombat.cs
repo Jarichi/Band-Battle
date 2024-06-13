@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public enum AttackDirection
@@ -24,7 +25,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private bool onCooldown;
     private bool invincible;
     private Weapon currentWeapon;
-    private PlayerInputController input;
+    private PlayerInput input;
     private PlayerMovement movement;
     private SpriteRenderer spriteRenderer;
     private new Rigidbody2D rigidbody;
@@ -44,7 +45,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        input = GetComponentInParent<PlayerInputController>();
+        input = Player.OfEntity(gameObject).Input;
         movement = GetComponent<PlayerMovement>();
         rigidbody = GetComponent<Rigidbody2D>();
         StartingHP = Hitpoints;
@@ -56,20 +57,22 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     void Update()
     {
+        var attackHor = input.actions["Horizontal Attack"].ReadValue<float>();
+        var attackVer = input.actions["Vertical Attack"].ReadValue<float>();
         engageCombatUI.SetActive(allowCombat && !inCombat);
-        if (input.HorizontalAttack < 0)
+        if (attackHor < 0)
         {
             Attack(AttackDirection.West);
         }
-        else if (input.HorizontalAttack > 0)
+        else if (attackHor > 0)
         {
             Attack(AttackDirection.East);
         }
-        else if (input.VerticalAttack > 0)
+        else if (attackVer > 0)
         {
             Attack(AttackDirection.North);
         }
-        else if (input.VerticalAttack < 0)
+        else if (attackVer < 0)
         {
             Attack(AttackDirection.South);
         }

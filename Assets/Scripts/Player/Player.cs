@@ -10,8 +10,6 @@ public class Player : MonoBehaviour
     public int Index { get; private set; }
     public Color Color { get; private set; }
     public GameObject InGameEntity {get; private set;}
-    public MenuInputController MenuInputController { get; private set; }
-    public PlayerInputController PlayerInputController { get; private set; }
     public PlayerInput Input { get; private set; }
     public bool isReady = false;
 
@@ -19,13 +17,11 @@ public class Player : MonoBehaviour
     public static EventHandler PlayerSpawnEvent;
     public static EventHandler PlayerDespawnEvent;
 
-    void Start() {
-        MenuInputController = GetComponent<MenuInputController>();
-        MenuInputController.StartGamePressed += (obj => { isReady = true; });
-        MenuInputController.CancelPressed += (obj => { isReady = false; });
-
-        PlayerInputController = GetComponent<PlayerInputController>();
+    void Start()
+    {
         Input = GetComponent<PlayerInput>();
+        Input.actions["Start Game"].performed += SetReady;
+        Input.actions["Cancel"].performed += SetUnready;
         UpdateIndex();
 
         DontDestroyOnLoad(gameObject);
@@ -33,8 +29,18 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-        MenuInputController.StartGamePressed = null;
-        MenuInputController.CancelPressed = null;
+        Input.actions["Start Game"].performed -= SetReady;
+        Input.actions["Cancel"].performed -= SetUnready;
+    }
+
+    private void SetReady(InputAction.CallbackContext ctx)
+    {
+        isReady = true;
+    }
+
+    private void SetUnready(InputAction.CallbackContext ctx)
+    {
+        isReady = false;
     }
 
     public static Player OfEntity(GameObject playerEntity)

@@ -11,7 +11,7 @@ public class TriggerLine : MonoBehaviour
     private InputCollider[] colliders;
     public float marginOfError;
     private Vector2 initialPosition;
-    private PlayerInputController input;
+    private PlayerInput input;
 
     private SpriteRenderer SpriteRenderer;
     private Color baseColour = Color.white;
@@ -32,11 +32,11 @@ public class TriggerLine : MonoBehaviour
     private void Start()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
-        input = transform.root.GetComponent<PlayerInputController>();
-        input.PlayInput1 += OnInput1;
-        input.PlayInput2 += OnInput2;
-        input.PlayInput3 += OnInput3;
-        input.PlayInput4 += OnInput4;
+        input = transform.root.GetComponent<Player>().Input;
+        input.actions["Play Note 1"].performed += OnInput1;
+        input.actions["Play Note 2"].performed += OnInput2;
+        input.actions["Play Note 3"].performed += OnInput3;
+        input.actions["Play Note 4"].performed += OnInput4;
         player = transform.root.GetComponent<Player>().InGameEntity.GetComponent<PlayerWorldInteraction>();
         Debug.Log(player);
         fmodParameterName = gameObject.transform.parent.GetComponentInParent<PlayerWorldInteraction>().ChosenInstrument.fmodParameterName;
@@ -45,10 +45,10 @@ public class TriggerLine : MonoBehaviour
 
     private void OnDisable()
     {
-        input.PlayInput1 -= OnInput1;
-        input.PlayInput2 -= OnInput2;
-        input.PlayInput3 -= OnInput3;
-        input.PlayInput4 -= OnInput4;
+        input.actions["Play Note 1"].performed -= OnInput1;
+        input.actions["Play Note 2"].performed -= OnInput2;
+        input.actions["Play Note 3"].performed -= OnInput3;
+        input.actions["Play Note 4"].performed -= OnInput4;
     }
 
     private void OnInput1(InputAction.CallbackContext ctx)

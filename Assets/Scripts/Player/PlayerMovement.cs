@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,13 +11,13 @@ public class PlayerMovement : MonoBehaviour
     public float moveX, moveY;
 
     public Animator animator;
-    private Vector2 moveDirection; 
-    private PlayerInputController input;
+    private Vector2 moveDirection;
+    private PlayerInput input;
     
     void Start()
     {
+        input = Player.OfEntity(gameObject).Input;
         animator = GetComponent<Animator>();
-        input = GetComponentInParent<PlayerInputController>();
     }
 
 
@@ -28,15 +29,15 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-       // transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     void ProcessInput()
     {
         if (!canMove) return;
 
-        moveX = input.HorizontalMovement;
-        moveY = input.VerticalMovement;
+        //TODO: control stick, smooth movement
+        moveX = input.actions["Horizontal Movement"].ReadValue<float>();
+        moveY = input.actions["Vertical Movement"].ReadValue<float>();
 
         if (moveX == 0f && moveY == 0f)
         {
@@ -52,10 +53,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!canMove) return;
 
-        transform.Translate(moveDirection * Time.deltaTime * moveSpeed);
+        transform.Translate(moveSpeed * Time.deltaTime * moveDirection);
         
-        animator.SetFloat("xVelocity", input.HorizontalMovement);
-        animator.SetFloat("yVelocity", input.VerticalMovement);
+        animator.SetFloat("xVelocity", moveX);
+        animator.SetFloat("yVelocity", moveY);
         animator.SetBool("isMoving", isMoving);
     }
 

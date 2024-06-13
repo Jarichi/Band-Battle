@@ -10,21 +10,21 @@ public class PlayerWorldInteraction : MonoBehaviour
 {
     private double score;
     private PlayerCombat combat;
-    private PlayerInputController input;
+    private PlayerInput input;
     private PlayerMovement movement;
     private Instrument inRange;
     public Instrument ChosenInstrument {get; private set;}
     public void Start()
     {
+        input = Player.OfEntity(gameObject).Input;
         movement = GetComponent<PlayerMovement>();
-        input = GetComponentInParent<PlayerInputController>();
         ChosenInstrument = null;
-        input.InteractPressed += TryInteract;
+        input.actions["Overworld Interact"].performed += TryInteract;
     }
 
     private void OnDisable()
     {
-        input.InteractPressed -= TryInteract;
+        input.actions["Overworld Interact"].performed -= TryInteract;
     }
 
     private void TryInteract(InputAction.CallbackContext ctx)
