@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DrumMovement : MonoBehaviour
 {
@@ -19,8 +20,10 @@ public class DrumMovement : MonoBehaviour
 
     void Move()
     {
-        animator.SetFloat("xVelocity", parentMovement.moveX);
-        animator.SetFloat("yVelocity", parentMovement.moveY);
-        animator.SetBool("isMoving", parentMovement.isMoving);
+        var x = parentMovement.MoveDirection.normalized.x;
+        var y = parentMovement.MoveDirection.normalized.y;
+        animator.SetFloat("xVelocity", x);
+        animator.SetFloat("yVelocity", y);
+        animator.SetBool("isMoving", !(x == 0f && y == 0f));
     }
 }

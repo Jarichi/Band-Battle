@@ -6,12 +6,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private bool canMove = false;
     public float moveSpeed;
-    public bool isMoving = false;
     public Rigidbody2D rb; 
-    public float moveX, moveY;
 
     public Animator animator;
-    private Vector2 moveDirection;
+    public Vector2 MoveDirection { get; private set; }
     private PlayerInput input;
     
     void Start()
@@ -34,30 +32,20 @@ public class PlayerMovement : MonoBehaviour
     void ProcessInput()
     {
         if (!canMove) return;
-
-        //TODO: control stick, smooth movement
-        moveX = input.actions["Horizontal Movement"].ReadValue<float>();
-        moveY = input.actions["Vertical Movement"].ReadValue<float>();
-
-        if (moveX == 0f && moveY == 0f)
-        {
-            isMoving = false;
-        } else {
-            isMoving = true;
-        }
-
-        moveDirection = new Vector2(moveX, moveY).normalized;
+        MoveDirection = input.actions["Move"].ReadValue<Vector2>();
     }
 
     void Move()
     {
         if (!canMove) return;
 
-        transform.Translate(moveSpeed * Time.deltaTime * moveDirection);
-        
-        animator.SetFloat("xVelocity", moveX);
-        animator.SetFloat("yVelocity", moveY);
-        animator.SetBool("isMoving", isMoving);
+        transform.Translate(moveSpeed * Time.deltaTime * MoveDirection);
+
+        var x = MoveDirection.normalized.x;
+        var y = MoveDirection.normalized.y;
+        animator.SetFloat("xVelocity", x);
+        animator.SetFloat("yVelocity", y);
+        animator.SetBool("isMoving", !(x == 0f && y == 0f));
     }
 
     public void Disable()
