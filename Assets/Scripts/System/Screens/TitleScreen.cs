@@ -1,22 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TitleScreen : MonoBehaviour
 {
-    private Button button;
     [SerializeField]
     private string targetSceneName;
 
+    [Header("GUI")]
+    [SerializeField]
+    private Button startButton;
+    [SerializeField]
+    private Sprite startButtonPressSprite;
+    [SerializeField]
+    private Button quitButton;
 
-    private void Update()
+    public void StartPressed()
     {
-        if (Input.GetKeyUp(KeyCode.Return))
-        {
-            SceneManager.LoadScene(targetSceneName);
+        startButton.image.sprite = startButtonPressSprite;
+        SceneManager.LoadScene(targetSceneName);
+        startButton.onClick.RemoveAllListeners();
+        quitButton.onClick.RemoveAllListeners();
+    }
 
-        }
+    public void QuitPressed()
+    {
+        Application.Quit();
     }
 }

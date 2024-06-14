@@ -18,11 +18,6 @@ public class PlayerJoinScreen : MonoBehaviour
     [Header("GUI Options")]
     private Color selectedColor = Color.white;
 
-    private void Start()
-    {
-        PlayerList.Instance.inputManager.EnableJoining();
-    }
-
     void Update()
     {
         var players = PlayerList.Get();

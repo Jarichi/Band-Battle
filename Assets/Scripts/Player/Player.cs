@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -35,12 +36,14 @@ public class Player : MonoBehaviour
 
     private void SetReady(InputAction.CallbackContext ctx)
     {
-        isReady = true;
+        if (SceneManager.GetActiveScene().name == "Character Selection")
+            isReady = true;
     }
 
     private void SetUnready(InputAction.CallbackContext ctx)
     {
-        isReady = false;
+        if (SceneManager.GetActiveScene().name == "Character Selection")
+            isReady = false;
     }
 
     public static Player OfEntity(GameObject playerEntity)
