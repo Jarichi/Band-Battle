@@ -5,32 +5,23 @@ using UnityEngine.UIElements;
 
 public class GuitarWeapon : Weapon
 {
-    protected override void PositionWeaponOnAttack(AttackDirection direction)
+    protected override WeaponPositioning DownPosition()
     {
-        animator.SetTrigger("attack");
-        var position = transform.localPosition;
-        var rotation = transform.localRotation.eulerAngles;
-        switch (direction)
-        {
-            case AttackDirection.North:
-                break;
-
-            case AttackDirection.East:
-                
-                break;
-
-            case AttackDirection.South:
-                break;
-
-            case AttackDirection.West:
-                position = new Vector2(-0.30f, position.y);
-                rotation.y = 180;
-                break;
-        }
-        transform.localPosition = position;
-        transform.localRotation = Quaternion.Euler(rotation);
+        return WeaponPositioning.zero;
     }
 
-   
+    protected override WeaponPositioning LeftPosition()
+    {
+        return new WeaponPositioning(new Vector2(-0.30f, transform.localPosition.y), new Vector3(0, 180, 0));
+    }
 
+    protected override WeaponPositioning RightPosition()
+    {
+        return new WeaponPositioning(new Vector2(0, transform.localPosition.y), Vector3.zero);
+    }
+
+    protected override WeaponPositioning UpPosition()
+    {
+        return WeaponPositioning.zero;
+    }
 }

@@ -7,6 +7,17 @@ using UnityEngine.UIElements;
 
 public abstract class Weapon : MonoBehaviour
 {
+    protected class WeaponPositioning
+    {
+        public static readonly WeaponPositioning zero = new(Vector2.zero, Vector3.zero);
+        public readonly Vector2 position;
+        public readonly Vector3 rotation;
+        public WeaponPositioning(Vector2 position, Vector3 rotation)
+        {
+            this.position = position;
+            this.rotation = rotation;
+        }
+    }
     public string combatAnimationName;
     [Range(0f, 3f)]
     public float combatAnimationTime;
@@ -44,15 +55,18 @@ public abstract class Weapon : MonoBehaviour
         this.wielder = wielder;
     }
 
-    public void ExecuteAttack(AttackDirection direction)
+    public void ExecuteAttack(Vector2 direction)
     {
-        if (!allowVerticalAttack && (direction == AttackDirection.North || direction == AttackDirection.South)) return;
-
         var initialPosition = transform.localPosition;
         var initialRotation = transform.localRotation;
         PositionWeaponOnAttack(direction);
         StartCoroutine(ResetPosition(initialPosition, initialRotation));
         StartCoroutine(EnableHitbox());
+    }
+
+    public bool CanAttackInDirection(Vector2 direction)
+    {
+        return !(!allowVerticalAttack && (direction == Vector2.up || direction == Vector2.down));
     }
 
     private IEnumerator ResetPosition(Vector3 initialPosition, Quaternion initialRotation)
@@ -75,7 +89,35 @@ public abstract class Weapon : MonoBehaviour
         collider.enabled = false;
     }
 
-    protected abstract void PositionWeaponOnAttack(AttackDirection direction);
+    protected virtual void PositionWeaponOnAttack(Vector2 direction)
+    {
+        animator.SetTrigger("attack");
+        var rotation = transform.localRotation.eulerAngles;
+        var p = WeaponPositioning.zero;
+        if (direction.y > 0)
+        {
+            p = UpPosition();
+        }
+        else if (direction.x > 0)
+        {
+            p = RightPosition();
+        }
+        else if (direction.y < 0)
+        {
+            p = DownPosition();
+        }
+        else if (direction.x < 0)
+        {
+            p = LeftPosition();
+        }
+        transform.localPosition = p.position;
+        transform.localRotation = Quaternion.Euler(p.rotation);
+    }
+
+    protected abstract WeaponPositioning UpPosition();
+    protected abstract WeaponPositioning RightPosition();
+    protected abstract WeaponPositioning DownPosition();
+    protected abstract WeaponPositioning LeftPosition();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -11,7 +11,7 @@ public class DrumWeapon : Weapon
         parent.GetComponent<SpriteRenderer>().enabled = false;
     }
 
-    protected override void PositionWeaponOnAttack(AttackDirection direction)
+    protected override void PositionWeaponOnAttack(Vector2 direction)
     {
         StartCoroutine(ToggleMovement());
         AnimationSettings(direction);
@@ -19,52 +19,47 @@ public class DrumWeapon : Weapon
 
     }
 
-    private void AnimationSettings(AttackDirection direction)
+    private void AnimationSettings(Vector2 direction)
     {
         animator.SetTrigger("attack");
-        switch (direction)
+        if (direction.y > 0)
         {
-            case AttackDirection.North:
-                animator.SetFloat("xDir", 0f);
-                animator.SetFloat("yDir", 1f);
-                break;
-
-            case AttackDirection.East:
-                animator.SetFloat("xDir", 1f);
-                animator.SetFloat("yDir", 0f);
-                break;
-
-            case AttackDirection.South:
-                animator.SetFloat("xDir", 0f);
-                animator.SetFloat("yDir", -1f);
-                break;
-
-            case AttackDirection.West:
-                animator.SetFloat("xDir", -1f);
-                animator.SetFloat("yDir", 0f);
-                break;
+            animator.SetFloat("xDir", 0f);
+            animator.SetFloat("yDir", 1f);
+        } else if (direction.x > 0)
+        {
+            animator.SetFloat("xDir", 1f);
+            animator.SetFloat("yDir", 0f);
+        } else if (direction.y < 0)
+        {
+            animator.SetFloat("xDir", 0f);
+            animator.SetFloat("yDir", -1f);
+        }
+        else if (direction.x < 0)
+        {
+            animator.SetFloat("xDir", -1f);
+            animator.SetFloat("yDir", 0f);
         }
     }
-    private void AttackSettings(AttackDirection direction)
+
+    private void AttackSettings(Vector2 direction)
     {
         var hitboxPosition = collider.offset;
-        switch (direction)
+        if (direction.y > 0)
         {
-            case AttackDirection.North:
-                hitboxPosition = new Vector2(0, 1.2f);
-                break;
-
-            case AttackDirection.East:
-                hitboxPosition = new Vector2(1, 0);
-                break;
-
-            case AttackDirection.South:
-                hitboxPosition = new Vector2(0, -1.2f);
-                break;
-
-            case AttackDirection.West:
-                hitboxPosition = new Vector2(-1, 0);
-                break;
+            hitboxPosition = new Vector2(0, 1.2f);
+        }
+        else if (direction.x > 0)
+        {
+            hitboxPosition = new Vector2(1, 0);
+        }
+        else if (direction.y < 0)
+        {
+            hitboxPosition = new Vector2(0, -1.2f);
+        }
+        else if (direction.x < 0)
+        {
+            hitboxPosition = new Vector2(-1, 0);
         }
         collider.offset = hitboxPosition;
     }
@@ -78,6 +73,24 @@ public class DrumWeapon : Weapon
 
     }
 
-    
+    protected override WeaponPositioning UpPosition()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override WeaponPositioning RightPosition()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override WeaponPositioning DownPosition()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override WeaponPositioning LeftPosition()
+    {
+        throw new System.NotImplementedException();
+    }
 }
 

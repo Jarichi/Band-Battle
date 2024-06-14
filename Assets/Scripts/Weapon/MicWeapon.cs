@@ -2,39 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MicWeapon : Weapon
 {
-    protected override void PositionWeaponOnAttack(AttackDirection direction)
+    protected override WeaponPositioning UpPosition()
     {
-        animator.SetTrigger("attack");
-        var position = transform.localPosition;
-        var rotation = transform.localRotation.eulerAngles;
-        switch (direction)
-        {
-            case AttackDirection.North:
-                position = new Vector2(0, .5f);
-                rotation.z = 90;
-                break;
-
-            case AttackDirection.East:
-                position = new Vector2(1, 0);
-                break;
-
-            case AttackDirection.South:
-                position = new Vector2(0, -1.2f);
-                rotation.z = -90;
-                break;
-
-            case AttackDirection.West:
-                position = new Vector2(-1, 0);
-                rotation.z = -180;
-                break;
-        }
-        transform.localPosition = position;
-        transform.localRotation = Quaternion.Euler(rotation);
+        return new WeaponPositioning(new Vector2(0, .5f), new Vector3(0, 0, 90));
     }
-
-
+    protected override WeaponPositioning RightPosition()
+    {
+        return new WeaponPositioning(new Vector2(1, 0), Vector3.zero);
+    }
+    protected override WeaponPositioning DownPosition()
+    {
+        return new WeaponPositioning(new Vector2(0, -1.2f), new Vector3(0, 0, -90));
+    }
+    protected override WeaponPositioning LeftPosition()
+    {
+        return new WeaponPositioning(new Vector2(-1, 0), new Vector3(0, 0, -180));
+    }
 }
 

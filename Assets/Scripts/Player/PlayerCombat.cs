@@ -5,15 +5,6 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-
-public enum AttackDirection
-{
-    North,
-    East,
-    South,
-    West
-}
 
 public class PlayerCombat : MonoBehaviour, IDamageable
 {
@@ -57,24 +48,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     void Update()
     {
-        var attackHor = input.actions["Horizontal Attack"].ReadValue<float>();
-        var attackVer = input.actions["Vertical Attack"].ReadValue<float>();
+        var attackDirection = input.actions["Attack"].ReadValue<Vector2>();
         engageCombatUI.SetActive(allowCombat && !inCombat);
-        if (attackHor < 0)
+        if (attackDirection.x != 0 || attackDirection.y != 0)
         {
-            Attack(AttackDirection.West);
-        }
-        else if (attackHor > 0)
-        {
-            Attack(AttackDirection.East);
-        }
-        else if (attackVer > 0)
-        {
-            Attack(AttackDirection.North);
-        }
-        else if (attackVer < 0)
-        {
-            Attack(AttackDirection.South);
+            Attack(attackDirection);
         }
 
     }
@@ -118,13 +96,14 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         inCombat = false;
     }
 
-    void Attack(AttackDirection direction)
+    void Attack(Vector2 direction)
     {
         if (onCooldown || !inCombat)
         {
             return;
         }
 
+        if (!currentWeapon.CanAttackInDirection(direction)) return;
         if (gameObject.transform.childCount > 0)
         {
             currentWeapon.ExecuteAttack(direction);
