@@ -21,13 +21,6 @@ public class Minigame : MonoBehaviour
     private NoteController noteController;
     [SerializeField]
 
-    //remove this array
-    //replace note sprite with black-and-white sprite that can change colour tee hee
-    private Sprite[] noteColours;
-
-    [SerializeField]
-    private Color[] noteColors;
-
     private void Start()
     {
         input = Player.OfEntity(gameObject).Input;
@@ -63,31 +56,28 @@ public class Minigame : MonoBehaviour
         if (!playerRhythm.ChosenInstrument.IsCorrectChannel(channel))
             return;
 
+
         float xOffset = 0;
         switch (direction)
         {
             case NoteDirection.Left:
-                notePrefab.GetComponent<SpriteRenderer>().sprite = noteColours[0];
-                //noteController.SetColor(noteColors[0]);
+                noteController.SetColor(Color.red);
                 //red note
                 xOffset = -1.5f;
                 break;
             case NoteDirection.Right:
                 //blue note
-                notePrefab.GetComponent<SpriteRenderer>().sprite = noteColours[1];
-                //noteController.SetColor(noteColors[1]);
+                noteController.SetColor(Color.blue);
                 xOffset = -0.5f;
                 break;
             case NoteDirection.Up:
                 //yellow note
-                notePrefab.GetComponent<SpriteRenderer>().sprite = noteColours[2];
-                //noteController.SetColor(noteColors[2]);
+                noteController.SetColor(Color.green);
                 xOffset = 0.5f;
                 break;
             case NoteDirection.Down:
                 //green note
-                notePrefab.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[3];
-                //noteController.SetColor(noteColors[3]);
+                noteController.SetColor(Color.yellow);
                 xOffset = 1.5f;
                 break;
 

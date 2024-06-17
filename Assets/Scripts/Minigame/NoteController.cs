@@ -24,13 +24,15 @@ public class NoteController : MonoBehaviour
     float t;
     [SerializeField]
     private int noteSpeedInBeats = 2;
+    [SerializeField]
     private SpriteRenderer spriteRenderer;
 
     public void SetDirection(NoteDirection _direction)
     {
         direction = _direction;
     }
-    
+
+
     private void Start()
     {
         timeStart = Time.time;
@@ -43,7 +45,6 @@ public class NoteController : MonoBehaviour
         secondPerBeat = 60 / (float)bpm;
         secondPerBeat *= noteSpeedInBeats;
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
 
