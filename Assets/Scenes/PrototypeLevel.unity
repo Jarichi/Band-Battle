@@ -1693,6 +1693,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7c08f6ae92e69438eeae7477fb5e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songPosInSeconds: 0
+  songPosInBeats: 0
+  previewBeats: 1.9
+  moduloIndex: 0
+  rhythmStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  noteSpawnEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  consistentTimeEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1557139943
 GameObject:
   m_ObjectHideFlags: 0

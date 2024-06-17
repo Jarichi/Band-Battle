@@ -26,20 +26,10 @@ public abstract class Instrument : MonoBehaviour
         inRange = false;
     }
 
-    public void StartMinigame(GameObject playerEntity, Beatmap beatmap)
+    public bool IsCorrectChannel(int channel)
     {
-        OnPlaying();
-        if (playerEntity.GetComponent<PlayerCombat>().inCombat)
-        {
-            return;
-        }
-
-        GameObject minigameObj = Instantiate(minigame, playerEntity.transform);
-        var minigameScript = minigameObj.GetComponent<Minigame>();
-
-        minigameScript.StartMinigame(Player.OfEntity(playerEntity), weapon, beatmap, beatmapChannel);
+        return channel == beatmapChannel;
     }
-
 
     public abstract void DeleteInstrument();
 

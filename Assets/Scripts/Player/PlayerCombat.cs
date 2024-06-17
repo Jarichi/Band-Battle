@@ -61,7 +61,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     {
         invincible = true;
         Destroy(GetComponentInChildren<GuitarMinigame>().gameObject);
-        var instrument = movement.GetComponent<PlayerWorldInteraction>().ChosenInstrument;
+        var instrument = movement.GetComponent<PlayerRhythm>().ChosenInstrument;
         instrument.DeleteInstrument();
         Game.Instance.DisableAudioChannel(instrument.fmodParameterName);
         StartCoroutine(TransitionToCombat(weapon, movement));
@@ -127,7 +127,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
         if (!inCombat)
         {
-            Engage(GetComponent<PlayerWorldInteraction>().ChosenInstrument.weapon, GetComponent<PlayerMovement>());
+            Engage(GetComponent<PlayerRhythm>().ChosenInstrument.weapon, GetComponent<PlayerMovement>());
             return;
         }
 

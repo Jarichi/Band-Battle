@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Rhythm;
 
 public class NoteController : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class NoteController : MonoBehaviour
     Vector3 targetPosition;
     Vector3 startPosition;
     [SerializeField]
-    private SongHandler.NoteDirection direction = SongHandler.NoteDirection.Right;
+    private NoteDirection direction = NoteDirection.Right;
     private bool destroyed;
 
     private double bpm;
@@ -25,7 +26,7 @@ public class NoteController : MonoBehaviour
     private int noteSpeedInBeats = 2;
     
 
-    public void SetDirection(SongHandler.NoteDirection _direction)
+    public void SetDirection(NoteDirection _direction)
     {
         direction = _direction;
     }
@@ -37,7 +38,7 @@ public class NoteController : MonoBehaviour
         targetPosition = transform.localPosition + new Vector3(0f, -6f, 0f);
         destroyed = false;
 
-        bpm = GetComponentInParent<Minigame>().GetBPM();
+        bpm = Game.Instance.Rhythm.BPM;
 
         secondPerBeat = 60 / (float)bpm;
         secondPerBeat *= noteSpeedInBeats;
@@ -115,18 +116,18 @@ public class NoteController : MonoBehaviour
         return collision.TryGetComponent(out triggerLine);
     }
 
-    private InputCollider DirectionToCollider(SongHandler.NoteDirection direction, TriggerLine triggerLine)
+    private InputCollider DirectionToCollider(NoteDirection direction, TriggerLine triggerLine)
     {
         int index = 0;
         switch (direction)
         {
-            case SongHandler.NoteDirection.Left:
+            case NoteDirection.Left:
                  index = 0; break;
-            case SongHandler.NoteDirection.Right:
+            case NoteDirection.Right:
                 index = 1; break;
-            case SongHandler.NoteDirection.Up:
+            case NoteDirection.Up:
                 index = 2; break;
-            case SongHandler.NoteDirection.Down:
+            case NoteDirection.Down:
                 index = 3; break;
         }
         return triggerLine.GetCollider(index);

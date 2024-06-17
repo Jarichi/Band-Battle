@@ -13,8 +13,8 @@ public class Game : MonoBehaviour
         Play,
         End
     }
-    private Song selectedSong;
 
+    private Song selectedSong;
     [SerializeField]
     private Song[] allSongs;    
 
@@ -26,28 +26,24 @@ public class Game : MonoBehaviour
     [SerializeField]
     [Range(0f, 500f)]
     private int timeUntilCombat;
-    public static Game Instance;
-
     [SerializeField]
     private SongSelectionScreen songSelectionScreen;
-    
     //private ResultScreen
 
-    //instread of declaring a singular song, declare an array of songs and rewrite functions to use arrays instead.
+    public Rhythm Rhythm { get; private set; }
+    public static Game Instance;
 
     void OnEnable()
     {
+        Rhythm = GetComponent<Rhythm>();
         audio = GetComponent<AudioManager>();        
         ShowSongs();
         songSelectionScreen.songSelectEvent.AddListener(OnSongSelect);
-
-
     }
 
     private void OnDisable()
     {
         songSelectionScreen.songSelectEvent.RemoveAllListeners();
-
     }
 
     private void Awake()
@@ -74,9 +70,6 @@ public class Game : MonoBehaviour
         currentPhase = Phase.SelectSong;
         songSelectionScreen.ShowUI();
         songSelectionScreen.ShowUI(allSongs);
-
-
-
     }
 
     public void OnSongSelect(Song song)
@@ -93,12 +86,7 @@ public class Game : MonoBehaviour
     public void StartPlayPhase()
     {
         currentPhase = Phase.Play;
-        foreach (var player in PlayerList.Get())
-        {
-            var interaction = player.InGameEntity.GetComponent<PlayerWorldInteraction>();
-            interaction.ChosenInstrument.StartMinigame(interaction.gameObject, selectedSong.beatmap);
-        }
-        audio.Play();
+        Rhythm.StartRhythm(selectedSong, audio, Rhythm.ConsistentTimeEventTriggerRate.QuarterNote);
         StartCoroutine(EnableCombat());
     }
 

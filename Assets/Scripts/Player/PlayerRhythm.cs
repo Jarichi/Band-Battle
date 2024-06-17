@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class PlayerWorldInteraction : MonoBehaviour
+public class PlayerRhythm : MonoBehaviour
 {
     private double score;
     private PlayerCombat combat;
@@ -20,11 +20,13 @@ public class PlayerWorldInteraction : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         ChosenInstrument = null;
         input.actions["Overworld Interact"].performed += TryInteract;
+        Game.Instance.Rhythm.rhythmStartEvent.AddListener(OnRhythmStart);
     }
 
     private void OnDisable()
     {
         input.actions["Overworld Interact"].performed -= TryInteract;
+        Game.Instance.Rhythm.rhythmStartEvent.RemoveListener(OnRhythmStart);
     }
 
     private void TryInteract(InputAction.CallbackContext ctx)
@@ -38,7 +40,7 @@ public class PlayerWorldInteraction : MonoBehaviour
             movement.Disable();
             if (PlayerList.Get().All(player =>
             {
-                var interaction = player.InGameEntity.GetComponent<PlayerWorldInteraction>();
+                var interaction = player.InGameEntity.GetComponent<PlayerRhythm>();
                 return interaction.ChosenInstrument != null;
             }))
             {
@@ -60,17 +62,20 @@ public class PlayerWorldInteraction : MonoBehaviour
         inRange = null;
     }
 
+    void OnRhythmStart()
+    {
+        var minigameObj = Instantiate(ChosenInstrument.minigame, transform);
+        var minigame = minigameObj.GetComponent<Minigame>();
+        minigame.OnRhythmStart(Player.OfEntity(gameObject), ChosenInstrument.weapon);
+    }
+
     public void AddScore(double score)
     {
         this.score += score;
     }
 
-    public void DecreaseScore(double score) {
-        this.score -= score;
-    }
-
-    public double GetScore()
+    public void DecreaseScore(double score)
     {
-        return score;
+        this.score -= score;
     }
 }

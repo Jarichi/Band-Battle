@@ -27,7 +27,7 @@ public class TriggerLine : MonoBehaviour
     private double ScoreIncrease = 1;
     [SerializeField]
     private double ScoreDecrease = .5;
-    private PlayerWorldInteraction player;
+    private PlayerRhythm player;
     private Game game;
     private void Start()
     {
@@ -37,9 +37,9 @@ public class TriggerLine : MonoBehaviour
         input.actions["Play Note 2"].performed += OnInput2;
         input.actions["Play Note 3"].performed += OnInput3;
         input.actions["Play Note 4"].performed += OnInput4;
-        player = transform.root.GetComponent<Player>().InGameEntity.GetComponent<PlayerWorldInteraction>();
+        player = transform.root.GetComponent<Player>().InGameEntity.GetComponent<PlayerRhythm>();
         Debug.Log(player);
-        fmodParameterName = gameObject.transform.parent.GetComponentInParent<PlayerWorldInteraction>().ChosenInstrument.fmodParameterName;
+        fmodParameterName = gameObject.transform.parent.GetComponentInParent<PlayerRhythm>().ChosenInstrument.fmodParameterName;
         game = Game.Instance;
     }
 

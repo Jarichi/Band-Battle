@@ -13,7 +13,7 @@ public class PulseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bpm = GetComponentInParent<Minigame>().GetBPM();
+        bpm = Game.Instance.Rhythm.BPM;
         secondPerBeat = 60 / (float)bpm;
         secondPerBeat *= speedPerBeat;
 

@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 //class will be reused as note spawnpoint, and will only act on function calls or events
 
-//using https://www.gamedeveloper.com/audio/coding-to-the-beat---under-the-hood-of-a-rhythm-game-in-unity as main instruction
+//using https://www.gamedeveloper.com/audio/coding-to-the-beat---under-the-hood-of-a-noteSpawnBeats-game-in-unity as main instruction
 
 //Responsible for handling music playback and tempo syncing
 public abstract class SongHandler : MonoBehaviour
@@ -56,12 +56,11 @@ public abstract class SongHandler : MonoBehaviour
     private double remainder;
 
 
-    //initialises rhythm game on call
+    //initialises noteSpawnBeats game on call
     protected void InitRhythmGame()
     {
         secondsPerBeat = MINUTE / bpm;
 
-        //songStartTime = (double)AudioSettings.dspTime; //OUT OF SYNC
         songStartTime = Time.time;
 
         SetPulseDividerSpawnrate(pulseDivisions);
@@ -85,7 +84,7 @@ public abstract class SongHandler : MonoBehaviour
 
     }
 
-    //spawns notes based on a passed array of rhythm and note direction.
+    //spawns beatmapNotes based on a passed array of noteSpawnBeats and note direction.
     private void SpawnNotes()
     {
         //create vector and offset value
@@ -94,11 +93,11 @@ public abstract class SongHandler : MonoBehaviour
 
         if (!initCountdown)
         {
-            //offset all entries in the rhythm array by one bar.
+            //offset all entries in the noteSpawnBeats array by one bar.
             for (int i = 0; i <= rhythm.Length - 1; i++)
             {
                 rhythm[i] += BAR;
-                //print(rhythm[i]);
+                //print(noteSpawnBeats[i]);
 
             }
             //print("finish");
@@ -108,8 +107,8 @@ public abstract class SongHandler : MonoBehaviour
         }
 
 
-        //if statement compares the current array index and the length of the entire array, AND it compares the index in the rhythm array to the current song position in beats
-        //preview beats offsets the spawning moment by a certain beat index, so that the notes are visible n beats before they are supposed to be spawned.
+        //if statement compares the current array index and the length of the entire array, AND it compares the index in the noteSpawnBeats array to the current song position in beats
+        //preview beats offsets the spawning moment by a certain beat index, so that the beatmapNotes are visible n beats before they are supposed to be spawned.
         if (index < rhythm.Length && rhythm[index] < songPosInBeats + previewBeats)
         {
 
@@ -140,13 +139,13 @@ public abstract class SongHandler : MonoBehaviour
 
                 default:
                     //error handler
-                    Debug.Log("Load a beatmap first before spawning notes.");
+                    Debug.Log("Load a beatmap first before spawning beatmapNotes.");
                     break;
             }
 
             //set spawn position offset relative to the songHandler object, and instantiate note object.
             spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
-            note.gameObject.GetComponent<NoteController>().SetDirection(inputDirection[index]);
+            //note.gameObject.GetComponent<NoteController>().SetDirection(inputDirection[index]);
             Instantiate(note, spawnPos, Quaternion.identity, this.transform);
 
             
@@ -170,6 +169,7 @@ public abstract class SongHandler : MonoBehaviour
     }
 
 
+
     protected void SetNoteSequence(double[] p_rhythm, NoteDirection[] p_inputDirection)
     {
         rhythm = p_rhythm;
@@ -186,7 +186,6 @@ public abstract class SongHandler : MonoBehaviour
         switch (division)
         {
             case PulseDivisions.WholeNote:
-
                 moduloIndex = 4;
                 break;
             case PulseDivisions.HalfNote:
