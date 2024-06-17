@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ScreenType
+public abstract class Screen : MonoBehaviour
 {
-    Full,
-    Transparent,
-}
 
-[CreateAssetMenu()]
-public class Screen : ScriptableObject
-{
-    public Sprite background;
-    public ScreenType screenType;
+
+
+    public void ShowUI()
+    {
+        print("ShowUI : Screen.cs");
+        gameObject.SetActive(true);
+    }
+
+    public void HideUI()
+    {
+        gameObject.SetActive(false);
+    }
+
     
-
 }

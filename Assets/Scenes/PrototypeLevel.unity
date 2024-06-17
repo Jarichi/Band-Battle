@@ -277,16 +277,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &341430071 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4897085445939144705, guid: 8040b341c74c04644ac5c99abd5e74a7, type: 3}
-  m_PrefabInstance: {fileID: 7867884204206374683}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &341430072 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 619259993911206849, guid: 8040b341c74c04644ac5c99abd5e74a7, type: 3}
   m_PrefabInstance: {fileID: 7867884204206374683}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &341430073 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1487193116056555767, guid: 8040b341c74c04644ac5c99abd5e74a7, type: 3}
+  m_PrefabInstance: {fileID: 7867884204206374683}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc393a9f52aac74ca5f7af991f93797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &355626278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,6 +1487,7 @@ GameObject:
   - component: {fileID: 1416621404}
   - component: {fileID: 1416621406}
   - component: {fileID: 1416621408}
+  - component: {fileID: 1416621409}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1500,9 +1507,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9519c9f21cab423480eb905efac6e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allSongs:
+  - beatmapFilePath: Assets/Scripts/Minigame/Beatmap/tutorial.bbm
+    fmodEvent:
+      Guid:
+        Data1: -2104327410
+        Data2: 1326120696
+        Data3: 1914781588
+        Data4: 675069447
+      Path: event:/song0_tutorial
+    beatmap:
+      BPM: 0
+      Channels: []
+    title: Tutorial
+  - beatmapFilePath: Assets/Scripts/Minigame/Beatmap/hardrock.bbm
+    fmodEvent:
+      Guid:
+        Data1: -1101719447
+        Data2: 1219289592
+        Data3: 1621799082
+        Data4: -1273831761
+      Path: event:/song1_hardrock
+    beatmap:
+      BPM: 0
+      Channels: []
+    title: Hardrock
+  - beatmapFilePath: Assets/Scripts/Minigame/Beatmap/funk.bbm
+    fmodEvent:
+      Guid:
+        Data1: 161687414
+        Data2: 1157390417
+        Data3: 1368165285
+        Data4: 813004309
+      Path: event:/song2_funk
+    beatmap:
+      BPM: 0
+      Channels: []
+    title: Funk
   currentPhase: 0
   spawnPoint: {x: 0, y: -10}
   timeUntilCombat: 0
+  songSelectionScreen: {fileID: 341430073}
 --- !u!4 &1416621405
 Transform:
   m_ObjectHideFlags: 0
@@ -1636,6 +1681,18 @@ MonoBehaviour:
     parameterName: Mute Voice
   - muted: 0
     parameterName: Mute Drums
+--- !u!114 &1416621409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416621403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7c08f6ae92e69438eeae7477fb5e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1557139943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,7 +2064,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6187fff92a1dd54c8f5560069762bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartScreen: {fileID: 341430071}
 --- !u!114 &1783194870
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,8 +5,11 @@ using UnityEngine;
 public class RhythmManager : MonoBehaviour
 {
 
- 
 
+    private void RhythmStart()
+    {
+
+    }
 
 
 

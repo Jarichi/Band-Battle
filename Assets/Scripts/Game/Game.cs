@@ -13,7 +13,11 @@ public class Game : MonoBehaviour
         Play,
         End
     }
-    private Song song;
+    private Song selectedSong;
+
+    [SerializeField]
+    private Song[] allSongs;    
+
     [SerializeField]
     private Phase currentPhase;
     [SerializeField]
@@ -24,21 +28,36 @@ public class Game : MonoBehaviour
     private int timeUntilCombat;
     public static Game Instance;
 
+    [SerializeField]
+    private SongSelectionScreen songSelectionScreen;
+    
+    //private ResultScreen
+
     //instread of declaring a singular song, declare an array of songs and rewrite functions to use arrays instead.
 
-    void Start()
+    void OnEnable()
     {
-        audio = GetComponent<AudioManager>();
-        currentPhase = Phase.SelectSong;
-        
+        audio = GetComponent<AudioManager>();        
         ShowSongs();
+        songSelectionScreen.songSelectEvent.AddListener(OnSongSelect);
+
+
+    }
+
+    private void OnDisable()
+    {
+        songSelectionScreen.songSelectEvent.RemoveAllListeners();
+
     }
 
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+
     }
+
+
 
     public void DisableAudioChannel(string parameterName)
     {
@@ -53,13 +72,16 @@ public class Game : MonoBehaviour
     void ShowSongs()
     {
         currentPhase = Phase.SelectSong;
+        songSelectionScreen.ShowUI();
+        songSelectionScreen.ShowUI(allSongs);
+
+
+
     }
 
     public void OnSongSelect(Song song)
     {
-        this.song = song;
-        var gui = UserInterface.Instance;
-        gui.GetComponentInChildren<SongSelectionScreen>().gameObject.SetActive(false);
+        this.selectedSong = song;
         currentPhase = Phase.ChooseInstrument;
         audio.Initialize(song.fmodEvent);
         PlayerList.Get().ForEach(p =>
@@ -74,7 +96,7 @@ public class Game : MonoBehaviour
         foreach (var player in PlayerList.Get())
         {
             var interaction = player.InGameEntity.GetComponent<PlayerWorldInteraction>();
-            interaction.ChosenInstrument.StartMinigame(interaction.gameObject, song.beatmap);
+            interaction.ChosenInstrument.StartMinigame(interaction.gameObject, selectedSong.beatmap);
         }
         audio.Play();
         StartCoroutine(EnableCombat());
