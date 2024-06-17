@@ -17,8 +17,16 @@ public class Minigame : MonoBehaviour
     private GameObject weapon;
     [SerializeField]
     private GameObject notePrefab;
+
+    private NoteController noteController;
     [SerializeField]
+
+    //remove this array
+    //replace note sprite with black-and-white sprite that can change colour tee hee
     private Sprite[] noteColours;
+
+    [SerializeField]
+    private Color[] noteColors;
 
     private void Start()
     {
@@ -28,6 +36,8 @@ public class Minigame : MonoBehaviour
         var rhythm = Game.Instance.Rhythm;
         rhythm.noteSpawnEvent.AddListener(SpawnNote);
         rhythm.consistentTimeEvent.AddListener(SpawnPulse);
+
+        noteController = notePrefab.GetComponent<NoteController>();
     }
 
     private void OnDisable()
@@ -58,22 +68,26 @@ public class Minigame : MonoBehaviour
         {
             case NoteDirection.Left:
                 notePrefab.GetComponent<SpriteRenderer>().sprite = noteColours[0];
+                //noteController.SetColor(noteColors[0]);
                 //red note
                 xOffset = -1.5f;
                 break;
             case NoteDirection.Right:
                 //blue note
                 notePrefab.GetComponent<SpriteRenderer>().sprite = noteColours[1];
+                //noteController.SetColor(noteColors[1]);
                 xOffset = -0.5f;
                 break;
             case NoteDirection.Up:
                 //yellow note
                 notePrefab.GetComponent<SpriteRenderer>().sprite = noteColours[2];
+                //noteController.SetColor(noteColors[2]);
                 xOffset = 0.5f;
                 break;
             case NoteDirection.Down:
                 //green note
                 notePrefab.gameObject.GetComponent<SpriteRenderer>().sprite = noteColours[3];
+                //noteController.SetColor(noteColors[3]);
                 xOffset = 1.5f;
                 break;
 

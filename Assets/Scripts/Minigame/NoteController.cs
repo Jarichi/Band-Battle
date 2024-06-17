@@ -24,7 +24,7 @@ public class NoteController : MonoBehaviour
     float t;
     [SerializeField]
     private int noteSpeedInBeats = 2;
-    
+    private SpriteRenderer spriteRenderer;
 
     public void SetDirection(NoteDirection _direction)
     {
@@ -42,6 +42,8 @@ public class NoteController : MonoBehaviour
 
         secondPerBeat = 60 / (float)bpm;
         secondPerBeat *= noteSpeedInBeats;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
 
@@ -131,6 +133,11 @@ public class NoteController : MonoBehaviour
                 index = 3; break;
         }
         return triggerLine.GetCollider(index);
+    }
+
+    public void SetColor(Color color)
+    {
+        spriteRenderer.color = color;
     }
 }
 
