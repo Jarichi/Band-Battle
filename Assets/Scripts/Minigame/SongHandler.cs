@@ -215,9 +215,6 @@ public abstract class SongHandler : MonoBehaviour
         if (lastRemainder > remainder)
         {
             //print("triggered");
-            var pulsemarker = Resources.Load<GameObject>("Prefabs/Minigame/Pulse Marker");
-            print(pulsemarker);
-            Instantiate(pulsemarker, this.transform);
 
             globalBeatEvent.Invoke(); //launches global event
         }

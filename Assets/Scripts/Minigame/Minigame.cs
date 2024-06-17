@@ -25,13 +25,17 @@ public class Minigame : MonoBehaviour
         input = Player.OfEntity(gameObject).Input;
         playerRhythm = GetComponentInParent<PlayerRhythm>();
         input.actions["Engage Combat"].performed += TryEngageCombat;
-        Game.Instance.Rhythm.noteSpawnEvent.AddListener(SpawnNote);
+        var rhythm = Game.Instance.Rhythm;
+        rhythm.noteSpawnEvent.AddListener(SpawnNote);
+        rhythm.consistentTimeEvent.AddListener(SpawnPulse);
     }
 
     private void OnDisable()
     {
         input.actions["Engage Combat"].performed -= TryEngageCombat;
-        Game.Instance.Rhythm.noteSpawnEvent.RemoveListener(SpawnNote);
+        var rhythm = Game.Instance.Rhythm;
+        rhythm.noteSpawnEvent.RemoveListener(SpawnNote);
+        rhythm.consistentTimeEvent.RemoveListener(SpawnPulse);
     }
 
     private void TryEngageCombat(InputAction.CallbackContext obj)
@@ -50,7 +54,6 @@ public class Minigame : MonoBehaviour
             return;
 
         float xOffset = 0;
-        Vector3 spawnPos = Vector3.zero;
         switch (direction)
         {
             case NoteDirection.Left:
@@ -80,9 +83,15 @@ public class Minigame : MonoBehaviour
                 break;
         }
 
-        spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
+        Vector3 spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
         notePrefab.GetComponent<NoteController>().SetDirection(direction);
         Instantiate(notePrefab, spawnPos, Quaternion.identity, this.transform);
+    }
+
+    void SpawnPulse(double _)
+    {
+        var pulsemarker = Resources.Load<GameObject>("Prefabs/Minigame/Pulse Marker");
+        Instantiate(pulsemarker, this.transform);
     }
 
     public void OnRhythmStart(Player player, GameObject weapon)
