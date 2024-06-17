@@ -28,6 +28,10 @@ public class SongSelectionScreen : MonoBehaviour
     private readonly List<GameObject> buttons = new();
     private void OnEnable()
     {
+
+        //retrieve song array from Game
+
+
         var players = PlayerList.Get();
         players.ForEach(p => {
             p.SwitchActionMap("Player");
@@ -73,7 +77,6 @@ public class SongSelectionScreen : MonoBehaviour
         Game.Instance.OnSongSelect(song);
     }
 }
-
 
 [Serializable]
 public class Song

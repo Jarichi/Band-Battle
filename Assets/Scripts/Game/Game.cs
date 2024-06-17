@@ -24,6 +24,8 @@ public class Game : MonoBehaviour
     private int timeUntilCombat;
     public static Game Instance;
 
+    //instread of declaring a singular song, declare an array of songs and rewrite functions to use arrays instead.
+
     void Start()
     {
         audio = GetComponent<AudioManager>();

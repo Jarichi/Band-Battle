@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
-//using System.IO;
-//using System.Linq;
-//using Melanchall.DryWetMidi.Core;
-//using Melanchall.DryWetMidi.Interaction;
-//using Melanchall.DryWetMidi.MusicTheory;
-//using UnityEditor;
+using System.IO;
+using System.Linq;
+using Melanchall.DryWetMidi.Core;
+using Melanchall.DryWetMidi.Interaction;
+using Melanchall.DryWetMidi.MusicTheory;
+using UnityEditor;
 using UnityEngine;
 
-/*public class MIDI2Beatmap : EditorWindow
+#if UNITY_EDITOR
+public class MIDI2Beatmap : EditorWindow
 {
     private string outputPath = "Assets/Scripts/Minigame/Beatmap/";
     private string midiFilePath = "Assets/Audio/MIDI/";
@@ -65,7 +66,8 @@ using UnityEngine;
         File.WriteAllText(path, jsonString);
         Debug.Log(jsonString);
     }
-}*/
+}
+#endif
 
 [Serializable]
 public class Beatmap

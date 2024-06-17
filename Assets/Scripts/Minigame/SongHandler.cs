@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
-
+//class will be reused as note spawnpoint, and will only act on function calls or events
 
 //using https://www.gamedeveloper.com/audio/coding-to-the-beat---under-the-hood-of-a-rhythm-game-in-unity as main instruction
 
@@ -22,7 +24,6 @@ public abstract class SongHandler : MonoBehaviour
     private double songPosInBeats;
 
     private double songStartTime;
-    private AudioSource musicSource;
 
     protected double bpm;
     private const double MINUTE = 60f;
@@ -37,8 +38,9 @@ public abstract class SongHandler : MonoBehaviour
     //private GameObject triggerLine;
     public Sprite[] noteColours;
     private bool scoreCalculated = false;
-    private bool musicStarted = false;
     private bool initCountdown = false;
+
+    public static UnityEvent globalBeatEvent;
 
     public enum PulseDivisions
     {
@@ -59,11 +61,6 @@ public abstract class SongHandler : MonoBehaviour
     {
         secondsPerBeat = MINUTE / bpm;
 
-        //play song only when the script is loaded
-        musicSource = GetComponent<AudioSource>();
-
-        //print(Time.deltaTime);
-
         //songStartTime = (double)AudioSettings.dspTime; //OUT OF SYNC
         songStartTime = Time.time;
 
@@ -83,6 +80,8 @@ public abstract class SongHandler : MonoBehaviour
     {
         SetSongPosition();
         SpawnNotes();
+        SpawnPulseDivider();
+
 
     }
 
@@ -109,7 +108,6 @@ public abstract class SongHandler : MonoBehaviour
         }
 
 
-        SpawnPulseDivider();
         //if statement compares the current array index and the length of the entire array, AND it compares the index in the rhythm array to the current song position in beats
         //preview beats offsets the spawning moment by a certain beat index, so that the notes are visible n beats before they are supposed to be spawned.
         if (index < rhythm.Length && rhythm[index] < songPosInBeats + previewBeats)
@@ -221,6 +219,8 @@ public abstract class SongHandler : MonoBehaviour
             var pulsemarker = Resources.Load<GameObject>("Prefabs/Minigame/Pulse Marker");
             print(pulsemarker);
             Instantiate(pulsemarker, this.transform);
+
+            globalBeatEvent.Invoke(); //launches global event
         }
     }
 }
