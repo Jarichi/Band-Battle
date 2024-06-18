@@ -175,7 +175,7 @@ MonoBehaviour:
   weapon: {fileID: 8701997420161790057, guid: 2201728da8770764dbd071d4165e861c, type: 3}
   minigame: {fileID: 371765481466115574, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
   beatmapChannel: 2
-  fmodParameterName: Mute Voice
+  id: voice
   emptyStand: {fileID: 21300000, guid: b17ce7b6cf5af8241820cd784f98ce9d, type: 3}
 --- !u!61 &936258316893296017
 BoxCollider2D:

@@ -85,14 +85,30 @@ public class Beatmap
 [Serializable]
 public class Channel
 {
-    public int Number;
+    public string InstrumentID;
     [SerializeField]
     public List<NotePosition> Positions;
 
     public Channel(int number, List<NotePosition> positions)
     {
-        this.Number = number;
-        this.Positions = positions;
+        InstrumentID = ChannelNumberToID(number);
+        Positions = positions;
+    }
+
+    private string ChannelNumberToID(int channelNumber)
+    {
+        switch (channelNumber)
+        {
+            case 0:
+                return "drums";
+            case 1:
+                return "guitar";
+            case 2:
+                return "voice";
+            case 3:
+                return "bass";
+        }
+        return null;
     }
 }
 

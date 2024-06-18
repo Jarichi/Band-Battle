@@ -2,7 +2,7 @@
     "BPM": 160.0,
     "Channels": [
         {
-            "Number": 0,
+            "InstrumentID": "drums",
             "Positions": [
                 {
                     "Direction": 0,
@@ -1587,7 +1587,7 @@
             ]
         },
         {
-            "Number": 1,
+            "InstrumentID": "guitar",
             "Positions": [
                 {
                     "Direction": 0,
@@ -2032,7 +2032,7 @@
             ]
         },
         {
-            "Number": 2,
+            "InstrumentID": "voice",
             "Positions": [
                 {
                     "Direction": 0,
@@ -2377,7 +2377,7 @@
             ]
         },
         {
-            "Number": 3,
+            "InstrumentID": "bass",
             "Positions": [
                 {
                     "Direction": 0,

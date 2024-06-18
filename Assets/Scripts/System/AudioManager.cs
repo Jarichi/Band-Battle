@@ -1,18 +1,18 @@
 using FMOD.Studio;
 using FMODUnity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+
     EventInstance songInstance;
     [SerializeField]
     private bool initialized;
-
-    [SerializeField]
-    internal InstrumentSoundStatus[] instruments;
 
     public void Initialize(EventReference song)
     {
@@ -34,10 +34,6 @@ public class AudioManager : MonoBehaviour
         }
 
         songInstance.setPaused(false);
-        if (instruments == null)
-        {
-            instruments = new InstrumentSoundStatus[0];
-        }
     }
 
     public void Stop()
@@ -53,52 +49,46 @@ public class AudioManager : MonoBehaviour
         return length / 1000f;
     }
 
-    public void EnableChannel(string parameterName)
+    public void EnableInstrumentEffect(string instrumentId, InstrumentEffect effect)
     {
-        instruments.ToList().ForEach(i => {
-            if (i.parameterName== parameterName)
-            {
-                i.muted = false;
-            }
-            }
-        );
-    }
-    public void DisableChannel(string parameterName)
-    {
-        instruments.ToList().ForEach(i => {
-            if (i.parameterName == parameterName)
-            {
-                i.muted = true;
-            }
-        }
-        );
+        SetFMODValue(instrumentId + effect.suffix, 1);
     }
 
-
-    private void Update()
+    public void DisableInstrumentEffect(string instrumentId, InstrumentEffect effect)
     {
-        foreach (InstrumentSoundStatus status in instruments)
+        SetFMODValue(instrumentId + effect.suffix, 0);
+    }
+
+    private void SetFMODValue(string parameter, int value)
+    {
+        var result = songInstance.getParameterByName(parameter, out var curValue);
+        print(parameter + " -> " + value + ". curValue = " + curValue);
+        if (result != FMOD.RESULT.OK)
         {
-            var value = 0;
-            if (status.muted) { 
-                value = 1;
-            }
+            Debug.LogError(result);
+            return;
+        }
 
-            songInstance.getParameterByName(status.parameterName, out float curValue);
-            if (curValue != value)
-            {
-                songInstance.setParameterByName(status.parameterName, value);
-            }
-            
+        if (curValue == value) return;
+
+        result = songInstance.setParameterByName(parameter, value);
+        if (result != FMOD.RESULT.OK)
+        {
+            Debug.LogError(result);
+            return;
         }
     }
 
-    [System.Serializable]
-    internal class InstrumentSoundStatus
+}
+
+[Serializable]
+public class InstrumentEffect
+{
+    public static InstrumentEffect Mute = new("_m");
+    public static InstrumentEffect Pitchbend = new("_p");
+    internal readonly string suffix;
+    internal InstrumentEffect(string suffix)
     {
-        [SerializeField]
-        internal bool muted;
-        [SerializeField]
-        internal string parameterName;
+        this.suffix = suffix;
     }
 }

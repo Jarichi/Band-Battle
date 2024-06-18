@@ -42,7 +42,7 @@ public class Rhythm : MonoBehaviour
 
     //event
     public UnityEvent rhythmStartEvent;
-    public UnityEvent<NoteDirection, int> noteSpawnEvent;
+    public UnityEvent<NoteDirection, string> noteSpawnEvent;
     public UnityEvent<double> consistentTimeEvent;
     public UnityEvent rhythmEndEvent;
 
@@ -51,7 +51,7 @@ public class Rhythm : MonoBehaviour
         List<List<NoteInfo>> infos = new();
         song.beatmap.Channels.ForEach(channel =>
         {
-            infos.Add(channel.Positions.ConvertAll(position => new NoteInfo(position.Beat, (NoteDirection)position.Direction, channel.Number)));
+            infos.Add(channel.Positions.ConvertAll(position => new NoteInfo(position.Beat, (NoteDirection)position.Direction, channel.InstrumentID)));
         });
         beatmapNotes = infos.SelectMany(n => n).OrderBy(n => n.beat).ToArray();
 
@@ -110,7 +110,7 @@ public class Rhythm : MonoBehaviour
     {
         if (index < beatmapNotes.Length && beatmapNotes[index].beat < songPosInBeats + previewBeats)
         {
-            noteSpawnEvent?.Invoke(beatmapNotes[index].direction, beatmapNotes[index].forInstrument);
+            noteSpawnEvent?.Invoke(beatmapNotes[index].direction, beatmapNotes[index].instrumentID);
             index++;
         }
     }
@@ -130,13 +130,13 @@ public class Rhythm : MonoBehaviour
     {
         internal double beat;
         internal NoteDirection direction;
-        internal int forInstrument;
+        internal string instrumentID;
 
-        internal NoteInfo(double beat, NoteDirection direction, int forInstrument)
+        internal NoteInfo(double beat, NoteDirection direction, string instrumentID)
         {
             this.beat = beat;
             this.direction = direction;
-            this.forInstrument = forInstrument;
+            this.instrumentID = instrumentID;
         }
     }
 }

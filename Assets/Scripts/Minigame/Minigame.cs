@@ -50,9 +50,9 @@ public class Minigame : MonoBehaviour
         }
     }
 
-    void SpawnNote(NoteDirection direction, int channel)
+    void SpawnNote(NoteDirection direction, string instrumentId)
     {
-        if (!playerRhythm.ChosenInstrument.IsCorrectChannel(channel))
+        if (playerRhythm.ChosenInstrument.id != instrumentId)
             return;
 
 

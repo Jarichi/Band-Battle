@@ -108,7 +108,11 @@ public class NoteController : MonoBehaviour
             var inputCollider = DirectionToCollider(direction, triggerLine);
             inputCollider.hasCollision = false;
             if (destroyed) return;
-            triggerLine.OnMiss(this);
+            if (triggerLine.HasAnyActiveCollider())
+            {
+                triggerLine.OnMiss(TriggerLine.MistakeType.WrongNote, this);
+            }
+            else triggerLine.OnMiss(TriggerLine.MistakeType.MissedNote, this);
         }
     }
 

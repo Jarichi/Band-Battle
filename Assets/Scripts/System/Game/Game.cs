@@ -55,14 +55,24 @@ public class Game : MonoBehaviour
 
     }
 
-    public void DisableAudioChannel(string parameterName)
+    public void DisableAudioChannel(string instrumentId)
     {
-        audio.DisableChannel(parameterName);
+        audio.EnableInstrumentEffect(instrumentId, InstrumentEffect.Mute);
     }
 
-    public void EnableAudioChannel(string parameterName)
+    public void EnableAudioChannel(string instrumentId)
     {
-        audio.EnableChannel(parameterName);
+        audio.DisableInstrumentEffect(instrumentId, InstrumentEffect.Mute);
+    }
+
+    public void EnablePitchShift(string instrumentId)
+    {
+        audio.EnableInstrumentEffect(instrumentId, InstrumentEffect.Pitchbend);
+    }
+
+    public void DisablePitchShift(string instrumentId)
+    {
+        audio.DisableInstrumentEffect(instrumentId, InstrumentEffect.Pitchbend);
     }
 
     void ShowSongs()

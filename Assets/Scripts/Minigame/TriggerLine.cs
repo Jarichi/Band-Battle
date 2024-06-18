@@ -1,12 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TriggerLine : MonoBehaviour
 {
+    public enum MistakeType
+    {
+        WrongNote,
+        MissedNote
+    }
     [SerializeField]
     private InputCollider[] colliders;
     public float marginOfError;
@@ -19,7 +25,7 @@ public class TriggerLine : MonoBehaviour
 
     private Coroutine coroutine;
 
-    private string fmodParameterName;
+    private string instrumentId;
 
     public double Score = 0;
 
@@ -39,7 +45,7 @@ public class TriggerLine : MonoBehaviour
         input.actions["Play Note 4"].performed += OnInput4;
         player = transform.root.GetComponent<Player>().InGameEntity.GetComponent<PlayerRhythm>();
         Debug.Log(player);
-        fmodParameterName = gameObject.transform.parent.GetComponentInParent<PlayerRhythm>().ChosenInstrument.fmodParameterName;
+        instrumentId = gameObject.transform.parent.GetComponentInParent<PlayerRhythm>().ChosenInstrument.id;
         game = Game.Instance;
     }
 
@@ -82,13 +88,20 @@ public class TriggerLine : MonoBehaviour
     public void OnHit(NoteController note)
     {
         player.AddScore(ScoreIncrease);
-        game.EnableAudioChannel(fmodParameterName);
+        game.EnableAudioChannel(instrumentId);
+        game.DisablePitchShift(instrumentId);
         note.Despawn();
     }
 
-    public void OnMiss(NoteController note = null)
+    public void OnMiss(MistakeType reason, NoteController note = null)
     {
-        game.DisableAudioChannel(fmodParameterName);
+        if (reason == MistakeType.WrongNote)
+        {
+            game.EnablePitchShift(instrumentId);
+        } else if (reason == MistakeType.MissedNote)
+        {
+            game.DisableAudioChannel(instrumentId);
+        }
         player.DecreaseScore(ScoreDecrease);
         Score = Math.Max(Score, 0);
         if (note != null)
@@ -118,7 +131,7 @@ public class TriggerLine : MonoBehaviour
         yield return new WaitForSeconds(marginOfError);
         if (hitbox.enabled && !hitbox.hasCollision)
         {
-            OnMiss();
+            OnMiss(MistakeType.WrongNote);
         }
         hitbox.enabled = false;
     }
@@ -141,6 +154,11 @@ public class TriggerLine : MonoBehaviour
     public InputCollider GetCollider(int position)
     {
         return colliders[position];
+    }
+
+    public bool HasAnyActiveCollider()
+    {
+        return colliders.Any(c => c.enabled);
     }
 
 }

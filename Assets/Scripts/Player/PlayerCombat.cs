@@ -63,7 +63,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         Destroy(GetComponentInChildren<GuitarMinigame>().gameObject);
         var instrument = movement.GetComponent<PlayerRhythm>().ChosenInstrument;
         instrument.DeleteInstrument();
-        Game.Instance.DisableAudioChannel(instrument.fmodParameterName);
+        Game.Instance.DisableAudioChannel(instrument.id);
         StartCoroutine(TransitionToCombat(weapon, movement));
         inCombat = true;
 

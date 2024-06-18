@@ -241,5 +241,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 6047465602194093153, guid: 350c09c3a03619b4d874f4d7eb756bd9, type: 3}
   minigame: {fileID: 371765481466115574, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
-  beatmapChannel: 0
-  fmodParameterName: Mute Drums
+  id: drums

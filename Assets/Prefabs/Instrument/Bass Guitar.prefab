@@ -103,8 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 754089080720056000, guid: 1a707af019e69324f938fa5f1a982c69, type: 3}
   minigame: {fileID: 371765481466115574, guid: 8bb3af1206d6dc24f99cd0336656ff3c, type: 3}
-  beatmapChannel: 3
-  fmodParameterName: Mute Bass
+  id: bass
   emptyStand: {fileID: 1335315568, guid: 7476a9d79386cf14a87e13c607d43d08, type: 3}
 --- !u!50 &8815854059163321866
 Rigidbody2D:
