@@ -19,7 +19,6 @@ public class Minigame : MonoBehaviour
     private GameObject notePrefab;
 
     private NoteController noteController;
-    [SerializeField]
 
     private void Start()
     {
