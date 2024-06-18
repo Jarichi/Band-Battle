@@ -39,11 +39,13 @@ public class Game : MonoBehaviour
         audio = GetComponent<AudioManager>();        
         ShowSongs();
         songSelectionScreen.songSelectEvent.AddListener(OnSongSelect);
+        Rhythm.rhythmEndEvent.AddListener(End);
     }
 
     private void OnDisable()
     {
         songSelectionScreen.songSelectEvent.RemoveAllListeners();
+        Rhythm.rhythmEndEvent.RemoveListener(End);
     }
 
     private void Awake()
@@ -52,8 +54,6 @@ public class Game : MonoBehaviour
             Instance = this;
 
     }
-
-
 
     public void DisableAudioChannel(string parameterName)
     {

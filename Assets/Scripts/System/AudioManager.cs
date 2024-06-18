@@ -8,7 +8,6 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     EventInstance songInstance;
-    private FMOD.Studio.EventInstance referenceSongInstance;
     [SerializeField]
     private bool initialized;
 
@@ -17,18 +16,11 @@ public class AudioManager : MonoBehaviour
 
     public void Initialize(EventReference song)
     {
-        songInstance = FMODUnity.RuntimeManager.CreateInstance(song);
-        referenceSongInstance = FMODUnity.RuntimeManager.CreateInstance(song);
+        songInstance = RuntimeManager.CreateInstance(song);
 
         songInstance.start();
         songInstance.release();
         songInstance.setPaused(true);
-
-        referenceSongInstance.setVolume(0f);
-        referenceSongInstance.start();
-        referenceSongInstance.release();
-        referenceSongInstance.setPaused(true);
-
         initialized = true;
     }
 
@@ -42,7 +34,6 @@ public class AudioManager : MonoBehaviour
         }
 
         songInstance.setPaused(false);
-        referenceSongInstance.setPaused(false);
         if (instruments == null)
         {
             instruments = new InstrumentSoundStatus[0];
@@ -52,8 +43,14 @@ public class AudioManager : MonoBehaviour
     public void Stop()
     {
         songInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        referenceSongInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         initialized = false;
+    }
+
+    public double GetLength()
+    {
+        songInstance.getDescription(out var desc);
+        desc.getLength(out var length);
+        return length / 1000f;
     }
 
     public void EnableChannel(string parameterName)
@@ -87,27 +84,12 @@ public class AudioManager : MonoBehaviour
                 value = 1;
             }
 
-            float curValue; songInstance.getParameterByName(status.parameterName, out curValue);
+            songInstance.getParameterByName(status.parameterName, out float curValue);
             if (curValue != value)
             {
                 songInstance.setParameterByName(status.parameterName, value);
-                SyncChannels();
             }
             
-        }
-    }
-
-    void SyncChannels()
-    {
-        int position1, position2;
-        songInstance.getTimelinePosition(out position1);
-        referenceSongInstance.getTimelinePosition(out position2);
-
-        if (Mathf.Abs(position1 - position2) > 20)
-        {
-            Debug.Log("Synced up!");
-            songInstance.setTimelinePosition(position2);
-            referenceSongInstance.setTimelinePosition(position2);
         }
     }
 

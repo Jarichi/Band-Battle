@@ -28,14 +28,10 @@ public class Rhythm : MonoBehaviour
 
     private double songStartTime;
 
-    // time
     private const double MINUTE = 60f;
 
     // beatmap
     private NoteInfo[] beatmapNotes;
-/*    private double[] noteSpawnBeats;
-    private NoteDirection[] noteSpawnDirections;
-    private int[] noteSpawnInstrument;*/
     private int index;
     public double previewBeats;
 
@@ -48,6 +44,7 @@ public class Rhythm : MonoBehaviour
     public UnityEvent rhythmStartEvent;
     public UnityEvent<NoteDirection, int> noteSpawnEvent;
     public UnityEvent<double> consistentTimeEvent;
+    public UnityEvent rhythmEndEvent;
 
     public void StartRhythm(Song song, AudioManager audio, ConsistentTimeEventTriggerRate eventTriggerRate)
     {
@@ -81,8 +78,15 @@ public class Rhythm : MonoBehaviour
         secondsPerBeat = MINUTE / BPM;
         songStartTime = Time.time;
         audio.Play();
+        StartCoroutine(End(audio.GetLength()));
         Active = true;
         rhythmStartEvent?.Invoke();
+    }
+    private IEnumerator End(double songLength)
+    {
+        yield return new WaitForSeconds((float)songLength);
+        Active = false;
+        rhythmEndEvent?.Invoke();
     }
 
     private void Update()
@@ -94,6 +98,7 @@ public class Rhythm : MonoBehaviour
             TrackBeats();
         }
     }
+
 
     private void UpdateSongPosition()
     {
