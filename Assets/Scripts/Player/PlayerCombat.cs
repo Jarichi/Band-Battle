@@ -183,6 +183,12 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         movement.animator.SetTrigger("Death");
         movement.Disable();
         Player.OfEntity(gameObject).data.isBandLeader = false;
+        PlayerRhythm playerRhythm = GetComponent<PlayerRhythm>();
+        PlayerRhythm attackerRhythm = cause.GetComponent<PlayerRhythm>();
+        var stolenPoints = playerRhythm.GetScore() * .20d;
+        playerRhythm.DecreaseScore(stolenPoints);
+        attackerRhythm.AddScore(stolenPoints);
+
         for (var i = gameObject.transform.childCount - 1; i >= 0; i--)
         {
             Destroy(gameObject.transform.GetChild(i).gameObject);

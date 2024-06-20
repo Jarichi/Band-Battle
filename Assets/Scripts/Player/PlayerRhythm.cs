@@ -71,13 +71,23 @@ public class PlayerRhythm : MonoBehaviour
 
     public void AddScore(double score)
     {
-        this.score += score;
         score = Math.Max(score, 0);
+        this.score += score;
     }
 
-    public void DecreaseScore(double score)
+    public void DecreaseScore (double score)
     {
-        this.score -= score;
         score = Math.Max(score, 0);
+        this.score -= score;
+    }
+
+    public void SaveScoreToTotal()
+    {
+        Player.OfEntity(gameObject).data.totalScore += (int)this.score;
+    }
+
+    public double GetScore()
+    {
+        return score;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -28,7 +29,6 @@ public class Minigame : MonoBehaviour
     private Game game;
     private Note noteController;
 
-    private double scoreDecrease;
     private double scoreIncrease;
     private TriggerLine triggerLine;
 
@@ -42,9 +42,7 @@ public class Minigame : MonoBehaviour
         rhythm.noteSpawnEvent.AddListener(SpawnNote);
         rhythm.consistentTimeEvent.AddListener(SpawnPulse);
 
-        scoreIncrease = 1; //CalculateScoreIncreasePerNote();
-        scoreDecrease = scoreIncrease/2;
-
+        scoreIncrease = game.Rhythm.CalculateScoreIncreasePerNote(playerRhythm.ChosenInstrument.id);
         triggerLine = GetComponentInChildren<TriggerLine>();
         triggerLine.NoteCollideEvent.AddListener(OnHit);
         triggerLine.NotePassEvent.AddListener((note, activeColliders)
@@ -133,7 +131,6 @@ public class Minigame : MonoBehaviour
         {
             game.DisableAudioChannel(playerRhythm.ChosenInstrument.id);
         }
-        playerRhythm.DecreaseScore(scoreDecrease);
     }
 
     public void OnHit(Note note)
@@ -141,10 +138,5 @@ public class Minigame : MonoBehaviour
         playerRhythm.AddScore(scoreIncrease);
         game.EnableAudioChannel(playerRhythm.ChosenInstrument.id);
         game.DisablePitchShift(playerRhythm.ChosenInstrument.id);
-    }
-
-    private double CalculateScoreIncreasePerNote(Beatmap beatmap)
-    {
-        return 1; //TODO: calculate how much score a player should get for playing one note correctly based on amount of total notes
     }
 }

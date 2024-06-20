@@ -33,6 +33,7 @@ public class Rhythm : MonoBehaviour
     // beatmap
     private NoteInfo[] beatmapNotes;
     private int index;
+    private Beatmap beatmap;
     public double previewBeats;
 
     //beattracker 
@@ -76,12 +77,22 @@ public class Rhythm : MonoBehaviour
 
         BPM = song.beatmap.BPM;
         secondsPerBeat = MINUTE / BPM;
+        beatmap = song.beatmap;
         songStartTime = Time.time;
         audio.Play();
         StartCoroutine(End(audio.GetLength()));
         Active = true;
         rhythmStartEvent?.Invoke();
     }
+
+    public double CalculateScoreIncreasePerNote(string instrumentId)
+    {
+        double maxNoteAmount = beatmap.Channels.Max(channel => channel.Positions.Count());
+        double instrumentNoteAmount = beatmap.Channels.FirstOrDefault(ch => ch.InstrumentID == instrumentId).Positions.Count();
+        double factor = 1 - (instrumentNoteAmount / maxNoteAmount) + 1;
+        return factor * Game.Instance.pointIncrease;
+    }
+
     private IEnumerator End(double songLength)
     {
         yield return new WaitForSeconds((float)songLength);
