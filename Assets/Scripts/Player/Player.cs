@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
     [Serializable]
     public class GameData
     {
-        public int score;
+        public int totalScore;
         public bool isBandLeader;
         public Color color;
     }

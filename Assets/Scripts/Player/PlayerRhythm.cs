@@ -5,11 +5,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerRhythm : MonoBehaviour
 {
-    private double score;
-    private PlayerCombat combat;
+    private double score = 0;
     private PlayerInput input;
     private PlayerMovement movement;
     private Instrument inRange;
@@ -71,11 +71,23 @@ public class PlayerRhythm : MonoBehaviour
 
     public void AddScore(double score)
     {
+        score = Math.Max(score, 0);
         this.score += score;
     }
 
-    public void DecreaseScore(double score)
+    public void DecreaseScore (double score)
     {
+        score = Math.Max(score, 0);
         this.score -= score;
+    }
+
+    public void SaveScoreToTotal()
+    {
+        Player.OfEntity(gameObject).data.totalScore += (int)this.score;
+    }
+
+    public double GetScore()
+    {
+        return score;
     }
 }

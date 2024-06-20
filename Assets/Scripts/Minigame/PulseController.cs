@@ -8,7 +8,6 @@ public class PulseController : MonoBehaviour
     private float t;
     private Vector3 targetPosition;
     private Vector3 startPosition;
-    private SongHandler.PulseDivisions PulseDivisions;
 
     // Start is called before the first frame update
     void Start()

@@ -13,6 +13,7 @@ public class Game : MonoBehaviour
         Play,
         End
     }
+    public readonly int pointIncrease = 5;
 
     private Song selectedSong;
     [SerializeField]
@@ -112,6 +113,7 @@ public class Game : MonoBehaviour
         audio.Stop();
         PlayerList.Get().ForEach(player =>
         {
+            player.InGameEntity.GetComponent<PlayerRhythm>().SaveScoreToTotal();
             player.Despawn();
         });
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
