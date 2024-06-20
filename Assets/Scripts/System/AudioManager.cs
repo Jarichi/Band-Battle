@@ -62,7 +62,6 @@ public class AudioManager : MonoBehaviour
     private void SetFMODValue(string parameter, int value)
     {
         var result = songInstance.getParameterByName(parameter, out var curValue);
-        print(parameter + " -> " + value + ". curValue = " + curValue);
         if (result != FMOD.RESULT.OK)
         {
             Debug.LogError(result);

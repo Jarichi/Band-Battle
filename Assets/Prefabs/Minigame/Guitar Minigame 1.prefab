@@ -47,16 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePrefab: {fileID: 455684049498466932, guid: f435540435460ad489003be5235d7781, type: 3}
-  noteColours:
-  - {fileID: -1081780949, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
-  - {fileID: 1470639890, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
-  - {fileID: 571632699, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
-  - {fileID: 1011942548, guid: 2ad1ac10687602441ac6b85ee570043f, type: 3}
-  noteColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3094961179944250373
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,46 +139,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1237273556103833925}
     m_Modifications:
-    - target: {fileID: -2760010194900963566, guid: 3fc3b763e5731314db437cbdeac872a9, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -2760010194900963566, guid: 3fc3b763e5731314db437cbdeac872a9, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1263764611
-      objectReference: {fileID: 0}
-    - target: {fileID: 988195371239249133, guid: 3fc3b763e5731314db437cbdeac872a9, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 988195371239249133, guid: 3fc3b763e5731314db437cbdeac872a9, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900187136024494592, guid: 3fc3b763e5731314db437cbdeac872a9, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3900187136024494592, guid: 3fc3b763e5731314db437cbdeac872a9, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4025758299762021094, guid: 3fc3b763e5731314db437cbdeac872a9, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4025758299762021094, guid: 3fc3b763e5731314db437cbdeac872a9, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4578047589030863914, guid: 3fc3b763e5731314db437cbdeac872a9, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4578047589030863914, guid: 3fc3b763e5731314db437cbdeac872a9, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 5477986469753075056, guid: 3fc3b763e5731314db437cbdeac872a9, type: 3}
       propertyPath: m_Name
       value: Trigger Line

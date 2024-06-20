@@ -6,10 +6,18 @@ using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 using static Rhythm;
+using static TriggerLine;
 
 public class Minigame : MonoBehaviour
 {
+    public enum MistakeType
+    {
+        WrongNote,
+        MissedNote
+    }
+
     private PlayerMovement movement;
     private PlayerCombat combat;
     private PlayerRhythm playerRhythm;
@@ -17,19 +25,33 @@ public class Minigame : MonoBehaviour
     private GameObject weapon;
     [SerializeField]
     private GameObject notePrefab;
+    private Game game;
+    private Note noteController;
 
-    private NoteController noteController;
+    private double scoreDecrease;
+    private double scoreIncrease;
+    private TriggerLine triggerLine;
 
     private void Start()
     {
         input = Player.OfEntity(gameObject).Input;
         playerRhythm = GetComponentInParent<PlayerRhythm>();
         input.actions["Engage Combat"].performed += TryEngageCombat;
-        var rhythm = Game.Instance.Rhythm;
+        game = Game.Instance;
+        var rhythm = game.Rhythm;
         rhythm.noteSpawnEvent.AddListener(SpawnNote);
         rhythm.consistentTimeEvent.AddListener(SpawnPulse);
 
-        noteController = notePrefab.GetComponent<NoteController>();
+        scoreIncrease = 1; //CalculateScoreIncreasePerNote();
+        scoreDecrease = scoreIncrease/2;
+
+        triggerLine = GetComponentInChildren<TriggerLine>();
+        triggerLine.NoteCollideEvent.AddListener(OnHit);
+        triggerLine.NotePassEvent.AddListener((note, activeColliders)
+            => OnMiss(activeColliders ? MistakeType.WrongNote : MistakeType.MissedNote, note));
+        triggerLine.NoCollisionEvent.AddListener(() => OnMiss(MistakeType.WrongNote));
+
+        noteController = notePrefab.GetComponent<Note>();
     }
 
     private void OnDisable()
@@ -61,33 +83,28 @@ public class Minigame : MonoBehaviour
         {
             case NoteDirection.Left:
                 noteController.SetColor(Color.red);
-                //red note
                 xOffset = -1.5f;
                 break;
             case NoteDirection.Right:
-                //blue note
                 noteController.SetColor(Color.blue);
                 xOffset = -0.5f;
                 break;
             case NoteDirection.Up:
-                //yellow note
-                noteController.SetColor(Color.green);
+                noteController.SetColor(Color.yellow);
                 xOffset = 0.5f;
                 break;
             case NoteDirection.Down:
-                //green note
-                noteController.SetColor(Color.yellow);
+                noteController.SetColor(Color.green);
                 xOffset = 1.5f;
                 break;
 
             default:
-                //error handler
-                Debug.Log("Load a beatmap first before spawning beatmapNotes.");
+                Debug.LogError("Load a beatmap first before spawning beatmapNotes.");
                 break;
         }
 
         Vector3 spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
-        notePrefab.GetComponent<NoteController>().SetDirection(direction);
+        notePrefab.GetComponent<Note>().SetDirection(direction);
         Instantiate(notePrefab, spawnPos, Quaternion.identity, this.transform);
     }
 
@@ -106,4 +123,28 @@ public class Minigame : MonoBehaviour
         movement.Disable();
     }
 
+    public void OnMiss(MistakeType reason, Note note = null)
+    {
+        if (reason == MistakeType.WrongNote)
+        {
+            game.EnablePitchShift(playerRhythm.ChosenInstrument.id);
+        }
+        else if (reason == MistakeType.MissedNote)
+        {
+            game.DisableAudioChannel(playerRhythm.ChosenInstrument.id);
+        }
+        playerRhythm.DecreaseScore(scoreDecrease);
+    }
+
+    public void OnHit(Note note)
+    {
+        playerRhythm.AddScore(scoreIncrease);
+        game.EnableAudioChannel(playerRhythm.ChosenInstrument.id);
+        game.DisablePitchShift(playerRhythm.ChosenInstrument.id);
+    }
+
+    private double CalculateScoreIncreasePerNote(Beatmap beatmap)
+    {
+        return 1; //TODO: calculate how much score a player should get for playing one note correctly based on amount of total notes
+    }
 }

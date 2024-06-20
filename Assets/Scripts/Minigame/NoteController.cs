@@ -1,15 +1,8 @@
 using UnityEngine;
 using static Rhythm;
 
-public class NoteController : MonoBehaviour
+public class Note : MonoBehaviour
 {
-    [SerializeField]
-    private float lifetime;
-
-    private float timeStart;
-    private float currentTime;
-    private float timeDelta;
-
     public float velocity;
 
     //temp
@@ -35,7 +28,6 @@ public class NoteController : MonoBehaviour
 
     private void Start()
     {
-        timeStart = Time.time;
         startPosition = transform.localPosition;
         targetPosition = transform.localPosition + new Vector3(0f, -6f, 0f);
         destroyed = false;
@@ -44,8 +36,6 @@ public class NoteController : MonoBehaviour
 
         secondPerBeat = 60 / (float)bpm;
         secondPerBeat *= noteSpeedInBeats;
-
-
     }
 
     //@50fps
@@ -53,31 +43,14 @@ public class NoteController : MonoBehaviour
     {
         if (gameObject != null)
         {
-            MoveNote();
-            Lifetime();
+            Move();
         }
     }
 
-    private void Lifetime()
-    {
-        currentTime = Time.time;
-        timeDelta = currentTime - timeStart;
-
-        if (timeDelta > lifetime)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void MoveNote()
+    private void Move()
     {
         t += Time.fixedDeltaTime / secondPerBeat;
         transform.localPosition = Vector3.Lerp(startPosition, targetPosition, t);
-
-
-
-        //var step = velocity * Time.fixedDeltaTime;
-        //transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, step);
     }
 
     public void Despawn()
@@ -86,58 +59,32 @@ public class NoteController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public NoteDirection GetDirection() => this.direction;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (IsTriggerLine(collision, out var triggerLine))
+        if (ColliderBelongsToTriggerLine(collision, out var triggerLine))
         {
-            var inputCollider = DirectionToCollider(direction, triggerLine);
-            inputCollider.hasCollision = true;
-            if (inputCollider.enabled && inputCollider.collider == collision)
-            {
-                triggerLine.OnHit(this);
-                inputCollider.enabled = false;
-            }
+            triggerLine.OnNoteCollision(this, collision);
         }
 
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (IsTriggerLine(collision, out var triggerLine))
+        if (destroyed) return;
+
+        if (ColliderBelongsToTriggerLine(collision, out var triggerLine))
         {
-            var inputCollider = DirectionToCollider(direction, triggerLine);
-            inputCollider.hasCollision = false;
-            if (destroyed) return;
-            if (triggerLine.HasAnyActiveCollider())
-            {
-                triggerLine.OnMiss(TriggerLine.MistakeType.WrongNote, this);
-            }
-            else triggerLine.OnMiss(TriggerLine.MistakeType.MissedNote, this);
+            triggerLine.OnNoteExit(this);
         }
     }
 
-    private bool IsTriggerLine(Collider2D collision, out TriggerLine triggerLine)
+    private bool ColliderBelongsToTriggerLine(Collider2D collision, out TriggerLine triggerLine)
     {
         triggerLine = null;
-        if (collision.tag != "minigame_TriggerLine") return false;
+        if (!collision.CompareTag("minigame_TriggerLine")) return false;
         return collision.TryGetComponent(out triggerLine);
-    }
-
-    private InputCollider DirectionToCollider(NoteDirection direction, TriggerLine triggerLine)
-    {
-        int index = 0;
-        switch (direction)
-        {
-            case NoteDirection.Left:
-                 index = 0; break;
-            case NoteDirection.Right:
-                index = 1; break;
-            case NoteDirection.Up:
-                index = 2; break;
-            case NoteDirection.Down:
-                index = 3; break;
-        }
-        return triggerLine.GetCollider(index);
     }
 
     public void SetColor(Color color)
