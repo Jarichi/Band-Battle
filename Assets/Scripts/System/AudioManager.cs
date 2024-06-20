@@ -14,6 +14,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private bool initialized;
 
+    public void LoadBanks(Song[] songs)
+    {
+        songs.ToList().ForEach(song => RuntimeManager.LoadBank(song.fmodBank, true));
+    }
+
     public void Initialize(EventReference song)
     {
         songInstance = RuntimeManager.CreateInstance(song);

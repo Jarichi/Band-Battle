@@ -37,7 +37,8 @@ public class Game : MonoBehaviour
     void OnEnable()
     {
         Rhythm = GetComponent<Rhythm>();
-        audio = GetComponent<AudioManager>();        
+        audio = GetComponent<AudioManager>();
+        audio.LoadBanks(allSongs);
         ShowSongs();
         songSelectionScreen.songSelectEvent.AddListener(OnSongSelect);
         Rhythm.rhythmEndEvent.AddListener(End);

@@ -1516,6 +1516,7 @@ MonoBehaviour:
         Data3: 1914781588
         Data4: 675069447
       Path: event:/song0_tutorial
+    fmodBank: TUTORIAL
     beatmap:
       BPM: 0
       Channels: []
@@ -1528,6 +1529,7 @@ MonoBehaviour:
         Data3: 1621799082
         Data4: -1273831761
       Path: event:/song1_hardrock
+    fmodBank: HARDROCK
     beatmap:
       BPM: 0
       Channels: []
@@ -1540,6 +1542,7 @@ MonoBehaviour:
         Data3: 1368165285
         Data4: 813004309
       Path: event:/song2_funk
+    fmodBank: FUNK
     beatmap:
       BPM: 0
       Channels: []
@@ -1672,15 +1675,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialized: 0
-  instruments:
-  - muted: 0
-    parameterName: Mute Bass
-  - muted: 0
-    parameterName: Mute Guitar
-  - muted: 0
-    parameterName: Mute Voice
-  - muted: 0
-    parameterName: Mute Drums
 --- !u!114 &1416621409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1704,6 +1698,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   consistentTimeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  rhythmEndEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1557139943
