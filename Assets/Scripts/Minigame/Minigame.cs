@@ -18,10 +18,7 @@ public class Minigame : MonoBehaviour
         WrongNote,
         MissedNote
     }
-
-    private PlayerMovement movement;
-    private PlayerCombat combat;
-    private PlayerRhythm playerRhythm;
+    private PlayerEntity playerEntity;
     private PlayerInput input;
     private GameObject weapon;
     [SerializeField]
@@ -34,15 +31,15 @@ public class Minigame : MonoBehaviour
 
     private void Start()
     {
-        input = Player.OfEntity(gameObject).Input;
-        playerRhythm = GetComponentInParent<PlayerRhythm>();
+        playerEntity = GetComponentInParent<PlayerEntity>();
+        input = playerEntity.Player.Input;
         input.actions["Engage Combat"].performed += TryEngageCombat;
         game = Game.Instance;
         var rhythm = game.Rhythm;
         rhythm.noteSpawnEvent.AddListener(SpawnNote);
         rhythm.consistentTimeEvent.AddListener(SpawnPulse);
 
-        scoreIncrease = game.Rhythm.CalculateScoreIncreasePerNote(playerRhythm.ChosenInstrument.id);
+        scoreIncrease = game.Rhythm.CalculateScoreIncreasePerNote(playerEntity.Rhythm.ChosenInstrument.id);
         triggerLine = GetComponentInChildren<TriggerLine>();
         triggerLine.NoteCollideEvent.AddListener(OnHit);
         triggerLine.NotePassEvent.AddListener((note, activeColliders)
@@ -62,9 +59,9 @@ public class Minigame : MonoBehaviour
 
     private void TryEngageCombat(InputAction.CallbackContext obj)
     {
-        if (Game.Instance.Rhythm.Active && combat.allowCombat)
+        if (Game.Instance.Rhythm.Active && playerEntity.Combat.allowCombat)
         {
-            combat.Engage(weapon, movement);
+            playerEntity.Combat.Engage(weapon);
             Destroy(gameObject);
             gameObject.SetActive(false);
         }
@@ -72,7 +69,7 @@ public class Minigame : MonoBehaviour
 
     void SpawnNote(NoteDirection direction, string instrumentId)
     {
-        if (playerRhythm.ChosenInstrument.id != instrumentId)
+        if (playerEntity.Rhythm.ChosenInstrument.id != instrumentId)
             return;
 
 
@@ -114,29 +111,26 @@ public class Minigame : MonoBehaviour
 
     public void OnRhythmStart(Player player, GameObject weapon)
     {
-        movement = player.InGameEntity.GetComponent<PlayerMovement>();
-        combat = player.InGameEntity.GetComponent<PlayerCombat>();
         this.weapon = weapon;
-
-        movement.Disable();
+        player.Entity.Movement.Disable();
     }
 
     public void OnMiss(MistakeType reason, Note note = null)
     {
         if (reason == MistakeType.WrongNote)
         {
-            game.EnablePitchShift(playerRhythm.ChosenInstrument.id);
+            game.EnablePitchShift(playerEntity.Rhythm.ChosenInstrument.id);
         }
         else if (reason == MistakeType.MissedNote)
         {
-            game.DisableAudioChannel(playerRhythm.ChosenInstrument.id);
+            game.DisableAudioChannel(playerEntity.Rhythm.ChosenInstrument.id);
         }
     }
 
     public void OnHit(Note note)
     {
-        playerRhythm.AddScore(scoreIncrease);
-        game.EnableAudioChannel(playerRhythm.ChosenInstrument.id);
-        game.DisablePitchShift(playerRhythm.ChosenInstrument.id);
+        playerEntity.Rhythm.AddScore(scoreIncrease);
+        game.EnableAudioChannel(playerEntity.Rhythm.ChosenInstrument.id);
+        game.DisablePitchShift(playerEntity.Rhythm.ChosenInstrument.id);
     }
 }

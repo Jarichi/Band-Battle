@@ -28,7 +28,7 @@ public class DummyCombat : MonoBehaviour, IDamageable
         }
     }
 
-    public void OnDamage(int damage, PlayerCombat attacker)
+    public void OnDamage(int damage, PlayerEntity attacker)
     {
         animator.SetTrigger("Hit");
         Hitpoints =- damage;
@@ -41,7 +41,7 @@ public class DummyCombat : MonoBehaviour, IDamageable
         Instantiate(DamageParticles, transform.position, Quaternion.identity);
     }
 
-    public void Die(PlayerCombat cause)
+    public void Die(PlayerEntity cause)
     {
         Destroy(gameObject);
     }

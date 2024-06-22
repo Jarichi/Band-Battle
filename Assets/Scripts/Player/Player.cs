@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -10,13 +11,9 @@ public class Player : MonoBehaviour
     public GameData data;
     public int Index { get; private set; }
     public Color Color { get; private set; }
-    public GameObject InGameEntity {get; private set;}
+    public PlayerEntity Entity {get; private set;}
     public PlayerInput Input { get; private set; }
     public bool isReady = false;
-
-
-    public static EventHandler PlayerSpawnEvent;
-    public static EventHandler PlayerDespawnEvent;
 
     void Start()
     {
@@ -46,11 +43,6 @@ public class Player : MonoBehaviour
             isReady = false;
     }
 
-    public static Player OfEntity(GameObject playerEntity)
-    {
-        return playerEntity.GetComponentInParent<Player>();
-    }
-
     public static Player ByID(int id)
     {
         return GameObject.Find(id.ToString()).GetComponent<Player>();
@@ -68,9 +60,9 @@ public class Player : MonoBehaviour
 
     public void UpdateIndex()
     {
-        Index         = PlayerList.Get().IndexOf(this) + 1;
-        data.color          = PlayerList.ColorList()[Index - 1];
-        playerEntityPrefab  = PlayerList.PlayerEntitiesList()[Index - 1];
+        Index = PlayerList.Get().IndexOf(this) + 1;
+        data.color = PlayerList.ColorList()[Index - 1];
+        playerEntityPrefab = PlayerList.PlayerEntitiesList()[Index - 1];
     }
 
     public void SwitchActionMap(string name)
@@ -90,14 +82,15 @@ public class Player : MonoBehaviour
 
     public void Spawn(Vector2 position) {
         playerEntityPrefab.transform.position = position;
-        InGameEntity = Instantiate(playerEntityPrefab, gameObject.transform);
+        Entity = Instantiate(playerEntityPrefab, gameObject.transform).GetComponent<PlayerEntity>();
 
-        PlayerSpawnEvent?.Invoke(this, new EventArgs());
+        PlayerList.Instance.PlayerSpawnEvent?.Invoke(Entity);
     }
     
-    public void Despawn() {
-        Destroy(InGameEntity);
-        PlayerDespawnEvent?.Invoke(this, new EventArgs());
+    public void Despawn()
+    {
+        PlayerList.Instance.PlayerDespawnEvent?.Invoke(Entity);
+        Destroy(Entity.gameObject);
     }
 
     [Serializable]

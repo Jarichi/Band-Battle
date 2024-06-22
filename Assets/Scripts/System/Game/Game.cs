@@ -105,7 +105,7 @@ public class Game : MonoBehaviour
     private IEnumerator EnableCombat()
     {
         yield return new WaitForSeconds(timeUntilCombat);
-        PlayerList.Get().ForEach(p => { p.InGameEntity.GetComponent<PlayerCombat>().allowCombat = true; });
+        PlayerList.Get().ForEach(p => { p.Entity.Combat.allowCombat = true; });
     }
 
     public void End()
@@ -114,7 +114,7 @@ public class Game : MonoBehaviour
         audio.Stop();
         PlayerList.Get().ForEach(player =>
         {
-            player.InGameEntity.GetComponent<PlayerRhythm>().SaveScoreToTotal();
+            player.Entity.Rhythm.SaveScoreToTotal();
             player.Despawn();
         });
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

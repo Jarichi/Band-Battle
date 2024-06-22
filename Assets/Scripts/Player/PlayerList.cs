@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerList : MonoBehaviour
@@ -13,6 +14,9 @@ public class PlayerList : MonoBehaviour
     [SerializeField] private GameObject[] playerEntities = new GameObject[4];
     [HideInInspector]
     public PlayerInputManager inputManager;
+
+    public UnityEvent<PlayerEntity> PlayerSpawnEvent;
+    public UnityEvent<PlayerEntity> PlayerDespawnEvent;
 
     private void OnEnable()
     {
