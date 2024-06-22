@@ -69,7 +69,7 @@ public class AudioManager : MonoBehaviour
         var result = songInstance.getParameterByName(parameter, out var curValue);
         if (result != FMOD.RESULT.OK)
         {
-            Debug.LogError(result);
+            Debug.LogError("FMOD value could not get retrieved: " + result);
             return;
         }
 
@@ -78,7 +78,7 @@ public class AudioManager : MonoBehaviour
         result = songInstance.setParameterByName(parameter, value);
         if (result != FMOD.RESULT.OK)
         {
-            Debug.LogError(result);
+            Debug.LogError("FMOD value could not be set: " + result);
             return;
         }
     }

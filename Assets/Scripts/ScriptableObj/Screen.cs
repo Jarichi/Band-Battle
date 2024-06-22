@@ -4,12 +4,8 @@ using UnityEngine;
 
 public abstract class Screen : MonoBehaviour
 {
-
-
-
     public void ShowUI()
     {
-        print("ShowUI : Screen.cs");
         gameObject.SetActive(true);
     }
 

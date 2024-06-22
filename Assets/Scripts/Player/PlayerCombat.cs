@@ -150,7 +150,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
         if (currentWeapon.TryGetComponent<DrumWeapon>(out var drumweapon))
         {
-            print("weapon is drums, turn red");
             drumweapon.GetComponent<SpriteRenderer>().color = Color.red;
         }
 
@@ -170,8 +169,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
         if (!currentWeapon.IsDestroyed() && currentWeapon.TryGetComponent<DrumWeapon>(out var drumweapon))
         {
-            print("weapon is drums, turn white");
-
             drumweapon.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
@@ -198,7 +195,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
             !p.Entity.Combat.dead
         );
         if (survivors.Count() <= 1 ) {
-            Debug.Log("one player remaining!");
             var lastManStanding = survivors.ElementAt(0);
             lastManStanding.data.isBandLeader = true;
             Game.Instance.End();

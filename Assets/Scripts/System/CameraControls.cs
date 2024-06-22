@@ -50,7 +50,6 @@ public class CameraControls : MonoBehaviour
 
     void Zoom()
     {
-        print(players.Count);
         float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimit);
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, Time.deltaTime);
     }

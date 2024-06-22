@@ -47,7 +47,6 @@ public class TriggerLine : MonoBehaviour
         input.actions["Play Note 3"].performed += OnInput3;
         input.actions["Play Note 4"].performed += OnInput4;
         player = transform.root.GetComponent<Player>().Entity.Rhythm;
-        Debug.Log(player);
         instrumentId = gameObject.transform.parent.GetComponentInParent<PlayerRhythm>().ChosenInstrument.id;
         game = Game.Instance;
     }
