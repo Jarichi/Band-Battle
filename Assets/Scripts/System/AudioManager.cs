@@ -86,6 +86,7 @@ public class InstrumentEffect
 {
     public static InstrumentEffect Mute = new("_m");
     public static InstrumentEffect Pitchbend = new("_p");
+    public static InstrumentEffect Delay = new("_d");
     internal readonly string suffix;
     internal InstrumentEffect(string suffix)
     {

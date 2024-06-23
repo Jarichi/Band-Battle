@@ -75,6 +75,16 @@ public class Game : MonoBehaviour
         audio.DisableInstrumentEffect(instrumentId, InstrumentEffect.Pitchbend);
     }
 
+    public void EnableRandomDelay(string instrumentId)
+    {
+        audio.EnableInstrumentEffect(instrumentId, InstrumentEffect.Delay);
+    }
+
+    public void DisableRandomDelay(string instrumentId)
+    {
+        audio.DisableInstrumentEffect(instrumentId, InstrumentEffect.Delay);
+    }
+
     void ShowSongs()
     {
         currentPhase = Phase.SelectSong;

@@ -102,8 +102,38 @@ public class Minigame : MonoBehaviour
         movement = player.InGameEntity.GetComponent<PlayerMovement>();
         combat = player.InGameEntity.GetComponent<PlayerCombat>();
         this.weapon = weapon;
+        player.Entity.Movement.Disable();
+    }
 
-        movement.Disable();
+    public void OnMiss(MistakeType reason, Note note = null)
+    {
+        var id = playerEntity.Rhythm.ChosenInstrument.id;
+        if (id == "drums")
+        {
+            game.EnableRandomDelay(id);
+        }
+        else game.EnablePitchShift(id);
+
+        /*        if (reason == MistakeType.WrongNote)
+                {
+                    var id = playerEntity.Rhythm.ChosenInstrument.id;
+                    if (id == "drums")
+                    {
+                        game.EnableRandomDelay(id);
+                    } else game.EnablePitchShift(id);
+                }
+                else if (reason == MistakeType.MissedNote)
+                {
+                    game.DisableAudioChannel(playerEntity.Rhythm.ChosenInstrument.id);
+                }*/
+    }
+
+    public void OnHit(Note note)
+    {
+        playerEntity.Rhythm.AddScore(scoreIncrease);
+        game.DisableRandomDelay(playerEntity.Rhythm.ChosenInstrument.id);
+        game.EnableAudioChannel(playerEntity.Rhythm.ChosenInstrument.id);
+        game.DisablePitchShift(playerEntity.Rhythm.ChosenInstrument.id);
     }
 
 }
