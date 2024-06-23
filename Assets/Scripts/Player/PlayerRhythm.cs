@@ -5,19 +5,19 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerRhythm : MonoBehaviour
 {
-    private double score;
-    private PlayerCombat combat;
+    private double score = 0;
     private PlayerInput input;
-    private PlayerMovement movement;
+    private PlayerEntity playerEntity;
     private Instrument inRange;
     public Instrument ChosenInstrument {get; private set;}
     public void Start()
     {
-        input = Player.OfEntity(gameObject).Input;
-        movement = GetComponent<PlayerMovement>();
+        playerEntity = GetComponent<PlayerEntity>();
+        input = playerEntity.Player.Input;
         ChosenInstrument = null;
         input.actions["Overworld Interact"].performed += TryInteract;
         Game.Instance.Rhythm.rhythmStartEvent.AddListener(OnRhythmStart);
@@ -37,10 +37,10 @@ public class PlayerRhythm : MonoBehaviour
         if (inRange != null)
         {
             ChosenInstrument = inRange;
-            movement.Disable();
+            playerEntity.Movement.Disable();
             if (PlayerList.Get().All(player =>
             {
-                var interaction = player.InGameEntity.GetComponent<PlayerRhythm>();
+                var interaction = player.Entity.GetComponent<PlayerRhythm>();
                 return interaction.ChosenInstrument != null;
             }))
             {
@@ -66,16 +66,28 @@ public class PlayerRhythm : MonoBehaviour
     {
         var minigameObj = Instantiate(ChosenInstrument.minigame, transform);
         var minigame = minigameObj.GetComponent<Minigame>();
-        minigame.OnRhythmStart(Player.OfEntity(gameObject), ChosenInstrument.weapon);
+        minigame.OnRhythmStart(playerEntity.Player, ChosenInstrument.weapon);
     }
 
     public void AddScore(double score)
     {
+        score = Math.Max(score, 0);
         this.score += score;
     }
 
-    public void DecreaseScore(double score)
+    public void DecreaseScore (double score)
     {
+        score = Math.Max(score, 0);
         this.score -= score;
+    }
+
+    public void SaveScoreToTotal()
+    {
+        playerEntity.Player.data.totalScore += (int)this.score;
+    }
+
+    public double GetScore()
+    {
+        return score;
     }
 }

@@ -27,7 +27,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField]
     public int damage;
     private AudioSource sfxSource;
-    private PlayerCombat wielder;
+    private PlayerEntity wielder;
 
     [Range(0, .2f)]
     public float PitchmodPercentage;
@@ -50,7 +50,7 @@ public abstract class Weapon : MonoBehaviour
         sfxSource = GetComponent<AudioSource>();
     }
 
-    public void SetWielder(PlayerCombat wielder)
+    public void SetWielder(PlayerEntity wielder)
     {
         this.wielder = wielder;
     }

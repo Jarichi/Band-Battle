@@ -13,6 +13,7 @@ public class Game : MonoBehaviour
         Play,
         End
     }
+    public readonly int pointIncrease = 5;
 
     private Song selectedSong;
     [SerializeField]
@@ -36,7 +37,8 @@ public class Game : MonoBehaviour
     void OnEnable()
     {
         Rhythm = GetComponent<Rhythm>();
-        audio = GetComponent<AudioManager>();        
+        audio = GetComponent<AudioManager>();
+        audio.LoadBanks(allSongs);
         ShowSongs();
         songSelectionScreen.songSelectEvent.AddListener(OnSongSelect);
         Rhythm.rhythmEndEvent.AddListener(End);
@@ -113,7 +115,7 @@ public class Game : MonoBehaviour
     private IEnumerator EnableCombat()
     {
         yield return new WaitForSeconds(timeUntilCombat);
-        PlayerList.Get().ForEach(p => { p.InGameEntity.GetComponent<PlayerCombat>().allowCombat = true; });
+        PlayerList.Get().ForEach(p => { p.Entity.Combat.allowCombat = true; });
     }
 
     public void End()
@@ -122,6 +124,7 @@ public class Game : MonoBehaviour
         audio.Stop();
         PlayerList.Get().ForEach(player =>
         {
+            player.Entity.Rhythm.SaveScoreToTotal();
             player.Despawn();
         });
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

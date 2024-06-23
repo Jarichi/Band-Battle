@@ -4,24 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using static Rhythm;
 
 public class TriggerLine : MonoBehaviour
 {
-    public enum MistakeType
-    {
-        WrongNote,
-        MissedNote
-    }
+
     [SerializeField]
     private InputCollider[] colliders;
     public float marginOfError;
-    private Vector2 initialPosition;
     private PlayerInput input;
 
     private SpriteRenderer SpriteRenderer;
     private Color baseColour = Color.white;
-    private float fadeTime = 0.15f;
+    private readonly float fadeTime = 0.15f;
 
     private Coroutine coroutine;
 
@@ -35,6 +32,12 @@ public class TriggerLine : MonoBehaviour
     private double ScoreDecrease = .5;
     private PlayerRhythm player;
     private Game game;
+
+    //event
+    public UnityEvent<Note> NoteCollideEvent;
+    public UnityEvent NoCollisionEvent;
+    public UnityEvent<Note, bool> NotePassEvent;
+
     private void Start()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -43,8 +46,7 @@ public class TriggerLine : MonoBehaviour
         input.actions["Play Note 2"].performed += OnInput2;
         input.actions["Play Note 3"].performed += OnInput3;
         input.actions["Play Note 4"].performed += OnInput4;
-        player = transform.root.GetComponent<Player>().InGameEntity.GetComponent<PlayerRhythm>();
-        Debug.Log(player);
+        player = transform.root.GetComponent<Player>().Entity.Rhythm;
         instrumentId = gameObject.transform.parent.GetComponentInParent<PlayerRhythm>().ChosenInstrument.id;
         game = Game.Instance;
     }
@@ -59,53 +61,47 @@ public class TriggerLine : MonoBehaviour
 
     private void OnInput1(InputAction.CallbackContext ctx)
     {
-        initialPosition.x = -1.5f;
         ToggleHitbox(0);
         FadeColour(Color.red);
     }
 
     private void OnInput2(InputAction.CallbackContext ctx)
     {
-        initialPosition.x = -0.5f;
         ToggleHitbox(1);
         FadeColour(Color.blue);
     }
 
     private void OnInput3(InputAction.CallbackContext ctx)
     {
-        initialPosition.x = 0.5f;
         ToggleHitbox(2);
         FadeColour(Color.yellow);
     }
 
     private void OnInput4(InputAction.CallbackContext ctx)
     {
-        initialPosition.x = 1.5f;
         ToggleHitbox(3);
         FadeColour(Color.green);
     }
 
-    public void OnHit(NoteController note)
+    public void OnNoteCollision(Note note, Collider2D collidedWith)
     {
-        player.AddScore(ScoreIncrease);
-        game.EnableAudioChannel(instrumentId);
-        game.DisablePitchShift(instrumentId);
-        note.Despawn();
+        var correctCollider = GetCollider(note.GetDirection());
+        correctCollider.hasCollision = true;
+        if (correctCollider.enabled && correctCollider.collider == collidedWith) // the direction of the note matches the collider AND the collider is pressed.
+        {
+            correctCollider.enabled = false;
+            NoteCollideEvent?.Invoke(note);
+            note.Despawn();
+        }
     }
 
-    public void OnMiss(MistakeType reason, NoteController note = null)
+    public void OnNoteExit(Note note)
     {
-        if (reason == MistakeType.WrongNote)
-        {
-            game.EnablePitchShift(instrumentId);
-        } else if (reason == MistakeType.MissedNote)
-        {
-            game.DisableAudioChannel(instrumentId);
-        }
-        player.DecreaseScore(ScoreDecrease);
-        Score = Math.Max(Score, 0);
-        if (note != null)
-            note.Despawn();
+        var collider = GetCollider(note.GetDirection());
+        collider.hasCollision = false;
+
+        NotePassEvent?.Invoke(note, HasAnyActiveCollider());
+        note.Despawn();
     }
 
     private void FadeColour(Color TargetColour)
@@ -131,7 +127,7 @@ public class TriggerLine : MonoBehaviour
         yield return new WaitForSeconds(marginOfError);
         if (hitbox.enabled && !hitbox.hasCollision)
         {
-            OnMiss(MistakeType.WrongNote);
+            NoCollisionEvent?.Invoke();
         }
         hitbox.enabled = false;
     }
@@ -151,9 +147,9 @@ public class TriggerLine : MonoBehaviour
         SpriteRenderer.color = baseColour;
     }
 
-    public InputCollider GetCollider(int position)
+    public InputCollider GetCollider(NoteDirection direction)
     {
-        return colliders[position];
+        return colliders.FirstOrDefault((col) => col.position == direction);
     }
 
     public bool HasAnyActiveCollider()
@@ -169,6 +165,8 @@ public class InputCollider
     public BoxCollider2D collider;
     [SerializeField]
     public bool enabled;
+    [SerializeField]
+    public NoteDirection position;
     [SerializeField]
     internal bool hasCollision;
 }

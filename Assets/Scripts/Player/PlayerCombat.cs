@@ -13,11 +13,11 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     public bool inCombat { get; private set; }
 
+    private PlayerEntity playerEntity;
     private bool onCooldown;
     private bool invincible;
     private Weapon currentWeapon;
     private PlayerInput input;
-    private PlayerMovement movement;
     private SpriteRenderer spriteRenderer;
     private new Rigidbody2D rigidbody;
     public int Hitpoints;
@@ -36,8 +36,8 @@ public class PlayerCombat : MonoBehaviour, IDamageable
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        input = Player.OfEntity(gameObject).Input;
-        movement = GetComponent<PlayerMovement>();
+        playerEntity= GetComponent<PlayerEntity>();
+        input = playerEntity.Player.Input;
         rigidbody = GetComponent<Rigidbody2D>();
         StartingHP = Hitpoints;
     }
@@ -57,14 +57,14 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
     }
 
-    public void Engage(GameObject weapon, PlayerMovement movement)
+    public void Engage(GameObject weapon)
     {
         invincible = true;
         Destroy(GetComponentInChildren<GuitarMinigame>().gameObject);
-        var instrument = movement.GetComponent<PlayerRhythm>().ChosenInstrument;
+        var instrument = playerEntity.Rhythm.ChosenInstrument;
         instrument.DeleteInstrument();
         Game.Instance.DisableAudioChannel(instrument.id);
-        StartCoroutine(TransitionToCombat(weapon, movement));
+        StartCoroutine(TransitionToCombat(weapon));
         inCombat = true;
 
         var loadResource = Resources.Load<GameObject>("Prefabs/UI/Health Bar");
@@ -73,21 +73,21 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
         this.healthBar = healthBar.GetComponent<HealthBar>();
 
-        var playerColour = transform.root.GetComponent<Player>().data.color;
+        var playerColour = playerEntity.Player.data.color;
         this.healthBar.SetColour(playerColour);
     }
 
-    private IEnumerator TransitionToCombat(GameObject weapon, PlayerMovement movement)
+    private IEnumerator TransitionToCombat(GameObject weapon)
     {
         Weapon weaponInfo = weapon.GetComponent<Weapon>();
-        movement.animator.SetTrigger(weaponInfo.combatAnimationName);
+        playerEntity.Movement.animator.SetTrigger(weaponInfo.combatAnimationName);
         yield return new WaitForSeconds(weaponInfo.combatAnimationTime);
-        movement.Enable();
+        playerEntity.Movement.Enable();
 
-        GameObject weaponInst = GameObject.Instantiate(weapon, transform);
+        GameObject weaponInst = Instantiate(weapon, transform);
         weaponInst.transform.parent = transform;
         currentWeapon = weaponInst.GetComponent<Weapon>();
-        currentWeapon.SetWielder(movement.GetComponent<PlayerCombat>());
+        currentWeapon.SetWielder(playerEntity);
         invincible = false;
     }
 
@@ -118,7 +118,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
         onCooldown = false;
     }
 
-    public void OnDamage(int damage, PlayerCombat attacker)
+    public void OnDamage(int damage, PlayerEntity attacker)
     {
         if (invincible)
         {
@@ -127,7 +127,7 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
         if (!inCombat)
         {
-            Engage(GetComponent<PlayerRhythm>().ChosenInstrument.weapon, GetComponent<PlayerMovement>());
+            Engage(playerEntity.Rhythm.ChosenInstrument.weapon);
             return;
         }
 
@@ -150,7 +150,6 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
         if (currentWeapon.TryGetComponent<DrumWeapon>(out var drumweapon))
         {
-            print("weapon is drums, turn red");
             drumweapon.GetComponent<SpriteRenderer>().color = Color.red;
         }
 
@@ -170,32 +169,34 @@ public class PlayerCombat : MonoBehaviour, IDamageable
 
         if (!currentWeapon.IsDestroyed() && currentWeapon.TryGetComponent<DrumWeapon>(out var drumweapon))
         {
-            print("weapon is drums, turn white");
-
             drumweapon.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
     }
 
-    public void Die(PlayerCombat cause)
+    public void Die(PlayerEntity cause)
     {
         dead = true;
-        movement.animator.SetTrigger("Death");
-        movement.Disable();
-        Player.OfEntity(gameObject).data.isBandLeader = false;
+        playerEntity.Movement.animator.SetTrigger("Death");
+        playerEntity.Movement.Disable();
+        playerEntity.Player.data.isBandLeader = false;
+        PlayerRhythm playerRhythm = playerEntity.Rhythm;
+        PlayerRhythm attackerRhythm = cause.Rhythm;
+        var stolenPoints = playerRhythm.GetScore() * .20d;
+        playerRhythm.DecreaseScore(stolenPoints);
+        attackerRhythm.AddScore(stolenPoints);
+
         for (var i = gameObject.transform.childCount - 1; i >= 0; i--)
         {
             Destroy(gameObject.transform.GetChild(i).gameObject);
         }
 
         var survivors = PlayerList.Get().Where(p =>
-            !p.InGameEntity.GetComponent<PlayerCombat>().dead
+            !p.Entity.Combat.dead
         );
         if (survivors.Count() <= 1 ) {
-            Debug.Log("one player remaining!");
             var lastManStanding = survivors.ElementAt(0);
             lastManStanding.data.isBandLeader = true;
-            print(lastManStanding);
             Game.Instance.End();
         }
     }

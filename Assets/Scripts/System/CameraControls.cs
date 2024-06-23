@@ -16,14 +16,19 @@ public class CameraControls : MonoBehaviour
     private float zoomLimit = 10f;
 
     private Vector3 velocity;
-    private List<GameObject> players;
+    private readonly List<PlayerEntity> players = new();
     private Camera cam;
     private void Start()
     {
-        players = new List<GameObject>();
         cam = GetComponent<Camera>();
-        Player.PlayerSpawnEvent += HandleJoinEvent;
-        Player.PlayerDespawnEvent += HandleLeaveEvent;
+        PlayerList.Instance.PlayerSpawnEvent.AddListener(HandleJoinEvent);
+        PlayerList.Instance.PlayerDespawnEvent.AddListener(HandleLeaveEvent);
+    }
+
+    private void OnDestroy()
+    {
+        PlayerList.Instance.PlayerSpawnEvent.RemoveListener(HandleJoinEvent);
+        PlayerList.Instance.PlayerDespawnEvent.RemoveListener(HandleLeaveEvent);
     }
 
     void Update()
@@ -33,14 +38,14 @@ public class CameraControls : MonoBehaviour
     }
 
     // TODO: move the player list to PlayerInputController
-    private void HandleJoinEvent(object sender, EventArgs e)
+    private void HandleJoinEvent(PlayerEntity player)
     {
-        players.Add(((Player)sender).InGameEntity);
+        players.Add(player);
     }
 
-    private void HandleLeaveEvent(object sender, EventArgs e)
+    private void HandleLeaveEvent(PlayerEntity player)
     {
-        players.Remove(((Player)sender).InGameEntity);
+        players.Remove(player);
     }
 
     void Zoom()

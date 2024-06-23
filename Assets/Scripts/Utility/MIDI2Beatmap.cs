@@ -53,18 +53,16 @@ public class MIDI2Beatmap : EditorWindow
                     tempo = midi.GetTempoMap().GetTempoAtTime(time).BeatsPerMinute;
                     var beatTotal = (time.Bars * 4) + time.Beats;
                     positions.Add(new NotePosition(note.NoteNumber % 4, beatTotal));
-                    //Debug.Log("CHANNEL : " + note.Channel + "| NOTE : " + note.NoteName + "| BAR : " + time.Bars + "| BEAT : " + time.Beats);
                 }
             }
             channels.Add(new Channel(i, positions));
         }
         var beatmap = new Beatmap(tempo, channels);
-        Debug.Log(beatmap.Channels.Count);
         string jsonString = JsonUtility.ToJson(beatmap, true);
         var path = outputPath + "out.bbm";
 
         File.WriteAllText(path, jsonString);
-        Debug.Log(jsonString);
+        Debug.Log("Succesfully created beatmap at " + path);
     }
 }
 #endif

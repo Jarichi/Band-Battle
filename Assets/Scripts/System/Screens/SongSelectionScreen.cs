@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using FMODUnity;
 using System;
 using System.Collections;
@@ -96,6 +97,8 @@ public class Song
     [SerializeField]
     private string beatmapFilePath;
     public EventReference fmodEvent;
+    [FMODUnity.BankRef]
+    public string fmodBank;
     public Beatmap beatmap;
     public string title;
     internal void DeserializeFile()

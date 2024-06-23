@@ -2,34 +2,51 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 using static Rhythm;
+using static TriggerLine;
 
 public class Minigame : MonoBehaviour
 {
-    private PlayerMovement movement;
-    private PlayerCombat combat;
-    private PlayerRhythm playerRhythm;
+    public enum MistakeType
+    {
+        WrongNote,
+        MissedNote
+    }
+    private PlayerEntity playerEntity;
     private PlayerInput input;
     private GameObject weapon;
     [SerializeField]
     private GameObject notePrefab;
+    private Game game;
+    private Note noteController;
 
-    private NoteController noteController;
+    private double scoreIncrease;
+    private TriggerLine triggerLine;
 
     private void Start()
     {
-        input = Player.OfEntity(gameObject).Input;
-        playerRhythm = GetComponentInParent<PlayerRhythm>();
+        playerEntity = GetComponentInParent<PlayerEntity>();
+        input = playerEntity.Player.Input;
         input.actions["Engage Combat"].performed += TryEngageCombat;
-        var rhythm = Game.Instance.Rhythm;
+        game = Game.Instance;
+        var rhythm = game.Rhythm;
         rhythm.noteSpawnEvent.AddListener(SpawnNote);
         rhythm.consistentTimeEvent.AddListener(SpawnPulse);
 
-        noteController = notePrefab.GetComponent<NoteController>();
+        scoreIncrease = game.Rhythm.CalculateScoreIncreasePerNote(playerEntity.Rhythm.ChosenInstrument.id);
+        triggerLine = GetComponentInChildren<TriggerLine>();
+        triggerLine.NoteCollideEvent.AddListener(OnHit);
+        triggerLine.NotePassEvent.AddListener((note, activeColliders)
+            => OnMiss(activeColliders ? MistakeType.WrongNote : MistakeType.MissedNote, note));
+        triggerLine.NoCollisionEvent.AddListener(() => OnMiss(MistakeType.WrongNote));
+
+        noteController = notePrefab.GetComponent<Note>();
     }
 
     private void OnDisable()
@@ -42,9 +59,9 @@ public class Minigame : MonoBehaviour
 
     private void TryEngageCombat(InputAction.CallbackContext obj)
     {
-        if (Game.Instance.Rhythm.Active && combat.allowCombat)
+        if (Game.Instance.Rhythm.Active && playerEntity.Combat.allowCombat)
         {
-            combat.Engage(weapon, movement);
+            playerEntity.Combat.Engage(weapon);
             Destroy(gameObject);
             gameObject.SetActive(false);
         }
@@ -52,7 +69,7 @@ public class Minigame : MonoBehaviour
 
     void SpawnNote(NoteDirection direction, string instrumentId)
     {
-        if (playerRhythm.ChosenInstrument.id != instrumentId)
+        if (playerEntity.Rhythm.ChosenInstrument.id != instrumentId)
             return;
 
 
@@ -61,33 +78,28 @@ public class Minigame : MonoBehaviour
         {
             case NoteDirection.Left:
                 noteController.SetColor(Color.red);
-                //red note
                 xOffset = -1.5f;
                 break;
             case NoteDirection.Right:
-                //blue note
                 noteController.SetColor(Color.blue);
                 xOffset = -0.5f;
                 break;
             case NoteDirection.Up:
-                //yellow note
-                noteController.SetColor(Color.green);
+                noteController.SetColor(Color.yellow);
                 xOffset = 0.5f;
                 break;
             case NoteDirection.Down:
-                //green note
-                noteController.SetColor(Color.yellow);
+                noteController.SetColor(Color.green);
                 xOffset = 1.5f;
                 break;
 
             default:
-                //error handler
-                Debug.Log("Load a beatmap first before spawning beatmapNotes.");
+                Debug.LogError("Load a beatmap first before spawning beatmapNotes.");
                 break;
         }
 
         Vector3 spawnPos = transform.position + new Vector3(xOffset, 0f, 0f);
-        notePrefab.GetComponent<NoteController>().SetDirection(direction);
+        notePrefab.GetComponent<Note>().SetDirection(direction);
         Instantiate(notePrefab, spawnPos, Quaternion.identity, this.transform);
     }
 
@@ -99,8 +111,6 @@ public class Minigame : MonoBehaviour
 
     public void OnRhythmStart(Player player, GameObject weapon)
     {
-        movement = player.InGameEntity.GetComponent<PlayerMovement>();
-        combat = player.InGameEntity.GetComponent<PlayerCombat>();
         this.weapon = weapon;
         player.Entity.Movement.Disable();
     }

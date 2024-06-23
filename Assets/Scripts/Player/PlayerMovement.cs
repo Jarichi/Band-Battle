@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
-        input = Player.OfEntity(gameObject).Input;
+        input = GetComponent<PlayerEntity>().Player.Input;
         animator = GetComponent<Animator>();
     }
 

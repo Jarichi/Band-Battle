@@ -14,6 +14,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private bool initialized;
 
+    public void LoadBanks(Song[] songs)
+    {
+        songs.ToList().ForEach(song => RuntimeManager.LoadBank(song.fmodBank, true));
+    }
+
     public void Initialize(EventReference song)
     {
         songInstance = RuntimeManager.CreateInstance(song);
@@ -62,10 +67,9 @@ public class AudioManager : MonoBehaviour
     private void SetFMODValue(string parameter, int value)
     {
         var result = songInstance.getParameterByName(parameter, out var curValue);
-        print(parameter + " -> " + value + ". curValue = " + curValue);
         if (result != FMOD.RESULT.OK)
         {
-            Debug.LogError(result);
+            Debug.LogError("FMOD value could not get retrieved: " + result);
             return;
         }
 
@@ -74,7 +78,7 @@ public class AudioManager : MonoBehaviour
         result = songInstance.setParameterByName(parameter, value);
         if (result != FMOD.RESULT.OK)
         {
-            Debug.LogError(result);
+            Debug.LogError("FMOD value could not be set: " + result);
             return;
         }
     }
