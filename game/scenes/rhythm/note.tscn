@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bi0tfwjv4rbyo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdhx4"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0.6745098)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdhx4"]
+size = Vector2(58, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w15m1"]
+size = Vector2(58, 20.875)
+
+[node name="Note" type="Node2D" unique_id=1636832885]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=716260918]
+offset_right = 60.0
+offset_bottom = 7.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdhx4")
+metadata/_edit_use_anchors_ = true
+
+[node name="PerfectBox" type="Area2D" parent="." unique_id=1159959255]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectBox" unique_id=1924203868]
+position = Vector2(30, 3.5)
+shape = SubResource("RectangleShape2D_kdhx4")
+
+[node name="EarlyBox" type="Area2D" parent="." unique_id=138311588]
+position = Vector2(0, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EarlyBox" unique_id=958746962]
+position = Vector2(30, 19.4375)
+shape = SubResource("RectangleShape2D_w15m1")
+
+[node name="LateBox" type="Area2D" parent="." unique_id=1978336832]
+position = Vector2(0, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LateBox" unique_id=1566622282]
+position = Vector2(30, -12)
+shape = SubResource("RectangleShape2D_w15m1")

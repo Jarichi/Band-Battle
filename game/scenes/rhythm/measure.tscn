@@ -1,19 +1,9 @@
 [gd_scene format=3 uid="uid://c84wq3vmco3jo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
-size = Vector2(6, 240)
-
 [node name="Measure" type="Node2D" unique_id=1645609575]
 z_index = -100
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=124772909]
-offset_left = -3.0
-offset_top = -120.0
-offset_right = 3.0
-offset_bottom = 120.0
+offset_right = 240.0
+offset_bottom = 6.0
 color = Color(0.36282945, 0.36282945, 0.36282945, 1)
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1189588324]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=231722170]
-shape = SubResource("RectangleShape2D_lnu2h")
