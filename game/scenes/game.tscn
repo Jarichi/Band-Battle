@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dlgmtcau57j4d"]
+
+[ext_resource type="Script" uid="uid://c1dblgv0c6k7j" path="res://scripts/SyncedMusicPlayer.cs" id="1_uwrxv"]
+[ext_resource type="AudioStream" uid="uid://bfa7pxibx3q2a" path="res://audio/34. Flower Man (DELTARUNE Chapter 5 Soundtrack) - Toby Fox.mp3" id="1_yqjtg"]
+[ext_resource type="Script" uid="uid://by0c6kqkja6qe" path="res://scripts/DebugPrinter.cs" id="3_lnu2h"]
+
+[node name="Game" type="Node2D" unique_id=1019220315]
+
+[node name="SyncedMusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1066918434]
+stream = ExtResource("1_yqjtg")
+autoplay = true
+script = ExtResource("1_uwrxv")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1489025195]
+script = ExtResource("3_lnu2h")
+
+[connection signal="Beat" from="SyncedMusicPlayer" to="Node2D" method="OnBeat"]
+[connection signal="IntegerBeat" from="SyncedMusicPlayer" to="Node2D" method="OnIntegerBeat"]
