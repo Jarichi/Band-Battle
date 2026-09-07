@@ -1,18 +1,109 @@
 [gd_scene format=3 uid="uid://dlgmtcau57j4d"]
 
-[ext_resource type="Script" uid="uid://c1dblgv0c6k7j" path="res://scripts/SyncedMusicPlayer.cs" id="1_uwrxv"]
-[ext_resource type="AudioStream" uid="uid://bfa7pxibx3q2a" path="res://audio/34. Flower Man (DELTARUNE Chapter 5 Soundtrack) - Toby Fox.mp3" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dpqdv037fo6nm" path="res://scenes/rhythm/synced_music_player.tscn" id="1_yqjtg"]
+[ext_resource type="Script" uid="uid://b2j2v0qp3jg21" path="res://scripts/rhythm/RhythmRow.cs" id="3_lbhrr"]
 [ext_resource type="Script" uid="uid://by0c6kqkja6qe" path="res://scripts/DebugPrinter.cs" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://b5oodislnsrgx" path="res://scripts/rhythm/Spawner.cs" id="4_lbhrr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(20, 240)
 
 [node name="Game" type="Node2D" unique_id=1019220315]
 
-[node name="SyncedMusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1066918434]
-stream = ExtResource("1_yqjtg")
-autoplay = true
-script = ExtResource("1_uwrxv")
+[node name="SyncedMusicPlayer" parent="." unique_id=881339545 instance=ExtResource("1_yqjtg")]
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1489025195]
 script = ExtResource("3_lnu2h")
 
-[connection signal="Beat" from="SyncedMusicPlayer" to="Node2D" method="OnBeat"]
-[connection signal="IntegerBeat" from="SyncedMusicPlayer" to="Node2D" method="OnIntegerBeat"]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1915561677]
+anchor_mode = 0
+
+[node name="Rhythm" type="Node" parent="." unique_id=19334561]
+
+[node name="Row1" type="Node2D" parent="Rhythm" unique_id=1417101296 node_paths=PackedStringArray("_inputRect", "_bgRect")]
+script = ExtResource("3_lbhrr")
+_inputRect = NodePath("Input Rect")
+_bgRect = NodePath("BG Rect")
+_inputAction = "rhythm_hit_1"
+
+[node name="BG Rect" type="ColorRect" parent="Rhythm/Row1" unique_id=1995281410]
+offset_right = 625.0
+offset_bottom = 60.0
+color = Color(1, 0, 0, 0.22352941)
+metadata/_edit_use_anchors_ = true
+
+[node name="Input Rect" type="ColorRect" parent="Rhythm/Row1" unique_id=2053666409]
+offset_right = 7.0
+offset_bottom = 60.0
+color = Color(0.54640853, 7.3399394e-07, 3.85046e-07, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Row2" type="Node2D" parent="Rhythm" unique_id=144370332 node_paths=PackedStringArray("_inputRect", "_bgRect")]
+position = Vector2(0, 60)
+script = ExtResource("3_lbhrr")
+_inputRect = NodePath("Input Rect")
+_bgRect = NodePath("BG Rect")
+_inputAction = "rhythm_hit_2"
+
+[node name="BG Rect" type="ColorRect" parent="Rhythm/Row2" unique_id=1526623812]
+offset_right = 625.0
+offset_bottom = 60.0
+color = Color(0, 0, 1, 0.22352941)
+metadata/_edit_use_anchors_ = true
+
+[node name="Input Rect" type="ColorRect" parent="Rhythm/Row2" unique_id=1447472947]
+offset_right = 7.0
+offset_bottom = 60.0
+color = Color(0, 0, 1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Row3" type="Node2D" parent="Rhythm" unique_id=659504842 node_paths=PackedStringArray("_inputRect", "_bgRect")]
+position = Vector2(0, 120)
+script = ExtResource("3_lbhrr")
+_inputRect = NodePath("Input Rect")
+_bgRect = NodePath("BG Rect")
+_inputAction = "rhythm_hit_3"
+
+[node name="BG Rect" type="ColorRect" parent="Rhythm/Row3" unique_id=683651125]
+offset_right = 625.0
+offset_bottom = 60.0
+color = Color(0, 1, 0, 0.22352941)
+metadata/_edit_use_anchors_ = true
+
+[node name="Input Rect" type="ColorRect" parent="Rhythm/Row3" unique_id=156560811]
+offset_right = 7.0
+offset_bottom = 60.0
+color = Color(0, 1, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Row4" type="Node2D" parent="Rhythm" unique_id=1992679156 node_paths=PackedStringArray("_inputRect", "_bgRect")]
+position = Vector2(0, 180)
+script = ExtResource("3_lbhrr")
+_inputRect = NodePath("Input Rect")
+_bgRect = NodePath("BG Rect")
+_inputAction = "rhythm_hit_4"
+
+[node name="BG Rect" type="ColorRect" parent="Rhythm/Row4" unique_id=1798409333]
+offset_right = 625.0
+offset_bottom = 60.0
+color = Color(1, 1, 0, 0.22352941)
+metadata/_edit_use_anchors_ = true
+
+[node name="Input Rect" type="ColorRect" parent="Rhythm/Row4" unique_id=1582600422]
+offset_right = 7.0
+offset_bottom = 60.0
+color = Color(1, 1, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Killzone" type="Area2D" parent="Rhythm" unique_id=1638452608]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rhythm/Killzone" unique_id=774486791]
+position = Vector2(-10, 120)
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="Spawner" type="Node2D" parent="Rhythm" unique_id=2024648476]
+position = Vector2(629, 120)
+script = ExtResource("4_lbhrr")
+
+[connection signal="Beat" from="SyncedMusicPlayer" to="Rhythm/Spawner" method="OnBeat"]
+[connection signal="IntegerBeat" from="SyncedMusicPlayer" to="Rhythm/Spawner" method="OnIntegerBeat"]
