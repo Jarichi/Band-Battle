@@ -1,0 +1,785 @@
+{
+  "BPM": 160,
+  "Tracks": [
+	{
+	  "Notes": [
+		{
+		  "Column": 0,
+		  "Beat": 2
+		},
+		{
+		  "Column": 1,
+		  "Beat": 3
+		},
+		{
+		  "Column": 0,
+		  "Beat": 6
+		},
+		{
+		  "Column": 1,
+		  "Beat": 7
+		},
+		{
+		  "Column": 1,
+		  "Beat": 10
+		},
+		{
+		  "Column": 2,
+		  "Beat": 11
+		},
+		{
+		  "Column": 3,
+		  "Beat": 12
+		},
+		{
+		  "Column": 2,
+		  "Beat": 12.75
+		},
+		{
+		  "Column": 1,
+		  "Beat": 13.5
+		},
+		{
+		  "Column": 0,
+		  "Beat": 14
+		},
+		{
+		  "Column": 1,
+		  "Beat": 15
+		},
+		{
+		  "Column": 1,
+		  "Beat": 16
+		},
+		{
+		  "Column": 0,
+		  "Beat": 16.75
+		},
+		{
+		  "Column": 1,
+		  "Beat": 17.5
+		},
+		{
+		  "Column": 2,
+		  "Beat": 18
+		},
+		{
+		  "Column": 3,
+		  "Beat": 19
+		},
+		{
+		  "Column": 0,
+		  "Beat": 20
+		},
+		{
+		  "Column": 1,
+		  "Beat": 21.5
+		},
+		{
+		  "Column": 0,
+		  "Beat": 22
+		},
+		{
+		  "Column": 3,
+		  "Beat": 23
+		},
+		{
+		  "Column": 3,
+		  "Beat": 24
+		},
+		{
+		  "Column": 3,
+		  "Beat": 26
+		},
+		{
+		  "Column": 2,
+		  "Beat": 26.75
+		},
+		{
+		  "Column": 1,
+		  "Beat": 27.5
+		},
+		{
+		  "Column": 0,
+		  "Beat": 28
+		},
+		{
+		  "Column": 0,
+		  "Beat": 28.75
+		},
+		{
+		  "Column": 1,
+		  "Beat": 29.5
+		},
+		{
+		  "Column": 3,
+		  "Beat": 30
+		},
+		{
+		  "Column": 0,
+		  "Beat": 31
+		},
+		{
+		  "Column": 0,
+		  "Beat": 34
+		},
+		{
+		  "Column": 1,
+		  "Beat": 35
+		},
+		{
+		  "Column": 0,
+		  "Beat": 38
+		},
+		{
+		  "Column": 1,
+		  "Beat": 39
+		},
+		{
+		  "Column": 1,
+		  "Beat": 42
+		},
+		{
+		  "Column": 2,
+		  "Beat": 43
+		},
+		{
+		  "Column": 3,
+		  "Beat": 44
+		},
+		{
+		  "Column": 2,
+		  "Beat": 44.75
+		},
+		{
+		  "Column": 1,
+		  "Beat": 45.5
+		},
+		{
+		  "Column": 0,
+		  "Beat": 46
+		},
+		{
+		  "Column": 1,
+		  "Beat": 47
+		},
+		{
+		  "Column": 1,
+		  "Beat": 48
+		},
+		{
+		  "Column": 0,
+		  "Beat": 48.75
+		},
+		{
+		  "Column": 1,
+		  "Beat": 49.5
+		},
+		{
+		  "Column": 2,
+		  "Beat": 50
+		},
+		{
+		  "Column": 3,
+		  "Beat": 51
+		},
+		{
+		  "Column": 0,
+		  "Beat": 52
+		},
+		{
+		  "Column": 1,
+		  "Beat": 53.5
+		},
+		{
+		  "Column": 0,
+		  "Beat": 54
+		},
+		{
+		  "Column": 3,
+		  "Beat": 55
+		},
+		{
+		  "Column": 3,
+		  "Beat": 56
+		},
+		{
+		  "Column": 3,
+		  "Beat": 58
+		},
+		{
+		  "Column": 2,
+		  "Beat": 58.75
+		},
+		{
+		  "Column": 1,
+		  "Beat": 59.5
+		},
+		{
+		  "Column": 0,
+		  "Beat": 60
+		},
+		{
+		  "Column": 0,
+		  "Beat": 60.75
+		},
+		{
+		  "Column": 1,
+		  "Beat": 61.5
+		},
+		{
+		  "Column": 3,
+		  "Beat": 62
+		},
+		{
+		  "Column": 0,
+		  "Beat": 63
+		},
+		{
+		  "Column": 2,
+		  "Beat": 64
+		},
+		{
+		  "Column": 2,
+		  "Beat": 65
+		},
+		{
+		  "Column": 2,
+		  "Beat": 66
+		},
+		{
+		  "Column": 3,
+		  "Beat": 66.75
+		},
+		{
+		  "Column": 2,
+		  "Beat": 67.5
+		},
+		{
+		  "Column": 1,
+		  "Beat": 68
+		},
+		{
+		  "Column": 3,
+		  "Beat": 69
+		},
+		{
+		  "Column": 0,
+		  "Beat": 70
+		},
+		{
+		  "Column": 0,
+		  "Beat": 73
+		},
+		{
+		  "Column": 1,
+		  "Beat": 74
+		},
+		{
+		  "Column": 2,
+		  "Beat": 75
+		},
+		{
+		  "Column": 3,
+		  "Beat": 76
+		},
+		{
+		  "Column": 2,
+		  "Beat": 76.75
+		},
+		{
+		  "Column": 1,
+		  "Beat": 77.5
+		},
+		{
+		  "Column": 1,
+		  "Beat": 78
+		},
+		{
+		  "Column": 2,
+		  "Beat": 79
+		},
+		{
+		  "Column": 2,
+		  "Beat": 80
+		},
+		{
+		  "Column": 1,
+		  "Beat": 82
+		},
+		{
+		  "Column": 2,
+		  "Beat": 82.75
+		},
+		{
+		  "Column": 3,
+		  "Beat": 83.5
+		},
+		{
+		  "Column": 2,
+		  "Beat": 84
+		},
+		{
+		  "Column": 1,
+		  "Beat": 84.75
+		},
+		{
+		  "Column": 0,
+		  "Beat": 85.5
+		},
+		{
+		  "Column": 2,
+		  "Beat": 87
+		},
+		{
+		  "Column": 1,
+		  "Beat": 87.5
+		},
+		{
+		  "Column": 1,
+		  "Beat": 88
+		},
+		{
+		  "Column": 0,
+		  "Beat": 90
+		},
+		{
+		  "Column": 1,
+		  "Beat": 91
+		},
+		{
+		  "Column": 2,
+		  "Beat": 92
+		},
+		{
+		  "Column": 3,
+		  "Beat": 93
+		},
+		{
+		  "Column": 2,
+		  "Beat": 94
+		},
+		{
+		  "Column": 3,
+		  "Beat": 95
+		},
+		{
+		  "Column": 2,
+		  "Beat": 96
+		},
+		{
+		  "Column": 2,
+		  "Beat": 97
+		},
+		{
+		  "Column": 2,
+		  "Beat": 98
+		},
+		{
+		  "Column": 3,
+		  "Beat": 98.75
+		},
+		{
+		  "Column": 2,
+		  "Beat": 99.5
+		},
+		{
+		  "Column": 1,
+		  "Beat": 100
+		},
+		{
+		  "Column": 3,
+		  "Beat": 101
+		},
+		{
+		  "Column": 0,
+		  "Beat": 102
+		},
+		{
+		  "Column": 0,
+		  "Beat": 105
+		},
+		{
+		  "Column": 1,
+		  "Beat": 106
+		},
+		{
+		  "Column": 2,
+		  "Beat": 107
+		},
+		{
+		  "Column": 3,
+		  "Beat": 108
+		},
+		{
+		  "Column": 2,
+		  "Beat": 108.75
+		},
+		{
+		  "Column": 1,
+		  "Beat": 109.5
+		},
+		{
+		  "Column": 1,
+		  "Beat": 110
+		},
+		{
+		  "Column": 2,
+		  "Beat": 111
+		},
+		{
+		  "Column": 2,
+		  "Beat": 112
+		},
+		{
+		  "Column": 1,
+		  "Beat": 114
+		},
+		{
+		  "Column": 2,
+		  "Beat": 114.75
+		},
+		{
+		  "Column": 3,
+		  "Beat": 115.5
+		},
+		{
+		  "Column": 2,
+		  "Beat": 116
+		},
+		{
+		  "Column": 1,
+		  "Beat": 116.75
+		},
+		{
+		  "Column": 0,
+		  "Beat": 117.5
+		},
+		{
+		  "Column": 2,
+		  "Beat": 119
+		},
+		{
+		  "Column": 1,
+		  "Beat": 119.5
+		},
+		{
+		  "Column": 1,
+		  "Beat": 120
+		},
+		{
+		  "Column": 0,
+		  "Beat": 122
+		},
+		{
+		  "Column": 1,
+		  "Beat": 123
+		},
+		{
+		  "Column": 2,
+		  "Beat": 124
+		},
+		{
+		  "Column": 3,
+		  "Beat": 125
+		},
+		{
+		  "Column": 2,
+		  "Beat": 126
+		},
+		{
+		  "Column": 3,
+		  "Beat": 127
+		},
+		{
+		  "Column": 0,
+		  "Beat": 128
+		},
+		{
+		  "Column": 2,
+		  "Beat": 130
+		},
+		{
+		  "Column": 3,
+		  "Beat": 131
+		},
+		{
+		  "Column": 0,
+		  "Beat": 132
+		},
+		{
+		  "Column": 0,
+		  "Beat": 134
+		},
+		{
+		  "Column": 1,
+		  "Beat": 134.75
+		},
+		{
+		  "Column": 3,
+		  "Beat": 135.5
+		},
+		{
+		  "Column": 3,
+		  "Beat": 138
+		},
+		{
+		  "Column": 1,
+		  "Beat": 138.75
+		},
+		{
+		  "Column": 0,
+		  "Beat": 139.5
+		},
+		{
+		  "Column": 2,
+		  "Beat": 142
+		},
+		{
+		  "Column": 3,
+		  "Beat": 143
+		},
+		{
+		  "Column": 1,
+		  "Beat": 144
+		},
+		{
+		  "Column": 0,
+		  "Beat": 147
+		},
+		{
+		  "Column": 0,
+		  "Beat": 148
+		},
+		{
+		  "Column": 1,
+		  "Beat": 149
+		},
+		{
+		  "Column": 2,
+		  "Beat": 150
+		},
+		{
+		  "Column": 3,
+		  "Beat": 150.75
+		},
+		{
+		  "Column": 2,
+		  "Beat": 151.5
+		},
+		{
+		  "Column": 2,
+		  "Beat": 154.5
+		},
+		{
+		  "Column": 1,
+		  "Beat": 155
+		},
+		{
+		  "Column": 0,
+		  "Beat": 155.5
+		},
+		{
+		  "Column": 2,
+		  "Beat": 158
+		},
+		{
+		  "Column": 3,
+		  "Beat": 159
+		},
+		{
+		  "Column": 0,
+		  "Beat": 160
+		},
+		{
+		  "Column": 2,
+		  "Beat": 162
+		},
+		{
+		  "Column": 3,
+		  "Beat": 163
+		},
+		{
+		  "Column": 0,
+		  "Beat": 164
+		},
+		{
+		  "Column": 0,
+		  "Beat": 166
+		},
+		{
+		  "Column": 1,
+		  "Beat": 166.75
+		},
+		{
+		  "Column": 3,
+		  "Beat": 167.5
+		},
+		{
+		  "Column": 3,
+		  "Beat": 170
+		},
+		{
+		  "Column": 1,
+		  "Beat": 170.75
+		},
+		{
+		  "Column": 0,
+		  "Beat": 171.5
+		},
+		{
+		  "Column": 3,
+		  "Beat": 174
+		},
+		{
+		  "Column": 2,
+		  "Beat": 175
+		},
+		{
+		  "Column": 1,
+		  "Beat": 176
+		},
+		{
+		  "Column": 0,
+		  "Beat": 179
+		},
+		{
+		  "Column": 2,
+		  "Beat": 180
+		},
+		{
+		  "Column": 3,
+		  "Beat": 181
+		},
+		{
+		  "Column": 2,
+		  "Beat": 182
+		},
+		{
+		  "Column": 1,
+		  "Beat": 183
+		},
+		{
+		  "Column": 0,
+		  "Beat": 184
+		},
+		{
+		  "Column": 3,
+		  "Beat": 188
+		},
+		{
+		  "Column": 1,
+		  "Beat": 190
+		},
+		{
+		  "Column": 3,
+		  "Beat": 192
+		},
+		{
+		  "Column": 2,
+		  "Beat": 192.5
+		},
+		{
+		  "Column": 0,
+		  "Beat": 193
+		},
+		{
+		  "Column": 3,
+		  "Beat": 193.5
+		},
+		{
+		  "Column": 2,
+		  "Beat": 194
+		},
+		{
+		  "Column": 0,
+		  "Beat": 194.5
+		},
+		{
+		  "Column": 3,
+		  "Beat": 195
+		},
+		{
+		  "Column": 2,
+		  "Beat": 195.5
+		},
+		{
+		  "Column": 0,
+		  "Beat": 196
+		},
+		{
+		  "Column": 3,
+		  "Beat": 196.5
+		},
+		{
+		  "Column": 2,
+		  "Beat": 197
+		},
+		{
+		  "Column": 0,
+		  "Beat": 197.5
+		},
+		{
+		  "Column": 3,
+		  "Beat": 198
+		},
+		{
+		  "Column": 2,
+		  "Beat": 198.5
+		},
+		{
+		  "Column": 0,
+		  "Beat": 199
+		},
+		{
+		  "Column": 2,
+		  "Beat": 199.5
+		},
+		{
+		  "Column": 3,
+		  "Beat": 200
+		},
+		{
+		  "Column": 0,
+		  "Beat": 200.75
+		},
+		{
+		  "Column": 2,
+		  "Beat": 201.5
+		},
+		{
+		  "Column": 3,
+		  "Beat": 202
+		},
+		{
+		  "Column": 2,
+		  "Beat": 202.75
+		},
+		{
+		  "Column": 1,
+		  "Beat": 203.5
+		},
+		{
+		  "Column": 0,
+		  "Beat": 204
+		},
+		{
+		  "Column": 1,
+		  "Beat": 205
+		},
+		{
+		  "Column": 2,
+		  "Beat": 206
+		},
+		{
+		  "Column": 3,
+		  "Beat": 207
+		},
+		{
+		  "Column": 3,
+		  "Beat": 208
+		}
+	  ]
+	}
+  ]
+}

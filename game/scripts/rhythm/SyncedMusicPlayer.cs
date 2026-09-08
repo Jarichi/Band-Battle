@@ -6,7 +6,10 @@ public partial class SyncedMusicPlayer : AudioStreamPlayer2D
 	[Export]
 	private float _bpm = 160;
 	[Export]
-	private float _beatOffset = 0;
+	private float _beatOffset = 4f;
+
+	[Export]
+	private Timer _timer;
 
 	private float _secondsPerBeat => 60f / _bpm;
 
@@ -16,27 +19,46 @@ public partial class SyncedMusicPlayer : AudioStreamPlayer2D
 
 	[Signal]
 	public delegate void BeatEventHandler(double beatPosition);
-	
+
 	[Signal]
 	public delegate void IntegerBeatEventHandler(int beatPosition);
 
 	public override void _Ready()
 	{
-	}
-
-	public override void _Process(double delta)
-	{
+		var startDelaySeconds = _secondsPerBeat * 4f;
+		_timer.WaitTime = startDelaySeconds;
+		_timer.Timeout += () =>
+		{
+			_songPositionInBeats += 1;
+			if (_songPositionInBeats < _beatOffset - 1)
+			{
+				_timer.Start();
+			}
+			else if (_songPositionInBeats == _beatOffset - 1)
+			{
+				_timer.WaitTime = _timer.WaitTime - (AudioServer.GetTimeToNextMix() + AudioServer.GetOutputLatency());
+				_timer.Start();
+			}
+			else
+			{
+				Play();
+				_timer.Stop();
+			}
+			EmitBeat();
+		};
+		_timer.Start();
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (Playing)
+		if (!IsPlaying())
 		{
-			_songPosition = GetPlaybackPosition() + AudioServer.GetTimeSinceLastMix();
-			_songPosition -= AudioServer.GetOutputLatency();
-			_songPositionInBeats = _songPosition / _secondsPerBeat + _beatOffset;
-			EmitBeat();
+			return;
 		}
+		_songPosition = GetPlaybackPosition() + AudioServer.GetTimeSinceLastMix();
+		_songPosition -= AudioServer.GetOutputLatency();
+		_songPositionInBeats = _songPosition / _secondsPerBeat + _beatOffset;
+		EmitBeat();
 	}
 
 	private void EmitBeat()

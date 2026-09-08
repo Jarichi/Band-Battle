@@ -13,8 +13,6 @@ size = Vector2(20, 240)
 
 [node name="Game" type="Node2D" unique_id=1019220315]
 
-[node name="SyncedMusicPlayer" parent="." unique_id=881339545 instance=ExtResource("1_yqjtg")]
-
 [node name="Node2D" type="Node2D" parent="." unique_id=1489025195]
 script = ExtResource("3_lnu2h")
 
@@ -146,5 +144,7 @@ position = Vector2(0, 65)
 script = ExtResource("4_lbhrr")
 _pixelsPerBeat = 140.0
 
-[connection signal="Beat" from="SyncedMusicPlayer" to="Rhythm/Spawner" method="OnBeat"]
-[connection signal="IntegerBeat" from="SyncedMusicPlayer" to="Rhythm/Spawner" method="OnIntegerBeat"]
+[node name="SyncedMusicPlayer" parent="Rhythm" unique_id=881339545 instance=ExtResource("1_yqjtg")]
+
+[connection signal="Beat" from="Rhythm/SyncedMusicPlayer" to="Rhythm/Spawner" method="OnBeat"]
+[connection signal="IntegerBeat" from="Rhythm/SyncedMusicPlayer" to="Rhythm/Spawner" method="OnIntegerBeat"]

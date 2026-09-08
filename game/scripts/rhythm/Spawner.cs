@@ -10,6 +10,18 @@ public partial class Spawner : Node
 
 	private double _currentBeat;
 
+	private Beatmap _beatmap;
+	private BeatmapNote[] _notes;
+	private int _currentNoteIndex = 0;
+
+	public override void _Ready()
+	{
+		_beatmap = BeatmapLoader.LoadFromFile("flower_man.json");
+		GD.Print($"Loaded spawner for beatmap with {_beatmap.Tracks.Count} tracks and BPM: {_beatmap.BPM}");
+		_notes = [.. _beatmap.Tracks[0].Notes];
+	}
+
+
 	public override void _Process(double delta)
 	{
 		foreach (var child in GetChildren())
@@ -25,19 +37,32 @@ public partial class Spawner : Node
 
 	public void OnBeat(double beatPosition)
 	{
+		var lastBeat = _currentBeat;
 		_currentBeat = beatPosition;
+
+		if (_currentNoteIndex < _notes.Length)
+		{
+			var note = _notes[_currentNoteIndex];
+			if (note.Beat >= lastBeat && note.Beat < _currentBeat)
+			{
+				SpawnNote(note.Column);
+				_currentNoteIndex++;
+			}
+		}
+
+		int currentWholeBeat = (int)Math.Floor(beatPosition);  // 1
+		int previousWholeBeat = (int)Math.Floor(lastBeat);  // 0
+		if (currentWholeBeat > previousWholeBeat)
+		{
+			SpawnMeasure(beatPosition);
+		}
 	}
 
 	public void OnIntegerBeat(int beatPosition)
 	{
-		if (beatPosition % 1 == 0)
-		{
-			SpawnMeasure(beatPosition);
-		}
-		SpawnNote((int)(GD.Randi() % 4));
 	}
 
-	private void SpawnMeasure(int beatPosition)
+	private void SpawnMeasure(double beatPosition)
 	{
 		var measure = _measureScene.Instantiate<Node2D>();
 		measure.SetMeta("SpawnBeat", _currentBeat);
@@ -45,7 +70,7 @@ public partial class Spawner : Node
 		AddChild(measure);
 	}
 
-	private void SpawnNote(int column)
+	private void SpawnNote(int column, float delay = 0f)
 	{
 		Color color = column switch
 		{
