@@ -3,8 +3,8 @@ using System;
 
 public partial class Spawner : Node
 {
-	private PackedScene _noteScene = GD.Load<PackedScene>("res://scenes/rhythm/Note.tscn");
-	private PackedScene _measureScene = GD.Load<PackedScene>("res://scenes/rhythm/Measure.tscn");
+	private PackedScene _noteScene = GD.Load<PackedScene>("res://scenes/rhythm/note.tscn");
+	private PackedScene _measureScene = GD.Load<PackedScene>("res://scenes/rhythm/measure.tscn");
 	[Export]
 	private float _pixelsPerBeat = 157.25f;
 
