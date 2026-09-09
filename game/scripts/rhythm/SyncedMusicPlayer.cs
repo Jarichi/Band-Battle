@@ -16,6 +16,7 @@ public partial class SyncedMusicPlayer : AudioStreamPlayer2D
 	private double _songPosition = 0f;
 	private double _songPositionInBeats = 0;
 	private int _lastIntegerBeat = int.MinValue;
+	private int _preRollBeat;
 
 	[Signal]
 	public delegate void BeatEventHandler(double beatPosition);
@@ -25,16 +26,15 @@ public partial class SyncedMusicPlayer : AudioStreamPlayer2D
 
 	public override void _Ready()
 	{
-		var startDelaySeconds = _secondsPerBeat * 4f;
-		_timer.WaitTime = startDelaySeconds;
+		_timer.WaitTime = _secondsPerBeat;
 		_timer.Timeout += () =>
 		{
-			_songPositionInBeats += 1;
-			if (_songPositionInBeats < _beatOffset - 1)
+			_preRollBeat++;
+			if (_preRollBeat < _beatOffset - 1)
 			{
 				_timer.Start();
 			}
-			else if (_songPositionInBeats == _beatOffset - 1)
+			else if (_preRollBeat == _beatOffset - 1)
 			{
 				_timer.WaitTime = _timer.WaitTime - (AudioServer.GetTimeToNextMix() + AudioServer.GetOutputLatency());
 				_timer.Start();
@@ -44,7 +44,6 @@ public partial class SyncedMusicPlayer : AudioStreamPlayer2D
 				Play();
 				_timer.Stop();
 			}
-			EmitBeat();
 		};
 		_timer.Start();
 	}
@@ -53,6 +52,9 @@ public partial class SyncedMusicPlayer : AudioStreamPlayer2D
 	{
 		if (!IsPlaying())
 		{
+			_songPosition += delta;
+			_songPositionInBeats = _songPosition / _secondsPerBeat;
+			EmitBeat();
 			return;
 		}
 		_songPosition = GetPlaybackPosition() + AudioServer.GetTimeSinceLastMix();
