@@ -4,11 +4,23 @@ repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v3.2.0
   hooks:
-  - id: trailing-whitespace
-  - id: check-yaml
-  - id: check-case-conflict
-  - id: check-symlinks
-  - id: destroyed-symlinks
-  - id: detect-private-key
-  - id: end-of-file-fixer
-
+    - id: check-yaml
+    - id: check-case-conflict
+    - id: check-symlinks
+    - id: destroyed-symlinks
+    - id: detect-private-key
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+- repo: local
+  hooks:
+    - id: clang-format
+      name: Run clang-format
+      entry: ./scripts/run-clang-format.sh
+      language: script
+      files: \.sh$
+  hooks:
+    - id: enforce-issue-id
+      name: Enforce issue ID in commit message
+      entry: ./scripts/enforce-issue-id.py
+      language: python
+      files: \.sh$
