@@ -7,7 +7,7 @@
 BasedOnStyle: LLVM
 AccessModifierOffset: -4
 AlignAfterOpenBracket: DontAlign
-# AlignArrayOfStructures: None
+AlignArrayOfStructures: Left
 # AlignConsecutiveAssignments:
 #   Enabled: false
 #   AcrossEmptyLines: false
@@ -41,7 +41,7 @@ AlignAfterOpenBracket: DontAlign
 #   AcrossEmptyLines: false
 #   AcrossComments: false
 #   AlignCaseColons: false
-AlignEscapedNewlines: DontAlign # Aligning leads to long diffs
+AlignEscapedNewlines: Align # Aligning leads to long diffs
 AlignOperands: DontAlign
 AlignTrailingComments:
   Kind: Never
@@ -49,14 +49,14 @@ AlignTrailingComments:
 # AllowAllArgumentsOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: false
 # AllowBreakBeforeNoexceptSpecifier: Never
-# AllowShortBlocksOnASingleLine: Never
+AllowShortBlocksOnASingleLine: Empty
 # AllowShortCaseLabelsOnASingleLine: false
 # AllowShortCompoundRequirementOnASingleLine: true
 # AllowShortEnumsOnASingleLine: true
-AllowShortFunctionsOnASingleLine: Inline
-# AllowShortIfStatementsOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: Always
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 # AllowShortLambdasOnASingleLine: All
-# AllowShortLoopsOnASingleLine: false
+AllowShortLoopsOnASingleLine: true
 # AlwaysBreakAfterDefinitionReturnType: None
 # AlwaysBreakAfterReturnType: None
 # AlwaysBreakBeforeMultilineStrings: false
