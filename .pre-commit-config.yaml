@@ -15,7 +15,7 @@ repos:
   hooks:
     - id: clang-format
       name: Run clang-format
-      entry: ./scripts/run-clang-format.sh
+      entry: ./scripts/apply-clang-format-precommit.sh
       language: script
       files: \.sh$
   hooks:
