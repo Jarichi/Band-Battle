@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="game"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/at-icons/plugin.cfg")
+
 [input]
 
 rhythm_hit_1={

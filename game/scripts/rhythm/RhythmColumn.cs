@@ -6,7 +6,7 @@ public partial class RhythmColumn : Node
 	[Export]
 	private ColorRect _inputRect;
 	private Color _inputRectInitColor;
-    [Export]
+	[Export]
 	private Area2D _hitArea;
 	[Export]
 	private ColorRect _bgRect;

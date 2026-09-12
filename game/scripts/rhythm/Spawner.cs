@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[GlobalClass, Icon("res://addons/at-icons/node/selection_circle.svg")]
 public partial class Spawner : Node
 {
 	private PackedScene _noteScene = GD.Load<PackedScene>("res://scenes/rhythm/note.tscn");

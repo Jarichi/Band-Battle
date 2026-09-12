@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bf0yckg8lk408"]
+
+[ext_resource type="Script" uid="uid://dy1ftkfepmlqu" path="res://scripts/battle_sequence/BattleSequence.cs" id="1_n36b2"]
+[ext_resource type="PackedScene" uid="uid://cavolvwnq54wl" path="res://scenes/rhythm/rhythm_game.tscn" id="2_dqpmm"]
+
+[node name="Battle Sequence" type="Node" unique_id=201185631]
+script = ExtResource("1_n36b2")
+
+[node name="Rhythm Game" parent="." unique_id=612939007 instance=ExtResource("2_dqpmm")]
+
+[editable path="Rhythm Game"]
