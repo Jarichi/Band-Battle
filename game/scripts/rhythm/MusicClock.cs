@@ -1,7 +1,8 @@
 using Godot;
 using System;
 
-public partial class SyncedMusicPlayer : AudioStreamPlayer2D
+[GlobalClass, Icon("res://addons/at-icons/node/clock.svg")]
+public partial class MusicClock : AudioStreamPlayer2D
 {
 	[Export]
 	private float _beatOffset = 4f;
@@ -14,6 +15,7 @@ public partial class SyncedMusicPlayer : AudioStreamPlayer2D
 
 	private double _songPosition = 0f;
 	private double _songPositionInBeats = 0;
+	private double _lastBeat = 0;
 	private int _lastIntegerBeat = int.MinValue;
 	private int _preRollBeat;
 
@@ -52,6 +54,7 @@ public partial class SyncedMusicPlayer : AudioStreamPlayer2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		_lastBeat = _songPositionInBeats;
 		if (!IsPlaying())
 		{
 			_songPosition += delta;
@@ -67,14 +70,14 @@ public partial class SyncedMusicPlayer : AudioStreamPlayer2D
 
 	private void EmitBeat()
 	{
-		int currentIntegerBeat = (int)Math.Floor(_songPositionInBeats);
-		if (currentIntegerBeat != _lastIntegerBeat)
-		{
-			_lastIntegerBeat = currentIntegerBeat;
-			EmitSignal(SignalName.IntegerBeat, currentIntegerBeat);
-		}
-
 		EmitSignal(SignalName.Beat, _songPositionInBeats);
+
+		int currentWholeBeat = (int)Math.Floor(_songPositionInBeats);  // 1
+		int previousWholeBeat = (int)Math.Floor(_lastBeat);  // 0
+		if (currentWholeBeat > previousWholeBeat)
+		{
+			EmitSignal(SignalName.IntegerBeat, currentWholeBeat);
+		}
 	}
 
 	public double GetSongPosition()

@@ -6,7 +6,7 @@ public partial class BeatmapPlayer : Node
 {
 
 	[Export]
-	private SyncedMusicPlayer _clock;
+	private MusicClock _clock;
 
 	[Export]
 	private double _spawnLeadBeats = 4.1;
@@ -15,6 +15,7 @@ public partial class BeatmapPlayer : Node
 	private Beatmap _beatmap;
 	private BeatmapNote[] _notes;
 	private int _currentNoteIndex = 0;
+	private int _nextMeasureBeat = 0;
 
 
 	[Signal]
@@ -22,6 +23,9 @@ public partial class BeatmapPlayer : Node
 
 	[Signal]
 	public delegate void BeatEventHandler(double beatPosition);
+
+	[Signal]
+	public delegate void WholeBeatEventHandler(double spawnBeat);
 
 
 	public override void _Ready()
@@ -42,6 +46,12 @@ public partial class BeatmapPlayer : Node
 	{
 		_currentBeat = beatPosition - _clock.BeatOffset;
 		EmitSignal(SignalName.Beat, _currentBeat);
+
+		while (_nextMeasureBeat - _spawnLeadBeats <= _currentBeat)
+		{
+			EmitSignal(SignalName.WholeBeat, _nextMeasureBeat - _spawnLeadBeats);
+			_nextMeasureBeat++;
+		}
 
 		while (_currentNoteIndex < _notes.Length)
 		{

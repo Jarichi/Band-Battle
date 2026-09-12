@@ -34,6 +34,11 @@ public partial class Spawner : Node
 		SpawnNote(column, spawnBeat, hitBeat);
 	}
 
+	public void OnWholeBeat(double spawnBeat)
+	{
+		SpawnMeasure(spawnBeat);
+	}
+
 	private void SpawnMeasure(double beatPosition)
 	{
 		var measure = _measureScene.Instantiate<Node2D>();
