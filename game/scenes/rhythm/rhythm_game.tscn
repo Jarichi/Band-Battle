@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cpv58m5hf7ud1" path="res://scripts/rhythm/RhythmColumn.cs" id="2_gsknd"]
 [ext_resource type="Script" uid="uid://b5oodislnsrgx" path="res://scripts/rhythm/Spawner.cs" id="3_jx1cd"]
 [ext_resource type="AudioStream" uid="uid://dr0vlxnrifs0v" path="res://assets/audio/flower_man.mp3" id="4_gsknd"]
+[ext_resource type="Script" uid="uid://coatj8fgbuv2q" path="res://scripts/rhythm/BeatmapPlayer.cs" id="4_jx1cd"]
 [ext_resource type="Script" uid="uid://c1dblgv0c6k7j" path="res://scripts/rhythm/SyncedMusicPlayer.cs" id="5_jx1cd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
@@ -128,6 +129,10 @@ position = Vector2(0, 65)
 script = ExtResource("3_jx1cd")
 _pixelsPerBeat = 140.0
 
+[node name="BeatmapPlayer" type="Node" parent="." unique_id=1717261671 node_paths=PackedStringArray("_clock")]
+script = ExtResource("4_jx1cd")
+_clock = NodePath("../SyncedMusicPlayer")
+
 [node name="SyncedMusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=881339545 node_paths=PackedStringArray("_timer")]
 stream = ExtResource("4_gsknd")
 script = ExtResource("5_jx1cd")
@@ -135,5 +140,6 @@ _timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="SyncedMusicPlayer" unique_id=1470767671]
 
-[connection signal="Beat" from="SyncedMusicPlayer" to="Spawner" method="OnBeat"]
-[connection signal="IntegerBeat" from="SyncedMusicPlayer" to="Spawner" method="OnIntegerBeat"]
+[connection signal="Beat" from="BeatmapPlayer" to="Spawner" method="OnBeat"]
+[connection signal="Note" from="BeatmapPlayer" to="Spawner" method="SpawnNote"]
+[connection signal="Beat" from="SyncedMusicPlayer" to="BeatmapPlayer" method="OnBeat"]

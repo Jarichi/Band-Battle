@@ -4,13 +4,12 @@ using System;
 public partial class SyncedMusicPlayer : AudioStreamPlayer2D
 {
 	[Export]
-	private float _bpm = 160;
-	[Export]
 	private float _beatOffset = 4f;
 
 	[Export]
 	private Timer _timer;
 
+	private float _bpm;
 	private float _secondsPerBeat => 60f / _bpm;
 
 	private double _songPosition = 0f;
@@ -18,14 +17,17 @@ public partial class SyncedMusicPlayer : AudioStreamPlayer2D
 	private int _lastIntegerBeat = int.MinValue;
 	private int _preRollBeat;
 
+	public float BeatOffset => _beatOffset;
+
 	[Signal]
 	public delegate void BeatEventHandler(double beatPosition);
 
 	[Signal]
 	public delegate void IntegerBeatEventHandler(int beatPosition);
 
-	public override void _Ready()
+	public void Start(float bpm)
 	{
+		_bpm = bpm;
 		_timer.WaitTime = _secondsPerBeat;
 		_timer.Timeout += () =>
 		{

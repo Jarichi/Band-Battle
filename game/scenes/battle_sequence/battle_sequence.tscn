@@ -7,5 +7,3 @@
 script = ExtResource("1_n36b2")
 
 [node name="Rhythm Game" parent="." unique_id=612939007 instance=ExtResource("2_dqpmm")]
-
-[editable path="Rhythm Game"]

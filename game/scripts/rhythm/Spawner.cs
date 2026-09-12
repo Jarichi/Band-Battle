@@ -11,17 +11,10 @@ public partial class Spawner : Node
 
 	private double _currentBeat;
 
-	private Beatmap _beatmap;
-	private BeatmapNote[] _notes;
-	private int _currentNoteIndex = 0;
-
-	public override void _Ready()
+	public void OnBeat(double beatPosition)
 	{
-		_beatmap = BeatmapLoader.LoadFromFile("flower_man.json");
-		GD.Print($"Loaded spawner for beatmap with {_beatmap.Tracks.Count} tracks and BPM: {_beatmap.BPM}");
-		_notes = [.. _beatmap.Tracks[0].Notes];
+		_currentBeat = beatPosition;
 	}
-
 
 	public override void _Process(double delta)
 	{
@@ -36,42 +29,20 @@ public partial class Spawner : Node
 		}
 	}
 
-	public void OnBeat(double beatPosition)
+	public void OnNote(int column, double spawnBeat, double hitBeat)
 	{
-		var lastBeat = _currentBeat;
-		_currentBeat = beatPosition;
-
-		if (_currentNoteIndex < _notes.Length)
-		{
-			var note = _notes[_currentNoteIndex];
-			if (note.Beat >= lastBeat && note.Beat < _currentBeat)
-			{
-				SpawnNote(note.Column);
-				_currentNoteIndex++;
-			}
-		}
-
-		int currentWholeBeat = (int)Math.Floor(beatPosition);  // 1
-		int previousWholeBeat = (int)Math.Floor(lastBeat);  // 0
-		if (currentWholeBeat > previousWholeBeat)
-		{
-			SpawnMeasure(beatPosition);
-		}
-	}
-
-	public void OnIntegerBeat(int beatPosition)
-	{
+		SpawnNote(column, spawnBeat, hitBeat);
 	}
 
 	private void SpawnMeasure(double beatPosition)
 	{
 		var measure = _measureScene.Instantiate<Node2D>();
-		measure.SetMeta("SpawnBeat", _currentBeat);
+		measure.SetMeta("SpawnBeat", beatPosition);
 		measure.Position = Vector2.Zero;
 		AddChild(measure);
 	}
 
-	private void SpawnNote(int column, float delay = 0f)
+	private void SpawnNote(int column, double spawnBeat, double hitBeat)
 	{
 		Color color = column switch
 		{
@@ -86,7 +57,8 @@ public partial class Spawner : Node
 		var panelStyle = (StyleBoxFlat)panel.GetThemeStylebox("panel").Duplicate();
 		panelStyle.BgColor = color;
 		panel.AddThemeStyleboxOverride("panel", panelStyle);
-		note.SetMeta("SpawnBeat", _currentBeat);
+		note.SetMeta("SpawnBeat", spawnBeat);
+		note.SetMeta("HitBeat", hitBeat);
 		note.Position = new Vector2(column * 60, 0);
 		AddChild(note);
 	}
