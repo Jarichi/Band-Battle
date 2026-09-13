@@ -15,11 +15,14 @@ repos:
   hooks:
     - id: clang-format
       name: Run clang-format
-      entry: ./scripts/apply-clang-format-precommit.sh
+      entry: ./scripts/run-clang-format
       language: script
-      files: \.sh$
+      files: \.cs$
+      pass_filenames: true
+      verbose: true
+      args: [-i, -f]
     - id: enforce-issue-id
       name: Enforce issue ID in commit message
-      entry: ./scripts/enforce-issue-id.py
+      entry: ./scripts/enforce-issue-id
       language: python
       files: \.sh$
