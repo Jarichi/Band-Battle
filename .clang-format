@@ -41,7 +41,7 @@ AlignArrayOfStructures: Left
 #   AcrossEmptyLines: false
 #   AcrossComments: false
 #   AlignCaseColons: false
-AlignEscapedNewlines: Align # Aligning leads to long diffs
+AlignEscapedNewlines: Left # Aligning leads to long diffs
 AlignOperands: DontAlign
 AlignTrailingComments:
   Kind: Never
@@ -53,8 +53,8 @@ AllowShortBlocksOnASingleLine: Empty
 # AllowShortCaseLabelsOnASingleLine: false
 # AllowShortCompoundRequirementOnASingleLine: true
 # AllowShortEnumsOnASingleLine: true
-AllowShortFunctionsOnASingleLine: Always
-AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: Never
 # AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: true
 # AlwaysBreakAfterDefinitionReturnType: None
@@ -140,7 +140,7 @@ IncludeCategories:
 # IncludeIsMainSourceRegex: ""
 # IndentAccessModifiers: false
 # IndentCaseBlocks: false
-IndentCaseLabels: true
+IndentCaseLabels: false
 # IndentExternBlock: AfterExternBlock
 # IndentGotoLabels: true
 # IndentPPDirectives: None
@@ -254,7 +254,7 @@ Standard: c++20
 #   - Q_UNUSED
 #   - QT_REQUIRE_VERSION
 TabWidth: 4
-UseTab: Always
+UseTab: Never
 # VerilogBreakBetweenInstancePorts: true
 # WhitespaceSensitiveMacros:
 #   - BOOST_PP_STRINGIZE
