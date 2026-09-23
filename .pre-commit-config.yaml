@@ -1,0 +1,28 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v6.0.0
+  hooks:
+    - id: check-yaml
+    - id: check-case-conflict
+    - id: check-symlinks
+    - id: destroyed-symlinks
+    - id: detect-private-key
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+- repo: local
+  hooks:
+    - id: clang-format
+      name: Run clang-format
+      entry: ./scripts/run-clang-format
+      language: script
+      files: \.cs$
+      pass_filenames: true
+      verbose: true
+      args: [-i, -f]
+    - id: enforce-issue-id
+      name: Enforce issue ID in commit message
+      entry: ./scripts/enforce-issue-id
+      language: python
+      files: \.sh$
