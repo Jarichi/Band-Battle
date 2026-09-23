@@ -34,7 +34,7 @@ winget install pre-commit
 # Using the pre-commit hooks
 In order to install the pre-commit hooks, you can run the following in your terminal at the repo root directory
 ```sh
-pre-commit install
+pre-commit install -t commit-msg -t pre-commit
 ```
 
 ## Manually running the hooks on all files
