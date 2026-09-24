@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cbbov2qfofqce" path="res://scripts/rhythm/RhythmGame.cs" id="1_ig73c"]
 [ext_resource type="Script" uid="uid://c7me61dhjlhsf" path="res://scripts/rhythm/ui/RhythmUI.cs" id="2_ga6ry"]
-[ext_resource type="Script" uid="uid://cpv58m5hf7ud1" path="res://scripts/rhythm/RhythmColumn.cs" id="2_gsknd"]
 [ext_resource type="Script" uid="uid://ibdvl28ffnom" path="res://scripts/rhythm/ui/RhythmUIColumn.cs" id="2_rhythm_ui_column"]
 [ext_resource type="Texture2D" uid="uid://dyjbpqnq2aqoi" path="res://assets/textures/rhythm/input/red_input.png" id="3_1aw14"]
-[ext_resource type="Script" uid="uid://b5oodislnsrgx" path="res://scripts/rhythm/Spawner.cs" id="3_jx1cd"]
 [ext_resource type="Texture2D" uid="uid://b5kqjoc2y43bb" path="res://assets/textures/rhythm/input/red_note.png" id="3_waboa"]
 [ext_resource type="Texture2D" uid="uid://lg0jft0qcdlt" path="res://assets/textures/rhythm/input/blue_input.png" id="4_0n654"]
 [ext_resource type="AudioStream" uid="uid://dr0vlxnrifs0v" path="res://assets/audio/flower_man.mp3" id="4_gsknd"]
@@ -29,26 +27,28 @@ bg_color = Color(0.2773991, 0.6294309, 0.11312585, 0.40784314)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkl1s"]
 bg_color = Color(0.63529414, 0.5254902, 0, 0.30588236)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
-size = Vector2(60, 7)
-
 [node name="Rhythm Game" type="Node" unique_id=612939007]
 script = ExtResource("1_ig73c")
 
-[node name="PlayUI" type="CanvasLayer" parent="." unique_id=929466783]
+[node name="UI" type="CanvasLayer" parent="." unique_id=929466783]
+follow_viewport_enabled = true
 
-[node name="Control" type="Control" parent="PlayUI" unique_id=43391624]
+[node name="Control" type="Control" parent="UI" unique_id=43391624]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -128.0
+offset_right = 128.0
+offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_vertical = 3
 script = ExtResource("2_ga6ry")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayUI/Control" unique_id=1852643987]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control" unique_id=1852643987]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,207 +57,118 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 
-[node name="Column1" type="PanelContainer" parent="PlayUI/Control/HBoxContainer" unique_id=1505763445]
+[node name="Column1" type="Panel" parent="UI/Control/HBoxContainer" unique_id=1964031884]
+custom_minimum_size = Vector2(61, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_waboa")
 script = ExtResource("2_rhythm_ui_column")
 _inputAction = "rhythm_hit_1"
+_inputTexturePath = NodePath("Input Texture")
 _noteTexture = ExtResource("3_waboa")
 
-[node name="Input Texture" type="TextureRect" parent="PlayUI/Control/HBoxContainer/Column1" unique_id=935327413]
+[node name="Input Texture" type="TextureRect" parent="UI/Control/HBoxContainer/Column1" unique_id=935327413]
 texture_filter = 1
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_vertical = 8
 texture = ExtResource("3_1aw14")
-expand_mode = 1
-stretch_mode = 5
 
-[node name="Column2" type="PanelContainer" parent="PlayUI/Control/HBoxContainer" unique_id=1832542748]
+[node name="Column2" type="Panel" parent="UI/Control/HBoxContainer" unique_id=1815348674]
+custom_minimum_size = Vector2(61, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oilko")
 script = ExtResource("2_rhythm_ui_column")
 _inputAction = "rhythm_hit_2"
+_inputTexturePath = NodePath("Input Texture")
 _noteTexture = ExtResource("4_oilko")
 
-[node name="Input Texture" type="TextureRect" parent="PlayUI/Control/HBoxContainer/Column2" unique_id=477298578]
+[node name="Input Texture" type="TextureRect" parent="UI/Control/HBoxContainer/Column2" unique_id=477298578]
 texture_filter = 1
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_vertical = 8
 texture = ExtResource("4_0n654")
-stretch_mode = 5
 
-[node name="Column3" type="PanelContainer" parent="PlayUI/Control/HBoxContainer" unique_id=1162520317]
+[node name="Column3" type="Panel" parent="UI/Control/HBoxContainer" unique_id=116101298]
+custom_minimum_size = Vector2(61, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y635h")
 script = ExtResource("2_rhythm_ui_column")
 _inputAction = "rhythm_hit_3"
+_inputTexturePath = NodePath("Input Texture")
 _noteTexture = ExtResource("5_y635h")
 
-[node name="Input Texture" type="TextureRect" parent="PlayUI/Control/HBoxContainer/Column3" unique_id=2114312780]
+[node name="Input Texture" type="TextureRect" parent="UI/Control/HBoxContainer/Column3" unique_id=2114312780]
 texture_filter = 1
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_vertical = 8
 texture = ExtResource("5_73jmn")
-stretch_mode = 5
 
-[node name="Column4" type="PanelContainer" parent="PlayUI/Control/HBoxContainer" unique_id=1980044645]
+[node name="Column4" type="Panel" parent="UI/Control/HBoxContainer" unique_id=1926396501]
+custom_minimum_size = Vector2(61, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nkl1s")
 script = ExtResource("2_rhythm_ui_column")
 _inputAction = "rhythm_hit_4"
+_inputTexturePath = NodePath("Input Texture")
 _noteTexture = ExtResource("6_nkl1s")
 
-[node name="Input Texture" type="TextureRect" parent="PlayUI/Control/HBoxContainer/Column4" unique_id=1540873970]
+[node name="Input Texture" type="TextureRect" parent="UI/Control/HBoxContainer/Column4" unique_id=1540873970]
 texture_filter = 1
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_vertical = 8
 texture = ExtResource("6_2d6t1")
-stretch_mode = 5
-
-[node name="Column1" type="Node2D" parent="." unique_id=80637430 node_paths=PackedStringArray("_inputRect", "_hitArea", "_bgRect")]
-process_mode = 4
-visible = false
-script = ExtResource("2_gsknd")
-_inputRect = NodePath("Input Rect")
-_hitArea = NodePath("Input Rect/Area2D")
-_bgRect = NodePath("BG Rect")
-_inputAction = "rhythm_hit_1"
-
-[node name="BG Rect" type="ColorRect" parent="Column1" unique_id=1740184757]
-offset_right = 60.0
-offset_bottom = 641.0
-color = Color(1, 0, 0, 0.22352941)
-metadata/_edit_use_anchors_ = true
-
-[node name="Input Rect" type="ColorRect" parent="Column1" unique_id=1686957746]
-z_index = 10
-offset_top = 641.0
-offset_right = 60.0
-offset_bottom = 648.0
-color = Color(0.54640853, 7.3399394e-07, 3.85046e-07, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Area2D" type="Area2D" parent="Column1/Input Rect" unique_id=1676479085]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Column1/Input Rect/Area2D" unique_id=2026896272]
-position = Vector2(30, 3.5)
-shape = SubResource("RectangleShape2D_iywne")
-
-[node name="Column2" type="Node2D" parent="." unique_id=1065760305 node_paths=PackedStringArray("_inputRect", "_hitArea", "_bgRect")]
-process_mode = 4
-visible = false
-position = Vector2(60, 0)
-script = ExtResource("2_gsknd")
-_inputRect = NodePath("Input Rect")
-_hitArea = NodePath("Input Rect/Area2D")
-_bgRect = NodePath("BG Rect")
-_inputAction = "rhythm_hit_2"
-
-[node name="BG Rect" type="ColorRect" parent="Column2" unique_id=579949861]
-offset_right = 60.0
-offset_bottom = 641.0
-color = Color(0, 1, 0, 0.22352941)
-metadata/_edit_use_anchors_ = true
-
-[node name="Input Rect" type="ColorRect" parent="Column2" unique_id=167936421]
-z_index = 10
-offset_top = 641.0
-offset_right = 60.0
-offset_bottom = 648.0
-color = Color(0, 0.41568628, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Area2D" type="Area2D" parent="Column2/Input Rect" unique_id=1386571161]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Column2/Input Rect/Area2D" unique_id=1198827790]
-position = Vector2(30, 3.5)
-shape = SubResource("RectangleShape2D_iywne")
-
-[node name="Column3" type="Node2D" parent="." unique_id=2106445046 node_paths=PackedStringArray("_inputRect", "_hitArea", "_bgRect")]
-process_mode = 4
-visible = false
-position = Vector2(120, 0)
-script = ExtResource("2_gsknd")
-_inputRect = NodePath("Input Rect")
-_hitArea = NodePath("Input Rect/Area2D")
-_bgRect = NodePath("BG Rect")
-_inputAction = "rhythm_hit_3"
-
-[node name="BG Rect" type="ColorRect" parent="Column3" unique_id=860992754]
-offset_right = 60.0
-offset_bottom = 641.0
-color = Color(0, 0.33333334, 0.6392157, 0.34901962)
-metadata/_edit_use_anchors_ = true
-
-[node name="Input Rect" type="ColorRect" parent="Column3" unique_id=117108597]
-z_index = 10
-offset_top = 641.0
-offset_right = 60.0
-offset_bottom = 648.0
-color = Color(0, 0, 0.43137255, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Area2D" type="Area2D" parent="Column3/Input Rect" unique_id=918029621]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Column3/Input Rect/Area2D" unique_id=1755778756]
-position = Vector2(30, 3.5)
-shape = SubResource("RectangleShape2D_iywne")
-
-[node name="Column4" type="Node2D" parent="." unique_id=926880320 node_paths=PackedStringArray("_inputRect", "_hitArea", "_bgRect")]
-process_mode = 4
-visible = false
-position = Vector2(180, 0)
-script = ExtResource("2_gsknd")
-_inputRect = NodePath("Input Rect")
-_hitArea = NodePath("Input Rect/Area2D")
-_bgRect = NodePath("BG Rect")
-_inputAction = "rhythm_hit_4"
-
-[node name="BG Rect" type="ColorRect" parent="Column4" unique_id=741444705]
-offset_right = 60.0
-offset_bottom = 641.0
-color = Color(1, 1, 0, 0.22352941)
-metadata/_edit_use_anchors_ = true
-
-[node name="Input Rect" type="ColorRect" parent="Column4" unique_id=1561375508]
-z_index = 10
-offset_top = 641.0
-offset_right = 60.0
-offset_bottom = 648.0
-color = Color(0.54509807, 0.54509807, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Area2D" type="Area2D" parent="Column4/Input Rect" unique_id=1003708182]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Column4/Input Rect/Area2D" unique_id=307421260]
-position = Vector2(30, 3.5)
-shape = SubResource("RectangleShape2D_iywne")
-
-[node name="Spawner" type="Node2D" parent="." unique_id=1077511388]
-process_mode = 4
-position = Vector2(0, 65)
-script = ExtResource("3_jx1cd")
-_pixelsPerBeat = 140.0
 
 [node name="BeatmapPlayer" type="Node" parent="." unique_id=1717261671 node_paths=PackedStringArray("_clock")]
 script = ExtResource("4_jx1cd")
-_clock = NodePath("../Clock")
+_clock = NodePath("../RhythmClock")
 
-[node name="Clock" type="AudioStreamPlayer2D" parent="." unique_id=881339545 node_paths=PackedStringArray("_timer")]
+[node name="RhythmClock" type="AudioStreamPlayer2D" parent="." unique_id=881339545 node_paths=PackedStringArray("_timer")]
 stream = ExtResource("4_gsknd")
 script = ExtResource("6_jx1cd")
 _timer = NodePath("Timer")
 
-[node name="Timer" type="Timer" parent="Clock" unique_id=1470767671]
+[node name="Timer" type="Timer" parent="RhythmClock" unique_id=1470767671]
 
-[connection signal="Beat" from="BeatmapPlayer" to="PlayUI/Control" method="OnBeat"]
-[connection signal="Beat" from="BeatmapPlayer" to="Spawner" method="OnBeat"]
-[connection signal="Note" from="BeatmapPlayer" to="PlayUI/Control" method="OnNote"]
-[connection signal="Note" from="BeatmapPlayer" to="Spawner" method="SpawnNote"]
-[connection signal="WholeBeat" from="BeatmapPlayer" to="PlayUI/Control" method="OnWholeBeat"]
-[connection signal="WholeBeat" from="BeatmapPlayer" to="Spawner" method="OnWholeBeat"]
-[connection signal="Beat" from="Clock" to="BeatmapPlayer" method="OnBeat"]
+[connection signal="Beat" from="BeatmapPlayer" to="UI/Control" method="OnBeat"]
+[connection signal="Note" from="BeatmapPlayer" to="UI/Control" method="OnNote"]
+[connection signal="WholeBeat" from="BeatmapPlayer" to="UI/Control" method="OnWholeBeat"]
+[connection signal="Beat" from="RhythmClock" to="BeatmapPlayer" method="OnBeat"]

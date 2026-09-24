@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class RhythmUIColumn : PanelContainer
+public partial class RhythmUIColumn : Panel
 {
 	[Export]
 	private string _inputAction = "";
@@ -10,7 +10,7 @@ public partial class RhythmUIColumn : PanelContainer
 	[Export]
 	private Texture2D _noteTexture;
 
-	private PackedScene _noteScene = GD.Load<PackedScene>("res://scenes/rhythm/ui_note.tscn");
+	private PackedScene _noteScene = GD.Load<PackedScene>("res://scenes/rhythm/ui/ui_note.tscn");
 	private TextureRect _inputTexture;
 
 	public override void _Ready()

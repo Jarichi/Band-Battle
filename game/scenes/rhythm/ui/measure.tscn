@@ -4,6 +4,6 @@
 z_index = -100
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=124772909]
-offset_right = 816.0
+offset_right = 256.0
 offset_bottom = 4.0
 color = Color(0.36282945, 0.36282945, 0.36282945, 1)

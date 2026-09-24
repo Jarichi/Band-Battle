@@ -3,7 +3,7 @@ using System;
 
 public partial class RhythmUI : Control
 {
-	private PackedScene _measureScene = GD.Load<PackedScene>("res://scenes/rhythm/measure.tscn");
+	private PackedScene _measureScene = GD.Load<PackedScene>("res://scenes/rhythm/ui/measure.tscn");
 	private RhythmUIColumn[] _columns;
 	private double _currentBeat;
 	private float _pixelsPerBeat = 157.25f;
