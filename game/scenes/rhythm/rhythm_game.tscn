@@ -87,6 +87,7 @@ offset_right = 50.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset = Vector2(50, 50)
 size_flags_vertical = 8
 texture = ExtResource("3_1aw14")
 
@@ -113,6 +114,7 @@ offset_right = 50.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset = Vector2(50, 50)
 size_flags_vertical = 8
 texture = ExtResource("4_0n654")
 
@@ -139,6 +141,7 @@ offset_right = 50.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset = Vector2(50, 50)
 size_flags_vertical = 8
 texture = ExtResource("5_73jmn")
 
@@ -165,6 +168,7 @@ offset_right = 50.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset = Vector2(50, 50)
 size_flags_vertical = 8
 texture = ExtResource("6_2d6t1")
 
@@ -177,8 +181,8 @@ _beatmapPlayer = NodePath("../BeatmapPlayer")
 script = ExtResource("4_jx1cd")
 _clock = NodePath("../RhythmClock")
 _spawnLeadBeats = 10.0
-_nearWindow = 0.5
-_perfectWindow = 0.2
+_nearWindow = 0.35
+_perfectWindow = 0.09
 
 [node name="RhythmClock" type="AudioStreamPlayer2D" parent="." unique_id=881339545 node_paths=PackedStringArray("_timer")]
 stream = ExtResource("4_gsknd")
