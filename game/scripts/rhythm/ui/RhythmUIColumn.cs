@@ -25,6 +25,11 @@ public partial class RhythmUIColumn : Panel
 			: new Color(1, 1, 1, 0.5f);
 	}
 
+	public float GetInputCenterY()
+	{
+		return _inputTexture.Position.Y + _inputTexture.Size.Y / 2.0f;
+	}
+
 	public void UpdateNotes(double currentBeat, float pixelsPerBeat)
 	{
 		foreach (var child in GetChildren())
@@ -34,17 +39,19 @@ public partial class RhythmUIColumn : Panel
 				continue;
 			}
 
-			double spawnedOn = (double)note.GetMeta("SpawnBeat");
-			float beatsSinceSpawn = (float)(currentBeat - spawnedOn);
-			note.Position = new Vector2(note.Position.X, beatsSinceSpawn * pixelsPerBeat - 250);
+			double hitBeat = (double)note.GetMeta("HitBeat");
+			float beatsUntilHit = (float)(hitBeat - currentBeat);
+			float hitY = GetInputCenterY() - note.Size.Y / 2.0f;
+			note.Position = new Vector2(note.Position.X, hitY - beatsUntilHit * pixelsPerBeat);
 		}
 	}
 
-	public void SpawnNote(int index, double spawnedOn)
+	public void SpawnNote(int index, double spawnedOn, double hitBeat)
 	{
 		var note = _noteScene.Instantiate<TextureRect>();
 		note.SetMeta("Index", index);
 		note.SetMeta("SpawnBeat", spawnedOn);
+		note.SetMeta("HitBeat", hitBeat);
 		note.Position = new Vector2((Size.X - note.Size.X) / 2.0f, 0);
 		note.Texture = _noteTexture;
 		AddChild(note);

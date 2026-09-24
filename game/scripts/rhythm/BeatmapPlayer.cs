@@ -24,9 +24,10 @@ public partial class BeatmapPlayer : Node
 	private int _nextMeasureBeat = 0;
 	private readonly List<ActiveNote> _spawnedNotes = new();
 	public IReadOnlyList<ActiveNote> ActiveNotes => _spawnedNotes.AsReadOnly();
+	public double SpawnLeadBeats => _spawnLeadBeats;
 
 	[Signal]
-	public delegate void NoteEnterEventHandler(int index, int column, double spawnedOn);
+	public delegate void NoteEnterEventHandler(int index, int column, double spawnedOn, double hitBeat);
 
 	[Signal]
 	public delegate void NoteLeaveEventHandler(int index, int column);
@@ -65,7 +66,7 @@ public partial class BeatmapPlayer : Node
 				Note = note,
 				State = NoteState.Spawned
 			};
-			EmitSignal(SignalName.NoteEnter, activeNote.Index, activeNote.Note.Column, spawnBeat);
+			EmitSignal(SignalName.NoteEnter, activeNote.Index, activeNote.Note.Column, spawnBeat, activeNote.Note.Beat);
 			_spawnedNotes.Add(activeNote);
 			_currentNoteIndex++;
 		}

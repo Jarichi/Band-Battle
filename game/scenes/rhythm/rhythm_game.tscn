@@ -34,32 +34,38 @@ script = ExtResource("1_ig73c")
 [node name="UI" type="CanvasLayer" parent="." unique_id=929466783]
 follow_viewport_enabled = true
 
-[node name="Control" type="Control" parent="UI" unique_id=43391624]
+[node name="Control" type="Control" parent="UI" unique_id=43391624 node_paths=PackedStringArray("_beatmapPlayer")]
 layout_mode = 3
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -128.0
+offset_top = 120.0
 offset_right = 128.0
-offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 script = ExtResource("2_ga6ry")
+_beatmapPlayer = NodePath("../../BeatmapPlayer")
+_pixelsPerBeat = 500.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Control" unique_id=1852643987]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -246.0
+offset_top = -120.0
+offset_right = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 
 [node name="Column1" type="Panel" parent="UI/Control/HBoxContainer" unique_id=1964031884]
-custom_minimum_size = Vector2(61, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_waboa")
 script = ExtResource("2_rhythm_ui_column")
@@ -75,16 +81,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -64.0
-offset_right = 32.0
+offset_left = -50.0
+offset_top = -109.0
+offset_right = 50.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 texture = ExtResource("3_1aw14")
 
 [node name="Column2" type="Panel" parent="UI/Control/HBoxContainer" unique_id=1815348674]
-custom_minimum_size = Vector2(61, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oilko")
 script = ExtResource("2_rhythm_ui_column")
@@ -100,16 +107,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -64.0
-offset_right = 32.0
+offset_left = -50.0
+offset_top = -109.0
+offset_right = 50.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 texture = ExtResource("4_0n654")
 
 [node name="Column3" type="Panel" parent="UI/Control/HBoxContainer" unique_id=116101298]
-custom_minimum_size = Vector2(61, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y635h")
 script = ExtResource("2_rhythm_ui_column")
@@ -125,16 +133,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -64.0
-offset_right = 32.0
+offset_left = -50.0
+offset_top = -109.0
+offset_right = 50.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 texture = ExtResource("5_73jmn")
 
 [node name="Column4" type="Panel" parent="UI/Control/HBoxContainer" unique_id=1926396501]
-custom_minimum_size = Vector2(61, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nkl1s")
 script = ExtResource("2_rhythm_ui_column")
@@ -150,9 +159,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -64.0
-offset_right = 32.0
+offset_left = -50.0
+offset_top = -109.0
+offset_right = 50.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
@@ -166,6 +176,7 @@ _beatmapPlayer = NodePath("../BeatmapPlayer")
 [node name="BeatmapPlayer" type="Node" parent="." unique_id=1717261671 node_paths=PackedStringArray("_clock")]
 script = ExtResource("4_jx1cd")
 _clock = NodePath("../RhythmClock")
+_spawnLeadBeats = 10.0
 _nearWindow = 0.5
 _perfectWindow = 0.2
 
@@ -179,4 +190,3 @@ _timer = NodePath("Timer")
 [connection signal="NoteEnter" from="BeatmapPlayer" to="UI/Control" method="OnNote"]
 [connection signal="NoteLeave" from="BeatmapPlayer" to="UI/Control" method="OnNoteLeave"]
 [connection signal="Beat" from="RhythmClock" to="UI/Control" method="OnBeat"]
-[connection signal="IntegerBeat" from="RhythmClock" to="UI/Control" method="OnWholeBeat"]

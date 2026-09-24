@@ -70,10 +70,11 @@ public partial class MusicClock : AudioStreamPlayer2D
 
 	private void EmitBeat()
 	{
-		EmitSignal(SignalName.Beat, _songPositionInBeats);
+		double currentBeat = GetCurrentBeat();
+		EmitSignal(SignalName.Beat, currentBeat);
 
-		int currentWholeBeat = (int)Math.Floor(_songPositionInBeats);  // 1
-		int previousWholeBeat = (int)Math.Floor(_lastBeat);  // 0
+		int currentWholeBeat = (int)Math.Floor(currentBeat);
+		int previousWholeBeat = (int)Math.Floor(_lastBeat - _beatOffset);
 		if (currentWholeBeat > previousWholeBeat)
 		{
 			EmitSignal(SignalName.IntegerBeat, currentWholeBeat);
