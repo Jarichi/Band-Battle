@@ -79,10 +79,10 @@ public partial class MusicClock : AudioStreamPlayer2D
 			EmitSignal(SignalName.IntegerBeat, currentWholeBeat);
 		}
 	}
-
-	public double GetSongPosition()
+	
+	public double GetCurrentBeat(bool useOffset = true)
 	{
-		return _songPosition;
+		return _songPositionInBeats - (useOffset ? _beatOffset : 0);
 	}
 
 }

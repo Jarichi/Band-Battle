@@ -30,7 +30,7 @@ public partial class RhythmUI : Control
 
 			double spawnBeat = (double)measure.GetMeta("SpawnBeat");
 			float beatsSinceSpawn = (float)(_currentBeat - spawnBeat);
-			measure.Position = new Vector2(measure.Position.X, beatsSinceSpawn * _pixelsPerBeat - 250);
+			measure.Position = new Vector2(measure.Position.X, beatsSinceSpawn * _pixelsPerBeat - 350);
 		}
 
 		foreach (var column in _columns)
@@ -44,17 +44,27 @@ public partial class RhythmUI : Control
 		_currentBeat = beatPosition;
 	}
 
-	public void OnNote(int column, double spawnBeat, double hitBeat)
+	public void OnNote(int index, int column, double spawnedOn)
 	{
 		if (column < 0 || column >= _columns.Length)
 		{
 			return;
 		}
 
-		_columns[column].SpawnNote(spawnBeat, hitBeat);
+		_columns[column].SpawnNote(index, spawnedOn);
 	}
 
-	public void OnWholeBeat(double spawnBeat)
+	public void OnNoteLeave(int index, int column)
+	{
+		if (column < 0 || column >= _columns.Length)
+		{
+			return;
+		}
+
+		_columns[column].RemoveNote(index);
+	}
+
+	public void OnWholeBeat(int spawnBeat)
 	{
 		SpawnMeasure(spawnBeat);
 	}

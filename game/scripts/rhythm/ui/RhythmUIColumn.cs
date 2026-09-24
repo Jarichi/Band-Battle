@@ -34,19 +34,37 @@ public partial class RhythmUIColumn : Panel
 				continue;
 			}
 
-			double spawnBeat = (double)note.GetMeta("SpawnBeat");
-			float beatsSinceSpawn = (float)(currentBeat - spawnBeat);
+			double spawnedOn = (double)note.GetMeta("SpawnBeat");
+			float beatsSinceSpawn = (float)(currentBeat - spawnedOn);
 			note.Position = new Vector2(note.Position.X, beatsSinceSpawn * pixelsPerBeat - 250);
 		}
 	}
 
-	public void SpawnNote(double spawnBeat, double hitBeat)
+	public void SpawnNote(int index, double spawnedOn)
 	{
 		var note = _noteScene.Instantiate<TextureRect>();
-		note.SetMeta("SpawnBeat", spawnBeat);
-		note.SetMeta("HitBeat", hitBeat);
+		note.SetMeta("Index", index);
+		note.SetMeta("SpawnBeat", spawnedOn);
 		note.Position = new Vector2((Size.X - note.Size.X) / 2.0f, 0);
 		note.Texture = _noteTexture;
 		AddChild(note);
+	}
+
+	public void RemoveNote(int index)
+	{
+		foreach (var child in GetChildren())
+		{
+			if (child is not TextureRect note || !note.HasMeta("Index"))
+			{
+				continue;
+			}
+
+			int noteIndex = (int)note.GetMeta("Index");
+			if (noteIndex == index)
+			{
+				note.QueueFree();
+				break;
+			}
+		}
 	}
 }

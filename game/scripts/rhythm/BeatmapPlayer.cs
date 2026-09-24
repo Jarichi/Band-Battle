@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 [GlobalClass, Icon("res://addons/at-icons/node/next.svg")]
 public partial class BeatmapPlayer : Node
@@ -11,21 +13,23 @@ public partial class BeatmapPlayer : Node
 	[Export]
 	private double _spawnLeadBeats = 4.1;
 
-	private double _currentBeat;
+	[Export] private double _nearWindow = 0.2;
+	[Export] private double _perfectWindow = 0.05;
+	[Export] private double _despawnAfter = 0.2;
+
+	private double _currentBeatWithOffset;
 	private Beatmap _beatmap;
 	private BeatmapNote[] _notes;
 	private int _currentNoteIndex = 0;
 	private int _nextMeasureBeat = 0;
-
-
-	[Signal]
-	public delegate void NoteEventHandler(int column, double spawnBeat, double hitBeat);
+	private readonly List<ActiveNote> _spawnedNotes = new();
+	public IReadOnlyList<ActiveNote> ActiveNotes => _spawnedNotes.AsReadOnly();
 
 	[Signal]
-	public delegate void BeatEventHandler(double beatPosition);
+	public delegate void NoteEnterEventHandler(int index, int column, double spawnedOn);
 
 	[Signal]
-	public delegate void WholeBeatEventHandler(double spawnBeat);
+	public delegate void NoteLeaveEventHandler(int index, int column);
 
 
 	public override void _Ready()
@@ -34,22 +38,14 @@ public partial class BeatmapPlayer : Node
 		GD.Print($"Loaded beatmap with {_beatmap.Tracks.Count} tracks and BPM: {_beatmap.BPM}");
 		_notes = [.. _beatmap.Tracks[0].Notes];
 		_clock.Start((float)_beatmap.BPM);
-		_clock.Beat += OnBeat;
 	}
 
-	public override void _ExitTree()
+	public override void _PhysicsProcess(double delta)
 	{
-		_clock.Beat -= OnBeat;
-	}
+		_currentBeatWithOffset = _clock.GetCurrentBeat();
 
-	public void OnBeat(double beatPosition)
-	{
-		_currentBeat = beatPosition - _clock.BeatOffset;
-		EmitSignal(SignalName.Beat, _currentBeat);
-
-		while (_nextMeasureBeat - _spawnLeadBeats <= _currentBeat)
+		while (_nextMeasureBeat - _spawnLeadBeats <= _currentBeatWithOffset)
 		{
-			EmitSignal(SignalName.WholeBeat, _nextMeasureBeat - _spawnLeadBeats);
 			_nextMeasureBeat++;
 		}
 
@@ -58,14 +54,77 @@ public partial class BeatmapPlayer : Node
 			var note = _notes[_currentNoteIndex];
 			double spawnBeat = note.Beat - _spawnLeadBeats;
 
-			if (spawnBeat > _currentBeat)
+			if (spawnBeat > _currentBeatWithOffset)
 			{
 				break;
 			}
 
-			EmitSignal(SignalName.Note, note.Column, spawnBeat, note.Beat);
+			var activeNote = new ActiveNote
+			{
+				Index = _currentNoteIndex,
+				Note = note,
+				State = NoteState.Spawned
+			};
+			EmitSignal(SignalName.NoteEnter, activeNote.Index, activeNote.Note.Column, spawnBeat);
+			_spawnedNotes.Add(activeNote);
 			_currentNoteIndex++;
 		}
 
+		UpdateNoteStates();
+	}
+
+	// TODO: instead of updating every fame, calculate exact distance to "hit" whenever fetched
+	private void UpdateNoteStates()
+	{
+		foreach (var activeNote in _spawnedNotes)
+		{
+
+			double hitBeat = activeNote.Note.Beat;
+			double beat = _currentBeatWithOffset;
+
+			switch (activeNote.State)
+			{
+				case NoteState.Spawned:
+					if (beat >= hitBeat - _nearWindow)
+						activeNote.State = NoteState.EarlyRange;
+					break;
+
+				case NoteState.EarlyRange:
+					if (beat >= hitBeat - _perfectWindow)
+						activeNote.State = NoteState.PerfectRange;
+					break;
+
+				case NoteState.PerfectRange:
+					if (beat > hitBeat + _perfectWindow)
+						activeNote.State = NoteState.LateRange;
+					break;
+
+				case NoteState.LateRange:
+					if (beat > hitBeat + _nearWindow)
+						activeNote.State = NoteState.Missed;
+					break;
+			}
+		}
+
+		_spawnedNotes.Where(activeNote => activeNote.State == NoteState.Missed &&
+			_currentBeatWithOffset > activeNote.Note.Beat + _despawnAfter + _nearWindow)
+			.ToList()
+			.ForEach(activeNote =>
+			{
+				EmitSignal(SignalName.NoteLeave, activeNote.Index, activeNote.Note.Column);
+			});
+
+		_spawnedNotes.RemoveAll(activeNote =>
+			activeNote.State == NoteState.Missed &&
+			_currentBeatWithOffset > activeNote.Note.Beat + _despawnAfter + _nearWindow);
+	}
+
+	public void DestroyActiveNote(int index) {
+		var activeNote = _spawnedNotes.FirstOrDefault(n => n.Index == index);
+		if (activeNote != null)
+		{
+			EmitSignal(SignalName.NoteLeave, activeNote.Index, activeNote.Note.Column);
+			_spawnedNotes.Remove(activeNote);
+		}
 	}
 }

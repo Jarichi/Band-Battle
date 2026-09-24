@@ -4,13 +4,13 @@ using System;
 [GlobalClass, Icon("res://addons/at-icons/node/bug.svg")]
 public partial class DebugPrinter : Node
 {
-	public void OnBeat(double pos)
+	public void OnNoteEnter(int index, int column)
 	{
-		GD.Print($"Beat: {pos}");
+		GD.Print($"Note Enter Event: Column {column}, Index {index}");
 	}
 
-	public void OnIntegerBeat(int pos)
+	public void OnNoteLeave(int index, int column)
 	{
-		GD.Print($"Integer Beat: {pos}");
+		GD.Print($"Note Leave Event: Column {column}, Index {index}");
 	}
 }

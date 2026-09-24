@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ccdyj36bl4dik" path="res://assets/textures/rhythm/input/yellow_input.png" id="6_2d6t1"]
 [ext_resource type="Script" uid="uid://dfrasuy4fdee" path="res://scripts/rhythm/MusicClock.cs" id="6_jx1cd"]
 [ext_resource type="Texture2D" uid="uid://djhxvm70qutfq" path="res://assets/textures/rhythm/input/yellow_note.png" id="6_nkl1s"]
+[ext_resource type="Script" uid="uid://k46f8jwfpnwg" path="res://scripts/rhythm/RhythmInputController.cs" id="15_waboa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_waboa"]
 bg_color = Color(1, 0, 0, 0.40784314)
@@ -157,9 +158,16 @@ grow_vertical = 0
 size_flags_vertical = 8
 texture = ExtResource("6_2d6t1")
 
+[node name="RhythmPlayerInput" type="Node" parent="." unique_id=1705292745 node_paths=PackedStringArray("_beatmapPlayer")]
+script = ExtResource("15_waboa")
+_actions = PackedStringArray("rhythm_hit_1", "rhythm_hit_2", "rhythm_hit_3", "rhythm_hit_4")
+_beatmapPlayer = NodePath("../BeatmapPlayer")
+
 [node name="BeatmapPlayer" type="Node" parent="." unique_id=1717261671 node_paths=PackedStringArray("_clock")]
 script = ExtResource("4_jx1cd")
 _clock = NodePath("../RhythmClock")
+_nearWindow = 0.5
+_perfectWindow = 0.2
 
 [node name="RhythmClock" type="AudioStreamPlayer2D" parent="." unique_id=881339545 node_paths=PackedStringArray("_timer")]
 stream = ExtResource("4_gsknd")
@@ -168,7 +176,7 @@ _timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="RhythmClock" unique_id=1470767671]
 
-[connection signal="Beat" from="BeatmapPlayer" to="UI/Control" method="OnBeat"]
-[connection signal="Note" from="BeatmapPlayer" to="UI/Control" method="OnNote"]
-[connection signal="WholeBeat" from="BeatmapPlayer" to="UI/Control" method="OnWholeBeat"]
-[connection signal="Beat" from="RhythmClock" to="BeatmapPlayer" method="OnBeat"]
+[connection signal="NoteEnter" from="BeatmapPlayer" to="UI/Control" method="OnNote"]
+[connection signal="NoteLeave" from="BeatmapPlayer" to="UI/Control" method="OnNoteLeave"]
+[connection signal="Beat" from="RhythmClock" to="UI/Control" method="OnBeat"]
+[connection signal="IntegerBeat" from="RhythmClock" to="UI/Control" method="OnWholeBeat"]
