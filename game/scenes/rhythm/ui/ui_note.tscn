@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://saru7lupr6dh"]
+
+[ext_resource type="Texture2D" uid="uid://b5kqjoc2y43bb" path="res://assets/textures/rhythm/input/red_note.png" id="1_15k7w"]
+
+[node name="UINote" type="TextureRect" unique_id=1755405556]
+texture_filter = 1
+offset_right = 75.0
+offset_bottom = 75.0
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("1_15k7w")
+stretch_mode = 5

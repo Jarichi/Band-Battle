@@ -4,6 +4,7 @@
 z_index = -100
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=124772909]
-offset_right = 240.0
-offset_bottom = 6.0
+offset_right = 512.0
+offset_bottom = 4.0
+pivot_offset = Vector2(256, 0)
 color = Color(0.36282945, 0.36282945, 0.36282945, 1)
