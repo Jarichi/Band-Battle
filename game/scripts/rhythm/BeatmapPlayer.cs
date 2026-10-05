@@ -32,13 +32,37 @@ public partial class BeatmapPlayer : Node
 	[Signal]
 	public delegate void NoteLeaveEventHandler(int index, int column);
 
+	[Signal]
+	public delegate void SectionStartEventHandler();
 
-	public override void _Ready()
+	[Signal]
+	public delegate void SectionEndEventHandler();
+
+	public void Start(string beatmapFile)
 	{
-		_beatmap = BeatmapLoader.LoadFromFile("flower_man.json");
+		_beatmap = BeatmapLoader.LoadFromFile(beatmapFile);
 		GD.Print($"Loaded beatmap with {_beatmap.Tracks.Count} tracks and BPM: {_beatmap.BPM}");
 		_notes = [.. _beatmap.Tracks[0].Notes];
 		_clock.Start((float)_beatmap.BPM);
+
+		int lastWholeBeat = -1;
+		_clock.Beat += (double beatPosition) =>
+		{
+			int currentWholeBeat = (int)Math.Floor(beatPosition);
+			for (int beat = lastWholeBeat + 1; beat <= currentWholeBeat; beat++)
+			{
+				if (beat >= 0 && beat % 16 == 0)
+				{
+					EmitSignal(SignalName.SectionStart);
+				}
+				else if (beat >= 14 && beat % 16 == 14)
+				{
+					EmitSignal(SignalName.SectionEnd);
+				}
+			}
+
+			lastWholeBeat = currentWholeBeat;
+		};
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -70,6 +94,7 @@ public partial class BeatmapPlayer : Node
 			_spawnedNotes.Add(activeNote);
 			_currentNoteIndex++;
 		}
+
 
 		UpdateNoteStates();
 	}

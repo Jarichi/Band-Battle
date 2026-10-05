@@ -9,6 +9,9 @@ public partial class RhythmInputController : Node
 	private string[] _actions = new string[4];
 	[Export]
 	private BeatmapPlayer _beatmapPlayer;
+	[Signal]
+	public delegate void NoteHitEventHandler(int index, int column, double score);
+
 
 	public override void _Process(double delta)
 	{
@@ -31,17 +34,17 @@ public partial class RhythmInputController : Node
 			{
 				continue;
 			}
-			
+
 			switch (note.State)
 			{
 				case NoteState.EarlyRange:
-					GD.Print($"EARLY!");
+					EmitSignal(SignalName.NoteHit, note.Index, note.Note.Column, 0.5);
 					break;
 				case NoteState.PerfectRange:
-					GD.Print($"PERFECT!");
+					EmitSignal(SignalName.NoteHit, note.Index, note.Note.Column, 1.0);
 					break;
 				case NoteState.LateRange:
-					GD.Print($"LATE!");
+					EmitSignal(SignalName.NoteHit, note.Index, note.Note.Column, 0.5);
 					break;
 			}
 

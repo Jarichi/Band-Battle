@@ -4,13 +4,28 @@ using System;
 [GlobalClass, Icon("res://addons/at-icons/node/note_double.svg")]
 public partial class RhythmGame : Node
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	[Export]
+	public BeatmapPlayer BeatmapPlayer { get; private set; }
+
+	[Export]
+	public RhythmInputController InputController { get; private set; }
+
+	[Export]
+	public RhythmUI RhythmUI { get; private set; }
+
+	public void Start()
 	{
+		BeatmapPlayer.Start("flower_man.json");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public void Hide()
 	{
+		RhythmUI.Visible = false;
 	}
+
+	public void Show()
+	{
+		RhythmUI.Visible = true;
+	}
+
 }

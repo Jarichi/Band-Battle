@@ -28,8 +28,11 @@ bg_color = Color(0.2773991, 0.6294309, 0.11312585, 0.40784314)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkl1s"]
 bg_color = Color(0.63529414, 0.5254902, 0, 0.30588236)
 
-[node name="Rhythm Game" type="Node" unique_id=612939007]
+[node name="Rhythm Game" type="Node" unique_id=612939007 node_paths=PackedStringArray("BeatmapPlayer", "InputController", "RhythmUI")]
 script = ExtResource("1_ig73c")
+BeatmapPlayer = NodePath("BeatmapPlayer")
+InputController = NodePath("RhythmPlayerInput")
+RhythmUI = NodePath("UI/Control")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=929466783]
 follow_viewport_enabled = true

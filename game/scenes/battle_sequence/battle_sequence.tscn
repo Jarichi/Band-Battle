@@ -2,8 +2,33 @@
 
 [ext_resource type="Script" uid="uid://dy1ftkfepmlqu" path="res://scripts/battle_sequence/BattleSequence.cs" id="1_n36b2"]
 [ext_resource type="PackedScene" uid="uid://cavolvwnq54wl" path="res://scenes/rhythm/rhythm_game.tscn" id="2_dqpmm"]
+[ext_resource type="Texture2D" uid="uid://fl5g2mhnu641" path="res://assets/textures/battle/temp_player.png" id="3_iyfkg"]
+[ext_resource type="Script" uid="uid://c1otkf4ioe5x0" path="res://scripts/battle_sequence/BattlePlayer.cs" id="3_rys72"]
+[ext_resource type="Texture2D" uid="uid://dik11cy8xpnwr" path="res://assets/textures/battle/temp_cat.png" id="4_rys72"]
 
-[node name="Battle Sequence" type="Node" unique_id=201185631]
+[node name="Battle Sequence" type="Node" unique_id=201185631 node_paths=PackedStringArray("RhythmGame", "Player", "OpponentPlayer")]
 script = ExtResource("1_n36b2")
+RhythmGame = NodePath("Rhythm Game")
+Player = NodePath("Player")
+OpponentPlayer = NodePath("OpponentPlayer")
 
 [node name="Rhythm Game" parent="." unique_id=612939007 instance=ExtResource("2_dqpmm")]
+
+[node name="Player" type="Node2D" parent="." unique_id=1037821938]
+position = Vector2(360, 789)
+script = ExtResource("3_rys72")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1359441675]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_iyfkg")
+
+[node name="OpponentPlayer" type="Node2D" parent="." unique_id=665229836]
+position = Vector2(1573, 729)
+script = ExtResource("3_rys72")
+
+[node name="Sprite2D" type="Sprite2D" parent="OpponentPlayer" unique_id=338654482]
+texture_filter = 2
+scale = Vector2(3, 3)
+texture = ExtResource("4_rys72")
+region_enabled = true
+region_rect = Rect2(106.230316, 12.520344, 152.41357, 148.45207)
