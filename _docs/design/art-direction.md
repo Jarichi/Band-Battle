@@ -37,6 +37,19 @@
 
 - we can take into account that the viewing angle is also a variable
 
+# Assets
+- Character plays iwth an idle animation
+- so do the enemies
+- backgreound should have 2 olayers
+- optionally environment animantea
+
+- UI needs to be prettified
+    - notes and inpuit assets
+    - effects for when things are hit
+
+- attack animation
+    - characters and maybe the enemies
+    - vfx
 # Remarks
 - could be cool to make things very very lkayered
 - parralax
