@@ -11,6 +11,8 @@ public partial class RhythmInputController : Node
 	private BeatmapPlayer _beatmapPlayer;
 	[Signal]
 	public delegate void NoteHitEventHandler(int index, int column, double score);
+	[Signal]
+	public delegate void NoteMissEventHandler(int column);
 
 
 	public override void _Process(double delta)
@@ -51,5 +53,9 @@ public partial class RhythmInputController : Node
 			notesToRemove.Add(note);
 		}
 		notesToRemove.ForEach(note => _beatmapPlayer.DestroyActiveNote(note.Index));
+		if (notesToRemove.Count == 0)
+		{
+			EmitSignal(SignalName.NoteMiss, column);
+		}
 	}
 }

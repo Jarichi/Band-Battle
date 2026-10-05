@@ -36,7 +36,7 @@ public partial class BeatmapPlayer : Node
 	public delegate void SectionStartEventHandler();
 
 	[Signal]
-	public delegate void SectionEndEventHandler();
+	public delegate void SectionEndEventHandler(int noteCount);
 
 	public void Start(string beatmapFile)
 	{
@@ -57,7 +57,8 @@ public partial class BeatmapPlayer : Node
 				}
 				else if (beat >= 14 && beat % 16 == 14)
 				{
-					EmitSignal(SignalName.SectionEnd);
+					int sectionNoteCount = _notes.Count(n => n.Beat >= beat - 14 && n.Beat < beat + 2);
+					EmitSignal(SignalName.SectionEnd, sectionNoteCount);	
 				}
 			}
 

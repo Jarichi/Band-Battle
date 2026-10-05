@@ -16,11 +16,13 @@ public partial class BattleSequence : Node
 	private bool _isPlayerTurn = true;
 	private BattlePhase _currentPhase = BattlePhase.Music;
 	private double _phaseScore = 0.0;
+	private int _missedThisSection = 0;
 
 	public override void _Ready()
 	{
 		RhythmGame.Start();
 		RhythmGame.InputController.NoteHit += OnNoteHit;
+		RhythmGame.InputController.NoteMiss += OnNoteMiss;
 		RhythmGame.BeatmapPlayer.SectionStart += OnSectionStart;
 		RhythmGame.BeatmapPlayer.SectionEnd += OnSectionEnd;
 	}
@@ -29,6 +31,9 @@ public partial class BattleSequence : Node
 	{
 		base._ExitTree();
 		RhythmGame.InputController.NoteHit -= OnNoteHit;
+		RhythmGame.InputController.NoteMiss -= OnNoteMiss;
+		RhythmGame.BeatmapPlayer.SectionStart -= OnSectionStart;
+		RhythmGame.BeatmapPlayer.SectionEnd -= OnSectionEnd;
 	}
 
 
@@ -38,27 +43,36 @@ public partial class BattleSequence : Node
 		GD.Print(_phaseScore);
 	}
 
+	private void OnNoteMiss(int column)
+	{
+		_missedThisSection++;
+	}
+
 	private void OnSectionStart()
 	{
 		//RhythmGame.Show();
 	}
 
-	private void OnSectionEnd()
+	private void OnSectionEnd(int noteCount)
 	{
 		// RhythmGame.Hide();
+		SwapTurn(noteCount);
 	}
 
-	private void SwapTurn()
+	private void SwapTurn(int noteCount)
 	{
+		GD.Print("Damage!! " + CalculateDamage(noteCount));
+
 		_isPlayerTurn = !_isPlayerTurn;
 		_currentPhase = BattlePhase.Music;
 		_phaseScore = 0.0;
+		_missedThisSection = 0;
 	}
 
-	private double CalculateDamage(int sectionNoteCount, int fakeNoteCount)
+	private double CalculateDamage(int sectionNoteCount)
 	{
 		double baseDamage = 1f;
-		double accuracy = _phaseScore / (sectionNoteCount + fakeNoteCount);
+		double accuracy = _phaseScore / (sectionNoteCount + _missedThisSection);
 		return baseDamage * accuracy;
 	}
 
